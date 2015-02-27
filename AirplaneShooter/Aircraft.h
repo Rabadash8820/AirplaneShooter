@@ -1,8 +1,9 @@
 #pragma once
 
 #include "TextureIds.h"
-#include "ResourceHolderTypes.h"
+#include <ResourceHolderTypes.h>
 #include <Entity.h>
+#include <SFML/Graphics.hpp>
 
 namespace Shooter {
 
