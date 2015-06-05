@@ -30,12 +30,11 @@ namespace Game2D {
 
 		// INTERFACE FUNCTIONS
 	public:
+		void build();
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		void update(sf::Time);
 
 		// HELPER FUNCTIONS
-	private:
-		void initialize();
 	protected:
 		virtual void baseUpdate(sf::Time dt) = 0;
 		virtual void loadResources() = 0;

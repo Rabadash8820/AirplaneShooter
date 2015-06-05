@@ -13,10 +13,12 @@ namespace Game2D {
 
 	// INTERFACE FUNCTIONS
 	void Game::run() {
-		sf::Clock clock;
-		sf::Time timeSinceUpdate = sf::seconds(0.f);
+		// Build the map
+		_map->build();
 
 		// Main game loop
+		sf::Clock clock;
+		sf::Time timeSinceUpdate = sf::seconds(0.f);
 		while (_window.isOpen()) {
 			
 			// Process events and update as many as times as needed
