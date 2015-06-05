@@ -23,7 +23,7 @@ namespace Game2D {
 		_sceneTree.update(dt);
 	}
 	void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-		_sceneTree.draw(target, states);
+		target.draw(_sceneTree, states);
 	}
 
 	// HELPER FUNCTIONS

@@ -23,29 +23,21 @@ namespace Shooter {
 	// INTERFACE FUNCTIONS
 	void DesertMap::postScrollUpdate(sf::Time dt) {
 		// Move the player horizontally
-		sf::Vector2f playerPos = _player->getPosition();
-		if (playerPos.x <= _worldBounds.left + BOUNDARY_OFFSET ||
-			_worldBounds.left - BOUNDARY_OFFSET <= playerPos.x)
+		float playerPos = _player->getPosition().x;
+		if (playerPos <= _worldBounds.left + BOUNDARY_OFFSET || _worldBounds.left - BOUNDARY_OFFSET <= playerPos)
 			_player->Velocity.x = 0.f;
 	}
 
 	// HELPER FUNCTIONS
 	void DesertMap::loadResources() {
 		// Load texture resources
-		_textures.load(ResourceIDs::Texture::DESERT, "Resources/Texutres/Desert.png");
-		_textures.load(ResourceIDs::Texture::EAGLE, "Resources/Texutres/Eagle.png");
-		_textures.load(ResourceIDs::Texture::RAPTOR, "Resources/Texutres/Raptor.png");
+		_textures.load(ResourceIDs::Texture::DESERT, "..\\..\\Resources\\Textures\\Desert.png");
+		_textures.load(ResourceIDs::Texture::EAGLE, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\AirplaneShooter\\Resources\\Textures\\Eagle.png");
+		_textures.load(ResourceIDs::Texture::RAPTOR, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\AirplaneShooter\\Resources\\Textures\\Raptor.png");
 	}
 	void DesertMap::buildScene() {
 		// Set the window's View
 		_view.setCenter(_playerSpawn);
-
-		// Add each scene layer to the scene graph and layer array
-		for (short L = 0; L < _numLayers; ++L) {
-			Game2D::SceneNode::NodePtr layer(new Game2D::SceneNode());
-			_sceneLayers[L] = layer.get();
-			_sceneTree.attachChild(std::move(layer));
-		}
 
 		// Add a node for the background, and tile its texture
 		sf::Texture desert = _textures[ResourceIDs::Texture::DESERT];
