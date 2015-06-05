@@ -19,6 +19,7 @@ namespace Game2D {
 		// HELPER FUNCTIONS
 	private:
 		virtual void baseUpdate(sf::Time) final;
+	protected:
 		virtual void postScrollUpdate(sf::Time) =0;
 
 	};

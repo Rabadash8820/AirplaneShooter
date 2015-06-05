@@ -20,25 +20,27 @@ namespace Game2D {
 		SceneNode* _parent;
 		std::vector<NodePtr> _children;
 
-	public:
 		// CONSTRUCTORS / DESTRUCTOR
+	public:
 		SceneNode();
 		~SceneNode();
 
 		// INTERFACE FUNCTIONS
+	public:
 		void attachChild(NodePtr child);
 		NodePtr detachChild(const SceneNode& node);
 		NodePtr detachChild(SceneNode* node);
 		sf::Vector2f getWorldPosition() const;
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
-		virtual void update(sf::Time);
-
-	private:
+		void update(sf::Time);
+		
 		// HELPER FUNCTIONS
-		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
+	private:
 		void drawChildren(sf::RenderTarget&, sf::RenderStates) const;
-		virtual void updateCurrent(sf::Time);
 		void updateChildren(sf::Time);
+	protected:
+		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
+		virtual void updateCurrent(sf::Time);
 
 	};
 
