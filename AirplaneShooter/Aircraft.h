@@ -8,26 +8,30 @@
 namespace Shooter {
 
 	class Aircraft : public Game2D::Entity {
-	public:
 		// TYPES
+	public:
 		enum Type {
 			EAGLE,
 			RAPTOR,
 		};
 
-	private:
 		// VARIABLES
+	private:
 		Type _type;
 		sf::Sprite _sprite;
 
-	public:
 		// CONSTRUCTORS / DESTRUCTOR
-		explicit Aircraft(Type, const Game2D::TextureManager<Textures::ID>&);
+	public:
+		Aircraft(Type, const Game2D::TextureManager<ResourceIDs::Texture>&);
 		~Aircraft();
 
-		// FUNCTIONS
-		virtual void renderCurrent(sf::RenderTarget&, sf::RenderStates) const;
-		Textures::ID toTextureId(Type);
+		// INTERFACE FUNCTIONS
+	public:
+		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
+
+		// HELPER FUNCTIONS
+	private:
+		ResourceIDs::Texture textureIdForType(Type);
 
 	};
 

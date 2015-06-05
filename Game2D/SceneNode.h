@@ -8,16 +8,17 @@
 namespace Game2D {
 
 	class GAME2D_API SceneNode : public sf::Transformable,
-					  public sf::Drawable,
-					  public sf::NonCopyable {
+								 public sf::Drawable,
+								 public sf::NonCopyable
+	{
 	public:
 		// TYPES
-		typedef std::unique_ptr<SceneNode> Ptr;
+		typedef std::unique_ptr<SceneNode> NodePtr;
 
 	private:
 		// VARIABLES
 		SceneNode* _parent;
-		std::vector<Ptr> _children;
+		std::vector<NodePtr> _children;
 
 	public:
 		// CONSTRUCTORS / DESTRUCTOR
@@ -25,18 +26,19 @@ namespace Game2D {
 		~SceneNode();
 
 		// INTERFACE FUNCTIONS
-		void attachChild(Ptr child);
-		Ptr detachChild(const SceneNode& node);
-		virtual void update(sf::Time);
-		virtual void draw(sf::RenderTarget&, sf::RenderStates) const;
+		void attachChild(NodePtr child);
+		NodePtr detachChild(const SceneNode& node);
+		NodePtr detachChild(SceneNode* node);
 		sf::Vector2f getWorldPosition() const;
+		virtual void update(sf::Time);
 
 	private:
 		// HELPER FUNCTIONS
+		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
+		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
+		void drawChildren(sf::RenderTarget&, sf::RenderStates) const;
 		virtual void updateCurrent(sf::Time);
 		void updateChildren(sf::Time);
-		virtual void renderCurrent(sf::RenderTarget&, sf::RenderStates) const;
-		void renderChildren(sf::RenderTarget&, sf::RenderStates) const;
 
 	};
 

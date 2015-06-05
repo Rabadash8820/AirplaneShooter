@@ -8,11 +8,13 @@ namespace Game2D {
 
 	class GAME2D_API Entity : public SceneNode {
 	public:
+		// PROPERTIES
 		sf::Vector2f Velocity;
 
 	private:
+		// METHODS
 		virtual void updateCurrent(sf::Time dt) {
-			sf::Transformable::move(Velocity * dt.asSeconds());
+			move(this->Velocity * dt.asSeconds());
 		}
 
 	};

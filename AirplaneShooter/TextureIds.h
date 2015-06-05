@@ -1,14 +1,14 @@
 #pragma once
 
 namespace Shooter {
-	namespace Textures {
 
-		enum class ID {
+	namespace ResourceIDs {
+		enum class Texture {
 			DESERT,
 			EAGLE,
 			RAPTOR,
 			MISSILE
 		};
-
 	}
+
 }

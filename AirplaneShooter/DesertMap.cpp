@@ -30,9 +30,9 @@ namespace Shooter {
 	// HELPER FUNCTIONS
 	void DesertMap::loadResources() {
 		// Load texture resources
-		_textures.load(Textures::ID::DESERT, "Resources/Texutres/Desert.png");
-		_textures.load(Textures::ID::EAGLE, "Resources/Texutres/Eagle.png");
-		_textures.load(Textures::ID::RAPTOR, "Resources/Texutres/Raptor.png");
+		_textures.load(ResourceIDs::Texture::DESERT, "Resources/Texutres/Desert.png");
+		_textures.load(ResourceIDs::Texture::EAGLE, "Resources/Texutres/Eagle.png");
+		_textures.load(ResourceIDs::Texture::RAPTOR, "Resources/Texutres/Raptor.png");
 	}
 	void DesertMap::buildScene() {
 		// Set the window's View
@@ -41,13 +41,13 @@ namespace Shooter {
 
 		// Add each scene layer to the scene graph and layer array
 		for (short L = 0; L < NUM_LAYERS; ++L) {
-			Game2D::SceneNode::Ptr layer(new Game2D::SceneNode());
+			Game2D::SceneNode::NodePtr layer(new Game2D::SceneNode());
 			_sceneLayers[L] = layer.get();
 			_sceneGraph.attachChild(std::move(layer));
 		}
 
 		// Add a node for the background, and tile its texture
-		sf::Texture desert = _textures[Textures::ID::DESERT];
+		sf::Texture desert = _textures[ResourceIDs::Texture::DESERT];
 		std::unique_ptr<Game2D::Brush> background(
 			new Game2D::Brush(desert, sf::IntRect(_worldBounds)));
 		background->setPosition(_worldBounds.left, _worldBounds.top);

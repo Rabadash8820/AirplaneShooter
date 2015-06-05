@@ -22,7 +22,7 @@ namespace Shooter {
 		sf::FloatRect _worldBounds;
 
 		static const short NUM_LAYERS = 3;
-		Game2D::TextureManager<Textures::ID> _textures;
+		Game2D::TextureManager<ResourceIDs::Texture> _textures;
 
 		sf::Vector2f _playerSpawn;
 		float _playerSpeed = 40.f;			// Speeds in pixels/sec
@@ -30,7 +30,7 @@ namespace Shooter {
 
 	public:
 		// CONSTRUCTORS / DESTRUCTOR
-		explicit DesertMap(sf::RenderWindow&, size_t);
+		DesertMap(sf::RenderWindow&, size_t);
 		~DesertMap();
 
 	private:
