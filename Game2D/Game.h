@@ -17,7 +17,8 @@ namespace Game2D {
 	protected:
 		sf::Time _frameDuration;
 		sf::RenderWindow _window;
-		std::unique_ptr<Map> _map;
+		MapPtr _map;
+		sf::View _view;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
@@ -33,7 +34,7 @@ namespace Game2D {
 		void setMap(MapPtr);
 	private:
 		void processEvents(sf::Time);
-		void update();
+		void update(sf::Time);
 		void draw();
 
 	};
