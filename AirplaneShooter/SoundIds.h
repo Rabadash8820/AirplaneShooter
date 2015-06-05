@@ -3,7 +3,7 @@
 namespace Shooter {
 	namespace Sounds {
 
-		enum ID {
+		enum class ID {
 
 		};
 

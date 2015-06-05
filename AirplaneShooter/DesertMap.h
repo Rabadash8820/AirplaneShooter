@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ResourceIds.h"
+#include <ResourceManager.h>
 #include <Map.h>
 #include <array>
 
@@ -21,8 +22,7 @@ namespace Shooter {
 		sf::FloatRect _worldBounds;
 
 		static const short NUM_LAYERS = 3;
-
-		Game2D::TextureHolder<Textures::ID> _textures;
+		Game2D::TextureManager<Textures::ID> _textures;
 
 		sf::Vector2f _playerSpawn;
 		float _playerSpeed = 40.f;			// Speeds in pixels/sec

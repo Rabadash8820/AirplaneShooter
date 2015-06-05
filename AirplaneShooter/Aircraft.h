@@ -1,7 +1,7 @@
 #pragma once
 
 #include "TextureIds.h"
-#include <ResourceHolderTypes.h>
+#include <ResourceManager.h>
 #include <Entity.h>
 #include <SFML/Graphics.hpp>
 
@@ -22,7 +22,7 @@ namespace Shooter {
 
 	public:
 		// CONSTRUCTORS / DESTRUCTOR
-		explicit Aircraft(Type, const Game2D::TextureHolder<Textures::ID>&);
+		explicit Aircraft(Type, const Game2D::TextureManager<Textures::ID>&);
 		~Aircraft();
 
 		// FUNCTIONS

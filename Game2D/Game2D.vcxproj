@@ -157,8 +157,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Game2D.h" />
     <ClInclude Include="GAME2D_API.h" />
-    <ClInclude Include="ResourceHolder.h" />
-    <ClInclude Include="ResourceHolderTypes.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneNode.h" />
     <ClInclude Include="Brush.h" />
     <ClInclude Include="Map.h" />
@@ -170,7 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ResourceHolder.inl" />
+    <None Include="ResourceManager.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

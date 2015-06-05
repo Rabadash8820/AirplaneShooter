@@ -26,7 +26,7 @@ namespace Shooter {
 		static const short NUM_LAYERS = 3;
 		std::array<Game2D::SceneNode*, NUM_LAYERS> _sceneLayers;
 
-		Game2D::TextureHolder<Textures::ID> _textures;
+		Game2D::TextureManager<Textures::ID> _textures;
 
 		Game2D::Entity* _player;
 		sf::Vector2f _playerSpawn;

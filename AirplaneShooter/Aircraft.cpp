@@ -1,10 +1,10 @@
 #include "Aircraft.h"
-#include <ResourceHolderTypes.h>
+#include "ResourceManager.h"
 
 namespace Shooter {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	Aircraft::Aircraft(Type t, const Game2D::TextureHolder<Textures::ID>& textures) {
+	Aircraft::Aircraft(Type t, const Game2D::TextureManager<Textures::ID>& textures) {
 		_type = t;
 
 		// Initialize the Aircraft's Sprite
@@ -17,12 +17,12 @@ namespace Shooter {
 	// FUNCTIONS
 	Textures::ID Aircraft::toTextureId(Aircraft::Type t) {
 		switch (t) {
-		case EAGLE:
-			return Textures::EAGLE;
+		case Type::EAGLE:
+			return Textures::ID::EAGLE;
 			break;
-		case RAPTOR:
+		case Type::RAPTOR:
 		default:
-			return Textures::RAPTOR;
+			return Textures::ID::RAPTOR;
 			break;
 		}
 	}
