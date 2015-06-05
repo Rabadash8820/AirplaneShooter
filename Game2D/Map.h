@@ -36,6 +36,7 @@ namespace Game2D {
 		// HELPER FUNCTIONS
 	private:
 		void initialize();
+	protected:
 		virtual void baseUpdate(sf::Time dt) = 0;
 		virtual void loadResources() = 0;
 		virtual void buildScene() = 0;

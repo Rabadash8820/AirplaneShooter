@@ -11,11 +11,12 @@ namespace Shooter {
 			view,
 			sf::FloatRect(0.f, 0.f, view.getSize().x, 2000.f),
 			3),
-		_playerSpawn(
-			_view.getSize().x / 2.f,
-			_worldBounds.height - _view.getSize().y / 2.f)
+		_playerSpeed(40.f)
 	{
-		
+		sf::Vector2f viewSize = _view.getSize();
+		sf::Vector2f spawn(viewSize.x / 2, _worldBounds.height - viewSize.y / 2);
+		_playerSpawn = spawn;
+
 	}
 	DesertMap::~DesertMap() {}
 

@@ -8,8 +8,8 @@
 namespace Shooter {
 
 	class DesertMap : public Game2D::ScrollingMap {
-	private:
 		// TYPES
+	private:
 		enum Layer {
 			BACKGROUND,
 			GROUND,
@@ -17,23 +17,20 @@ namespace Shooter {
 		};
 
 		// VARIABLES / CONSTANTS
-		const float WORLD_HEIGHT = 2000.f;
+	private:
 		const float BOUNDARY_OFFSET = 150.f;
 		sf::FloatRect _worldBounds;
-
 		Game2D::TextureManager<ResourceIDs::Texture> _textures;
-
-		sf::Vector2f _playerSpawn;
-		float _playerSpeed = 40.f;			// Speeds in pixels/sec
+		float _playerSpeed;			// Speeds in pixels/sec
 		const float _scrollSpeed = 10.f;
 
-	public:
 		// CONSTRUCTORS / DESTRUCTOR
+	public:
 		DesertMap(sf::View);
 		~DesertMap();
 
-	private:
 		// HELPER FUNCTIONS
+	private:
 		virtual void postScrollUpdate(sf::Time);
 		virtual void loadResources();
 		virtual void buildScene();
