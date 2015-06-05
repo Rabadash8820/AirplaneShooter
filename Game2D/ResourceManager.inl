@@ -6,13 +6,7 @@ ResourceManager<Id, Resource>::ResourceManager() {
 
 }
 template<typename Id, typename Resource>
-ResourceManager<Id, Resource>::~ResourceManager() {
-	// Free the memory used by each managed Resource
-	for (std::pair<const Id, std::unique_ptr<Resource>>& p : _resources) {
-		Resource* r = p.second.release();
-		delete r;
-	}
-}
+ResourceManager<Id, Resource>::~ResourceManager() { }
 
 
 // FUNCTIONS

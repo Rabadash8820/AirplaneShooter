@@ -1,29 +1,40 @@
 #pragma once
 
 #include "GAME2D_API.h"
+#include "Map.h"
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include <string>
 
 namespace Game2D {
 
 	class GAME2D_API Game {
-	private:
-		// VARIABLES / CONSTANTS
-		const sf::Time FRAME_DURATION = sf::seconds(1.f / 60.f);
-		sf::RenderWindow _window;
-
+		// TYPES
 	public:
+		typedef std::unique_ptr<Map> MapPtr;
+
+		// VARIABLES / CONSTANTS
+	protected:
+		sf::Time _frameDuration;
+		sf::RenderWindow _window;
+		std::unique_ptr<Map> _map;
+
 		// CONSTRUCTORS / DESTRUCTOR
-		Game(std::string);
+	public:
+		Game(sf::Time, sf::VideoMode, std::string);
 		~Game();
 
-		// FUNCTIONS
+		// INTERFACE FUNCTIONS
+	public:
 		void run();
 
+		// HELPER FUNCTIONS
+	protected:
+		void setMap(MapPtr);
 	private:
 		void processEvents(sf::Time);
 		void update();
-		void render();
+		void draw();
 
 	};
 

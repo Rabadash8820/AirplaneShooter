@@ -4,33 +4,41 @@
 #include "ResourceManager.h"
 #include "SceneNode.h"
 #include "Entity.h"
+#include <SFML/Graphics.hpp>
 #include <vector>
 
 namespace Game2D {
 
-	class GAME2D_API Map : public sf::NonCopyable {
-	protected:
+	class GAME2D_API Map :
+		public sf::NonCopyable,
+		public sf::Drawable
+	{
 		// VARIABLES / CONSTANTS
-		sf::RenderWindow& _window;
+	protected:
 		sf::View _view;
-		Game2D::SceneNode _sceneGraph;
+		sf::FloatRect _worldBounds;
+		Game2D::SceneNode _sceneTree;
+		size_t _numLayers;
 		std::vector<SceneNode*> _sceneLayers;
 		Game2D::Entity* _player;
+		sf::Vector2f _playerSpawn;
 
-	public:
 		// CONSTRUCTORS / DESTRUCTOR
-		explicit Map(sf::RenderWindow&, size_t);
+	public:
+		Map(sf::View, sf::FloatRect, size_t);
 		~Map();
 
 		// INTERFACE FUNCTIONS
+	public:
+		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		void update(sf::Time);
-		void render();
 
-	private:
 		// HELPER FUNCTIONS
-		virtual void baseUpdates(sf::Time dt) {}
-		virtual void loadResources() {}
-		virtual void buildScene() {}
+	private:
+		void initialize();
+		virtual void baseUpdate(sf::Time dt) = 0;
+		virtual void loadResources() = 0;
+		virtual void buildScene() = 0;
 
 	};
 

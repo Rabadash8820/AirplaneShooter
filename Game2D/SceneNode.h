@@ -30,11 +30,11 @@ namespace Game2D {
 		NodePtr detachChild(const SceneNode& node);
 		NodePtr detachChild(SceneNode* node);
 		sf::Vector2f getWorldPosition() const;
+		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		virtual void update(sf::Time);
 
 	private:
 		// HELPER FUNCTIONS
-		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
 		void drawChildren(sf::RenderTarget&, sf::RenderStates) const;
 		virtual void updateCurrent(sf::Time);
