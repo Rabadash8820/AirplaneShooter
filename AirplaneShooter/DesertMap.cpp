@@ -31,7 +31,7 @@ namespace Shooter {
 	// HELPER FUNCTIONS
 	void DesertMap::loadResources() {
 		// Load texture resources
-		_textures.load(ResourceIDs::Texture::DESERT, "..\\..\\Resources\\Textures\\Desert.png");
+		_textures.load(ResourceIDs::Texture::DESERT, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\AirplaneShooter\\Resources\\Textures\\Desert.png");
 		_textures.load(ResourceIDs::Texture::EAGLE, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\AirplaneShooter\\Resources\\Textures\\Eagle.png");
 		_textures.load(ResourceIDs::Texture::RAPTOR, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\AirplaneShooter\\Resources\\Textures\\Raptor.png");
 	}
