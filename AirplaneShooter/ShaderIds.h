@@ -1,11 +1,11 @@
 #pragma once
 
 namespace Shooter {
-	namespace Shaders {
 
-		enum class ID {
+	namespace ResourceIDs {
+		enum class Shader {
 
 		};
-
 	}
+
 }

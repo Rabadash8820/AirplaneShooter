@@ -1,11 +1,11 @@
 #pragma once
 
 namespace Shooter {
-	namespace Fonts {
 
-		enum class ID {
+	namespace ResourceIDs {
+		enum class Font {
 			SANSATION,
 		};
-
 	}
+
 }
