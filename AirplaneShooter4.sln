@@ -7,28 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AirplaneShooter", "Airplane
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game2D", "Game2D\Game2D.vcxproj", "{D50C6F9F-88C2-482D-B3A3-692F9D9C4631}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SFML", "SFML", "{C9ACADCE-A555-49DE-B600-19EC65C699AE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{7CD5D258-85BF-450F-AE93-89C36A32D8DA}"
-	ProjectSection(SolutionItems) = preProject
-		SFML\Debug\sfml-audio-d.lib = SFML\Debug\sfml-audio-d.lib
-		SFML\Debug\sfml-graphics-d.lib = SFML\Debug\sfml-graphics-d.lib
-		SFML\Debug\sfml-main-d.lib = SFML\Debug\sfml-main-d.lib
-		SFML\Debug\sfml-network-d.lib = SFML\Debug\sfml-network-d.lib
-		SFML\Debug\sfml-system-d.lib = SFML\Debug\sfml-system-d.lib
-		SFML\Debug\sfml-window-d.lib = SFML\Debug\sfml-window-d.lib
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{CC6022C4-BB6C-4795-97FA-870FAAB45143}"
-	ProjectSection(SolutionItems) = preProject
-		SFML\Release\sfml-audio.lib = SFML\Release\sfml-audio.lib
-		SFML\Release\sfml-graphics.lib = SFML\Release\sfml-graphics.lib
-		SFML\Release\sfml-main.lib = SFML\Release\sfml-main.lib
-		SFML\Release\sfml-network.lib = SFML\Release\sfml-network.lib
-		SFML\Release\sfml-system.lib = SFML\Release\sfml-system.lib
-		SFML\Release\sfml-window.lib = SFML\Release\sfml-window.lib
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -56,9 +34,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{7CD5D258-85BF-450F-AE93-89C36A32D8DA} = {C9ACADCE-A555-49DE-B600-19EC65C699AE}
-		{CC6022C4-BB6C-4795-97FA-870FAAB45143} = {C9ACADCE-A555-49DE-B600-19EC65C699AE}
 	EndGlobalSection
 EndGlobal

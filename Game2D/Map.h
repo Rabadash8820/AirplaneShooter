@@ -1,5 +1,6 @@
 #pragma once
 
+#include "GAME2D_API.h"
 #include "ResourceHolderTypes.h"
 #include "SceneNode.h"
 #include "Entity.h"
@@ -7,7 +8,7 @@
 
 namespace Game2D {
 
-	class Map : public sf::NonCopyable {
+	class GAME2D_API Map : public sf::NonCopyable {
 	protected:
 		// VARIABLES / CONSTANTS
 		sf::RenderWindow& _window;
