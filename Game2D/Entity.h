@@ -6,7 +6,7 @@
 
 namespace Game2D {
 
-	class Entity : public SceneNode {
+	class GAME2D_API Entity : public SceneNode {
 	public:
 		sf::Vector2f Velocity;
 
