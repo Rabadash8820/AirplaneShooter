@@ -5,21 +5,22 @@
 namespace Shooter {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	DesertMap::DesertMap(sf::RenderWindow& w, size_t layers) :
-		Game2D::Map(w, layers),
-		_worldBounds(0.f, 0.f, _window.getSize().x, WORLD_HEIGHT),
-		_playerSpawn(_worldBounds.width / 2.f, _worldBounds.height - _view.getSize().y / 2.f)
+	DesertMap::DesertMap(sf::View view) :
+		Game2D::ScrollingMap(
+			sf::Vector2f(0.f, -50.f),
+			view,
+			sf::FloatRect(0.f, 0.f, view.getSize().x, 2000.f),
+			3),
+		_playerSpawn(
+			_view.getSize().x / 2.f,
+			_worldBounds.height - _view.getSize().y / 2.f)
 	{
-		loadResources();
-		buildScene();
+		
 	}
 	DesertMap::~DesertMap() {}
 
 	// INTERFACE FUNCTIONS
-	void DesertMap::baseUpdates(sf::Time dt) {
-		// Scroll the view upwards
-		_view.move(0.f, -_scrollSpeed * dt.asSeconds());
-
+	void DesertMap::postScrollUpdate(sf::Time dt) {
 		// Move the player horizontally
 		sf::Vector2f playerPos = _player->getPosition();
 		if (playerPos.x <= _worldBounds.left + BOUNDARY_OFFSET ||
@@ -37,13 +38,12 @@ namespace Shooter {
 	void DesertMap::buildScene() {
 		// Set the window's View
 		_view.setCenter(_playerSpawn);
-		_window.setView(_view);
 
 		// Add each scene layer to the scene graph and layer array
-		for (short L = 0; L < NUM_LAYERS; ++L) {
+		for (short L = 0; L < _numLayers; ++L) {
 			Game2D::SceneNode::NodePtr layer(new Game2D::SceneNode());
 			_sceneLayers[L] = layer.get();
-			_sceneGraph.attachChild(std::move(layer));
+			_sceneTree.attachChild(std::move(layer));
 		}
 
 		// Add a node for the background, and tile its texture

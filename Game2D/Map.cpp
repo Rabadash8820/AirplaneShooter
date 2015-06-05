@@ -3,34 +3,36 @@
 namespace Game2D {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	Map::Map(sf::RenderWindow& w, size_t layers) :
-		_window(w),
-		_view(_window.getDefaultView()),
-		_player(nullptr)
+	Map::Map(sf::View view, sf::FloatRect worldBounds, size_t numLayers) :
+		_view(view),
+		_worldBounds(worldBounds),
+		_numLayers(numLayers)
 	{
-		// Override world-initialization processes
-		loadResources();
-		buildScene();
-
-		// Set the window's View
-		_window.setView(_view);
-
-		// Add each scene layer to the scene graph and layer array
-		for (size_t L = 0; L < layers; ++L) {
-			Game2D::SceneNode::NodePtr layer(new Game2D::SceneNode());
-			_sceneLayers.push_back(layer.get());
-			_sceneGraph.attachChild(std::move(layer));
-		}
+		this->initialize();
 	}
 	Map::~Map() {}
 
 	// INTERFACE FUNCTIONS
 	void Map::update(sf::Time dt) {
-		baseUpdates(dt);
-		_sceneGraph.update(dt);
+		baseUpdate(dt);
+		_sceneTree.update(dt);
 	}
-	void Map::render() {
-		_window.draw(_sceneGraph);
+	void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+		_sceneTree.draw(target, states);
+	}
+
+	// HELPER FUNCTIONS
+	void Map::initialize() {
+		// Add each scene layer to the scene graph and layer array
+		for (size_t L = 0; L < _numLayers; ++L) {
+			Game2D::SceneNode::NodePtr layer(new Game2D::SceneNode());
+			_sceneLayers.push_back(layer.get());
+			_sceneTree.attachChild(std::move(layer));
+		}
+
+		// Override world-initialization processes
+		loadResources();
+		buildScene();
 	}
 
 }

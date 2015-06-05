@@ -2,6 +2,8 @@
 
 // Puts headers for all classes in the Game2D namespace in one place
 #include "Game.h"
+#include "Map.h"
+#include "ScrollingMap.h"
 #include "ResourceManager.h"
 #include "SceneNode.h"
 #include "Brush.h"

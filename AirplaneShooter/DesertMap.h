@@ -2,12 +2,12 @@
 
 #include "ResourceIds.h"
 #include <ResourceManager.h>
-#include <Map.h>
+#include <ScrollingMap.h>
 #include <array>
 
 namespace Shooter {
 
-	class DesertMap : public Game2D::Map {
+	class DesertMap : public Game2D::ScrollingMap {
 	private:
 		// TYPES
 		enum Layer {
@@ -21,7 +21,6 @@ namespace Shooter {
 		const float BOUNDARY_OFFSET = 150.f;
 		sf::FloatRect _worldBounds;
 
-		static const short NUM_LAYERS = 3;
 		Game2D::TextureManager<ResourceIDs::Texture> _textures;
 
 		sf::Vector2f _playerSpawn;
@@ -30,12 +29,12 @@ namespace Shooter {
 
 	public:
 		// CONSTRUCTORS / DESTRUCTOR
-		DesertMap(sf::RenderWindow&, size_t);
+		DesertMap(sf::View);
 		~DesertMap();
 
 	private:
 		// HELPER FUNCTIONS
-		virtual void baseUpdates(sf::Time);
+		virtual void postScrollUpdate(sf::Time);
 		virtual void loadResources();
 		virtual void buildScene();
 

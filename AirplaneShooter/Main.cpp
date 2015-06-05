@@ -1,11 +1,11 @@
-#include <Game2D.h>
+#include "AirplaneShooter.h"
 #include <iostream>
 
 int main() {
-	// Try to run the game
+	// Run the game
 	try {
-		Game2D::Game airplaneShooter("Airplane Shooter");
-		airplaneShooter.run();
+		Shooter::AirplaneShooter game;
+		game.run();
 	}
 
 	// Report any crashes to the console

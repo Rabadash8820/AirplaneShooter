@@ -33,10 +33,10 @@
     <ClCompile Include="Aircraft.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
+    <ClCompile Include="DesertMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DesertMap.cpp">
+    <ClCompile Include="AirplaneShooter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -69,9 +69,6 @@
     <ClInclude Include="FontIds.h">
       <Filter>Header Files\ResourceIds</Filter>
     </ClInclude>
-    <ClInclude Include="World.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderIds.h">
       <Filter>Header Files\ResourceIds</Filter>
     </ClInclude>
@@ -79,6 +76,9 @@
       <Filter>Header Files\ResourceIds</Filter>
     </ClInclude>
     <ClInclude Include="DesertMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AirplaneShooter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

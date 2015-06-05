@@ -3,13 +3,15 @@
 namespace Game2D {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	Game::Game(std::string title) :
-		_window(sf::VideoMode(480, 640), title) {
+	Game::Game(sf::Time frameDuration, sf::VideoMode videoMode, std::string title) :
+		_frameDuration(frameDuration),
+		_window(videoMode, title)
+	{
 
 	}
-	Game::~Game() {}
+	Game::~Game() { }
 
-	// FUNCTIONS
+	// INTERFACE FUNCTIONS
 	void Game::run() {
 		sf::Clock clock;
 		sf::Time timeSinceUpdate = sf::seconds(0.f);
@@ -19,15 +21,21 @@ namespace Game2D {
 			
 			// Process events and update as many as times as needed
 			timeSinceUpdate += clock.restart();
-			while (timeSinceUpdate > FRAME_DURATION) {
-				processEvents(FRAME_DURATION);
+			while (timeSinceUpdate > _frameDuration) {
+				processEvents(_frameDuration);
 				update();
-				timeSinceUpdate -= FRAME_DURATION;
+				timeSinceUpdate -= _frameDuration;
 			}
 
 			// Render graphics in the game window
-			render();
+			draw();
 		}
+	}
+
+	// HELPER FUNCTIONS
+	void Game::setMap(MapPtr map) {
+		_map.release();
+		_map = std::move(map);
 	}
 	void Game::processEvents(sf::Time dt) {
 		// Process all events in the queue
@@ -42,7 +50,7 @@ namespace Game2D {
 	void Game::update() {
 
 	}
-	void Game::render() {
+	void Game::draw() {
 
 	}
 
