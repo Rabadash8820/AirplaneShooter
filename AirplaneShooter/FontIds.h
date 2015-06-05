@@ -3,7 +3,7 @@
 namespace Shooter {
 	namespace Fonts {
 
-		enum ID {
+		enum class ID {
 			SANSATION,
 		};
 

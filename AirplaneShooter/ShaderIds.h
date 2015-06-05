@@ -3,7 +3,7 @@
 namespace Shooter {
 	namespace Shaders {
 
-		enum ID {
+		enum class ID {
 
 		};
 

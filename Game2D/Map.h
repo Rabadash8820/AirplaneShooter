@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GAME2D_API.h"
-#include "ResourceHolderTypes.h"
+#include "ResourceManager.h"
 #include "SceneNode.h"
 #include "Entity.h"
 #include <vector>

@@ -21,9 +21,6 @@
     <ClInclude Include="Game2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceHolder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -36,10 +33,10 @@
     <ClInclude Include="Brush.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceHolderTypes.h">
+    <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
+    <ClInclude Include="ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -55,9 +52,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ResourceHolder.inl">
+    <None Include="packages.config" />
+    <None Include="ResourceManager.inl">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>

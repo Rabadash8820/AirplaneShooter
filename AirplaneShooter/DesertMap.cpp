@@ -30,9 +30,9 @@ namespace Shooter {
 	// HELPER FUNCTIONS
 	void DesertMap::loadResources() {
 		// Load texture resources
-		_textures.load(Textures::DESERT, "Resources/Texutres/Desert.png");
-		_textures.load(Textures::EAGLE, "Resources/Texutres/Eagle.png");
-		_textures.load(Textures::RAPTOR, "Resources/Texutres/Raptor.png");
+		_textures.load(Textures::ID::DESERT, "Resources/Texutres/Desert.png");
+		_textures.load(Textures::ID::EAGLE, "Resources/Texutres/Eagle.png");
+		_textures.load(Textures::ID::RAPTOR, "Resources/Texutres/Raptor.png");
 	}
 	void DesertMap::buildScene() {
 		// Set the window's View
@@ -47,7 +47,7 @@ namespace Shooter {
 		}
 
 		// Add a node for the background, and tile its texture
-		sf::Texture desert = _textures[Textures::DESERT];
+		sf::Texture desert = _textures[Textures::ID::DESERT];
 		std::unique_ptr<Game2D::Brush> background(
 			new Game2D::Brush(desert, sf::IntRect(_worldBounds)));
 		background->setPosition(_worldBounds.left, _worldBounds.top);

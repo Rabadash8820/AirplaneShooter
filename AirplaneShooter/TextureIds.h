@@ -3,7 +3,7 @@
 namespace Shooter {
 	namespace Textures {
 
-		enum ID {
+		enum class ID {
 			DESERT,
 			EAGLE,
 			RAPTOR,
