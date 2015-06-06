@@ -3,8 +3,9 @@
 namespace Game2D {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	Map::Map(sf::View view, sf::FloatRect worldBounds, size_t numLayers) :
-		_view(view),
+	Map::Map(sf::RenderWindow* window, sf::FloatRect worldBounds, size_t numLayers) :
+		_window(window),
+		_view(window->getDefaultView()),
 		_worldBounds(worldBounds),
 		_numLayers(numLayers)
 	{

@@ -3,8 +3,8 @@
 namespace Game2D {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	ScrollingMap::ScrollingMap(sf::Vector2f velocity, sf::View view, sf::FloatRect worldBounds, size_t numLayers) :
-		Map(view, worldBounds, numLayers),
+	ScrollingMap::ScrollingMap(sf::Vector2f velocity, sf::RenderWindow* window, sf::FloatRect worldBounds, size_t numLayers) :
+		Map(window, worldBounds, numLayers),
 		_scrollVelocity(velocity)
 	{
 

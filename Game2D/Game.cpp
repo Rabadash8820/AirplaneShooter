@@ -3,12 +3,11 @@
 namespace Game2D {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	Game::Game(sf::Time frameDuration, sf::VideoMode videoMode, std::string title) :
+	Game::Game(sf::VideoMode videoMode, std::string title, sf::Time frameDuration) :
 		_frameDuration(frameDuration),
-		_window(videoMode, title),
-		_view(_window.getDefaultView())
+		_window(videoMode, title)
 	{
-		_window.setView(_view);
+
 	}
 	Game::~Game() { }
 
