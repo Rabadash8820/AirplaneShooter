@@ -24,6 +24,7 @@ namespace Game2D {
 	}
 	void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 		target.draw(_sceneTree, states);
+		_window->setView(_view);
 	}
 
 	// HELPER FUNCTIONS

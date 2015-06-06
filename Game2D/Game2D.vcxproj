@@ -159,7 +159,6 @@
   <ItemGroup>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Game2D.h" />
     <ClInclude Include="GAME2D_API.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneNode.h" />
@@ -168,6 +167,7 @@
     <ClInclude Include="ScrollingMap.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Brush.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="Map.cpp" />

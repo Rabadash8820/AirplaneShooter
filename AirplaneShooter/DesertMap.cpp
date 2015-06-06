@@ -13,11 +13,8 @@ namespace Shooter {
 			3),
 		_playerSpeed(40.f)
 	{
-		// Initialize the Map's view
+		// Align the player spawn point with the center of the View
 		_view = _window->getDefaultView();
-		_window->setView(_view);
-
-		// Set player spawn point
 		sf::Vector2f viewSize = _view.getSize();
 		sf::Vector2f spawn(viewSize.x / 2, _worldBounds.height - viewSize.y / 2);
 		_playerSpawn = spawn;
