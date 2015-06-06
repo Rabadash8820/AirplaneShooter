@@ -9,7 +9,7 @@ namespace Game2D {
 	class GAME2D_API Brush : public SceneNode {
 		// VARIABLES
 	public:
-		typedef std::unique_ptr<SceneNode> Ptr;
+		typedef std::unique_ptr<Brush> Ptr;
 	private:
 		sf::Sprite _sprite;
 
