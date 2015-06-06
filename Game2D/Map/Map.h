@@ -1,9 +1,8 @@
 #pragma once
 
-#include "GAME2D_API.h"
-#include "ResourceManager.h"
-#include "SceneNode.h"
-#include "Entity.h"
+#include "../GAME2D_API.h"
+#include "../Render/SceneNode.h"
+#include "../Render/Entity.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 

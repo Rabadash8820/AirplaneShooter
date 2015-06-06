@@ -2,7 +2,7 @@
 
 #include "ResourceIds.h"
 #include <ResourceManager.h>
-#include <ScrollingMap.h>
+#include <Map/ScrollingMap.h>
 #include <array>
 
 namespace Shooter {

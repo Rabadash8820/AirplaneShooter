@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GAME2D_API.h"
-#include "Map.h"
+#include "Map/Map.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <string>

@@ -1,6 +1,6 @@
 #include "DesertMap.h"
 #include "Aircraft.h"
-#include <Brush.h>
+#include <Render/Brush.h>
 
 using namespace sf;
 using namespace Game2D;
