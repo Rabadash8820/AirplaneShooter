@@ -1,6 +1,8 @@
 #include "AirplaneShooter.h"
 #include <iostream>
 
+using namespace std;
+
 int main() {
 	// Run the game
 	try {
@@ -9,8 +11,8 @@ int main() {
 	}
 
 	// Report any crashes to the console
-	catch (std::exception& e) {
-		std::cout << "EXCEPTION: " << e.what() << std::endl;
+	catch (exception& e) {
+		cout << "EXCEPTION: " << e.what() << endl;
 	}
 
 	return 0;

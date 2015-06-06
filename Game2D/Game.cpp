@@ -1,9 +1,12 @@
 #include "Game.h"
 
+using namespace sf;
+using namespace std;
+
 namespace Game2D {
 	
 	// CONSTRUCTORS / DESTRUCTOR
-	Game::Game(sf::VideoMode videoMode, std::string title, sf::Time frameDuration) :
+	Game::Game(VideoMode videoMode, string title, Time frameDuration) :
 		_frameDuration(frameDuration),
 		_window(videoMode, title),
 		_paused(false)
@@ -18,8 +21,8 @@ namespace Game2D {
 		_map->build();
 
 		// Main game loop
-		sf::Clock clock;
-		sf::Time timeSinceUpdate = sf::seconds(0.f);
+		Clock clock;
+		Time timeSinceUpdate = seconds(0.f);
 		while (_window.isOpen()) {
 			
 			// Process events and update as many as times as needed
@@ -44,22 +47,22 @@ namespace Game2D {
 	}
 	void Game::processEvents() {
 		// Process all events in the window's queue
-		sf::Event e;
+		Event e;
 		while (_window.pollEvent(e)) {
 			switch (e.type) {
-			case sf::Event::GainedFocus:
+			case Event::GainedFocus:
 				_paused = false;
 				break;
-			case sf::Event::LostFocus:
+			case Event::LostFocus:
 				_paused = true;
 				break;
-			case sf::Event::Closed:
+			case Event::Closed:
 				_window.close();
 				break;
 			}
 		}
 	}
-	void Game::update(sf::Time dt) {
+	void Game::update(Time dt) {
 		_map->update(dt);
 	}
 	void Game::draw() {

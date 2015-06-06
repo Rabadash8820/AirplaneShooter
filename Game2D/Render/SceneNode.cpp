@@ -2,6 +2,9 @@
 #include <algorithm>
 #include <cassert>
 
+using namespace sf;
+using namespace std;
+
 namespace Game2D {
 
 	// CONSTRUCTORS / DESTRUCTOR
@@ -15,7 +18,7 @@ namespace Game2D {
 	}
 	SceneNode::Ptr SceneNode::detachChild(const SceneNode& node) {
 		// Try to find the child that matches the provided node
-		auto child = std::find_if(
+		auto child = find_if(
 			_children.begin(),
 			_children.end(),
 			[&](Ptr& p)->bool { return p.get() == &node; });
@@ -28,7 +31,7 @@ namespace Game2D {
 	}
 	SceneNode::Ptr SceneNode::detachChild(SceneNode* node) {
 		// Try to find the child that matches the provided node
-		auto child = std::find_if(
+		auto child = find_if(
 			_children.begin(),
 			_children.end(),
 			[&](Ptr& p)->bool { return p.get() == node; });
@@ -39,31 +42,31 @@ namespace Game2D {
 		(*child)->_parent = nullptr;
 		return std::move(*child);
 	}
-	void SceneNode::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+	void SceneNode::draw(RenderTarget& target, RenderStates states) const {
 		// Render this node with its absolute transform (parent's absolute * relative)
 		states.transform *= this->getTransform();
 		drawCurrent(target, states);
 		drawChildren(target, states);
 	}
-	void SceneNode::update(sf::Time dt) {
+	void SceneNode::update(Time dt) {
 		updateCurrent(dt);
 		updateChildren(dt);
 	}
-	sf::Vector2f SceneNode::getWorldPosition() const {
-		sf::Transform transform = sf::Transform::Identity;
+	Vector2f SceneNode::getWorldPosition() const {
+		Transform transform = Transform::Identity;
 		for (const SceneNode* node = this; node != nullptr; node = node->_parent)
 			transform *= node->getTransform();
-		return transform * sf::Vector2f();
+		return transform * Vector2f();
 	}
 
 	// HELPER FUNCTIONS
-	void SceneNode::updateCurrent(sf::Time dt) { }
-	void SceneNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const { }
-	void SceneNode::drawChildren(sf::RenderTarget& target, sf::RenderStates states) const {
+	void SceneNode::updateCurrent(Time dt) { }
+	void SceneNode::drawCurrent(RenderTarget& target, RenderStates states) const { }
+	void SceneNode::drawChildren(RenderTarget& target, RenderStates states) const {
 		for (const Ptr& child : this->_children)
 			target.draw(*child, states);
 	}
-	void SceneNode::updateChildren(sf::Time dt) {
+	void SceneNode::updateChildren(Time dt) {
 		for (const Ptr& child : this->_children)
 			child->update(dt);
 	}

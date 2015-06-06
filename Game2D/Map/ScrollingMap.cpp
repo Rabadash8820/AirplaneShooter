@@ -1,9 +1,11 @@
 #include "ScrollingMap.h"
 
+using namespace sf;
+
 namespace Game2D {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	ScrollingMap::ScrollingMap(sf::Vector2f velocity, sf::RenderWindow* window, sf::FloatRect worldBounds, size_t numLayers) :
+	ScrollingMap::ScrollingMap(Vector2f velocity, RenderWindow* window, FloatRect worldBounds, size_t numLayers) :
 		Map(window, worldBounds, numLayers),
 		_scrollVelocity(velocity)
 	{
@@ -15,7 +17,7 @@ namespace Game2D {
 	void ScrollingMap::buildScene() {
 		_player->Velocity = this->_scrollVelocity;
 	}
-	void ScrollingMap::updateCurrent(sf::Time dt) {
+	void ScrollingMap::updateCurrent(Time dt) {
 		_player->Velocity += _scrollVelocity;
 		_view.move(_scrollVelocity * dt.asSeconds());
 	}

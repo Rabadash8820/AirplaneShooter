@@ -2,13 +2,16 @@
 #include "DesertMap.h"
 #include <memory>
 
+using namespace sf;
+using namespace Game2D;
+
 namespace Shooter {
 
 	// CONSTRUCTORS / DESTRUCTOR
 	AirplaneShooter::AirplaneShooter() :
-		Game(sf::VideoMode(640, 480), "Airplane Shooter")
+		Game(VideoMode(640, 480), "Airplane Shooter")
 	{
-		Game2D::Map::Ptr desert(new DesertMap(&_window));
+		Map::Ptr desert(new DesertMap(&_window));
 		this->setMap(std::move(desert));
 	}
 	AirplaneShooter::~AirplaneShooter() {}

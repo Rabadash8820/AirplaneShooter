@@ -1,9 +1,11 @@
 #include "Map.h"
 
+using namespace sf;
+
 namespace Game2D {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	Map::Map(sf::RenderWindow* window, sf::FloatRect worldBounds, size_t numLayers) :
+	Map::Map(RenderWindow* window, FloatRect worldBounds, size_t numLayers) :
 		_window(window),
 		_worldBounds(worldBounds),
 		_numLayers(numLayers)
@@ -18,11 +20,11 @@ namespace Game2D {
 	Map::~Map() {}
 
 	// INTERFACE FUNCTIONS
-	void Map::update(sf::Time dt) {
+	void Map::update(Time dt) {
 		updateCurrent(dt);
 		_sceneTree.update(dt);
 	}
-	void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+	void Map::draw(RenderTarget& target, RenderStates states) const {
 		target.draw(_sceneTree, states);
 		_window->setView(_view);
 	}

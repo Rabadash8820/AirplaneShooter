@@ -1,16 +1,19 @@
 #include "Aircraft.h"
 #include "ResourceManager.h"
 
+using namespace sf;
+using namespace Game2D;
+
 namespace Shooter {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	Aircraft::Aircraft(Type t, const Game2D::TextureManager<ResourceIDs::Texture>& textures)
+	Aircraft::Aircraft(Type t, const TextureManager<ResourceIDs::Texture>& textures)
 		: _sprite(textures[textureIdForType(t)])
 	{
 		_type = t;
 
 		// Initialize the Aircraft's Sprite
-		sf::FloatRect bounds = _sprite.getLocalBounds();
+		FloatRect bounds = _sprite.getLocalBounds();
 		_sprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 	}
 	Aircraft::~Aircraft() {}
@@ -27,7 +30,7 @@ namespace Shooter {
 			break;
 		}
 	}
-	void Aircraft::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
+	void Aircraft::drawCurrent(RenderTarget& target, RenderStates states) const {
 		target.draw(this->_sprite, states);
 	}
 
