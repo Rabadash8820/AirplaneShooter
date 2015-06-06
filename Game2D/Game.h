@@ -10,8 +10,10 @@ namespace Game2D {
 
 	class GAME2D_API Game {
 		// VARIABLES / CONSTANTS
-	protected:
+	private:
 		sf::Time _frameDuration;
+		bool _paused;
+	protected:
 		sf::RenderWindow _window;
 		Map::Ptr _map;
 
