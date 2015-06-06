@@ -17,7 +17,7 @@ namespace Game2D {
 	protected:
 		sf::RenderWindow* _window;
 		sf::View _view;
-		sf::FloatRect _worldBounds;
+		sf::IntRect _worldBounds;
 		Game2D::SceneNode _sceneTree;
 		size_t _numLayers;
 		std::vector<SceneNode*> _sceneLayers;

@@ -14,7 +14,7 @@ namespace Game2D {
 		explicit Brush(const sf::Texture& texture) :
 			_sprite(texture)
 		{
-
+			
 		}
 		Brush(const sf::Texture& texture, const sf::IntRect& rect) :
 			_sprite(texture, rect)

@@ -57,12 +57,8 @@ namespace Game2D {
 	}
 
 	// HELPER FUNCTIONS
-	void SceneNode::updateCurrent(sf::Time dt) {
-		// Do nothing by default
-	}
-	void SceneNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const {
-		// Do nothing by default
-	}
+	void SceneNode::updateCurrent(sf::Time dt) { }
+	void SceneNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const { }
 	void SceneNode::drawChildren(sf::RenderTarget& target, sf::RenderStates states) const {
 		for (const NodePtr& child : this->_children)
 			target.draw(*child, states);
