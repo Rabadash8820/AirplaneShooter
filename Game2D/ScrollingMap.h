@@ -17,10 +17,8 @@ namespace Game2D {
 		~ScrollingMap();
 
 		// HELPER FUNCTIONS
-	private:
-		virtual void baseUpdate(sf::Time) final;
 	protected:
-		virtual void postScrollUpdate(sf::Time) =0;
+		virtual void updateCurrent(sf::Time);
 
 	};
 

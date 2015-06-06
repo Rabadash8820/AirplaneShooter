@@ -12,9 +12,8 @@ namespace Game2D {
 	ScrollingMap::~ScrollingMap() {}
 
 	// HELPER FUNCTIONS
-	void ScrollingMap::baseUpdate(sf::Time dt) {
+	void ScrollingMap::updateCurrent(sf::Time dt) {
 		_view.move(_scrollVelocity * dt.asSeconds());
-		postScrollUpdate(dt);
 	}
 
 }
