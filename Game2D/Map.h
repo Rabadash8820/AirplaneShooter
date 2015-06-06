@@ -15,6 +15,7 @@ namespace Game2D {
 	{
 		// VARIABLES / CONSTANTS
 	protected:
+		sf::RenderWindow* _window;
 		sf::View _view;
 		sf::FloatRect _worldBounds;
 		Game2D::SceneNode _sceneTree;
@@ -25,7 +26,7 @@ namespace Game2D {
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		Map(sf::View, sf::FloatRect, size_t);
+		Map(sf::RenderWindow*, sf::FloatRect, size_t);
 		~Map();
 
 		// INTERFACE FUNCTIONS

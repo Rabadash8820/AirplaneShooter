@@ -18,11 +18,10 @@ namespace Game2D {
 		sf::Time _frameDuration;
 		sf::RenderWindow _window;
 		MapPtr _map;
-		sf::View _view;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		Game(sf::Time, sf::VideoMode, std::string);
+		Game(sf::VideoMode, std::string, sf::Time = sf::seconds(1.f / 60.f));
 		~Game();
 
 		// INTERFACE FUNCTIONS

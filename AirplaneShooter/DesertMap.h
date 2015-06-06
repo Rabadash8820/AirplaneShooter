@@ -26,7 +26,7 @@ namespace Shooter {
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		DesertMap(sf::View);
+		DesertMap(sf::RenderWindow*);
 		~DesertMap();
 
 		// HELPER FUNCTIONS

@@ -5,14 +5,19 @@
 namespace Shooter {
 
 	// CONSTRUCTORS / DESTRUCTOR
-	DesertMap::DesertMap(sf::View view) :
+	DesertMap::DesertMap(sf::RenderWindow* window) :
 		Game2D::ScrollingMap(
 			sf::Vector2f(0.f, -50.f),
-			view,
-			sf::FloatRect(0.f, 0.f, view.getSize().x, 2000.f),
+			window,
+			sf::FloatRect(0.f, 0.f, _window->getDefaultView().getSize().x, 2000.f),
 			3),
 		_playerSpeed(40.f)
 	{
+		// Initialize the Map's view
+		_view = _window->getDefaultView();
+		_window->setView(_view);
+
+		// Set player spawn point
 		sf::Vector2f viewSize = _view.getSize();
 		sf::Vector2f spawn(viewSize.x / 2, _worldBounds.height - viewSize.y / 2);
 		_playerSpawn = spawn;
