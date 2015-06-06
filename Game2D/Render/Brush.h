@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GAME2D_API.h"
+#include "../GAME2D_API.h"
 #include "SceneNode.h"
 #include <memory>
 

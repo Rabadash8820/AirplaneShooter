@@ -2,7 +2,7 @@
 
 #include "TextureIds.h"
 #include <ResourceManager.h>
-#include <Entity.h>
+#include <Render\Entity.h>
 #include <SFML/Graphics.hpp>
 #include <memory>
 
