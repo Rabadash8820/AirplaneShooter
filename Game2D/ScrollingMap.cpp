@@ -12,7 +12,11 @@ namespace Game2D {
 	ScrollingMap::~ScrollingMap() {}
 
 	// HELPER FUNCTIONS
+	void ScrollingMap::buildScene() {
+		_player->Velocity = this->_scrollVelocity;
+	}
 	void ScrollingMap::updateCurrent(sf::Time dt) {
+		_player->Velocity += _scrollVelocity;
 		_view.move(_scrollVelocity * dt.asSeconds());
 	}
 

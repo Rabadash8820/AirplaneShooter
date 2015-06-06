@@ -1,11 +1,12 @@
 #include "Game.h"
 
 namespace Game2D {
-
+	
 	// CONSTRUCTORS / DESTRUCTOR
 	Game::Game(sf::VideoMode videoMode, std::string title, sf::Time frameDuration) :
 		_frameDuration(frameDuration),
-		_window(videoMode, title)
+		_window(videoMode, title),
+		_paused(false)
 	{
 
 	}
@@ -25,7 +26,8 @@ namespace Game2D {
 			timeSinceUpdate += clock.restart();
 			while (timeSinceUpdate > _frameDuration) {
 				this->processEvents();
-				this->update(_frameDuration);
+				if (!_paused)
+					this->update(_frameDuration);
 				timeSinceUpdate -= _frameDuration;
 			}
 
@@ -45,8 +47,15 @@ namespace Game2D {
 		sf::Event e;
 		while (_window.pollEvent(e)) {
 			switch (e.type) {
-			case sf::Event::Closed:	// Handle the window-closed event
+			case sf::Event::GainedFocus:
+				_paused = false;
+				break;
+			case sf::Event::LostFocus:
+				_paused = true;
+				break;
+			case sf::Event::Closed:
 				_window.close();
+				break;
 			}
 		}
 	}

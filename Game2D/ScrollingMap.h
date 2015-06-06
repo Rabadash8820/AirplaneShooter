@@ -18,6 +18,7 @@ namespace Game2D {
 
 		// HELPER FUNCTIONS
 	protected:
+		virtual void buildScene();
 		virtual void updateCurrent(sf::Time);
 
 	};
