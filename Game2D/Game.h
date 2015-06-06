@@ -9,15 +9,11 @@
 namespace Game2D {
 
 	class GAME2D_API Game {
-		// TYPES
-	public:
-		typedef std::unique_ptr<Map> MapPtr;
-
 		// VARIABLES / CONSTANTS
 	protected:
 		sf::Time _frameDuration;
 		sf::RenderWindow _window;
-		MapPtr _map;
+		Map::Ptr _map;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
@@ -30,7 +26,7 @@ namespace Game2D {
 
 		// HELPER FUNCTIONS
 	protected:
-		void setMap(MapPtr);
+		void setMap(Map::Ptr);
 	private:
 		void processEvents(sf::Time);
 		void update(sf::Time);

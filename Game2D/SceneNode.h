@@ -11,14 +11,12 @@ namespace Game2D {
 								 public sf::Drawable,
 								 public sf::NonCopyable
 	{
-	public:
-		// TYPES
-		typedef std::unique_ptr<SceneNode> NodePtr;
-
-	private:
 		// VARIABLES
+	public:
+		typedef std::unique_ptr<SceneNode> Ptr;
+	private:
 		SceneNode* _parent;
-		std::vector<NodePtr> _children;
+		std::vector<Ptr> _children;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
@@ -27,9 +25,9 @@ namespace Game2D {
 
 		// INTERFACE FUNCTIONS
 	public:
-		void attachChild(NodePtr child);
-		NodePtr detachChild(const SceneNode& node);
-		NodePtr detachChild(SceneNode* node);
+		void attachChild(Ptr child);
+		Ptr detachChild(const SceneNode& node);
+		Ptr detachChild(SceneNode* node);
 		sf::Vector2f getWorldPosition() const;
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		void update(sf::Time);

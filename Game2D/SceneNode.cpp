@@ -9,16 +9,16 @@ namespace Game2D {
 	SceneNode::~SceneNode() {}
 
 	// INTERFACE FUNCTIONS
-	void SceneNode::attachChild(NodePtr child) {
+	void SceneNode::attachChild(Ptr child) {
 		child->_parent = this;
 		_children.push_back(std::move(child));
 	}
-	SceneNode::NodePtr SceneNode::detachChild(const SceneNode& node) {
+	SceneNode::Ptr SceneNode::detachChild(const SceneNode& node) {
 		// Try to find the child that matches the provided node
 		auto child = std::find_if(
 			_children.begin(),
 			_children.end(),
-			[&](NodePtr& p)->bool { return p.get() == &node; });
+			[&](Ptr& p)->bool { return p.get() == &node; });
 		assert(child != _children.end());
 
 		// If found, remove that child from this node and return it
@@ -26,12 +26,12 @@ namespace Game2D {
 		(*child)->_parent = nullptr;
 		return std::move(*child);
 	}
-	SceneNode::NodePtr SceneNode::detachChild(SceneNode* node) {
+	SceneNode::Ptr SceneNode::detachChild(SceneNode* node) {
 		// Try to find the child that matches the provided node
 		auto child = std::find_if(
 			_children.begin(),
 			_children.end(),
-			[&](NodePtr& p)->bool { return p.get() == node; });
+			[&](Ptr& p)->bool { return p.get() == node; });
 		assert(child != _children.end());
 
 		// If found, remove that child from this node and return it
@@ -60,11 +60,11 @@ namespace Game2D {
 	void SceneNode::updateCurrent(sf::Time dt) { }
 	void SceneNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const { }
 	void SceneNode::drawChildren(sf::RenderTarget& target, sf::RenderStates states) const {
-		for (const NodePtr& child : this->_children)
+		for (const Ptr& child : this->_children)
 			target.draw(*child, states);
 	}
 	void SceneNode::updateChildren(sf::Time dt) {
-		for (const NodePtr& child : this->_children)
+		for (const Ptr& child : this->_children)
 			child->update(dt);
 	}
 

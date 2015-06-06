@@ -2,10 +2,14 @@
 
 #include "GAME2D_API.h"
 #include "SceneNode.h"
+#include <memory>
 
 namespace Game2D {
 
 	class GAME2D_API Brush : public SceneNode {
+		// VARIABLES
+	public:
+		typedef std::unique_ptr<SceneNode> Ptr;
 	private:
 		sf::Sprite _sprite;
 

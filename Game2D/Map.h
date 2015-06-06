@@ -14,6 +14,8 @@ namespace Game2D {
 		public sf::Drawable
 	{
 		// VARIABLES / CONSTANTS
+	public:
+		typedef std::unique_ptr<Map> Ptr;
 	protected:
 		sf::RenderWindow* _window;
 		sf::View _view;
@@ -42,5 +44,5 @@ namespace Game2D {
 		virtual void buildScene() = 0;
 
 	};
-
+	
 }

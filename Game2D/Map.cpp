@@ -10,7 +10,7 @@ namespace Game2D {
 	{
 		// Add each scene layer to the layer collection
 		for (size_t L = 0; L < _numLayers; ++L) {
-			Game2D::SceneNode::NodePtr layer(new Game2D::SceneNode());
+			SceneNode::Ptr layer(new Game2D::SceneNode());
 			_sceneLayers.push_back(layer.get());
 			_sceneTree.attachChild(std::move(layer));
 		}
