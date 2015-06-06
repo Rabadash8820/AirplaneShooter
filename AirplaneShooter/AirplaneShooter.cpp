@@ -8,7 +8,7 @@ namespace Shooter {
 	AirplaneShooter::AirplaneShooter() :
 		Game(sf::VideoMode(640, 480), "Airplane Shooter")
 	{
-		std::unique_ptr<Game2D::Map> desert(new DesertMap(&_window));
+		Game2D::Map::Ptr desert(new DesertMap(&_window));
 		this->setMap(std::move(desert));
 	}
 	AirplaneShooter::~AirplaneShooter() {}

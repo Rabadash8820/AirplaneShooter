@@ -4,12 +4,14 @@
 #include <ResourceManager.h>
 #include <Entity.h>
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 namespace Shooter {
 
 	class Aircraft : public Game2D::Entity {
 		// TYPES
 	public:
+		typedef std::unique_ptr<Aircraft> Ptr;
 		enum Type {
 			EAGLE,
 			RAPTOR,

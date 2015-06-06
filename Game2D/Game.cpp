@@ -35,7 +35,7 @@ namespace Game2D {
 	}
 
 	// HELPER FUNCTIONS
-	void Game::setMap(MapPtr map) {
+	void Game::setMap(Map::Ptr map) {
 		_map.release();
 		_map = std::move(map);
 	}

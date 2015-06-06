@@ -15,8 +15,8 @@ namespace Game2D {
 	class ResourceManager {
 	private:
 		// VARIABLES
-		typedef std::unique_ptr<Resource> ResPtr;
-		std::map<Id, ResPtr> _resources;
+		typedef std::unique_ptr<Resource> Ptr;
+		std::map<Id, Ptr> _resources;
 
 
 	public:

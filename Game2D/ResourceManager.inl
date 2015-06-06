@@ -13,7 +13,7 @@ ResourceManager<Id, Resource>::~ResourceManager() { }
 template<typename Id, typename Resource>
 void ResourceManager<Id, Resource>::load(Id id, const std::string& filePath) {
 	// Try to load the resource from the provided file
-	ResPtr resource(new Resource());
+	Ptr resource(new Resource());
 	bool loadSuccess = resource->loadFromFile(filePath);
 	if (!loadSuccess)
 		throw new std::runtime_error("ResourceHolder::load() failed to load " + filePath);
@@ -27,7 +27,7 @@ template<typename Id, typename Resource>
 template<typename Param>
 void ResourceManager<Id, Resource>::load(Id id, const std::string& filePath, Param p) {
 	// Try to load the resource from the provided file
-	ResPtr resource = new Resource();
+	Ptr resource = new Resource();
 	bool loadSuccess = resource->loadFromFile(filePath, p);
 	if (!loadSuccess)
 		throw new std::runtime_error("ResourceHolder::load() failed to load " + filePath);
