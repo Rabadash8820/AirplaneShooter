@@ -157,25 +157,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GAME2D_API.h" />
-    <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="SceneNode.h" />
-    <ClInclude Include="Brush.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="ScrollingMap.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Brush.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="SceneNode.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="ScrollingMap.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ResourceManager.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Map\Map.cpp" />
+    <ClCompile Include="Map\ScrollingMap.cpp" />
+    <ClCompile Include="Render\Brush.cpp" />
+    <ClCompile Include="Render\SceneNode.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Map\Map.h" />
+    <ClInclude Include="Map\ScrollingMap.h" />
+    <ClInclude Include="Render\Brush.h" />
+    <ClInclude Include="Render\Entity.h" />
+    <ClInclude Include="Render\SceneNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
