@@ -39,7 +39,7 @@ namespace Shooter {
 	}
 	void DesertMap::buildScene() {
 		// Add a node for the background, and tile its texture
-		sf::Texture desertTexture = _textures[ResourceIDs::Texture::DESERT];
+		sf::Texture& desertTexture = _textures[ResourceIDs::Texture::DESERT];
 		sf::IntRect desertBounds(_worldBounds);
 		desertTexture.setRepeated(true);
 		Game2D::Brush::Ptr background(
@@ -61,9 +61,6 @@ namespace Shooter {
 		rightEscort->setPosition(80.f, 50.f);
 		_player->attachChild(std::move(leftEscort));
 		_player->attachChild(std::move(rightEscort));
-
-		// Add a node for a little desert to test the texture
-		
 	}
 
 }
