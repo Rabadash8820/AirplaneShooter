@@ -28,7 +28,7 @@ namespace Game2D {
 	protected:
 		void setMap(Map::Ptr);
 	private:
-		void processEvents(sf::Time);
+		void processEvents();
 		void update(sf::Time);
 		void draw();
 

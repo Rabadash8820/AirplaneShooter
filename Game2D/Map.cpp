@@ -19,7 +19,7 @@ namespace Game2D {
 
 	// INTERFACE FUNCTIONS
 	void Map::update(sf::Time dt) {
-		baseUpdate(dt);
+		updateCurrent(dt);
 		_sceneTree.update(dt);
 	}
 	void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const {

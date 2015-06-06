@@ -24,7 +24,7 @@ namespace Game2D {
 			// Process events and update as many as times as needed
 			timeSinceUpdate += clock.restart();
 			while (timeSinceUpdate > _frameDuration) {
-				this->processEvents(_frameDuration);
+				this->processEvents();
 				this->update(_frameDuration);
 				timeSinceUpdate -= _frameDuration;
 			}
@@ -36,11 +36,12 @@ namespace Game2D {
 
 	// HELPER FUNCTIONS
 	void Game::setMap(Map::Ptr map) {
-		_map.release();
+		Map* oldMap = _map.release();
+		delete oldMap;
 		_map = std::move(map);
 	}
-	void Game::processEvents(sf::Time dt) {
-		// Process all events in the queue
+	void Game::processEvents() {
+		// Process all events in the window's queue
 		sf::Event e;
 		while (_window.pollEvent(e)) {
 			switch (e.type) {

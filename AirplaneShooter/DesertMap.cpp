@@ -11,7 +11,7 @@ namespace Shooter {
 			window,
 			sf::FloatRect(0.f, 0.f, window->getDefaultView().getSize().x, 2000.f),
 			3),
-		_playerVelocity(40.f, 0.f)
+		_playerSpeed(40.f)
 	{
 		// Align the player spawn point with the center of the View
 		_view = _window->getDefaultView();
@@ -23,8 +23,18 @@ namespace Shooter {
 	DesertMap::~DesertMap() {}
 
 	// INTERFACE FUNCTIONS
-	void DesertMap::postScrollUpdate(sf::Time dt) {
-		// Move the player horizontally
+	void DesertMap::updateCurrent(sf::Time dt) {
+		// Scroll the map
+		ScrollingMap::updateCurrent(dt);
+
+		// Adjust the player's velocity according to keyboard input
+		sf::Vector2f playerDisplace(0.f, 0.f);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+			_player->Velocity += sf::Vector2f(_playerSpeed, 0.f);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+			_player->Velocity -= sf::Vector2f(_playerSpeed, 0.f);
+
+		// Adjust the player's velocity according to their position in the Map
 		float playerPos = _player->getPosition().x;
 		if (playerPos <= _worldBounds.left + BOUNDARY_OFFSET || _worldBounds.left - BOUNDARY_OFFSET <= playerPos)
 			_player->Velocity.x = 0.f;
@@ -50,7 +60,7 @@ namespace Shooter {
 		// Add a node for the leader Aircraft and assign it to the Player
 		Aircraft::Ptr leader(new Aircraft(Aircraft::EAGLE, _textures));
 		leader->setPosition(_playerSpawn);
-		leader->Velocity = _playerVelocity + this->_scrollVelocity;
+		leader->Velocity = this->_scrollVelocity;
 		_player = leader.get();
 		_sceneLayers[AIR]->attachChild(std::move(leader));
 

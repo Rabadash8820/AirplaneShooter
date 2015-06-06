@@ -7,13 +7,13 @@
 
 namespace Shooter {
 
-	class DesertMap : public Game2D::ScrollingMap {
+	class DesertMap final : public Game2D::ScrollingMap {
 		// VARIABLES / CONSTANTS
 	private:
 		const short BACKGROUND = 0, GROUND = 1, AIR = 2;
 		const float BOUNDARY_OFFSET = 150.f;
 		Game2D::TextureManager<ResourceIDs::Texture> _textures;
-		sf::Vector2f _playerVelocity;			// Speeds in pixels/sec
+		float _playerSpeed;	// Speeds in pixels/sec
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
@@ -22,7 +22,7 @@ namespace Shooter {
 
 		// HELPER FUNCTIONS
 	private:
-		virtual void postScrollUpdate(sf::Time);
+		virtual void updateCurrent(sf::Time);
 		virtual void loadResources();
 		virtual void buildScene();
 
