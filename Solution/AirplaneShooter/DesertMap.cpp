@@ -49,13 +49,13 @@ namespace Shooter {
 	// HELPER FUNCTIONS
 	void DesertMap::loadResources() {
 		// Load texture resources
-		_textures.load(ResourceIDs::Texture::DESERT, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\AirplaneShooter\\Resources\\Textures\\Desert.png");
-		_textures.load(ResourceIDs::Texture::EAGLE, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\AirplaneShooter\\Resources\\Textures\\Eagle.png");
-		_textures.load(ResourceIDs::Texture::RAPTOR, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\AirplaneShooter\\Resources\\Textures\\Raptor.png");
+		_textures.load(ResourceIDs::Texture::DESERT, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\Solution\\AirplaneShooter\\Resources\\Textures\\Desert.png");
+		_textures.load(ResourceIDs::Texture::EAGLE, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\Solution\\AirplaneShooter\\Resources\\Textures\\Eagle.png");
+		_textures.load(ResourceIDs::Texture::RAPTOR, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\Solution\\AirplaneShooter\\Resources\\Textures\\Raptor.png");
 	}
 	void DesertMap::buildScene() {
 		// Add a node for the background, and tile its texture
-		Texture desertTexture = _textures[ResourceIDs::Texture::DESERT];
+		Texture& desertTexture = _textures[ResourceIDs::Texture::DESERT];
 		IntRect desertBounds(_worldBounds);
 		desertTexture.setRepeated(true);
 		Brush::Ptr background(
