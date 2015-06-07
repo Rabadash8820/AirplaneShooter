@@ -187,6 +187,7 @@
   <ItemGroup>
     <ClInclude Include="Aircraft.h" />
     <ClInclude Include="AirplaneShooter.h" />
+    <ClInclude Include="Category.h" />
     <ClInclude Include="DesertMap.h" />
     <ClInclude Include="FontIds.h" />
     <ClInclude Include="ResourceIds.h" />
