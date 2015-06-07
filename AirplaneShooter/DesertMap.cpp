@@ -55,7 +55,7 @@ namespace Shooter {
 	}
 	void DesertMap::buildScene() {
 		// Add a node for the background, and tile its texture
-		Texture& desertTexture = _textures[ResourceIDs::Texture::DESERT];
+		Texture desertTexture = _textures[ResourceIDs::Texture::DESERT];
 		IntRect desertBounds(_worldBounds);
 		desertTexture.setRepeated(true);
 		Brush::Ptr background(

@@ -22,7 +22,7 @@
     <Filter Include="Resource Files\Sounds">
       <UniqueIdentifier>{ba5077de-bd16-410b-8460-b671041b7978}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ResourceIds">
+    <Filter Include="Resource Files\ResourceIds">
       <UniqueIdentifier>{84e747f1-23a2-4b6f-a38e-310a9f4fc4d6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -61,24 +61,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextureIds.h">
-      <Filter>Header Files\ResourceIds</Filter>
+      <Filter>Resource Files\ResourceIds</Filter>
     </ClInclude>
     <ClInclude Include="SoundIds.h">
-      <Filter>Header Files\ResourceIds</Filter>
+      <Filter>Resource Files\ResourceIds</Filter>
     </ClInclude>
     <ClInclude Include="FontIds.h">
-      <Filter>Header Files\ResourceIds</Filter>
+      <Filter>Resource Files\ResourceIds</Filter>
     </ClInclude>
     <ClInclude Include="ShaderIds.h">
-      <Filter>Header Files\ResourceIds</Filter>
+      <Filter>Resource Files\ResourceIds</Filter>
     </ClInclude>
     <ClInclude Include="ResourceIds.h">
-      <Filter>Header Files\ResourceIds</Filter>
+      <Filter>Resource Files\ResourceIds</Filter>
     </ClInclude>
     <ClInclude Include="DesertMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AirplaneShooter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Category.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

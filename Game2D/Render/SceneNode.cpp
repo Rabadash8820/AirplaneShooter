@@ -58,6 +58,7 @@ namespace Game2D {
 			transform *= node->getTransform();
 		return transform * Vector2f();
 	}
+	unsigned int SceneNode::getCategory() { return 0; }
 
 	// HELPER FUNCTIONS
 	void SceneNode::updateCurrent(Time dt) { }
