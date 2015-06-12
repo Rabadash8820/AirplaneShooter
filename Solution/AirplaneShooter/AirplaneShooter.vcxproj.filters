@@ -81,7 +81,7 @@
     <ClInclude Include="AirplaneShooter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Category.h">
+    <ClInclude Include="Categories.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

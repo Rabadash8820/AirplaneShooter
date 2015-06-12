@@ -3,6 +3,7 @@
 #include "../GAME2D_API.h"
 #include "../Render/SceneNode.h"
 #include "../Render/Entity.h"
+#include "../Categories.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 
@@ -27,7 +28,7 @@ namespace Game2D {
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		Map(sf::RenderWindow*, sf::FloatRect, size_t);
+		Map(sf::RenderWindow*, sf::FloatRect, size_t, std::unique_ptr<Categories>);
 		~Map();
 
 		// INTERFACE FUNCTIONS
