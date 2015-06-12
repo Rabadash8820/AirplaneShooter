@@ -1,12 +1,15 @@
 #pragma once
 
 #include "../GAME2D_API.h"
-#include "../Categories.h"
+#include "../Input/Command.h"
+#include "../Input/Categories.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
 
 namespace Game2D {
+
+	struct Command;
 
 	class GAME2D_API SceneNode : public sf::Transformable,
 								 public sf::Drawable,
@@ -34,7 +37,8 @@ namespace Game2D {
 		sf::Vector2f getWorldPosition() const;
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		void update(sf::Time);
-		virtual unsigned int getCategory();
+		virtual unsigned int getCategory() const;
+		void giveCommand(const Command&, sf::Time);
 		
 		// HELPER FUNCTIONS
 	private:

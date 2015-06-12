@@ -2,7 +2,6 @@
 
 #include "GAME2D_API.h"
 #include "Map/Map.h"
-#include "Categories.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <string>
@@ -12,7 +11,6 @@ namespace Game2D {
 	class GAME2D_API Game {
 		// VARIABLES / CONSTANTS
 	private:
-		Categories* _categories;
 		sf::Time _frameDuration;
 		bool _paused;
 	protected:

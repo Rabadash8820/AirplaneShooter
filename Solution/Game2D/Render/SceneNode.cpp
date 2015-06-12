@@ -1,5 +1,5 @@
 #include "SceneNode.h"
-#include "../Categories.h"
+#include "../Input/Categories.h"
 #include <algorithm>
 #include <cassert>
 
@@ -62,7 +62,18 @@ Vector2f SceneNode::getWorldPosition() const {
 		transform *= node->getTransform();
 	return transform * Vector2f();
 }
-unsigned int SceneNode::getCategory() { return _categories->Node(); }
+unsigned int SceneNode::getCategory() const {
+	return _categories->Node();
+}
+void SceneNode::giveCommand(const Command& command, sf::Time dt) {
+	// If this node is in one of the Command's affected categories, then perform the Command's action
+	if (command.Category & this->getCategory())
+		command.Action(*this, dt);
+
+	// Pass the command to all children
+	for (Ptr& child : this->_children)
+		child->giveCommand(command, dt);
+}
 
 // HELPER FUNCTIONS
 void SceneNode::updateCurrent(Time dt) { }

@@ -3,13 +3,14 @@
 #include "Categories.h"
 #include <Render/Brush.h>
 #include <memory>
+#include <iostream>
 
 using namespace Shooter;
 using namespace Game2D;
 using namespace sf;
 using namespace std;
 
-// CONSTRUCTORS / DESTRUCTOR
+// INTERFACE
 DesertMap::DesertMap(RenderWindow* window) :
 	ScrollingMap(
 		Vector2f(0.f, -50.f),
@@ -25,28 +26,33 @@ DesertMap::DesertMap(RenderWindow* window) :
 	_playerSpawn = Vector2f(playerSpawnX, playerSpawnY);
 	_view.setCenter(_playerSpawn);
 }
-DesertMap::~DesertMap() {}
+void DesertMap::handleEvent(const sf::Event& e) {
+	Shooter::Categories* c = reinterpret_cast<Shooter::Categories*>(_categories.get());
+	switch (e.type) {
+	case Event::KeyPressed:
+		if (e.key.code == Keyboard::P) {
+			Command output;
+			output.Action = [](SceneNode& s, Time) {
+				cout << s.getPosition().x << "," << s.getPosition().y << endl;
+			};
+			output.Category = c->PlayerAircraft();
+			_commands.push(output);
 
-// INTERFACE FUNCTIONS
-void DesertMap::updateCurrent(Time dt) {
-
-	// Adjust the player's velocity according to keyboard input
-	_player->Velocity = Vector2f(0.f, 0.f);
-	if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left))
-		_player->Velocity = -Vector2f(_playerSpeed, 0.f);
-	if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right))
-		_player->Velocity = Vector2f(_playerSpeed, 0.f);
-
-	// Adjust the player's velocity according to their position in the Map
-	float playerPos = _player->getPosition().x;
-	if (playerPos <= _worldBounds.left + BOUNDARY_OFFSET || _worldBounds.left + _worldBounds.width - BOUNDARY_OFFSET <= playerPos) {
-		float reverse = -_player->Velocity.x;
-		_player->Velocity = Vector2f(reverse, 0.f);
+		}
+		break;
 	}
-
-	// Scroll the map
-	ScrollingMap::updateCurrent(dt);
+	
 }
+void DesertMap::handleRealtimeInput() {
+	Shooter::Categories* c = reinterpret_cast<Shooter::Categories*>(_categories.get());
+	if (Keyboard::isKeyPressed(Keyboard::Left)) {
+		Command moveLeft;
+		//moveLeft.Action = ;
+		moveLeft.Category = c->PlayerAircraft();
+		_commands.push(moveLeft);
+	}
+}
+DesertMap::~DesertMap() {}
 
 // HELPER FUNCTIONS
 void DesertMap::loadResources() {
@@ -81,4 +87,23 @@ void DesertMap::buildScene() {
 
 	// Make things scroll
 	ScrollingMap::buildScene();
+}
+void DesertMap::updateCurrent(Time dt) {
+
+	// Adjust the player's velocity according to keyboard input
+	_player->Velocity = Vector2f(0.f, 0.f);
+	if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left))
+		_player->Velocity = -Vector2f(_playerSpeed, 0.f);
+	if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right))
+		_player->Velocity = Vector2f(_playerSpeed, 0.f);
+
+	// Adjust the player's velocity according to their position in the Map
+	float playerPos = _player->getPosition().x;
+	if (playerPos <= _worldBounds.left + BOUNDARY_OFFSET || _worldBounds.left + _worldBounds.width - BOUNDARY_OFFSET <= playerPos) {
+		float reverse = -_player->Velocity.x;
+		_player->Velocity = Vector2f(reverse, 0.f);
+	}
+
+	// Scroll the map
+	ScrollingMap::updateCurrent(dt);
 }

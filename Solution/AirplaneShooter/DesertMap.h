@@ -15,9 +15,11 @@ namespace Shooter {
 		Game2D::TextureManager<ResourceIDs::Texture> _textures;
 		float _playerSpeed;	// Speeds in pixels/sec
 
-		// CONSTRUCTORS / DESTRUCTOR
+		// INTERFACE
 	public:
 		DesertMap(sf::RenderWindow*);
+		virtual void handleEvent(const sf::Event&);
+		virtual void handleRealtimeInput();
 		~DesertMap();
 
 		// HELPER FUNCTIONS

@@ -1,5 +1,5 @@
 #include "ScrollingMap.h"
-#include "../Categories.h"
+#include "../Input/Categories.h"
 #include <memory>
 
 using namespace Game2D;

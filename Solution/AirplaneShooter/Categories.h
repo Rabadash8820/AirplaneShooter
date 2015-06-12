@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Categories.h>
+#include <Input/Categories.h>
 
 namespace Shooter {
 
