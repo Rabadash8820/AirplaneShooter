@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../GAME2D_API.h"
+#include "../Categories.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
@@ -14,13 +15,15 @@ namespace Game2D {
 		// VARIABLES
 	public:
 		typedef std::unique_ptr<SceneNode> Ptr;
+	protected:
+		std::unique_ptr<Categories> _categories;
 	private:
 		SceneNode* _parent;
 		std::vector<Ptr> _children;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		SceneNode();
+		SceneNode(std::unique_ptr<Categories>);
 		~SceneNode();
 
 		// INTERFACE FUNCTIONS

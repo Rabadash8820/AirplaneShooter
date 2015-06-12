@@ -51,12 +51,6 @@
     <ClCompile Include="Command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Category.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CategoryManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Entity.h">
@@ -86,10 +80,7 @@
     <ClInclude Include="Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Category.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CategoryManager.h">
+    <ClInclude Include="Categories.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
