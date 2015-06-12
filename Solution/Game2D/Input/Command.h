@@ -1,12 +1,19 @@
 #pragma once
 
-#include "Render/SceneNode.h"
+#include "../GAME2D_API.h"
+#include "../Render/SceneNode.h"
 #include <SFML/System/Time.hpp>
 #include <functional>
 
 namespace Game2D {
 
-	struct Command {
+	class SceneNode;
+
+	struct GAME2D_API Command {
+		// CONSTRUCTORS
+	public:
+		Command();
+
 		// PROPERTIES
 	public:
 		std::function<void(SceneNode&, sf::Time)> Action;

@@ -161,18 +161,20 @@
     <None Include="ResourceManager.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Command.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Input\Command.cpp" />
+    <ClCompile Include="Input\CommandManager.cpp" />
     <ClCompile Include="Map\Map.cpp" />
     <ClCompile Include="Map\ScrollingMap.cpp" />
     <ClCompile Include="Render\Brush.cpp" />
     <ClCompile Include="Render\SceneNode.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Categories.h" />
-    <ClInclude Include="Command.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GAME2D_API.h" />
+    <ClInclude Include="Input\Categories.h" />
+    <ClInclude Include="Input\Command.h" />
+    <ClInclude Include="Input\CommandManager.h" />
     <ClInclude Include="Map\Map.h" />
     <ClInclude Include="Map\ScrollingMap.h" />
     <ClInclude Include="Render\Brush.h" />

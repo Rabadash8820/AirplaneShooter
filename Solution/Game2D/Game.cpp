@@ -48,6 +48,7 @@ void Game::processEvents() {
 	// Process all events in the window's queue
 	Event e;
 	while (_window.pollEvent(e)) {
+		// Handle window events
 		switch (e.type) {
 		case Event::GainedFocus:
 			_paused = false;
@@ -59,6 +60,10 @@ void Game::processEvents() {
 			_window.close();
 			break;
 		}
+
+		// Let the map handle all other input events
+		_map->handleEvent(e);
+		_map->handleRealtimeInput();
 	}
 }
 void Game::update(Time dt) {

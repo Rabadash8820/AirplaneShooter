@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../GAME2D_API.h"
-#include "../Categories.h"
+#include "../Input/Categories.h"
 #include "SceneNode.h"
 #include <memory>
 

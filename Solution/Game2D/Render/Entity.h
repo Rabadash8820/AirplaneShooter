@@ -2,7 +2,7 @@
 
 #include "../GAME2D_API.h"
 #include "SceneNode.h"
-#include "../Categories.h"
+#include "../Input/Categories.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 
