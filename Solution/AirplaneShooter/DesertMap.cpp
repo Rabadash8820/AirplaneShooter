@@ -1,9 +1,21 @@
 #include "DesertMap.h"
 #include "Aircraft.h"
 #include <Render/Brush.h>
+#include <stdio.h>  /* defines FILENAME_MAX */
+#include <cassert>
+
+// Define a general macro to get the current working directory
+#ifdef _WIN32
+#include <direct.h>
+#define GetCurrentDir _getcwd
+#else
+#include <unistd.h>
+#define GetCurrentDir getcwd
+#endif
 
 using namespace sf;
 using namespace Game2D;
+using namespace std;
 
 namespace Shooter {
 
@@ -48,10 +60,13 @@ namespace Shooter {
 
 	// HELPER FUNCTIONS
 	void DesertMap::loadResources() {
-		// Load texture resources
-		_textures.load(ResourceIDs::Texture::DESERT, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\Solution\\AirplaneShooter\\Resources\\Textures\\Desert.png");
-		_textures.load(ResourceIDs::Texture::EAGLE, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\Solution\\AirplaneShooter\\Resources\\Textures\\Eagle.png");
-		_textures.load(ResourceIDs::Texture::RAPTOR, "C:\\Dan_Programming\\DefaultCollection\\Airplane Shooter\\Solution\\AirplaneShooter\\Resources\\Textures\\Raptor.png");
+		// Get resource directories
+		string textureDir = projectDirectory() + "\\Resources\\Textures\\";
+
+		// Load texture resources		
+		_textures.load(ResourceIDs::Texture::DESERT, textureDir + "Desert.png");
+		_textures.load(ResourceIDs::Texture::EAGLE,  textureDir + "Eagle.png");
+		_textures.load(ResourceIDs::Texture::RAPTOR, textureDir + "Raptor.png");
 	}
 	void DesertMap::buildScene() {
 		// Add a node for the background, and tile its texture
@@ -79,6 +94,12 @@ namespace Shooter {
 
 		// Make things scroll
 		ScrollingMap::buildScene();
+	}
+	string DesertMap::projectDirectory() {
+		char currDir[FILENAME_MAX];
+		GetCurrentDir(currDir, sizeof(currDir));
+		// Make some assertion here...
+		return currDir;
 	}
 
 }

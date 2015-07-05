@@ -6,7 +6,6 @@
 #include <map>
 #include <memory>
 #include <string>
-#include <cassert>
 
 namespace Game2D {
 
