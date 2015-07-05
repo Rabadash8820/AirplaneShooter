@@ -27,6 +27,7 @@ namespace Shooter {
 		virtual void updateCurrent(sf::Time);
 		virtual void loadResources();
 		virtual void buildScene();
+		std::string projectDirectory();
 
 	};
 

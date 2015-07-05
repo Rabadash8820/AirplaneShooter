@@ -103,6 +103,12 @@ void DesertMap::updateCurrent(Time dt) {
 		float reverse = -_player->Velocity.x;
 		_player->Velocity = Vector2f(reverse, 0.f);
 	}
+	string DesertMap::projectDirectory() {
+		char currDir[FILENAME_MAX];
+		GetCurrentDir(currDir, sizeof(currDir));
+		// Make some assertion here...
+		return currDir;
+	}
 
 	// Scroll the map
 	ScrollingMap::updateCurrent(dt);
