@@ -161,8 +161,6 @@
     <None Include="ResourceManager.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Category.cpp" />
-    <ClCompile Include="CategoryManager.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Map\Map.cpp" />
@@ -172,10 +170,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Category.h" />
-    <ClInclude Include="CategoryManager.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GAME2D_API.h" />
+    <ClInclude Include="InputBinding.h" />
     <ClInclude Include="Map\Map.h" />
     <ClInclude Include="Map\ScrollingMap.h" />
     <ClInclude Include="Render\Brush.h" />
