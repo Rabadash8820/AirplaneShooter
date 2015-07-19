@@ -2,8 +2,11 @@
 
 #include "GAME2D_API.h"
 #include "Map/Map.h"
+#include "Input/Command.h"
+#include "Input/KeyBinding.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <vector>
 #include <string>
 
 namespace Game2D {
@@ -16,6 +19,7 @@ namespace Game2D {
 	protected:
 		sf::RenderWindow _window;
 		Map::Ptr _map;
+		std::vector<KeyBinding> _keyBindings;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
@@ -30,7 +34,9 @@ namespace Game2D {
 	protected:
 		void setMap(Map::Ptr);
 	private:
-		void processEvents();
+		void processInput();
+		void handleEvent(const sf::Event&);
+		void handleRealtimeInput();
 		void update(sf::Time);
 		void draw();
 
