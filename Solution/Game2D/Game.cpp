@@ -28,7 +28,7 @@ namespace Game2D {
 			// Process events and update as many as times as needed
 			timeSinceUpdate += clock.restart();
 			while (timeSinceUpdate > _frameDuration) {
-				this->processEvents();
+				this->processInput();
 				if (!_paused)
 					this->update(_frameDuration);
 				timeSinceUpdate -= _frameDuration;
@@ -45,21 +45,34 @@ namespace Game2D {
 		delete oldMap;
 		_map = std::move(map);
 	}
-	void Game::processEvents() {
-		// Process all events in the window's queue
+	void Game::processInput() {
 		Event e;
-		while (_window.pollEvent(e)) {
-			switch (e.type) {
-			case Event::GainedFocus:
-				_paused = false;
-				break;
-			case Event::LostFocus:
-				_paused = true;
-				break;
-			case Event::Closed:
-				_window.close();
-				break;
-			}
+		while (_window.pollEvent(e))
+			handleEvent(e);
+
+		handleRealtimeInput();
+	}
+	void Game::handleEvent(const Event& e) {
+		// Toggle Paused state
+		switch (e.type) {
+		case Event::GainedFocus:
+			_paused = false;
+			break;
+		case Event::LostFocus:
+			_paused = true;
+			break;
+
+		// Close the game window
+		case Event::Closed:
+			_window.close();
+			break;
+		}
+	}
+	void Game::handleRealtimeInput() {
+		// Push keyboard events to the current Map's queue
+		for (auto& binding : _keyBindings) {
+			if (Keyboard::isKeyPressed(binding.key))
+				_map->pushEvent(binding.getCommand());
 		}
 	}
 	void Game::update(Time dt) {

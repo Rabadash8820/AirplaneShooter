@@ -3,8 +3,10 @@
 #include "../GAME2D_API.h"
 #include "../Render/SceneNode.h"
 #include "../Render/Entity.h"
+#include "../Input/Command.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <queue>
 
 namespace Game2D {
 
@@ -24,6 +26,7 @@ namespace Game2D {
 		std::vector<SceneNode*> _sceneLayers;
 		Game2D::Entity* _player;
 		sf::Vector2f _playerSpawn;
+		std::queue<Command> _commands;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
@@ -33,9 +36,10 @@ namespace Game2D {
 		// INTERFACE FUNCTIONS
 	public:
 		void build();
-		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
+		void pushEvent(Command);
 		void update(sf::Time);
-
+		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
+		
 		// HELPER FUNCTIONS
 	protected:
 		virtual void loadResources() = 0;

@@ -81,9 +81,6 @@
     <ClInclude Include="AirplaneShooter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Category.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

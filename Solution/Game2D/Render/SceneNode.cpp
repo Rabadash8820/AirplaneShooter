@@ -59,6 +59,15 @@ namespace Game2D {
 		return transform * Vector2f();
 	}
 	unsigned int SceneNode::getCategory() { return 0; }
+	void SceneNode::onCommand(const Command& command, sf::Time dt) {
+		// Execute the command if this node matches its category
+		if (command.getCategory() & this->getCategory())
+			command.Action(*this, dt);
+
+		// Pass the command to all children
+		for (auto& child : _children)
+			child->onCommand(command, dt);
+	}
 
 	// HELPER FUNCTIONS
 	void SceneNode::updateCurrent(Time dt) { }

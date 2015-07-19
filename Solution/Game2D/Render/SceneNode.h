@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../GAME2D_API.h"
+#include "../Input/Command.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
@@ -32,7 +33,8 @@ namespace Game2D {
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		void update(sf::Time);
 		virtual unsigned int getCategory();
-		
+		//void onCommand(const Command&, sf::Time);
+
 		// HELPER FUNCTIONS
 	private:
 		void drawChildren(sf::RenderTarget&, sf::RenderStates) const;

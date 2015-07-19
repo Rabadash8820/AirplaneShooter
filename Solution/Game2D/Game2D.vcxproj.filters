@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Render">
       <UniqueIdentifier>{cd6daa95-ee24-4811-a971-b31aeef4c3cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{1adb77df-6a0f-4315-8181-fe1280df9035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{0344b157-c456-47ae-9403-e5b8138396d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -48,8 +54,8 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Input\Command.cpp">
+      <Filter>Source Files\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,9 +67,6 @@
     </ClInclude>
     <ClInclude Include="Render\SceneNode.h">
       <Filter>Header Files\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Map\ScrollingMap.h">
-      <Filter>Header Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="Map\Map.h">
       <Filter>Header Files\Map</Filter>
@@ -77,14 +80,17 @@
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Command.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Map\ScrollingMap.h">
+      <Filter>Header Files\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Category.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Input\Category.h">
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="InputBinding.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Input\Command.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\KeyBinding.h">
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

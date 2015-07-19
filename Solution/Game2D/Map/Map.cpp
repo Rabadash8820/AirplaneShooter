@@ -1,6 +1,7 @@
 #include "Map.h"
 
 using namespace sf;
+using namespace std;
 
 namespace Game2D {
 
@@ -20,7 +21,15 @@ namespace Game2D {
 	Map::~Map() {}
 
 	// INTERFACE FUNCTIONS
+	void Map::pushEvent(Command c) {
+		_commands.push(c);
+	}
 	void Map::update(Time dt) {
+		// Respond to events
+		while (!_commands.empty())
+			_sceneTree.onCommand(_commands.pop(), dt);
+
+		// Do "normal" updates
 		updateCurrent(dt);
 		_sceneTree.update(dt);
 	}
