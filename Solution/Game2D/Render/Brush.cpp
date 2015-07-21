@@ -5,14 +5,12 @@ using namespace sf;
 using namespace std;
 
 // CONSTRUCTORS / DESTRUCTOR
-Brush::Brush(const Texture& texture, unique_ptr<Categories> c) :
-	SceneNode(std::move(c)),
+Brush::Brush(const Texture& texture) :
 	_sprite(texture)
 {
 
 }
-Brush::Brush(const Texture& texture, const IntRect& rect, unique_ptr<Categories> c) :
-	SceneNode(std::move(c)),
+Brush::Brush(const Texture& texture, const IntRect& rect) :
 	_sprite(texture, rect)
 {
 

@@ -6,30 +6,30 @@ using namespace std;
 using namespace sf;
 
 // INTERFACE
-Command::Command(Category category) {
+Command::Command(function<void(SceneNode&, Time)> action) {
+	this->initialize(
+		[](SceneNode& sn, Time dt) {},
+		{ Category() });
+}
+Command::Command(function<void(SceneNode&, Time)> action, Category category) {
 	this->initialize(
 		[](SceneNode& sn, Time dt) {},
 		{ category });
 }
-Command::Command(initializer_list<Category> categories) {
-	this->initialize(
-		[](SceneNode& sn, Time dt) {},
-		categories);
-}
 Command::Command(function<void(SceneNode&, Time)> action, initializer_list<Category> categories) {
 	this->initialize(action, categories);
 }
-void Command::setCategory(initializer_list<Category> categories) {
-	this->initialize(this->Action, categories);
+void Command::action(SceneNode& node, Time dt) const {
+	return _action(node, dt);
 }
-unsigned int Command::getCategory() const {
+unsigned int Command::category() const {
 	return _categoryId;
 }
 
 // HELPER FUNCTIONS
 void Command::initialize(function<void(SceneNode&, Time)> action, initializer_list<Category> categories) {
 	// Set action
-	this->Action = action;
+	_action = action;
 
 	// Set category (bitwise OR of all those provided)
 	unsigned int id;

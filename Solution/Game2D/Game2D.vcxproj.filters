@@ -63,6 +63,9 @@
     <ClCompile Include="Input\Command.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Input\Category.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Entity.h">
@@ -97,9 +100,6 @@
     </ClInclude>
     <ClInclude Include="Input\KeyBinding.h">
       <Filter>Header Files\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="CategoryManager.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

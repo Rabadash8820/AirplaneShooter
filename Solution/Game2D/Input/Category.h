@@ -11,26 +11,14 @@ namespace Game2D {
 		// PRIVATE STATIC MEMBERS
 	private:
 		static unsigned int _root;
-		static unsigned int shiftedRoot() {
-			return (_root <<= 1);
-		}
+		static unsigned int shiftedRoot();
 
 		// INTERFACE
 	public:
-		Category() {
-			_id = shiftedRoot();
-		}
-		unsigned int getId() const {
-			return _id;
-		}
-		unsigned int operator|(const Category& that) const {
-			return this->_id | that._id;
-		}
-		operator unsigned int() const {
-			return this->_id;
-		}
+		Category();
+		unsigned int getId() const;
+		unsigned int operator|(const Category& that) const;
+		operator unsigned int() const;
 	};
-
-	unsigned int Category::_root = 1;
 
 }

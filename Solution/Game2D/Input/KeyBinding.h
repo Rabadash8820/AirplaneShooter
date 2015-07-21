@@ -14,10 +14,9 @@ namespace Game2D {
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
 		KeyBinding(sf::Keyboard::Key key, Command command) :
-			_command(command)
-		{
-			this->key = key;
-		}
+			_command(command),
+			key(key)
+		{ }
 		~KeyBinding() { }
 
 		// INTERFACE

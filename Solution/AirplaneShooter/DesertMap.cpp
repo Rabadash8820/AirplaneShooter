@@ -6,15 +6,6 @@
 #include <cassert>
 #include <iostream>
 
-// Define a general macro to get the current working directory
-#ifdef _WIN32
-#include <direct.h>
-#define GetCurrentDir _getcwd
-#else
-#include <unistd.h>
-#define GetCurrentDir getcwd
-#endif
-
 using namespace Shooter;
 using namespace Game2D;
 using namespace sf;
@@ -36,48 +27,16 @@ DesertMap::DesertMap(RenderWindow* window) :
 	_playerSpawn = Vector2f(playerSpawnX, playerSpawnY);
 	_view.setCenter(_playerSpawn);
 }
-void DesertMap::handleEvent(const sf::Event& e) {
-	Shooter::Categories* c = reinterpret_cast<Shooter::Categories*>(_categories.get());
-	switch (e.type) {
-	case Event::KeyPressed:
-		if (e.key.code == Keyboard::P) {
-			Command output;
-			output.Action = [](SceneNode& s, Time) {
-				cout << s.getPosition().x << "," << s.getPosition().y << endl;
-			};
-			output.Category = c->PlayerAircraft();
-			_commands.push(output);
-
-		}
-		break;
-	}
-
-}
-void DesertMap::handleRealtimeInput() {
-	Shooter::Categories* c = reinterpret_cast<Shooter::Categories*>(_categories.get());
-	if (Keyboard::isKeyPressed(Keyboard::Left)) {
-		Command moveLeft;
-		//moveLeft.Action = ;
-		moveLeft.Category = c->PlayerAircraft();
-		_commands.push(moveLeft);
-		}
-	}
 void DesertMap::updateCurrent(Time dt) {
-	// Adjust the player's velocity according to keyboard input
-	_player->Velocity = -Vector2f(0.f, 0.f);
-	if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left))
-		_player->Velocity = -Vector2f(_playerSpeed, 0.f);
-	if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right))
-		_player->Velocity = Vector2f(_playerSpeed, 0.f);
+	// Prepare for updates
+	_player->velocity = -Vector2f(0.f, 0.f);
+	
+	// Do updates in response to Commands
+	updateOnCommands(dt);
 
-	// Adjust the player's velocity according to their position in the Map
-	float playerPos = _player->getPosition().x;
-	if (playerPos <= _worldBounds.left + BORDER_OFFSET || _worldBounds.left + _worldBounds.width - BORDER_OFFSET <= playerPos) {
-		float reverse = -_player->Velocity.x;
-		_player->Velocity = Vector2f(reverse, 0.f);
-	}
+	adjustPlayer(dt);
 
-	// Scroll the map
+	// Do "normal" updates
 	ScrollingMap::updateCurrent(dt);
 }
 DesertMap::~DesertMap() {}
@@ -97,13 +56,13 @@ void DesertMap::buildScene() {
 	Texture& desertTexture = _textures[ResourceIDs::Texture::DESERT];
 	IntRect desertBounds(_worldBounds);
 	desertTexture.setRepeated(true);
-	Brush::Ptr background(
-	new Brush(desertTexture, desertBounds, unique_ptr<Categories>(new Categories())));
+	Brush::Ptr background(new Brush(desertTexture, desertBounds));
 	background->setPosition(_worldBounds.left, _worldBounds.top);
 	_sceneLayers[BACKGROUND]->attachChild(std::move(background));
 
 	// Add a node for the leader Aircraft and assign it to the Player
 	Aircraft::Ptr leader(new Aircraft(Aircraft::EAGLE, _textures));
+	leader->airSpeed = _playerSpeed;
 	leader->setPosition(_playerSpawn);
 	_player = leader.get();
 	_sceneLayers[AIR]->attachChild(std::move(leader));
@@ -119,9 +78,40 @@ void DesertMap::buildScene() {
 	// Make things scroll
 	ScrollingMap::buildScene();
 }
-string DesertMap::projectDirectory() {
-	char currDir[FILENAME_MAX];
-	GetCurrentDir(currDir, sizeof(currDir));
-	// Make some assertion here...
-	return currDir;
+void DesertMap::adjustPlayer(Time dt) {
+	// Reduce the playerAircraft's velocity if they are moving diagonally
+	Vector2f playerV = _player->velocity;
+	if (playerV.x != 0 && playerV.y != 0)
+		_player->velocity = playerV / sqrt(2.f);
+	
+	// Adjust the playerAircraft's position if they cross the View's boundary
+	Vector2f pos = _player->getPosition();
+	FloatRect viewBounds(
+		_view.getCenter() - _view.getSize() / 2.f,
+		_view.getSize());
+	pos.x = max(pos.x, viewBounds.left + BORDER_OFFSET);
+	pos.x = min(pos.x, viewBounds.left + viewBounds.width - BORDER_OFFSET);
+	pos.y = max(pos.x, viewBounds.top  + BORDER_OFFSET);
+	pos.y = min(pos.x, viewBounds.top  + viewBounds.height - BORDER_OFFSET);
+	_player->setPosition(pos);
+}
+void DesertMap::handleEvent(const Event& e) {
+	switch (e.type) {
+	case Event::KeyPressed:
+		switch (e.key.code) {
+		case Keyboard::P: {
+			Command output(
+				[](SceneNode& s, Time) {
+					cout << s.getPosition().x << ", " << s.getPosition().y << endl; },
+					PlayerAircraft);
+			_commands.push(output);
+			break;
+		}
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
 }
