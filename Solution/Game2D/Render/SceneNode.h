@@ -8,6 +8,8 @@
 
 namespace Game2D {
 
+	struct Command;
+
 	class GAME2D_API SceneNode : public sf::Transformable,
 								 public sf::Drawable,
 								 public sf::NonCopyable
@@ -15,13 +17,15 @@ namespace Game2D {
 		// VARIABLES
 	public:
 		typedef std::unique_ptr<SceneNode> Ptr;
+	protected:
+		std::unique_ptr<Categories> _categories;
 	private:
 		SceneNode* _parent;
 		std::vector<Ptr> _children;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		SceneNode();
+		SceneNode(std::unique_ptr<Categories>);
 		~SceneNode();
 
 		// INTERFACE FUNCTIONS
@@ -34,7 +38,7 @@ namespace Game2D {
 		void update(sf::Time);
 		virtual unsigned int getCategory() const;
 		void onCommand(const Command&, sf::Time);
-
+		
 		// HELPER FUNCTIONS
 	private:
 		void drawChildren(sf::RenderTarget&, sf::RenderStates) const;

@@ -4,10 +4,9 @@
 #include <KeyBinding.h>
 #include <memory>
 
-using namespace sf;
+using namespace Shooter;
 using namespace Game2D;
-
-namespace Shooter {
+using namespace sf;
 
 	// CONSTRUCTORS / DESTRUCTOR
 	AirplaneShooter::AirplaneShooter() :

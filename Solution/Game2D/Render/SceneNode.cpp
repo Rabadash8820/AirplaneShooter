@@ -1,14 +1,18 @@
 #include "SceneNode.h"
+#include "../Input/Categories.h"
 #include <algorithm>
 #include <cassert>
 
+using namespace Game2D;
 using namespace sf;
 using namespace std;
 
-namespace Game2D {
+// CONSTRUCTORS / DESTRUCTOR
+SceneNode::SceneNode(unique_ptr<Categories> c) :
+	_categories(std::move(c))
+{
 
-	// CONSTRUCTORS / DESTRUCTOR
-	SceneNode::SceneNode() {}
+}
 	SceneNode::~SceneNode() {}
 
 	// INTERFACE FUNCTIONS
@@ -80,5 +84,3 @@ namespace Game2D {
 		for (const Ptr& child : this->_children)
 			child->update(dt);
 	}
-
-}

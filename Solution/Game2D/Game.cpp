@@ -2,9 +2,8 @@
 
 using namespace sf;
 using namespace std;
+using namespace Game2D;
 
-namespace Game2D {
-	
 	// CONSTRUCTORS / DESTRUCTOR
 	Game::Game(VideoMode videoMode, string title, Time frameDuration) :
 		_frameDuration(frameDuration),
@@ -54,19 +53,19 @@ namespace Game2D {
 	}
 	void Game::handleEvent(const Event& e) {
 		// Toggle Paused state
-		switch (e.type) {
-		case Event::GainedFocus:
-			_paused = false;
-			break;
-		case Event::LostFocus:
-			_paused = true;
-			break;
+			switch (e.type) {
+			case Event::GainedFocus:
+				_paused = false;
+				break;
+			case Event::LostFocus:
+				_paused = true;
+				break;
 
 		// Close the game window
-		case Event::Closed:
-			_window.close();
-			break;
-		}
+			case Event::Closed:
+				_window.close();
+				break;
+			}
 	}
 	void Game::handleRealtimeInput() {
 		// Push keyboard events to the current Map's queue
@@ -83,5 +82,3 @@ namespace Game2D {
 		_window.draw(*_map);
 		_window.display();
 	}
-
-}

@@ -2,12 +2,17 @@
 
 #include "../GAME2D_API.h"
 #include "SceneNode.h"
+#include "../Input/Categories.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 
 namespace Game2D {
 
 	class GAME2D_API Entity : public SceneNode {
+		// CONSTRUCTORS
+	public:
+		Entity(std::unique_ptr<Categories> c) : SceneNode(std::move(c)) { }
+
 		// PROPERTIES
 	public:
 		typedef std::unique_ptr<Entity> Ptr;

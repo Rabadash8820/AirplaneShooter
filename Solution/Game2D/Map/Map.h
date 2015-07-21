@@ -24,22 +24,19 @@ namespace Game2D {
 		Game2D::SceneNode _sceneTree;
 		size_t _numLayers;
 		std::vector<SceneNode*> _sceneLayers;
-		Game2D::Entity* _player;
+		std::unique_ptr<Categories> _categories;
+		Entity* _player;
 		sf::Vector2f _playerSpawn;
 		std::queue<Command> _commands;
 
-		// CONSTRUCTORS / DESTRUCTOR
+		// INTERFACE
 	public:
-		Map(sf::RenderWindow*, sf::FloatRect, size_t);
-		~Map();
-
-		// INTERFACE FUNCTIONS
-	public:
+		Map(sf::RenderWindow*, sf::FloatRect, size_t, std::unique_ptr<Categories>);
 		void build();
 		void pushEvent(Command);
 		void update(sf::Time);
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
-		
+
 		// HELPER FUNCTIONS
 	protected:
 		virtual void loadResources() = 0;

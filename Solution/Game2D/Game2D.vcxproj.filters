@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{0344b157-c456-47ae-9403-e5b8138396d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{96310b07-302a-4708-9ddf-e281c40919cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{e53e2cc2-5939-477a-85ce-a6cae8fe67c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -92,7 +98,7 @@
     <ClInclude Include="Input\KeyBinding.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h">
+    <ClInclude Include="CategoryManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

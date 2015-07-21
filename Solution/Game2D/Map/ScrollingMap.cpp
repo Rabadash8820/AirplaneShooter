@@ -18,7 +18,6 @@ namespace Game2D {
 		_player->Velocity = this->_scrollVelocity;
 	}
 	void ScrollingMap::updateCurrent(Time dt) {
+		_player->Velocity += _scrollVelocity;
 		_view.move(_scrollVelocity * dt.asSeconds());
 	}
-
-}

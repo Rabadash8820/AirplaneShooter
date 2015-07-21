@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../GAME2D_API.h"
+#include "../Input/Categories.h"
 #include "SceneNode.h"
 #include <memory>
 
@@ -13,10 +14,10 @@ namespace Game2D {
 	private:
 		sf::Sprite _sprite;
 
-	public:
 		// CONSTRUCTORS / DESTRUCTOR
-		explicit Brush(const sf::Texture& texture);
-		Brush(const sf::Texture& texture, const sf::IntRect& rect);
+	public:
+		Brush(const sf::Texture& texture, std::unique_ptr<Categories>);
+		Brush(const sf::Texture& texture, const sf::IntRect& rect, std::unique_ptr<Categories>);
 
 		// INTERFACE FUNCTIONS
 	public:

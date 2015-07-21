@@ -30,6 +30,7 @@ namespace Shooter {
 		// INTERFACE FUNCTIONS
 	public:
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
+		virtual unsigned int getCategory() const;
 
 		// HELPER FUNCTIONS
 	private:
