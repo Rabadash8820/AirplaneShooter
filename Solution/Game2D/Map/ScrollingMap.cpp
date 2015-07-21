@@ -16,10 +16,7 @@ ScrollingMap::ScrollingMap(Vector2f velocity, RenderWindow* window, FloatRect wo
 ScrollingMap::~ScrollingMap() {}
 
 // HELPER FUNCTIONS
-void ScrollingMap::buildScene() {
-	_player->Velocity = this->_scrollVelocity;
-}
+void ScrollingMap::buildScene() { }
 void ScrollingMap::updateCurrent(Time dt) {
-	_player->Velocity += _scrollVelocity;
 	_view.move(_scrollVelocity * dt.asSeconds());
 }

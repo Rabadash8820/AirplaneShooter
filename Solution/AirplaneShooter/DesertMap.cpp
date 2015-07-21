@@ -89,6 +89,11 @@ void DesertMap::buildScene() {
 	ScrollingMap::buildScene();
 }
 void DesertMap::updateCurrent(Time dt) {
+	// Scroll the map
+	ScrollingMap::updateCurrent(dt);
+
+	// Reset player's velocity
+	_player->Velocity = Vector2f(0.f, 0.f);
 
 	// Adjust the player's velocity according to keyboard input
 	_player->Velocity = Vector2f(0.f, 0.f);
@@ -99,11 +104,8 @@ void DesertMap::updateCurrent(Time dt) {
 
 	// Adjust the player's velocity according to their position in the Map
 	float playerPos = _player->getPosition().x;
-	if (playerPos <= _worldBounds.left + BOUNDARY_OFFSET || _worldBounds.left + _worldBounds.width - BOUNDARY_OFFSET <= playerPos) {
+	if (playerPos <= _worldBounds.left + BORDER_OFFSET || _worldBounds.left + _worldBounds.width - BORDER_OFFSET <= playerPos) {
 		float reverse = -_player->Velocity.x;
 		_player->Velocity = Vector2f(reverse, 0.f);
 	}
-
-	// Scroll the map
-	ScrollingMap::updateCurrent(dt);
 }
