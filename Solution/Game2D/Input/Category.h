@@ -4,13 +4,21 @@
 namespace Game2D {
 
 	struct GAME2D_API Category {
+		// PRIVATE MEMBERS
 	private:
 		unsigned int _id;
-		static unsigned int _root;
 
+		// PRIVATE STATIC MEMBERS
+	private:
+		static unsigned int _root;
+		static unsigned int shiftedRoot() {
+			return (_root <<= 1);
+		}
+
+		// INTERFACE
 	public:
 		Category() {
-			_id = _root << 1;
+			_id = shiftedRoot();
 		}
 		unsigned int getId() const {
 			return _id;
@@ -23,6 +31,6 @@ namespace Game2D {
 		}
 	};
 
-	//unsigned int Category::_root = 1;
+	unsigned int Category::_root = 1;
 
 }

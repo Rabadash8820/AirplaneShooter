@@ -181,6 +181,7 @@
     <ClInclude Include="Render\Entity.h" />
     <ClInclude Include="Render\SceneNode.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
