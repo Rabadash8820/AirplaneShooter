@@ -35,7 +35,7 @@ namespace Game2D {
 	template<typename Id>
 	using FontManager = ResourceManager<Id, sf::Font>;
 	template<typename Id>
-	using SoundBufferManager = ResourceManager<Id, sf::SoundBuffer>;
+	using SoundManager = ResourceManager<Id, sf::SoundBuffer>;
 	template<typename Id>
 	using ShaderManager = ResourceManager<Id, sf::Shader>;
 

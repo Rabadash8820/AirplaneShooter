@@ -92,5 +92,8 @@
     <ClInclude Include="Input\KeyBinding.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

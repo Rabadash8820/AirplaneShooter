@@ -32,8 +32,8 @@ namespace Game2D {
 		sf::Vector2f getWorldPosition() const;
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		void update(sf::Time);
-		virtual unsigned int getCategory();
-		//void onCommand(const Command&, sf::Time);
+		virtual unsigned int getCategory() const;
+		void onCommand(const Command&, sf::Time);
 
 		// HELPER FUNCTIONS
 	private:
