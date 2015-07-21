@@ -33,6 +33,7 @@ void DesertMap::updateCurrent(Time dt) {
 	// Do updates in response to Commands
 	updateOnCommands(dt);
 
+	cout << Nothing.getId() << ", " << Node.getId() << ", " << PlayerAircraft.getId() << ", " << EnemyAircraft.getId() << ", " << AlliedAircraft.getId() << endl;
 	adjustPlayer(dt);
 
 	// Do "normal" updates
@@ -90,8 +91,8 @@ void DesertMap::adjustPlayer(Time dt) {
 		_view.getSize());
 	pos.x = max(pos.x, viewBounds.left + BORDER_OFFSET);
 	pos.x = min(pos.x, viewBounds.left + viewBounds.width - BORDER_OFFSET);
-	pos.y = max(pos.x, viewBounds.top  + BORDER_OFFSET);
-	pos.y = min(pos.x, viewBounds.top  + viewBounds.height - BORDER_OFFSET);
+	pos.y = max(pos.y, viewBounds.top  + BORDER_OFFSET);
+	pos.y = min(pos.y, viewBounds.top  + viewBounds.height - BORDER_OFFSET);
 	_player->setPosition(pos);
 }
 void DesertMap::handleEvent(const Event& e) {

@@ -39,6 +39,9 @@
     <ClCompile Include="AirplaneShooter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Categories.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\Sansation.ttf">

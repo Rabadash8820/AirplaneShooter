@@ -14,6 +14,5 @@ ScrollingMap::~ScrollingMap() {}
 // HELPER FUNCTIONS
 void ScrollingMap::buildScene() { }
 void ScrollingMap::updateCurrent(Time dt) {
-	_player->velocity += _scrollVelocity;
 	_view.move(_scrollVelocity * dt.asSeconds());
 }

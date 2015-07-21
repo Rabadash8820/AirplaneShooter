@@ -27,9 +27,9 @@ void Aircraft::drawCurrent(RenderTarget& target, RenderStates states) const {
 unsigned int Aircraft::getCategory() const {
 	switch (_type) {
 	case EAGLE:
-		return PlayerAircraft;
+		return PlayerAircraft.getId();
 	default:
-		return EnemyAircraft;
+		return EnemyAircraft.getId();
 	}
 }
 
