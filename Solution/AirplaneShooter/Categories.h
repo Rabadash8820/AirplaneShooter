@@ -4,9 +4,7 @@
 
 namespace Shooter {
 
-	extern Game2D::Category Nothing,
-							Node,
-							PlayerAircraft,
+	extern Game2D::Category PlayerAircraft,
 							AlliedAircraft,
 							EnemyAircraft;
 

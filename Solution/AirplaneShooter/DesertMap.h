@@ -13,7 +13,7 @@ namespace Shooter {
 		const short BACKGROUND = 0, GROUND = 1, AIR = 2;
 		const float BORDER_OFFSET = 40.f;
 		Game2D::TextureManager<ResourceIDs::Texture> _textures;
-		const float PLAYER_SPEED = 40.f;	// Speeds in pixels/sec
+		const float PLAYER_SPEED = 200.f;	// Speeds in pixels/sec
 
 		// INTERFACE
 	public:
