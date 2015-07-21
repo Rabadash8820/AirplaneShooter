@@ -1,4 +1,5 @@
 #include "Command.h"
+#include "Category.h"
 
 using namespace Game2D;
 using namespace std;
