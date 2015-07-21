@@ -2,7 +2,7 @@
 #include "Aircraft.h"
 #include "Categories.h"
 #include <Render/Brush.h>
-#include <stdio.h>  /* defines FILENAME_MAX */
+#include <stdio.h>  // defines FILENAME_MAX
 #include <cassert>
 #include <iostream>
 
@@ -33,7 +33,6 @@ void DesertMap::updateCurrent(Time dt) {
 	// Do updates in response to Commands
 	updateOnCommands(dt);
 
-	cout << Nothing.getId() << ", " << Node.getId() << ", " << PlayerAircraft.getId() << ", " << EnemyAircraft.getId() << ", " << AlliedAircraft.getId() << endl;
 	adjustPlayer(dt);
 
 	// Do "normal" updates
@@ -63,15 +62,15 @@ void DesertMap::buildScene() {
 	_sceneLayers[BACKGROUND]->attachChild(std::move(background));
 
 	// Add a node for the leader Aircraft and assign it to the Player
-	Aircraft::Ptr leader(new Aircraft(Aircraft::EAGLE, _textures));
+	Aircraft::Ptr leader(new Aircraft(Aircraft::Type::EAGLE, _textures));
 	leader->airSpeed = PLAYER_SPEED;
 	leader->setPosition(_playerSpawn);
 	_player = leader.get();
 	_sceneLayers[AIR]->attachChild(std::move(leader));
 
 	// Add nodes for the player's escort Aircraft
-	Aircraft::Ptr leftEscort(new Aircraft(Aircraft::RAPTOR, _textures));
-	Aircraft::Ptr rightEscort(new Aircraft(Aircraft::RAPTOR, _textures));
+	Aircraft::Ptr leftEscort(new Aircraft(Aircraft::Type::RAPTOR, _textures));
+	Aircraft::Ptr rightEscort(new Aircraft(Aircraft::Type::RAPTOR, _textures));
 	leftEscort->setPosition(-80.f, 50.f);
 	rightEscort->setPosition(80.f, 50.f);
 	_player->attachChild(std::move(leftEscort));
@@ -83,8 +82,6 @@ void DesertMap::buildScene() {
 void DesertMap::adjustPlayer(Time dt) {
 	// Reduce the playerAircraft's velocity if they are moving diagonally
 	Vector2f playerV = _player->velocity;
-	if (playerV.x != 0 || playerV.y != 0)
-		cout << "YUS" << endl;
 	if (playerV.x != 0 && playerV.y != 0)
 		_player->velocity = playerV / sqrt(2.f);
 	
@@ -107,7 +104,7 @@ void DesertMap::handleEvent(const Event& e) {
 			Command output(
 				[](SceneNode& s, Time) {
 					cout << s.getPosition().x << ", " << s.getPosition().y << endl; },
-					PlayerAircraft);
+				PlayerAircraft);
 			_commands.push(output);
 			break;
 		}

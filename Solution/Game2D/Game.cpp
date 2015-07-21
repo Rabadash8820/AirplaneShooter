@@ -66,8 +66,11 @@ void Game::handleEvent(const Event& e) {
 		_window.close();
 		break;
 
-	default:
+	// Let the Map handle specific key presses
+	case Event::KeyPressed:
+	case Event::KeyReleased:
 		_map->handleEvent(e);
+		break;
 	}
 }
 void Game::handleRealtimeInput() {

@@ -25,12 +25,22 @@ void Aircraft::drawCurrent(RenderTarget& target, RenderStates states) const {
 	target.draw(this->_sprite, states);
 }
 unsigned int Aircraft::getCategory() const {
+	// All Aircraft are SceneNodes
+	unsigned int id = 1;
+
+	// Adjust the game Category of this Aircraft depending on its type
 	switch (_type) {
-	case EAGLE:
-		return PlayerAircraft.getId();
+	case Type::EAGLE:
+		id |= PlayerAircraft.getId();
+		break;
+	case Type::RAPTOR:
+		id |= AlliedAircraft.getId();
+		break;
 	default:
-		return EnemyAircraft.getId();
+		id |= EnemyAircraft.getId();
+		break;
 	}
+	return id;
 }
 
 // HELPER FUNCTIONS

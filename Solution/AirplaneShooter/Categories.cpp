@@ -5,9 +5,7 @@ using namespace Shooter;
 using namespace Game2D;
 
 namespace Shooter {
-	Category Nothing,
-			 Node,
-			 PlayerAircraft,
+	Category PlayerAircraft,
 			 AlliedAircraft,
 			 EnemyAircraft;
 

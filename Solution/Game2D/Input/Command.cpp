@@ -6,15 +6,8 @@ using namespace std;
 using namespace sf;
 
 // INTERFACE
-Command::Command(function<void(SceneNode&, Time)> action) {
-	this->initialize(
-		[](SceneNode& sn, Time dt) {},
-		{ Category() });
-}
 Command::Command(function<void(SceneNode&, Time)> action, Category category) {
-	this->initialize(
-		[](SceneNode& sn, Time dt) {},
-		{ category });
+	this->initialize(action, { category });
 }
 Command::Command(function<void(SceneNode&, Time)> action, initializer_list<Category> categories) {
 	this->initialize(action, categories);

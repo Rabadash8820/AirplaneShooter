@@ -5,6 +5,8 @@ using namespace Game2D;
 // PRIVATE STATIC MEMBERS
 unsigned int Category::_root = 1;
 unsigned int Category::shiftedRoot() {
+	//if (_root == 0)
+	//	return (_root = 1);
 	return (_root <<= 1);
 }
 

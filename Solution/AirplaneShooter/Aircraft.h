@@ -12,7 +12,7 @@ namespace Shooter {
 		// AIRCRAFT TYPES
 	public:
 		typedef std::unique_ptr<Aircraft> Ptr;
-		enum Type {
+		enum class Type {
 			EAGLE,
 			RAPTOR,
 		};

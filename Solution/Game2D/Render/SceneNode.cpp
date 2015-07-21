@@ -1,4 +1,5 @@
 #include "SceneNode.h"
+#include "../Input/Category.h"
 #include <algorithm>
 #include <cassert>
 
@@ -57,7 +58,9 @@ Vector2f SceneNode::getWorldPosition() const {
 		transform *= node->getTransform();
 	return transform * Vector2f();
 }
-unsigned int SceneNode::getCategory() const { return 0; }
+unsigned int SceneNode::getCategory() const {
+	return 1;
+}
 void SceneNode::onCommand(const Command& command, sf::Time dt) {
 	// Execute the command if this node matches its category
 	if (command.category() & this->getCategory())

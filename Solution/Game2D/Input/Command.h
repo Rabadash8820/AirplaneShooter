@@ -14,7 +14,6 @@ namespace Game2D {
 	struct GAME2D_API Command {
 		// INTERFACE
 	public:
-		explicit Command(std::function<void(SceneNode&, sf::Time)>);
 		Command(std::function<void(SceneNode&, sf::Time)>, Category);
 		Command(std::function<void(SceneNode&, sf::Time)>, std::initializer_list<Category>);
 		unsigned int category() const;

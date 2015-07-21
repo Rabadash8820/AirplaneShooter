@@ -43,7 +43,7 @@ void AirplaneShooter::initKeyBindings() {
 	Command moveDown(
 		[](SceneNode& node, Time dt) {
 			Aircraft& a = static_cast<Aircraft&>(node);
-			a.velocity += Vector2f(0.f, -a.airSpeed); },
+			a.velocity += Vector2f(0.f, a.airSpeed); },
 		PlayerAircraft);
 
 	// Define KeyBindings for those Commands
