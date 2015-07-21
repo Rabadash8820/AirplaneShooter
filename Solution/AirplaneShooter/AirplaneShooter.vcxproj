@@ -173,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="Aircraft.cpp" />
     <ClCompile Include="AirplaneShooter.cpp" />
+    <ClCompile Include="Categories.cpp" />
     <ClCompile Include="DesertMap.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
