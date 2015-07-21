@@ -51,7 +51,6 @@ namespace Game2D {
 	protected:
 		virtual void loadResources() = 0;
 		virtual void buildScene() = 0;
-		virtual void handleEvent(const sf::Event&);
 		void updateOnCommands(sf::Time);
 		virtual void updateCurrent(sf::Time dt) = 0;
 		std::string projectDirectory();
