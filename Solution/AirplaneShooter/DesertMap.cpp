@@ -73,6 +73,7 @@ void DesertMap::buildScene() {
 
 	// Add a node for the leader Aircraft and assign it to the Player
 	Aircraft::Ptr leader(new Aircraft(Aircraft::EAGLE, _textures));
+	leader->airSpeed = _playerSpeed;
 	leader->setPosition(_playerSpawn);
 	_player = leader.get();
 	_sceneLayers[AIR]->attachChild(std::move(leader));

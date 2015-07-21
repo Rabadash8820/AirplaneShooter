@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Input\Category.cpp" />
     <ClCompile Include="Input\Command.cpp" />
     <ClCompile Include="Input\CommandManager.cpp" />
     <ClCompile Include="Map\Map.cpp" />
@@ -181,7 +182,6 @@
     <ClInclude Include="Render\Entity.h" />
     <ClInclude Include="Render\SceneNode.h" />
     <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

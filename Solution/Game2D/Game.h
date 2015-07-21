@@ -26,7 +26,7 @@ namespace Game2D {
 		Game(sf::VideoMode, std::string, sf::Time = sf::seconds(1.f / 60.f));
 		~Game();
 
-		// INTERFACE FUNCTIONS
+		// INTERFACE
 	public:
 		void run();
 

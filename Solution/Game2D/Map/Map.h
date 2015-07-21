@@ -8,6 +8,15 @@
 #include <vector>
 #include <queue>
 
+// Define a general macro to get the current working directory
+#ifdef _WIN32
+#include <direct.h>
+#define GetCurrentDir _getcwd
+#else
+#include <unistd.h>
+#define GetCurrentDir getcwd
+#endif
+
 namespace Game2D {
 
 	class GAME2D_API Map :
@@ -24,14 +33,13 @@ namespace Game2D {
 		Game2D::SceneNode _sceneTree;
 		size_t _numLayers;
 		std::vector<SceneNode*> _sceneLayers;
-		std::unique_ptr<Categories> _categories;
 		Entity* _player;
 		sf::Vector2f _playerSpawn;
 		std::queue<Command> _commands;
 
 		// INTERFACE
 	public:
-		Map(sf::RenderWindow*, sf::FloatRect, size_t, std::unique_ptr<Categories>);
+		Map(sf::RenderWindow*, sf::FloatRect, size_t);
 		void build();
 		virtual void handleEvent(const sf::Event&) = 0;
 		virtual void handleRealtimeInput() = 0;
@@ -43,7 +51,10 @@ namespace Game2D {
 	protected:
 		virtual void loadResources() = 0;
 		virtual void buildScene() = 0;
+		virtual void handleEvent(const sf::Event&);
+		void updateOnCommands(sf::Time);
 		virtual void updateCurrent(sf::Time dt) = 0;
+		std::string projectDirectory();
 
 	};
 	

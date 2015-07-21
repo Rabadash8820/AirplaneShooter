@@ -24,9 +24,18 @@ void Map::build() {
 	buildScene();
 }
 void Map::update(Time dt) {
-	// Give all queued commands to the Scene Tree
+	updateCurrent(dt);
+	_sceneTree.update(dt);
+}
+void Map::draw(RenderTarget& target, RenderStates states) const {
+	target.draw(_sceneTree, states);
+	_window->setView(_view);
+}
+
+// HELPER FUNCTIONS
+void Map::updateOnCommands(Time dt) {
 	while (!_commands.empty()) {
-		_sceneTree.giveCommand(_commands.front(), dt);
+		_sceneTree.onCommand(_commands.front(), dt);
 		_commands.pop();
 	}
 

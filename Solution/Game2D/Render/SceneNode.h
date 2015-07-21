@@ -18,15 +18,13 @@ namespace Game2D {
 		// VARIABLES
 	public:
 		typedef std::unique_ptr<SceneNode> Ptr;
-	protected:
-		std::unique_ptr<Categories> _categories;
 	private:
 		SceneNode* _parent;
 		std::vector<Ptr> _children;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		SceneNode(std::unique_ptr<Categories>);
+		SceneNode();
 		~SceneNode();
 
 		// INTERFACE FUNCTIONS

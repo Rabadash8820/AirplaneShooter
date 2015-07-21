@@ -1,7 +1,9 @@
 #include "AirplaneShooter.h"
 #include "DesertMap.h"
-#include <Command.h>
-#include <KeyBinding.h>
+#include "Aircraft.h"
+#include "Categories.h"
+#include <Input\Command.h>
+#include <Input\KeyBinding.h>
 #include <memory>
 
 using namespace Shooter;

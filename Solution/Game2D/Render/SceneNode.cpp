@@ -1,5 +1,4 @@
 #include "SceneNode.h"
-#include "../Input/Categories.h"
 #include <algorithm>
 #include <cassert>
 
@@ -8,10 +7,13 @@ using namespace sf;
 using namespace std;
 
 // CONSTRUCTORS / DESTRUCTOR
-SceneNode::SceneNode(unique_ptr<Categories> c) :
-	_categories(std::move(c))
-{
+SceneNode::SceneNode() { }
+SceneNode::~SceneNode() {}
 
+// INTERFACE FUNCTIONS
+void SceneNode::attachChild(Ptr child) {
+	child->_parent = this;
+	_children.push_back(std::move(child));
 }
 SceneNode::~SceneNode() {}
 

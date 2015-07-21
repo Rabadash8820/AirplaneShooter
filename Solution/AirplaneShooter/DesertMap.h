@@ -18,8 +18,6 @@ namespace Shooter {
 		// INTERFACE
 	public:
 		DesertMap(sf::RenderWindow*);
-		virtual void handleEvent(const sf::Event&);
-		virtual void handleRealtimeInput();
 		~DesertMap();
 
 		// HELPER FUNCTIONS
@@ -27,7 +25,8 @@ namespace Shooter {
 		virtual void updateCurrent(sf::Time);
 		virtual void loadResources();
 		virtual void buildScene();
-		std::string projectDirectory();
+		virtual void handleEvent(const sf::Event&);
+		void adjustPlayer(sf::Time);
 
 	};
 
