@@ -41,6 +41,7 @@ namespace Game2D {
 	public:
 		Map(sf::RenderWindow*, sf::FloatRect, size_t);
 		void build();
+		virtual void handleEvent(const sf::Event&);
 		void pushCommand(Command);
 		void update(sf::Time);
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
@@ -49,7 +50,6 @@ namespace Game2D {
 	protected:
 		virtual void loadResources() = 0;
 		virtual void buildScene() = 0;
-		virtual void handleEvent(const sf::Event&);
 		void updateOnCommands(sf::Time);
 		virtual void updateCurrent(sf::Time dt) = 0;
 		std::string projectDirectory();

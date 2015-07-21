@@ -17,8 +17,7 @@ DesertMap::DesertMap(RenderWindow* window) :
 		Vector2f(0.f, -50.f),
 		window,
 		FloatRect(0.f, 0.f, window->getDefaultView().getSize().x, 2000.f),
-		3),
-	_playerSpeed(40.f)
+		3)
 {
 	// Align the player spawn point with the center of the View
 	_view = _window->getDefaultView();
@@ -62,7 +61,7 @@ void DesertMap::buildScene() {
 
 	// Add a node for the leader Aircraft and assign it to the Player
 	Aircraft::Ptr leader(new Aircraft(Aircraft::EAGLE, _textures));
-	leader->airSpeed = _playerSpeed;
+	leader->airSpeed = PLAYER_SPEED;
 	leader->setPosition(_playerSpawn);
 	_player = leader.get();
 	_sceneLayers[AIR]->attachChild(std::move(leader));
@@ -75,7 +74,7 @@ void DesertMap::buildScene() {
 	_player->attachChild(std::move(leftEscort));
 	_player->attachChild(std::move(rightEscort));
 
-	// Make things scroll
+	// Do base building
 	ScrollingMap::buildScene();
 }
 void DesertMap::adjustPlayer(Time dt) {

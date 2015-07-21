@@ -65,6 +65,9 @@ void Game::handleEvent(const Event& e) {
 	case Event::Closed:
 		_window.close();
 		break;
+
+	default:
+		_map->handleEvent(e);
 	}
 }
 void Game::handleRealtimeInput() {
