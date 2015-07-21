@@ -32,7 +32,7 @@ void Command::initialize(function<void(SceneNode&, Time)> action, initializer_li
 	_action = action;
 
 	// Set category (bitwise OR of all those provided)
-	unsigned int id;
+	unsigned int id = 0;
 	for (auto& c : categories)
 		id |= c.getId();
 	_categoryId = id;

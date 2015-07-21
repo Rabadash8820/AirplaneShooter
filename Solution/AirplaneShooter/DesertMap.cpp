@@ -45,8 +45,10 @@ DesertMap::~DesertMap() {}
 void DesertMap::loadResources() {
 	// Get resource directories
 	string textureDir = projectDirectory() + "\\Resources\\Textures\\";
+	string shaderDir  = projectDirectory() + "\\Resources\\Shaders\\";
+	string soundDir   = projectDirectory() + "\\Resources\\Sounds\\";
 
-	// Load texture resources
+	// Load textures
 	_textures.load(ResourceIDs::Texture::DESERT, textureDir + "Desert.png");
 	_textures.load(ResourceIDs::Texture::EAGLE,  textureDir + "Eagle.png");
 	_textures.load(ResourceIDs::Texture::RAPTOR, textureDir + "Raptor.png");
@@ -81,6 +83,8 @@ void DesertMap::buildScene() {
 void DesertMap::adjustPlayer(Time dt) {
 	// Reduce the playerAircraft's velocity if they are moving diagonally
 	Vector2f playerV = _player->velocity;
+	if (playerV.x != 0 || playerV.y != 0)
+		cout << "YUS" << endl;
 	if (playerV.x != 0 && playerV.y != 0)
 		_player->velocity = playerV / sqrt(2.f);
 	

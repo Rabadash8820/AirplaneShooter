@@ -43,7 +43,7 @@ void Map::updateOnCommands(Time dt) {
 string Map::projectDirectory() {
 	char currDir[FILENAME_MAX];
 	GetCurrentDir(currDir, sizeof(currDir));
-	// Make some assertion here...
+	// TO DO: Make some assertion here...
 	return currDir;
 }
 void Map::handleEvent(const Event&) { }
