@@ -1,5 +1,8 @@
 #include "DesertMap.h"
 #include "Aircraft.h"
+#include "ResourceIds\Textures.h"
+#include "ResourceIds\Sounds.h"
+#include "ResourceIds\Fonts.h"
 #include "Categories.h"
 #include <Render/Brush.h>
 #include <memory>
@@ -62,7 +65,7 @@ void DesertMap::loadResources() {
 }
 void DesertMap::buildScene() {
 	// Add a node for the background, and tile its texture
-	Texture& desertTexture = _textures[ResourceIDs::Texture::DESERT];
+	Texture& desertTexture = _textures[Textures::DESERT];
 	IntRect desertBounds(_worldBounds);
 	desertTexture.setRepeated(true);
 	Brush::Ptr background(

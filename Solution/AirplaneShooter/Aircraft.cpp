@@ -1,6 +1,6 @@
 #include "Aircraft.h"
-#include "ResourceManager.h"
 #include "Categories.h"
+#include <Render\ResourceManager.h>
 
 using namespace Shooter;
 using namespace Game2D;
@@ -8,7 +8,7 @@ using namespace sf;
 using namespace std;
 
 // CONSTRUCTORS / DESTRUCTOR
-Aircraft::Aircraft(Type t, const TextureManager<ResourceIDs::Texture>& textures) :
+Aircraft::Aircraft(Type t, const TextureManager& textures) :
 	_sprite(textures[textureIdForType(t)])
 
 {
@@ -44,14 +44,14 @@ unsigned int Aircraft::getCategory() const {
 }
 
 // HELPER FUNCTIONS
-ResourceIDs::Texture Aircraft::textureIdForType(Aircraft::Type t) {
+ResourceId Aircraft::textureIdForType(Aircraft::Type t) {
 	switch (t) {
 	case Type::EAGLE:
-		return ResourceIDs::Texture::EAGLE;
+		return Textures::EAGLE;
 		break;
 	case Type::RAPTOR:
 	default:
-		return ResourceIDs::Texture::RAPTOR;
+		return Textures::RAPTOR;
 		break;
 	}
 }

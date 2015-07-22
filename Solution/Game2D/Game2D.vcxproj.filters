@@ -34,8 +34,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ResourceManager.inl">
-      <Filter>Header Files</Filter>
+    <None Include="Render\ResourceManager.inl">
+      <Filter>Source Files\Render</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="Input\CommandManager.cpp">
       <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\ResourceId.cpp">
+      <Filter>Source Files\Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

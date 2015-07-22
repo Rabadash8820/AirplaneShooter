@@ -176,25 +176,20 @@
     <ClCompile Include="Categories.cpp" />
     <ClCompile Include="DesertMap.cpp" />
     <ClCompile Include="Main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="Resources\Fonts\Sansation.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\Textures\Desert.png" />
-    <Image Include="Resources\Textures\Eagle.png" />
-    <Image Include="Resources\Textures\Raptor.png" />
+    <ClCompile Include="ResourceIds\Fonts.cpp" />
+    <ClCompile Include="ResourceIds\Shaders.cpp" />
+    <ClCompile Include="ResourceIds\Sounds.cpp" />
+    <ClCompile Include="ResourceIds\Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aircraft.h" />
     <ClInclude Include="AirplaneShooter.h" />
     <ClInclude Include="Categories.h" />
     <ClInclude Include="DesertMap.h" />
-    <ClInclude Include="FontIds.h" />
-    <ClInclude Include="ResourceIds.h" />
-    <ClInclude Include="ShaderIds.h" />
-    <ClInclude Include="SoundIds.h" />
-    <ClInclude Include="TextureIds.h" />
+    <ClInclude Include="ResourceIds\Fonts.h" />
+    <ClInclude Include="ResourceIds\Shaders.h" />
+    <ClInclude Include="ResourceIds\Sounds.h" />
+    <ClInclude Include="ResourceIds\Textures.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

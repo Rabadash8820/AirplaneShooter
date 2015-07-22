@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../GAME2D_API.h"
+#include "../Render/ResourceManager.h"
 #include "../Render/SceneNode.h"
 #include "../Render/Entity.h"
 #include "../Input/Categories.h"
@@ -30,7 +31,11 @@ namespace Game2D {
 		sf::RenderWindow* _window;
 		sf::View _view;
 		sf::IntRect _worldBounds;
-		Game2D::SceneNode _sceneTree;
+		TextureManager _textures;
+		SoundManager _sounds;
+		FontManager _fonts;
+		ShaderManager _shaders;
+		SceneNode _sceneTree;
 		size_t _numLayers;
 		std::vector<SceneNode*> _sceneLayers;
 		Entity* _player;
