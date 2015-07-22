@@ -21,4 +21,7 @@ namespace Game2D {
 		operator unsigned int() const;
 	};
 
+	// Define the most general Category for use by any Game
+	extern GAME2D_API Category Node;
+
 }

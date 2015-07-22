@@ -4,7 +4,8 @@
 #include "ResourceIds\Sounds.h"
 #include "ResourceIds\Fonts.h"
 #include "Categories.h"
-#include <Render/Brush.h>
+#include <Render\Brush.h>
+#include <Input\Category.h>
 #include <stdio.h>  // defines FILENAME_MAX
 #include <cassert>
 #include <iostream>

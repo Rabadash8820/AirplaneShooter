@@ -3,10 +3,10 @@
 using namespace Game2D;
 
 // PRIVATE STATIC MEMBERS
-unsigned int Category::_root = 1;
+unsigned int Category::_root = 0;
 unsigned int Category::shiftedRoot() {
-	//if (_root == 0)
-	//	return (_root = 1);
+	if (_root == 0)
+		return (_root = 1);
 	return (_root <<= 1);
 }
 
@@ -22,4 +22,8 @@ unsigned int Category::operator|(const Category& that) const {
 }
 Category::operator unsigned int() const {
 	return this->_id;
+}
+
+namespace Game2D {
+	Category Node;
 }

@@ -59,7 +59,7 @@ Vector2f SceneNode::getWorldPosition() const {
 	return transform * Vector2f();
 }
 unsigned int SceneNode::getCategory() const {
-	return 1;
+	return Node.getId();
 }
 void SceneNode::onCommand(const Command& command, sf::Time dt) {
 	// Execute the command if this node matches its category
