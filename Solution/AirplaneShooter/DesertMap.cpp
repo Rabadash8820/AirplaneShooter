@@ -1,5 +1,8 @@
 #include "DesertMap.h"
 #include "Aircraft.h"
+#include "ResourceIds\Textures.h"
+#include "ResourceIds\Sounds.h"
+#include "ResourceIds\Fonts.h"
 #include "Categories.h"
 #include <Render/Brush.h>
 #include <stdio.h>  // defines FILENAME_MAX
@@ -46,15 +49,19 @@ void DesertMap::loadResources() {
 	string textureDir = projectDirectory() + "\\Resources\\Textures\\";
 	string shaderDir  = projectDirectory() + "\\Resources\\Shaders\\";
 	string soundDir   = projectDirectory() + "\\Resources\\Sounds\\";
+	string fontDir    = projectDirectory() + "\\Resources\\Fonts\\";
 
 	// Load textures
-	_textures.load(ResourceIDs::Texture::DESERT, textureDir + "Desert.png");
-	_textures.load(ResourceIDs::Texture::EAGLE,  textureDir + "Eagle.png");
-	_textures.load(ResourceIDs::Texture::RAPTOR, textureDir + "Raptor.png");
+	_textures.load(Textures::DESERT, textureDir + "Desert.png");
+	_textures.load(Textures::EAGLE,  textureDir + "Eagle.png");
+	_textures.load(Textures::RAPTOR, textureDir + "Raptor.png");
+
+	// Load fonts
+	_fonts.load(Fonts::SANSATION, fontDir + "Sansation.ttf");
 }
 void DesertMap::buildScene() {
 	// Add a node for the background, and tile its texture
-	Texture& desertTexture = _textures[ResourceIDs::Texture::DESERT];
+	Texture& desertTexture = _textures[Textures::DESERT];
 	IntRect desertBounds(_worldBounds);
 	desertTexture.setRepeated(true);
 	Brush::Ptr background(new Brush(desertTexture, desertBounds));

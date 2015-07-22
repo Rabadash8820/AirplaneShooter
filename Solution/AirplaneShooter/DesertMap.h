@@ -1,7 +1,6 @@
 #pragma once
 
-#include "ResourceIds.h"
-#include <ResourceManager.h>
+#include <Render\ResourceManager.h>
 #include <Map/ScrollingMap.h>
 #include <array>
 
@@ -12,7 +11,6 @@ namespace Shooter {
 	private:
 		const short BACKGROUND = 0, GROUND = 1, AIR = 2;
 		const float BORDER_OFFSET = 40.f;
-		Game2D::TextureManager<ResourceIDs::Texture> _textures;
 		const float PLAYER_SPEED = 200.f;	// Speeds in pixels/sec
 
 		// INTERFACE

@@ -40,8 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ResourceManager.inl">
-      <Filter>Header Files</Filter>
+    <None Include="Render\ResourceManager.inl">
+      <Filter>Source Files\Render</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +66,9 @@
     <ClCompile Include="Input\Category.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Render\ResourceId.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Entity.h">
@@ -86,9 +89,6 @@
     <ClInclude Include="GAME2D_API.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Map\ScrollingMap.h">
       <Filter>Header Files\Map</Filter>
     </ClInclude>
@@ -100,6 +100,12 @@
     </ClInclude>
     <ClInclude Include="Input\KeyBinding.h">
       <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\ResourceId.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\ResourceManager.h">
+      <Filter>Header Files\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
