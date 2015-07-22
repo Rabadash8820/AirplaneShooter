@@ -38,9 +38,13 @@ void ResourceManager<Resource>::load(ResourceId res, const std::string& filePath
 	assert(insertSuccess.second);
 }
 template<typename Resource>
-Resource& ResourceManager<Resource>::operator[](ResourceId res) const {
+Resource& ResourceManager<Resource>::get(ResourceId res) const {
 	// Try to retrieve the resource (make sure the ID is present in the std::map)
 	auto pos = _resources.find(res.getId());
 	assert(pos != _resources.end());
 	return *(pos->second);
+}
+template<typename Resource>
+Resource& ResourceManager<Resource>::operator[](ResourceId res) const {
+	return this->get(res);
 }

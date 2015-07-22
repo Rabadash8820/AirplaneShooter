@@ -1,4 +1,4 @@
-#include "AirplaneShooter.h"
+#include "Game.h"
 #include <iostream>
 
 using namespace std;
@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 	// Run the game
 	try {
-		Shooter::AirplaneShooter game;
+		Shooter::Game game;
 		game.run();
 	}
 

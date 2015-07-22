@@ -1,17 +1,18 @@
 #pragma once
 
-#include <Game.h>
+#include <Application.h>
 
 namespace Shooter {
 
-	class AirplaneShooter : public Game2D::Game {
+	class Game : public Game2D::Application {
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		AirplaneShooter();
-		~AirplaneShooter();
+		Game();
+		~Game();
 
 		// INITIALIZATION FUNCTIONS
 		void initKeyBindings();
+		virtual void registerStates();
 	};
 
 }

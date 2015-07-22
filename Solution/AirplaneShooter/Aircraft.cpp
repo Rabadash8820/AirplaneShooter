@@ -31,13 +31,13 @@ unsigned int Aircraft::getCategory() const {
 	// Adjust the game Category of this Aircraft depending on its type
 	switch (_type) {
 	case Type::EAGLE:
-		id |= PlayerAircraft.getId();
+		id |= Categories::PlayerAircraft.getId();
 		break;
 	case Type::RAPTOR:
-		id |= AlliedAircraft.getId();
+		id |= Categories::AlliedAircraft.getId();
 		break;
 	default:
-		id |= EnemyAircraft.getId();
+		id |= Categories::EnemyAircraft.getId();
 		break;
 	}
 	return id;
@@ -47,11 +47,11 @@ unsigned int Aircraft::getCategory() const {
 ResourceId Aircraft::textureIdForType(Aircraft::Type t) {
 	switch (t) {
 	case Type::EAGLE:
-		return Textures::EAGLE;
+		return Textures::Eagle;
 		break;
 	case Type::RAPTOR:
 	default:
-		return Textures::RAPTOR;
+		return Textures::Raptor;
 		break;
 	}
 }

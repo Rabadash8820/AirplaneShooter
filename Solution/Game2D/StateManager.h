@@ -1,5 +1,6 @@
 #pragma once
 
+#include "GAME2D_API.h"
 #include "State.h"
 #include "StateId.h"
 #include <SFML\Graphics.hpp>
@@ -9,7 +10,7 @@
 
 namespace Game2D {
 
-	class StateManager : private sf::NonCopyable {
+	class GAME2D_API StateManager : private sf::NonCopyable {
 		// ABSTRACT DATA TYPES
 	public:
 		enum Action {

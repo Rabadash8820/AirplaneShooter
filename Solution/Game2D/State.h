@@ -1,5 +1,6 @@
 #pragma once
 
+#include "GAME2D_API.h"
 #include "StateId.h"
 #include "Render\ResourceManager.h"
 #include <SFML\Graphics.hpp>
@@ -9,7 +10,7 @@ namespace Game2D {
 
 	class StateManager;
 
-	class State {
+	class GAME2D_API State {
 		// ABSTRACT DATA TYPES
 	public:
 		typedef std::unique_ptr<State> Ptr;
@@ -39,6 +40,8 @@ namespace Game2D {
 		void requestPop();
 		void requestClear();
 		Context getContext() const;
+		void centerOrigin(sf::Sprite&);
+		void centerOrigin(sf::Text&);
 
 	};
 

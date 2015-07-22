@@ -7,10 +7,11 @@ namespace Shooter {
 
 	namespace Textures {
 
-		ResourceId DESERT,
-				   EAGLE,
-				   RAPTOR,
-				   MISSILE;
+		ResourceId Desert,
+				   Eagle,
+				   Raptor,
+				   Missile,
+				   TitleScreen;
 
 	}
 
