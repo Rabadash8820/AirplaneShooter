@@ -19,6 +19,12 @@
     <Filter Include="Source Files\ResourceIds">
       <UniqueIdentifier>{7d0ff059-2465-46a0-9e18-d34460d33abd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\States">
+      <UniqueIdentifier>{8c351ba9-e752-4083-8a1e-a3f1e48a08c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{cd23d2d4-e2ea-42c3-9d48-ec943d0d36c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -28,9 +34,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DesertMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AirplaneShooter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Categories.cpp">
@@ -48,15 +51,21 @@
     <ClCompile Include="ResourceIds\Textures.cpp">
       <Filter>Source Files\ResourceIds</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="States\States.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\TitleState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aircraft.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DesertMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AirplaneShooter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Categories.h">
@@ -73,6 +82,15 @@
     </ClInclude>
     <ClInclude Include="ResourceIds\Textures.h">
       <Filter>Header Files\ResourceIds</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="States\States.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\TitleState.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

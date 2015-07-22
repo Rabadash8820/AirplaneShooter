@@ -4,25 +4,22 @@ using namespace Game2D;
 using namespace sf;
 using namespace std;
 
+// Define a general macro to get the current working directory
+#ifdef _WIN32
+#include <direct.h>
+#define GetCurrentDir _getcwd
+#else
+#include <unistd.h>
+#define GetCurrentDir getcwd
+#endif
+
 // INTERFACE
 Application::Application(VideoMode videoMode, string title, Time frameDur) :
 	_window(videoMode, title),
 	_frameDuration(frameDur),
 	_stateManager(State::Context(_window, _textures, _fonts)),
 	_statisticsNumFrames(0) 
-{
-	_window.setKeyRepeatEnabled(false);
-
-	//_fonts.load(Fonts::Main, "Media/Sansation.ttf");
-	//_textures.load(Textures::TitleScreen, "Media/Textures/TitleScreen.png");
-
-	//_statisticsText.setFont(_fonts[Fonts::Main]);
-	_statisticsText.setPosition(5.f, 5.f);
-	_statisticsText.setCharacterSize(10u);
-
-	registerStates();
-	//_stateManager.push(States::Title);
-}
+{ }
 void Application::run() {
 	// Main game loop
 	Clock clock;
@@ -80,4 +77,10 @@ void Application::updateStatistics(Time dt) {
 }
 void Application::registerStates() {
 
+}
+string Application::projectDirectory() {
+	char currDir[FILENAME_MAX];
+	GetCurrentDir(currDir, sizeof(currDir));
+	// TO DO: Make some assertion here...
+	return currDir;
 }

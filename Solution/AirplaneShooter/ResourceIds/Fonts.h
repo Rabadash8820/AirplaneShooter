@@ -6,7 +6,7 @@ namespace Shooter {
 
 	namespace Fonts {
 
-		extern Game2D::ResourceId SANSATION;
+		extern Game2D::ResourceId Main;
 
 	}
 

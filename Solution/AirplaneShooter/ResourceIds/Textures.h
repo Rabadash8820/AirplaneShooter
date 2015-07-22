@@ -6,10 +6,11 @@ namespace Shooter {
 
 	namespace Textures {
 
-		extern Game2D::ResourceId DESERT,
-								  EAGLE,
-								  RAPTOR,
-								  MISSILE;
+		extern Game2D::ResourceId Desert,
+								  Eagle,
+								  Raptor,
+								  Missile,
+								  TitleScreen;
 
 	}
 

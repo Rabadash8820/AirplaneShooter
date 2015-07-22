@@ -53,16 +53,16 @@ void DesertMap::loadResources() {
 	string fontDir    = projectDirectory() + "\\Resources\\Fonts\\";
 
 	// Load textures
-	_textures.load(Textures::DESERT, textureDir + "Desert.png");
-	_textures.load(Textures::EAGLE,  textureDir + "Eagle.png");
-	_textures.load(Textures::RAPTOR, textureDir + "Raptor.png");
+	_textures.load(Textures::Desert, textureDir + "Desert.png");
+	_textures.load(Textures::Eagle,  textureDir + "Eagle.png");
+	_textures.load(Textures::Raptor, textureDir + "Raptor.png");
 
 	// Load fonts
-	_fonts.load(Fonts::SANSATION, fontDir + "Sansation.ttf");
+	_fonts.load(Fonts::Main, fontDir + "Sansation.ttf");
 }
 void DesertMap::buildScene() {
 	// Add a node for the background, and tile its texture
-	Texture& desertTexture = _textures[Textures::DESERT];
+	Texture& desertTexture = _textures[Textures::Desert];
 	IntRect desertBounds(_worldBounds);
 	desertTexture.setRepeated(true);
 	Brush::Ptr background(new Brush(desertTexture, desertBounds));
@@ -112,7 +112,7 @@ void DesertMap::handleEvent(const Event& e) {
 			Command output(
 				[](SceneNode& s, Time) {
 					cout << s.getPosition().x << ", " << s.getPosition().y << endl; },
-				PlayerAircraft);
+				Categories::PlayerAircraft);
 			_commands.push(output);
 			break;
 		}

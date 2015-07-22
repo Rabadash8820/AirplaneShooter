@@ -1,15 +1,19 @@
 #pragma once
 
+#include "GAME2D_API.h"
 #include "Render\ResourceManager.h"
 #include "StateManager.h"
-#include <SFML\Graphics.hpp>
+#include <SFML\System\Time.hpp>
+#include <SFML\Graphics\Sprite.hpp>
+#include <SFML\Graphics\Text.hpp>
+#include <SFML\Graphics\RenderWindow.hpp>
 #include <string>
 
 namespace Game2D {
 
-	class Application {
+	class GAME2D_API Application {
 		// PRIVATE VARIABLES / CONSTANTS		
-	private:
+	protected:
 		sf::Time _frameDuration;
 		sf::RenderWindow _window;
 		TextureManager _textures;
@@ -25,12 +29,13 @@ namespace Game2D {
 		void run();
 
 		// HELPER FUNCTIONS
-	private:
+	protected:
 		void processInput();
 		void update(sf::Time);
 		void draw();
 		void updateStatistics(sf::Time);
 		virtual void registerStates() = 0;
+		std::string projectDirectory();
 	};
 
 }

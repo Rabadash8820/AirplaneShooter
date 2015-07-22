@@ -5,8 +5,12 @@ using namespace Game2D;
 
 namespace Shooter {
 
-	Category PlayerAircraft,
-			 AlliedAircraft,
-			 EnemyAircraft;
+	namespace Categories {
+
+		Category PlayerAircraft,
+				 AlliedAircraft,
+				 EnemyAircraft;
+
+	}
 
 }

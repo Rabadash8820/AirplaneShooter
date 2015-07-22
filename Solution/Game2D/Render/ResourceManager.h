@@ -26,6 +26,7 @@ namespace Game2D {
 		void load(ResourceId, const std::string&);
 		template<typename Param>
 		void load(ResourceId, const std::string&, Param);
+		Resource& get(ResourceId) const;
 		Resource& operator[](ResourceId) const;
 	};
 

@@ -2,6 +2,7 @@
 #include "StateManager.h"
 
 using namespace Game2D;
+using namespace sf;
 
 // CONSTRUCTOR FOR STATE CONTEXT
 State::Context::Context(sf::RenderWindow& window, TextureManager& textures, FontManager& fonts) {
@@ -29,4 +30,16 @@ void State::requestClear() {
 }
 State::Context State::getContext() const {
 	return _context;
+}
+void State::centerOrigin(Sprite& sprite) {
+	FloatRect bounds = sprite.getLocalBounds();
+	sprite.setOrigin(
+		floor(bounds.left + bounds.width / 2.f),
+		floor(bounds.top + bounds.height / 2.f));
+}
+void State::centerOrigin(Text& text) {
+	FloatRect bounds = text.getLocalBounds();
+	text.setOrigin(
+		floor(bounds.left + bounds.width / 2.f),
+		floor(bounds.top + bounds.height / 2.f));
 }

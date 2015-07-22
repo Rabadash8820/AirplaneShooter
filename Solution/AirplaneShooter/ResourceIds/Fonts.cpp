@@ -7,7 +7,7 @@ namespace Shooter {
 
 	namespace Fonts {
 
-		ResourceId SANSATION;
+		ResourceId Main;
 
 	}
 
