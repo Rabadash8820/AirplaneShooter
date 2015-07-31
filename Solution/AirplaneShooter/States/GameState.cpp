@@ -1,22 +1,24 @@
 #include "GameState.h"
 
+#include "..\DesertMap.h"
+
 using namespace sf;
 using namespace std;
 using namespace Shooter;
 using namespace Game2D;
 
 // CONSTRUCTORS / DESTRUCTOR
-GameState::GameState(StateManager& manager, Context context, Map::Ptr map) :
+GameState::GameState(StateManager& manager, Context context) :
 	State(manager, context),
-	_map(std::move(map)),
-	_player(*reinterpret_cast<Player*>(context.player))
+	_map(new DesertMap(context.window)),
+	_player(*reinterpret_cast<Player*>(context.inputManager))
 { }
 
 // INTERFACE
 bool GameState::handleEvent(const Event& e) {
 	_player.handleEvent(e, _map->getCommandQueue());
 
-	// Allow other States to handle Events
+	// Allow other States to handle this Event
 	return true;
 }
 bool GameState::update(Time dt) {

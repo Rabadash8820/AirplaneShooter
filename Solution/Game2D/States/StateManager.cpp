@@ -12,10 +12,12 @@ _context(context)
 void StateManager::update(Time dt) {
 	// Iterate through the State "stack" from top to bottom
 	for (auto itr = _stack.rbegin(); itr != _stack.rend(); ++itr) {
-		bool letOthersUpdate = (*itr)->update(dt);
-		if (!letOthersUpdate)
+		bool othersCanUpdate = (*itr)->update(dt);
+		if (!othersCanUpdate)
 			return;
 	}
+
+	applyPendingChanges();
 }
 void StateManager::draw() {
 	// Iterate through the State "stack" from top to bottom
@@ -25,8 +27,8 @@ void StateManager::draw() {
 void StateManager::handleEvent(const Event& e) {
 	// Iterate through the State "stack" from top to bottom
 	for (auto itr = _stack.rbegin(); itr != _stack.rend(); ++itr) {
-		bool letOthersHandle = (*itr)->handleEvent(e);
-		if (!letOthersHandle)
+		bool othersCanHandle = (*itr)->handleEvent(e);
+		if (!othersCanHandle)
 			return;
 	}
 

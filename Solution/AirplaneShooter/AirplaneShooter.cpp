@@ -4,7 +4,11 @@
 #include "Categories.h"
 #include "States\States.h"
 #include "States\TitleState.h"
+#include "States\MenuState.h"
+#include "States\GameState.h"
+#include "States\PauseState.h"
 #include "ResourceIds\Fonts.h"
+#include "ResourceIds\Textures.h"
 
 #include <Input\Command.h>
 #include <Input\KeyBinding.h>
@@ -26,6 +30,7 @@ AirplaneShooter::AirplaneShooter() :
 	string currDir    = Utility::currentWorkingDirectory();
 	string textureDir = currDir + "\\Resources\\Textures\\";
 	string fontDir    = currDir + "\\Resources\\Fonts\\";
+	_textures.load(Textures::TitleScreen, textureDir + "TitleScreen.png");
 	_fonts.load(Fonts::Main, fontDir + "Sansation.ttf");
 
 	// Initialize the statistics text
@@ -40,4 +45,7 @@ AirplaneShooter::AirplaneShooter() :
 
 void AirplaneShooter::registerStates() {
 	_stateManager.registerState<TitleState>(States::Title);
+	_stateManager.registerState<MenuState>(States::Menu);
+	_stateManager.registerState<GameState>(States::Game);
+	_stateManager.registerState<PauseState>(States::Pause);
 }

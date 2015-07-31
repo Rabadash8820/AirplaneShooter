@@ -17,9 +17,7 @@ namespace Shooter {
 
 		// HELPER FUNCTIONS
 	private:
-		virtual void handleKeyboardEvent(const sf::Event::KeyEvent&, std::queue<Game2D::Command>&) const;
-		virtual void handleMouseEvent(const sf::Event&, std::queue<Game2D::Command>&) const;
-		virtual void handleJoystickEvent(const sf::Event&, std::queue<Game2D::Command>&) const;
+		virtual void handleKeyPress(const sf::Event::KeyEvent&, std::queue<Game2D::Command>&) const;
 	};
 
 }

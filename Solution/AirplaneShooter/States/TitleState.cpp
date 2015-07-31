@@ -6,6 +6,8 @@
 
 #include <Utility.h>
 
+#include <string>
+
 using namespace Game2D;
 using namespace Shooter;
 using namespace sf;
@@ -16,23 +18,17 @@ TitleState::TitleState(Game2D::StateManager& manager, Context context) :
 	State(manager, context),
 	_showText(true),
 	_effectTime(sf::Time::Zero),
+	_background((*context.textures)[Textures::TitleScreen]),
 	_text("Press any key to start", (*context.fonts)[Fonts::Main])
 {
-	// Load resources
-	string currDir = Utility::currentWorkingDirectory();
-	string textureDir = currDir + "\\Resources\\Textures\\";
-	context.textures->load(Textures::TitleScreen, textureDir + "TitleScreen.png");
-	Texture& titleTexture = (*context.textures)[Textures::TitleScreen];
-
 	// Define the flashing title Text
-	_backgroundSprite.setTexture(titleTexture);
-	centerOrigin(_text);
+	Utility::centerOrigin(_text);
 	_text.setPosition(context.window->getView().getSize() / 2.f);
 }
 void TitleState::draw() {
 	// Draw the background Sprite and foreground Text
 	sf::RenderWindow& window = *(getContext().window);
-	window.draw(_backgroundSprite);
+	window.draw(_background);
 	if (_showText)
 		window.draw(_text);
 }
@@ -50,10 +46,10 @@ bool TitleState::update(sf::Time dt) {
 bool TitleState::handleEvent(const sf::Event& e) {
 	// If the user presses any key, move to the Menu state
 	if (e.type == Event::KeyPressed) {
-		requestPop();
-		requestPush(States::Menu);
+		requestPopState();
+		requestPushState(States::Menu);
 	}
 
-	// Allow other States to handle Events
+	// Allow other States to handle this Event
 	return true;
 }

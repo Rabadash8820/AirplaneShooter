@@ -16,13 +16,13 @@ namespace Shooter {
 
 	class GameState : Game2D::State {
 		// PRIVATE MEMBERS
-	protected:
+	private:
 		Game2D::Map::Ptr _map;
 		Player& _player;
 
 		// INTERFACE
-	private:
-		GameState(Game2D::StateManager&, Context, Game2D::Map::Ptr);
+	public:
+		GameState(Game2D::StateManager&, Context);
 		virtual bool handleEvent(const sf::Event&);
 		virtual bool update(sf::Time);
 		virtual void draw();

@@ -18,11 +18,17 @@ void Application::run() {
 	while (_window.isOpen()) {
 
 		// Process events and update as many as times as needed
+		// If the State stack is empty, close the Window
+		// Check inside this loop, because 
 		Time dt = clock.restart();
 		timeSinceUpdate += dt;
 		while (timeSinceUpdate > _frameDuration) {
 			this->processInput();
 			this->update(_frameDuration);
+			
+			if (_stateManager.isEmpty())
+				_window.close();
+
 			timeSinceUpdate -= _frameDuration;
 		}
 

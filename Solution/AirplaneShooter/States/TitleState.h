@@ -13,7 +13,7 @@ namespace Shooter {
 	class TitleState : public Game2D::State {
 		// PRIVATE MEMBERS
 	private:
-		sf::Sprite _backgroundSprite;
+		sf::Sprite _background;
 		sf::Text _text;
 		bool _showText;
 		sf::Time _effectTime;

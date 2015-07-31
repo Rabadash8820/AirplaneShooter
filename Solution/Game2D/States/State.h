@@ -24,7 +24,7 @@ namespace Game2D {
 			sf::RenderWindow* window;
 			TextureManager* textures;
 			FontManager* fonts;
-			InputManager* player;
+			InputManager* inputManager;
 			Context(sf::RenderWindow&, TextureManager&, FontManager&);
 		};
 
@@ -43,12 +43,10 @@ namespace Game2D {
 
 		// HELPER FUNCTIONS
 	protected:
-		void requestPush(StateId);
-		void requestPop();
-		void requestClear();
+		void requestPushState(StateId);
+		void requestPopState();
+		void requestClearStates();
 		Context getContext() const;
-		void centerOrigin(sf::Sprite&);
-		void centerOrigin(sf::Text&);
 
 	};
 
