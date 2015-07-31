@@ -9,15 +9,6 @@
 #include <vector>
 #include <queue>
 
-// Define a general macro to get the current working directory
-#ifdef _WIN32
-#include <direct.h>
-#define GetCurrentDir _getcwd
-#else
-#include <unistd.h>
-#define GetCurrentDir getcwd
-#endif
-
 namespace Game2D {
 
 	class GAME2D_API Map :
@@ -46,8 +37,7 @@ namespace Game2D {
 	public:
 		Map(sf::RenderWindow*, sf::FloatRect, size_t);
 		void build();
-		virtual void handleEvent(const sf::Event&);
-		void pushCommand(Command);
+		std::queue<Command>& getCommandQueue();
 		void update(sf::Time);
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 
@@ -57,7 +47,6 @@ namespace Game2D {
 		virtual void buildScene() = 0;
 		void updateOnCommands(sf::Time);
 		virtual void updateCurrent(sf::Time dt) = 0;
-		std::string projectDirectory();
 
 	};
 	

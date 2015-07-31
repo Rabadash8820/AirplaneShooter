@@ -4,15 +4,6 @@ using namespace Game2D;
 using namespace sf;
 using namespace std;
 
-// Define a general macro to get the current working directory
-#ifdef _WIN32
-#include <direct.h>
-#define GetCurrentDir _getcwd
-#else
-#include <unistd.h>
-#define GetCurrentDir getcwd
-#endif
-
 // INTERFACE
 Application::Application(VideoMode videoMode, string title, Time frameDur) :
 	_window(videoMode, title),
@@ -77,10 +68,4 @@ void Application::updateStatistics(Time dt) {
 }
 void Application::registerStates() {
 
-}
-string Application::currentWorkingDirectory() {
-	char currDir[FILENAME_MAX];
-	GetCurrentDir(currDir, sizeof(currDir));
-	// TO DO: Make some assertion here...
-	return currDir;
 }

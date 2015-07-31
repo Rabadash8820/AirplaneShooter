@@ -21,8 +21,8 @@ void Map::build() {
 	loadResources();
 	buildScene();
 }
-void Map::pushCommand(Command c) {
-	_commands.push(c);
+queue<Command>& Map::getCommandQueue() {
+	return _commands;
 }
 void Map::update(Time dt) {
 	updateCurrent(dt);
@@ -40,10 +40,3 @@ void Map::updateOnCommands(Time dt) {
 		_commands.pop();
 	}
 }
-string Map::projectDirectory() {
-	char currDir[FILENAME_MAX];
-	GetCurrentDir(currDir, sizeof(currDir));
-	// TO DO: Make some assertion here...
-	return currDir;
-}
-void Map::handleEvent(const Event&) { }

@@ -5,8 +5,11 @@
 #include "States\States.h"
 #include "States\TitleState.h"
 #include "ResourceIds\Fonts.h"
+
 #include <Input\Command.h>
 #include <Input\KeyBinding.h>
+#include <Utility.h>
+
 #include <memory>
 
 using namespace Shooter;
@@ -19,20 +22,10 @@ AirplaneShooter::AirplaneShooter() :
 {
 	_window.setKeyRepeatEnabled(false);
 	
-	// Get resource directories
-	string currDir    = currentWorkingDirectory();
+	// Load game-wide resources
+	string currDir    = Utility::currentWorkingDirectory();
 	string textureDir = currDir + "\\Resources\\Textures\\";
-	string shaderDir  = currDir + "\\Resources\\Shaders\\";
-	string soundDir   = currDir + "\\Resources\\Sounds\\";
 	string fontDir    = currDir + "\\Resources\\Fonts\\";
-
-	// Load textures
-	_textures.load(Textures::Desert,	  textureDir + "Desert.png");
-	_textures.load(Textures::Eagle,		  textureDir + "Eagle.png");
-	_textures.load(Textures::Raptor,	  textureDir + "Raptor.png");
-	_textures.load(Textures::TitleScreen, textureDir + "TitleScreen.png");
-
-	// Load fonts
 	_fonts.load(Fonts::Main, fontDir + "Sansation.ttf");
 
 	// Initialize the statistics text

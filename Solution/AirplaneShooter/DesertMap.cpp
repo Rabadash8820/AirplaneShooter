@@ -4,8 +4,11 @@
 #include "ResourceIds\Sounds.h"
 #include "ResourceIds\Fonts.h"
 #include "Categories.h"
+
 #include <Render\Brush.h>
 #include <Input\Category.h>
+#include <Utility.h>
+
 #include <stdio.h>  // defines FILENAME_MAX
 #include <cassert>
 #include <iostream>
@@ -47,10 +50,11 @@ DesertMap::~DesertMap() {}
 // HELPER FUNCTIONS
 void DesertMap::loadResources() {
 	// Get resource directories
-	string textureDir = projectDirectory() + "\\Resources\\Textures\\";
-	string shaderDir  = projectDirectory() + "\\Resources\\Shaders\\";
-	string soundDir   = projectDirectory() + "\\Resources\\Sounds\\";
-	string fontDir    = projectDirectory() + "\\Resources\\Fonts\\";
+	string currDir    = Utility::currentWorkingDirectory();
+	string textureDir = currDir + "\\Resources\\Textures\\";
+	string shaderDir  = currDir + "\\Resources\\Shaders\\";
+	string soundDir   = currDir + "\\Resources\\Sounds\\";
+	string fontDir    = currDir + "\\Resources\\Fonts\\";
 
 	// Load textures
 	_textures.load(Textures::Desert, textureDir + "Desert.png");
@@ -103,24 +107,4 @@ void DesertMap::adjustPlayer(Time dt) {
 	pos.y = max(pos.y, viewBounds.top  + BORDER_OFFSET);
 	pos.y = min(pos.y, viewBounds.top  + viewBounds.height - BORDER_OFFSET);
 	_player->setPosition(pos);
-}
-void DesertMap::handleEvent(const Event& e) {
-	switch (e.type) {
-	case Event::KeyPressed:
-		switch (e.key.code) {
-		case Keyboard::P: {
-			Command output(
-				[](SceneNode& s, Time) {
-					cout << s.getPosition().x << ", " << s.getPosition().y << endl; },
-				Categories::PlayerAircraft);
-			_commands.push(output);
-			break;
-		}
-		default:
-			break;
-		}
-		break;
-	default:
-		break;
-	}
 }

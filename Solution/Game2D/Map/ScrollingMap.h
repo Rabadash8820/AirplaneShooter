@@ -14,7 +14,6 @@ namespace Game2D {
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
 		ScrollingMap(sf::Vector2f, sf::RenderWindow*, sf::FloatRect, size_t);
-		~ScrollingMap();
 
 		// HELPER FUNCTIONS
 	protected:
