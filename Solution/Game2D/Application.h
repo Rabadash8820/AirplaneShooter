@@ -3,11 +3,15 @@
 #include "GAME2D_API.h"
 #include "Render\ResourceManager.h"
 #include "States\StateManager.h"
+#include "Input\InputManager.h"
+
 #include <SFML\System\Time.hpp>
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\Text.hpp>
 #include <SFML\Graphics\RenderWindow.hpp>
+
 #include <string>
+#include <memory>
 
 namespace Game2D {
 
@@ -18,6 +22,7 @@ namespace Game2D {
 		sf::RenderWindow _window;
 		TextureManager _textures;
 		FontManager	_fonts;
+		std::unique_ptr<InputManager> _inputManager;
 		StateManager _stateManager;
 		sf::Text _statisticsText;
 		sf::Time _statisticsUpdateTime;
@@ -25,7 +30,7 @@ namespace Game2D {
 
 		// INTERFACE
 	public:
-		Application(sf::VideoMode, std::string, sf::Time = sf::seconds(1.f / 60.f));
+		Application(sf::VideoMode, std::string, std::unique_ptr<InputManager>, sf::Time = sf::seconds(1.f / 60.f));
 		void run();
 
 		// HELPER FUNCTIONS

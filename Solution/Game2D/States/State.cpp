@@ -5,10 +5,16 @@ using namespace Game2D;
 using namespace sf;
 
 // CONSTRUCTOR FOR STATE CONTEXT
-State::Context::Context(sf::RenderWindow& window, TextureManager& textures, FontManager& fonts) {
+State::Context::Context(
+	sf::RenderWindow& window,
+	TextureManager& textures,
+	FontManager& fonts,
+	InputManager& inputManager)
+{
 	this->window = &window;
 	this->textures = &textures;
 	this->fonts = &fonts;
+	this->inputManager = &inputManager;
 }
 
 // INTERFACE

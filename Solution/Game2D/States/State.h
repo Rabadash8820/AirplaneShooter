@@ -25,7 +25,7 @@ namespace Game2D {
 			TextureManager* textures;
 			FontManager* fonts;
 			InputManager* inputManager;
-			Context(sf::RenderWindow&, TextureManager&, FontManager&);
+			Context(sf::RenderWindow&, TextureManager&, FontManager&, InputManager&);
 		};
 
 		// PRIVATE FIELDS
