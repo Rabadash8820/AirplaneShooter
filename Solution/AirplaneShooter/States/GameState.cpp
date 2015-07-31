@@ -2,11 +2,13 @@
 
 using namespace sf;
 using namespace std;
+using namespace Shooter;
 using namespace Game2D;
 
 // CONSTRUCTORS / DESTRUCTOR
 GameState::GameState(StateManager& manager, Context context) :
-	State(manager, context)
+	State(manager, context),
+	_player(*reinterpret_cast<Player*>(context.player))
 { }
 
 // INTERFACE
@@ -21,13 +23,6 @@ bool GameState::handleEvent(const Event& e) {
 
 	// Allow other States to handle Events
 	return true;
-}
-void GameState::handleRealtimeInput() {
-	// Push keyboard events to the current Map's queue
-	for (auto& binding : _keyBindings) {
-		if (Keyboard::isKeyPressed(binding.key))
-			_map->pushCommand(binding.getCommand());
-	}
 }
 bool GameState::update(Time dt) {
 	_map->update(dt);

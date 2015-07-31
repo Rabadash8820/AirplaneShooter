@@ -172,26 +172,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aircraft.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="AirplaneShooter.cpp" />
     <ClCompile Include="Categories.cpp" />
     <ClCompile Include="DesertMap.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ResourceIds\Fonts.cpp" />
     <ClCompile Include="ResourceIds\Shaders.cpp" />
     <ClCompile Include="ResourceIds\Sounds.cpp" />
     <ClCompile Include="ResourceIds\Textures.cpp" />
+    <ClCompile Include="States\GameState.cpp" />
     <ClCompile Include="States\States.cpp" />
     <ClCompile Include="States\TitleState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aircraft.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="AirplaneShooter.h" />
     <ClInclude Include="Categories.h" />
     <ClInclude Include="DesertMap.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceIds\Fonts.h" />
     <ClInclude Include="ResourceIds\Shaders.h" />
     <ClInclude Include="ResourceIds\Sounds.h" />
     <ClInclude Include="ResourceIds\Textures.h" />
+    <ClInclude Include="States\GameState.h" />
     <ClInclude Include="States\States.h" />
     <ClInclude Include="States\TitleState.h" />
   </ItemGroup>

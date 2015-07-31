@@ -6,6 +6,9 @@ using namespace std;
 using namespace sf;
 
 // INTERFACE
+Command::Command(function<void(SceneNode&, Time)> action) {
+	this->initialize(action, { Node });
+}
 Command::Command(function<void(SceneNode&, Time)> action, Category category) {
 	this->initialize(action, { category });
 }
@@ -13,10 +16,17 @@ Command::Command(function<void(SceneNode&, Time)> action, initializer_list<Categ
 	this->initialize(action, categories);
 }
 void Command::action(SceneNode& node, Time dt) const {
-	return _action(node, dt);
+	_action(node, dt);
 }
-unsigned int Command::category() const {
+unsigned int Command::getCategory() const {
 	return _categoryId;
+}
+void Command::setCategory(Category category) {
+	this->initialize(_action, { category });
+
+}
+void Command::setCategory(std::initializer_list<Category> categories) {
+	this->initialize(_action, categories);
 }
 
 // HELPER FUNCTIONS

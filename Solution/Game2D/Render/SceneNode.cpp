@@ -63,7 +63,7 @@ unsigned int SceneNode::getCategory() const {
 }
 void SceneNode::onCommand(const Command& command, sf::Time dt) {
 	// Execute the command if this node matches its category
-	if (command.category() & this->getCategory())
+	if (command.getCategory() & this->getCategory())
 		command.action(*this, dt);
 
 	// Pass the command to all children

@@ -1,12 +1,13 @@
-#include "Game.h"
+#include "AirplaneShooter.h"
 #include <iostream>
 
 using namespace std;
+using namespace Shooter;
 
 int main() {
 	// Run the game
 	try {
-		Shooter::Game game;
+		AirplaneShooter game;
 		game.run();
 	}
 

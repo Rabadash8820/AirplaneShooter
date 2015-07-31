@@ -164,12 +164,12 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Input\Category.cpp" />
     <ClCompile Include="Input\Command.cpp" />
+    <ClCompile Include="Input\InputManager.cpp" />
     <ClCompile Include="Map\Map.cpp" />
     <ClCompile Include="Map\ScrollingMap.cpp" />
     <ClCompile Include="Render\Brush.cpp" />
     <ClCompile Include="Render\ResourceId.cpp" />
     <ClCompile Include="Render\SceneNode.cpp" />
-    <ClCompile Include="States\GameState.cpp" />
     <ClCompile Include="States\State.cpp" />
     <ClCompile Include="States\StateId.cpp" />
     <ClCompile Include="States\StateManager.cpp" />
@@ -180,6 +180,7 @@
     <ClInclude Include="Input\Category.h" />
     <ClInclude Include="Input\Command.h" />
     <ClInclude Include="Input\KeyBinding.h" />
+    <ClInclude Include="Input\InputManager.h" />
     <ClInclude Include="Map\Map.h" />
     <ClInclude Include="Map\ScrollingMap.h" />
     <ClInclude Include="Render\Brush.h" />
@@ -187,7 +188,6 @@
     <ClInclude Include="Render\ResourceId.h" />
     <ClInclude Include="Render\ResourceManager.h" />
     <ClInclude Include="Render\SceneNode.h" />
-    <ClInclude Include="States\GameState.h" />
     <ClInclude Include="States\State.h" />
     <ClInclude Include="States\StateId.h" />
     <ClInclude Include="States\StateManager.h" />

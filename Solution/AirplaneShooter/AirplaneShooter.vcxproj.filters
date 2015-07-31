@@ -51,14 +51,20 @@
     <ClCompile Include="ResourceIds\Textures.cpp">
       <Filter>Source Files\ResourceIds</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="States\States.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="States\TitleState.cpp">
       <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\GameState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AirplaneShooter.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,14 +89,20 @@
     <ClInclude Include="ResourceIds\Textures.h">
       <Filter>Header Files\ResourceIds</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="States\States.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="States\TitleState.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\GameState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AirplaneShooter.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
