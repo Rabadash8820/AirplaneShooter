@@ -2,6 +2,9 @@
 
 #include "GAME2D_API.h"
 
+#include <SFML\Graphics\Sprite.hpp>
+#include <SFML\Graphics\Text.hpp>
+
 #include <string>
 
 // Define a general macro to get the current working directory
@@ -22,6 +25,8 @@ namespace Game2D {
 		// STATIC INTERFACE
 	public:
 		static std::string currentWorkingDirectory();
+		static void centerOrigin(sf::Sprite&);
+		static void centerOrigin(sf::Text&);
 	};
 
 }

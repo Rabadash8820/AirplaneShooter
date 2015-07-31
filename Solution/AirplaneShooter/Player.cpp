@@ -52,7 +52,7 @@ void Player::handleRealtimeInput(std::queue<Game2D::Command>& commands) const {
 }
 
 // HELPER FUNCTIONS
-void Player::handleKeyboardEvent(const Event::KeyEvent& key, queue<Command>& commands) const {
+void Player::handleKeyPress(const Event::KeyEvent& key, queue<Command>& commands) const {
 	switch (key.code) {
 	case Keyboard::P:
 		// Print the player Aircraft's location to the console
@@ -64,10 +64,4 @@ void Player::handleKeyboardEvent(const Event::KeyEvent& key, queue<Command>& com
 		commands.push(printPos);
 		break;
 	}
-}
-void Player::handleMouseEvent(const Event&, queue<Command>& commands) const {
-
-}
-void Player::handleJoystickEvent(const Event&, queue<Command>& commands) const {
-
 }

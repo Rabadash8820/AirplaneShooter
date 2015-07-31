@@ -182,6 +182,8 @@
     <ClCompile Include="ResourceIds\Sounds.cpp" />
     <ClCompile Include="ResourceIds\Textures.cpp" />
     <ClCompile Include="States\GameState.cpp" />
+    <ClCompile Include="States\MenuState.cpp" />
+    <ClCompile Include="States\PauseState.cpp" />
     <ClCompile Include="States\States.cpp" />
     <ClCompile Include="States\TitleState.cpp" />
   </ItemGroup>
@@ -196,6 +198,8 @@
     <ClInclude Include="ResourceIds\Sounds.h" />
     <ClInclude Include="ResourceIds\Textures.h" />
     <ClInclude Include="States\GameState.h" />
+    <ClInclude Include="States\MenuState.h" />
+    <ClInclude Include="States\PauseState.h" />
     <ClInclude Include="States\States.h" />
     <ClInclude Include="States\TitleState.h" />
   </ItemGroup>

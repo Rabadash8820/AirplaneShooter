@@ -24,9 +24,18 @@ namespace Game2D {
 
 		// HELPER FUNCTIONS
 	protected:
-		virtual void handleKeyboardEvent(const sf::Event::KeyEvent&, std::queue<Command>&) const;
-		virtual void handleMouseEvent(const sf::Event&, std::queue<Command>&) const;
-		virtual void handleJoystickEvent(const sf::Event&, std::queue<Command>&) const;
+		virtual void handleKeyPress(		  const sf::Event::KeyEvent&,			   std::queue<Command>&) const { }
+		virtual void handleKeyRelease(		  const sf::Event::KeyEvent&,			   std::queue<Command>&) const { }
+		virtual void handleMousePress(		  const sf::Event::MouseButtonEvent&,	   std::queue<Command>&) const { }
+		virtual void handleMouseRelease(	  const sf::Event::MouseButtonEvent&,	   std::queue<Command>&) const { }
+		virtual void handleMouseMove(		  const sf::Event::MouseMoveEvent&,		   std::queue<Command>&) const { }
+		virtual void handleMouseWheel(		  const sf::Event::MouseWheelEvent&,	   std::queue<Command>&) const { }
+		virtual void handleMouseScroll(		  const sf::Event::MouseWheelScrollEvent&, std::queue<Command>&) const { }
+		virtual void handleJoystickPress(	  const sf::Event::JoystickButtonEvent&,   std::queue<Command>&) const { }
+		virtual void handleJoystickRelease(	  const sf::Event::JoystickButtonEvent&,   std::queue<Command>&) const { }
+		virtual void handleJoystickConnect(	  const sf::Event::JoystickConnectEvent&,  std::queue<Command>&) const { }
+		virtual void handleJoystickDisconnect(const sf::Event::JoystickConnectEvent&,  std::queue<Command>&) const { }
+		virtual void handleJoystickMove(      const sf::Event::JoystickMoveEvent&,     std::queue<Command>&) const { }
 	};
 
 }

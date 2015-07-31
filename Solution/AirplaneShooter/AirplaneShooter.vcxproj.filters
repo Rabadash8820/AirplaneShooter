@@ -66,6 +66,12 @@
     <ClCompile Include="AirplaneShooter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="States\MenuState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\PauseState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aircraft.h">
@@ -103,6 +109,12 @@
     </ClInclude>
     <ClInclude Include="AirplaneShooter.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="States\MenuState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\PauseState.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
