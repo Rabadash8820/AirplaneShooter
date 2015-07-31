@@ -35,7 +35,7 @@ DesertMap::DesertMap(RenderWindow* window) :
 }
 void DesertMap::updateCurrent(Time dt) {
 	// Prepare for updates
-	_player->velocity = -Vector2f(0.f, 0.f);
+	_player->velocity = Vector2f(0.f, 0.f);
 	
 	// Do updates in response to Commands
 	updateOnCommands(dt);

@@ -1,4 +1,5 @@
 #include "AirplaneShooter.h"
+
 #include "DesertMap.h"
 #include "Aircraft.h"
 #include "Categories.h"
@@ -9,6 +10,7 @@
 #include "States\PauseState.h"
 #include "ResourceIds\Fonts.h"
 #include "ResourceIds\Textures.h"
+#include "Player.h"
 
 #include <Input\Command.h>
 #include <Input\KeyBinding.h>
@@ -22,7 +24,7 @@ using namespace sf;
 using namespace std;
 
 AirplaneShooter::AirplaneShooter() :
-	Application(VideoMode(640, 480), "Airplane Shooter")
+	Application(VideoMode(640, 480), "Airplane Shooter", unique_ptr<InputManager>(new Player()))
 {
 	_window.setKeyRepeatEnabled(false);
 	
