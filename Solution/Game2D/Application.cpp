@@ -78,7 +78,7 @@ void Application::updateStatistics(Time dt) {
 void Application::registerStates() {
 
 }
-string Application::projectDirectory() {
+string Application::currentWorkingDirectory() {
 	char currDir[FILENAME_MAX];
 	GetCurrentDir(currDir, sizeof(currDir));
 	// TO DO: Make some assertion here...

@@ -20,7 +20,7 @@ void ResourceManager<Resource>::load(ResourceId res, const std::string& filePath
 
 	// Associate the resource with the given ID (make sure that ID wasn't already used)
 	auto insertSuccess = _resources.insert(
-		std::make_pair(res.getId(), std::move(resource)));
+		std::make_pair(res, std::move(resource)));
 	assert(insertSuccess.second);
 }
 template<typename Resource>
@@ -34,13 +34,13 @@ void ResourceManager<Resource>::load(ResourceId res, const std::string& filePath
 
 	// Associate the resource with the given ID (make sure that ID wasn't already used)
 	auto insertSuccess = _resources.insert(
-		std::make_pair(res.getId(), std::move(resource)));
+		std::make_pair(res, std::move(resource)));
 	assert(insertSuccess.second);
 }
 template<typename Resource>
 Resource& ResourceManager<Resource>::get(ResourceId res) const {
 	// Try to retrieve the resource (make sure the ID is present in the std::map)
-	auto pos = _resources.find(res.getId());
+	auto pos = _resources.find(res);
 	assert(pos != _resources.end());
 	return *(pos->second);
 }

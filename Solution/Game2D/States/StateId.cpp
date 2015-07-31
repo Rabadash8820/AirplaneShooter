@@ -18,6 +18,3 @@ unsigned int StateId::getId() const {
 bool StateId::operator<(const StateId& that) const {
 	return this->_id < that._id;
 }
-StateId::operator unsigned int() const {
-	return this->_id;
-}

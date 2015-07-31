@@ -34,6 +34,7 @@ bool TitleState::update(sf::Time dt) {
 		_effectTime = Time::Zero;
 	}
 
+	// Allow other States to update
 	return true;
 }
 bool TitleState::handleEvent(const sf::Event& e) {
@@ -43,5 +44,6 @@ bool TitleState::handleEvent(const sf::Event& e) {
 		requestPush(States::Menu);
 	}
 
+	// Allow other States to handle Events
 	return true;
 }

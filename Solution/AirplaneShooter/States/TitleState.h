@@ -1,7 +1,8 @@
 #pragma once
 
-#include <State.h>
-#include <StateManager.h>
+#include <States\State.h>
+#include <States\StateManager.h>
+
 #include <SFML\Window\Event.hpp>
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\Text.hpp>
@@ -21,9 +22,9 @@ namespace Shooter {
 		// INTERFACE
 	public:
 		TitleState(Game2D::StateManager&, Context);
-		virtual void draw();
-		virtual bool update(sf::Time);
 		virtual bool handleEvent(const sf::Event&);
+		virtual bool update(sf::Time);
+		virtual void draw();
 	};
 
 }

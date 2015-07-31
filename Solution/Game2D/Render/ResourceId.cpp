@@ -18,6 +18,3 @@ unsigned int ResourceId::getId() const {
 bool ResourceId::operator<(const ResourceId& that) const {
 	return this->_id < that._id;
 }
-ResourceId::operator unsigned int() const {
-	return this->_id;
-}

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GAME2D_API.h"
+#include "..\GAME2D_API.h"
 namespace Game2D {
 
 	struct GAME2D_API StateId {
@@ -18,7 +18,6 @@ namespace Game2D {
 		StateId();
 		unsigned int getId() const;
 		bool operator<(const StateId& that) const;
-		operator unsigned int() const;
 	};
 
 }

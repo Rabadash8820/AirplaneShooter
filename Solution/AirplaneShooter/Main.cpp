@@ -12,7 +12,8 @@ int main() {
 
 	// Report any crashes to the console
 	catch (exception& e) {
-		cout << "EXCEPTION: " << e.what() << endl;
+		cout << "EXCEPTION: " << endl
+			 << "\t" << e.what() << endl;
 	}
 
 	return 0;
