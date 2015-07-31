@@ -162,7 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input\Category.cpp" />
     <ClCompile Include="Input\Command.cpp" />
     <ClCompile Include="Input\CommandManager.cpp" />
@@ -171,13 +170,13 @@
     <ClCompile Include="Render\Brush.cpp" />
     <ClCompile Include="Render\ResourceId.cpp" />
     <ClCompile Include="Render\SceneNode.cpp" />
-    <ClCompile Include="State.cpp" />
-    <ClCompile Include="StateId.cpp" />
-    <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="States\GameState.cpp" />
+    <ClCompile Include="States\State.cpp" />
+    <ClCompile Include="States\StateId.cpp" />
+    <ClCompile Include="States\StateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="GAME2D_API.h" />
     <ClInclude Include="Input\Categories.h" />
     <ClInclude Include="Input\Command.h" />
@@ -189,9 +188,10 @@
     <ClInclude Include="Render\ResourceId.h" />
     <ClInclude Include="Render\ResourceManager.h" />
     <ClInclude Include="Render\SceneNode.h" />
-    <ClInclude Include="State.h" />
-    <ClInclude Include="StateId.h" />
-    <ClInclude Include="StateManager.h" />
+    <ClInclude Include="States\GameState.h" />
+    <ClInclude Include="States\State.h" />
+    <ClInclude Include="States\StateId.h" />
+    <ClInclude Include="States\StateManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

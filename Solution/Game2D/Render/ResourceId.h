@@ -18,7 +18,6 @@ namespace Game2D {
 		ResourceId();
 		unsigned int getId() const;
 		bool operator<(const ResourceId& that) const;
-		operator unsigned int() const;
 	};
 
 }

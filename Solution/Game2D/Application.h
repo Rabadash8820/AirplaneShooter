@@ -2,7 +2,7 @@
 
 #include "GAME2D_API.h"
 #include "Render\ResourceManager.h"
-#include "StateManager.h"
+#include "States\StateManager.h"
 #include <SFML\System\Time.hpp>
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\Text.hpp>
@@ -35,7 +35,7 @@ namespace Game2D {
 		void draw();
 		void updateStatistics(sf::Time);
 		virtual void registerStates() = 0;
-		std::string projectDirectory();
+		std::string currentWorkingDirectory();
 	};
 
 }

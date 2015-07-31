@@ -21,10 +21,11 @@ Game::Game() :
 	_window.setKeyRepeatEnabled(false);
 	
 	// Get resource directories
-	string textureDir = projectDirectory() + "\\Resources\\Textures\\";
-	string shaderDir  = projectDirectory() + "\\Resources\\Shaders\\";
-	string soundDir   = projectDirectory() + "\\Resources\\Sounds\\";
-	string fontDir    = projectDirectory() + "\\Resources\\Fonts\\";
+	string currDir    = currentWorkingDirectory();
+	string textureDir = currDir + "\\Resources\\Textures\\";
+	string shaderDir  = currDir + "\\Resources\\Shaders\\";
+	string soundDir   = currDir + "\\Resources\\Sounds\\";
+	string fontDir    = currDir + "\\Resources\\Fonts\\";
 
 	// Load textures
 	_textures.load(Textures::Desert,	  textureDir + "Desert.png");

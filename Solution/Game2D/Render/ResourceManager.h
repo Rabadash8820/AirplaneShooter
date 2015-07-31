@@ -15,7 +15,7 @@ namespace Game2D {
 	private:
 		// VARIABLES
 		typedef std::unique_ptr<Resource> Ptr;
-		std::map<unsigned int, Ptr> _resources;
+		std::map<ResourceId, Ptr> _resources;
 		
 	public:
 		// CONSTRUCTORS / DESTRUCTOR

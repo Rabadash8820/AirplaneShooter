@@ -1,9 +1,14 @@
 #pragma once
 
-#include "GAME2D_API.h"
+#include "..\GAME2D_API.h"
 #include "StateId.h"
-#include "Render\ResourceManager.h"
-#include <SFML\Graphics.hpp>
+#include "..\Render\ResourceManager.h"
+
+#include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\Graphics\Sprite.hpp>
+#include <SFML\Graphics\Text.hpp>
+#include <SFML\System\Time.hpp>
+
 #include <memory>
 
 namespace Game2D {

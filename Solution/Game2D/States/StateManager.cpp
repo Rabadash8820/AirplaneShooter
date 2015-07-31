@@ -9,17 +9,11 @@ using namespace sf;
 StateManager::StateManager(State::Context context) :
 _context(context)
 { }
-template<typename StateClass>
-void StateManager::registerState(StateId id) {
-	// Associate this Id with a factory method to produce the provided State class
-	_factories[id.getId()] = [this]() {
-		return State::Ptr(new StateClass(*this, _context));
-	};
-}
 void StateManager::update(Time dt) {
 	// Iterate through the State "stack" from top to bottom
 	for (auto itr = _stack.rbegin(); itr != _stack.rend(); ++itr) {
-		if (!(*itr)->update(dt))
+		bool letOthersUpdate = (*itr)->update(dt);
+		if (!letOthersUpdate)
 			return;
 	}
 }
@@ -31,7 +25,8 @@ void StateManager::draw() {
 void StateManager::handleEvent(const Event& e) {
 	// Iterate through the State "stack" from top to bottom
 	for (auto itr = _stack.rbegin(); itr != _stack.rend(); ++itr) {
-		if (!(*itr)->handleEvent(e))
+		bool letOthersHandle = (*itr)->handleEvent(e);
+		if (!letOthersHandle)
 			return;
 	}
 
@@ -60,7 +55,7 @@ bool StateManager::isEmpty() const {
 // HELPER FUNCTIONS
 State::Ptr StateManager::createState(StateId id) {
 	// Define an instance of the State associated with this Id
-	auto pos = _factories.find(id.getId());
+	auto pos = _factories.find(id);
 	assert(pos != _factories.end());
 	return pos->second();
 }
