@@ -78,8 +78,8 @@
     <ClCompile Include="States\StateManager.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="States\GameState.cpp">
-      <Filter>Source Files\States</Filter>
+    <ClCompile Include="Input\InputManager.cpp">
+      <Filter>Source Files\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,8 +125,8 @@
     <ClInclude Include="States\StateManager.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="States\GameState.h">
-      <Filter>Header Files\States</Filter>
+    <ClInclude Include="Input\InputManager.h">
+      <Filter>Header Files\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

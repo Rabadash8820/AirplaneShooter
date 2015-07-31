@@ -170,7 +170,6 @@
     <ClCompile Include="Render\Brush.cpp" />
     <ClCompile Include="Render\ResourceId.cpp" />
     <ClCompile Include="Render\SceneNode.cpp" />
-    <ClCompile Include="States\GameState.cpp" />
     <ClCompile Include="States\State.cpp" />
     <ClCompile Include="States\StateId.cpp" />
     <ClCompile Include="States\StateManager.cpp" />
@@ -188,7 +187,6 @@
     <ClInclude Include="Render\ResourceId.h" />
     <ClInclude Include="Render\ResourceManager.h" />
     <ClInclude Include="Render\SceneNode.h" />
-    <ClInclude Include="States\GameState.h" />
     <ClInclude Include="States\State.h" />
     <ClInclude Include="States\StateId.h" />
     <ClInclude Include="States\StateManager.h" />

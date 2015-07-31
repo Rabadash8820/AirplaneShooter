@@ -14,6 +14,7 @@
 namespace Game2D {
 
 	class StateManager;
+	class InputManager;
 
 	class GAME2D_API State {
 		// ABSTRACT DATA TYPES
@@ -23,10 +24,11 @@ namespace Game2D {
 			sf::RenderWindow* window;
 			TextureManager* textures;
 			FontManager* fonts;
+			InputManager* player;
 			Context(sf::RenderWindow&, TextureManager&, FontManager&);
 		};
 
-		// PRIVATE VARIABLES / CONSTANTS
+		// PRIVATE FIELDS
 	private:
 		StateManager* _manager;
 		Context _context;
