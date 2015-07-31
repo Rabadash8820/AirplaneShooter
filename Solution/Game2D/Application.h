@@ -35,7 +35,6 @@ namespace Game2D {
 		void draw();
 		void updateStatistics(sf::Time);
 		virtual void registerStates() = 0;
-		std::string currentWorkingDirectory();
 	};
 
 }

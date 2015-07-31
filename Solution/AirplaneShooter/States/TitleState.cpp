@@ -4,18 +4,28 @@
 #include "../ResourceIds/Fonts.h"
 #include "../ResourceIds/Textures.h"
 
+#include <Utility.h>
+
 using namespace Game2D;
 using namespace Shooter;
 using namespace sf;
+using namespace std;
 
 // INTERFACE
 TitleState::TitleState(Game2D::StateManager& manager, Context context) :
 	State(manager, context),
 	_showText(true),
 	_effectTime(sf::Time::Zero),
-	_text("Press any key to start", context.fonts->get(Fonts::Main))
+	_text("Press any key to start", (*context.fonts)[Fonts::Main])
 {
-	_backgroundSprite.setTexture(context.textures->get(Textures::TitleScreen));
+	// Load resources
+	string currDir = Utility::currentWorkingDirectory();
+	string textureDir = currDir + "\\Resources\\Textures\\";
+	context.textures->load(Textures::TitleScreen, textureDir + "TitleScreen.png");
+	Texture& titleTexture = (*context.textures)[Textures::TitleScreen];
+
+	// Define the flashing title Text
+	_backgroundSprite.setTexture(titleTexture);
 	centerOrigin(_text);
 	_text.setPosition(context.window->getView().getSize() / 2.f);
 }

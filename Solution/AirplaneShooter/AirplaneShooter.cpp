@@ -4,6 +4,8 @@
 #include "Categories.h"
 #include <Input\Command.h>
 #include <Input\KeyBinding.h>
+#include <Utility.h>
+
 #include <memory>
 
 using namespace Shooter;

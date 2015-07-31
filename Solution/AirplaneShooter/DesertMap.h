@@ -23,7 +23,6 @@ namespace Shooter {
 		virtual void updateCurrent(sf::Time);
 		virtual void loadResources();
 		virtual void buildScene();
-		virtual void handleEvent(const sf::Event&);
 		void adjustPlayer(sf::Time);
 
 	};
