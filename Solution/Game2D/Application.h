@@ -30,7 +30,7 @@ namespace Game2D {
 
 		// INTERFACE
 	public:
-		Application(sf::VideoMode, std::string, std::unique_ptr<InputManager>, sf::Time = sf::seconds(1.f / 60.f));
+		Application(sf::VideoMode, std::string, InputManager*, sf::Time = sf::seconds(1.f / 60.f));
 		void run();
 
 		// HELPER FUNCTIONS
