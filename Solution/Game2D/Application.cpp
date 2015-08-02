@@ -5,10 +5,10 @@ using namespace sf;
 using namespace std;
 
 // INTERFACE
-Application::Application(VideoMode videoMode, string title, unique_ptr<InputManager> input, Time frameDur) :
+Application::Application(VideoMode videoMode, string title, InputManager* input, Time frameDur) :
 	_window(videoMode, title),
 	_frameDuration(frameDur),
-	_inputManager(move(input)),
+	_inputManager(input),
 	_stateManager(State::Context(_window, _textures, _fonts, *input)),
 	_statisticsNumFrames(0)
 { }

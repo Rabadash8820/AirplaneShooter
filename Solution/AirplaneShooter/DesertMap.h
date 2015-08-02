@@ -16,7 +16,6 @@ namespace Shooter {
 		// INTERFACE
 	public:
 		DesertMap(sf::RenderWindow*);
-		~DesertMap();
 
 		// HELPER FUNCTIONS
 	private:

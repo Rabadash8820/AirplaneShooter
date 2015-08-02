@@ -45,7 +45,6 @@ void DesertMap::updateCurrent(Time dt) {
 	// Do "normal" updates
 	ScrollingMap::updateCurrent(dt);
 }
-DesertMap::~DesertMap() {}
 
 // HELPER FUNCTIONS
 void DesertMap::loadResources() {
@@ -71,22 +70,22 @@ void DesertMap::buildScene() {
 	desertTexture.setRepeated(true);
 	Brush::Ptr background(new Brush(desertTexture, desertBounds));
 	background->setPosition(_worldBounds.left, _worldBounds.top);
-	_sceneLayers[BACKGROUND]->attachChild(std::move(background));
+	_sceneLayers[BACKGROUND]->attachChild(move(background));
 
 	// Add a node for the leader Aircraft and assign it to the Player
 	Aircraft::Ptr leader(new Aircraft(Aircraft::Type::EAGLE, _textures));
 	leader->airSpeed = PLAYER_SPEED;
 	leader->setPosition(_playerSpawn);
 	_player = leader.get();
-	_sceneLayers[AIR]->attachChild(std::move(leader));
+	_sceneLayers[AIR]->attachChild(move(leader));
 
 	// Add nodes for the player's escort Aircraft
-	Aircraft::Ptr leftEscort(new Aircraft(Aircraft::Type::RAPTOR, _textures));
+	Aircraft::Ptr leftEscort( new Aircraft(Aircraft::Type::RAPTOR, _textures));
 	Aircraft::Ptr rightEscort(new Aircraft(Aircraft::Type::RAPTOR, _textures));
 	leftEscort->setPosition(-80.f, 50.f);
 	rightEscort->setPosition(80.f, 50.f);
-	_player->attachChild(std::move(leftEscort));
-	_player->attachChild(std::move(rightEscort));
+	_player->attachChild(move(leftEscort));
+	_player->attachChild(move(rightEscort));
 
 	// Do base building
 	ScrollingMap::buildScene();

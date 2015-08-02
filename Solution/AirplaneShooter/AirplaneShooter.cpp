@@ -24,7 +24,7 @@ using namespace sf;
 using namespace std;
 
 AirplaneShooter::AirplaneShooter() :
-	Application(VideoMode(640, 480), "Airplane Shooter", unique_ptr<InputManager>(new Player()))
+	Application(VideoMode(640, 480), "Airplane Shooter", new Player())
 {
 	_window.setKeyRepeatEnabled(false);
 	
