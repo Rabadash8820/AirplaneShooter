@@ -9,7 +9,8 @@ namespace Shooter {
 		StateId Title,
 				Menu,
 				Game,
-				Pause;
+				Pause,
+				Loading;
 
 	}
 

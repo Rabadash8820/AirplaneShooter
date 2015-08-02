@@ -84,6 +84,9 @@
     <ClCompile Include="Utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="States\ParallelTask.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Entity.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="States\ParallelTask.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
