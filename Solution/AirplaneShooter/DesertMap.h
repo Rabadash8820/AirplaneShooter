@@ -1,8 +1,10 @@
 #pragma once
 
 #include <Render\ResourceManager.h>
-#include <Map/ScrollingMap.h>
-#include <array>
+#include <Map\ScrollingMap.h>
+
+#include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\System\Time.hpp>
 
 namespace Shooter {
 

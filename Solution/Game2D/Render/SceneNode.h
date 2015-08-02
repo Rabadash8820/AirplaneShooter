@@ -1,14 +1,19 @@
 #pragma once
 
-#include "../GAME2D_API.h"
-#include "../Input/Command.h"
-#include <SFML/Graphics.hpp>
+#include "..\GAME2D_API.h"
+#include "..\Input\Command.h"
+
+#include <SFML\Graphics\Transformable.hpp>
+#include <SFML\Graphics\Drawable.hpp>
+#include <SFML\Graphics\RenderTarget.hpp>
+#include <SFML\System\NonCopyable.hpp>
+#include <SFML\System\Vector2.hpp>
+#include <SFML\System\Time.hpp>
+
 #include <memory>
 #include <vector>
 
 namespace Game2D {
-
-	struct Command;
 
 	class GAME2D_API SceneNode : public sf::Transformable,
 								 public sf::Drawable,

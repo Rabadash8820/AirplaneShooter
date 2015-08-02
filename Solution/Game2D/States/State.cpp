@@ -1,4 +1,5 @@
 #include "State.h"
+
 #include "StateManager.h"
 
 using namespace Game2D;
@@ -21,7 +22,7 @@ State::Context::Context(
 State::State(StateManager& manager, Context context) :
 	_manager(&manager),
 	_context(context)
-{}
+{ }
 State::~State() { }
 
 // HELPER FUNCTIONS

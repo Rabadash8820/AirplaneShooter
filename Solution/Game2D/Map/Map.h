@@ -5,7 +5,18 @@
 #include "../Render/SceneNode.h"
 #include "../Render/Entity.h"
 #include "../Input/Command.h"
-#include <SFML/Graphics.hpp>
+
+#include <SFML\System\NonCopyable.hpp>
+#include <SFML\System\Vector2.hpp>
+#include <SFML\System\Time.hpp>
+#include <SFML\Graphics\Drawable.hpp>
+#include <SFML\Graphics\RenderTarget.hpp>
+#include <SFML\Graphics\RenderStates.hpp>
+#include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\Graphics\View.hpp>
+#include <SFML\Graphics\Rect.hpp>
+
+#include <memory>
 #include <vector>
 #include <queue>
 

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Command.h"
-#include <SFML\Graphics.hpp>
 
+#include <SFML\Window\Keyboard.hpp>
 
 namespace Game2D {
 	

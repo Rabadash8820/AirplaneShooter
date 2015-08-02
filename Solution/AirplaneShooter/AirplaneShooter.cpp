@@ -1,8 +1,5 @@
 #include "AirplaneShooter.h"
 
-#include "DesertMap.h"
-#include "Aircraft.h"
-#include "Categories.h"
 #include "States\States.h"
 #include "States\TitleState.h"
 #include "States\MenuState.h"
@@ -12,11 +9,9 @@
 #include "ResourceIds\Textures.h"
 #include "Player.h"
 
-#include <Input\Command.h>
-#include <Input\KeyBinding.h>
 #include <Utility.h>
 
-#include <memory>
+#include <string>
 
 using namespace Shooter;
 using namespace Game2D;

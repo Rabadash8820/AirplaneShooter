@@ -1,6 +1,14 @@
 #include "Player.h"
+
 #include "Aircraft.h"
 #include "Categories.h"
+
+#include <Input\KeyBinding.h>
+#include <Render\SceneNode.h>
+
+#include <SFML\System\Time.hpp>
+#include <SFML\System\Vector2.hpp>
+#include <SFML\Window\Keyboard.hpp>
 
 #include <iostream>
 

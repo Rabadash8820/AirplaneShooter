@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include <SFML\System\Clock.hpp>
+#include <SFML\Window\Event.hpp>
+
 using namespace Game2D;
 using namespace sf;
 using namespace std;
@@ -55,12 +58,15 @@ void Application::update(Time dt) {
 	_stateManager.update(dt);
 }
 void Application::draw() {
+	// Clear the window and draw graphics
 	_window.clear();
 	_stateManager.draw();
 
+	// Draw statistics text (not affected by View)
 	_window.setView(_window.getDefaultView());
 	_window.draw(_statisticsText);
 
+	// Display all drawn objects in the window
 	_window.display();
 }
 void Application::updateStatistics(Time dt) {

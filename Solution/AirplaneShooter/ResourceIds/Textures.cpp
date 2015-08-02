@@ -1,5 +1,4 @@
 #include "Textures.h"
-#include <Render\ResourceManager.h>
 
 using namespace Game2D;
 

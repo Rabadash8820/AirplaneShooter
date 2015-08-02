@@ -1,6 +1,8 @@
 #include "Aircraft.h"
+
 #include "Categories.h"
-#include <Render\ResourceManager.h>
+
+#include <SFML\Graphics\Rect.hpp>
 
 using namespace Shooter;
 using namespace Game2D;

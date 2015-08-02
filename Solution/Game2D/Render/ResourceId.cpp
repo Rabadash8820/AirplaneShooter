@@ -2,7 +2,7 @@
 
 using namespace Game2D;
 
-// PRIVATE STATIC MEMBERS
+// STATIC MEMBERS
 unsigned int ResourceId::_root = 0;
 unsigned int ResourceId::incrementedRoot() {
 	return (_root += 1);

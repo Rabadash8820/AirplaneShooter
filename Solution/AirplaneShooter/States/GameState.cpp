@@ -1,6 +1,9 @@
 #include "GameState.h"
 
 #include "..\DesertMap.h"
+#include "..\Player.h"
+
+#include <SFML\Graphics\RenderWindow.hpp>
 
 using namespace sf;
 using namespace std;

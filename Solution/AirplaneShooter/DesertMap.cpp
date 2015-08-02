@@ -1,17 +1,19 @@
 #include "DesertMap.h"
+
 #include "Aircraft.h"
 #include "ResourceIds\Textures.h"
-#include "ResourceIds\Sounds.h"
 #include "ResourceIds\Fonts.h"
 #include "Categories.h"
 
 #include <Render\Brush.h>
-#include <Input\Category.h>
 #include <Utility.h>
+#include <Map\ScrollingMap.h>
 
-#include <stdio.h>  // defines FILENAME_MAX
-#include <cassert>
-#include <iostream>
+#include <SFML\Graphics\Texture.hpp>
+#include <SFML\System\Vector2.hpp>
+#include <SFML\Graphics\Rect.hpp>
+
+#include <string>
 
 using namespace Shooter;
 using namespace Game2D;
@@ -53,15 +55,11 @@ void DesertMap::loadResources() {
 	string textureDir = currDir + "\\Resources\\Textures\\";
 	string shaderDir  = currDir + "\\Resources\\Shaders\\";
 	string soundDir   = currDir + "\\Resources\\Sounds\\";
-	string fontDir    = currDir + "\\Resources\\Fonts\\";
 
 	// Load textures
 	_textures.load(Textures::Desert, textureDir + "Desert.png");
 	_textures.load(Textures::Eagle,  textureDir + "Eagle.png");
 	_textures.load(Textures::Raptor, textureDir + "Raptor.png");
-
-	// Load fonts
-	_fonts.load(Fonts::Main, fontDir + "Sansation.ttf");
 }
 void DesertMap::buildScene() {
 	// Add a node for the background, and tile its texture

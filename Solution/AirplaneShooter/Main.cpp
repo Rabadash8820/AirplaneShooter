@@ -1,4 +1,5 @@
 #include "AirplaneShooter.h"
+
 #include <iostream>
 
 using namespace std;
@@ -13,8 +14,7 @@ int main() {
 
 	// Report any crashes to the console
 	catch (exception& e) {
-		cout << "EXCEPTION: " << endl
-			 << "\t" << e.what() << endl;
+		cout << "\t" << e.what() << endl;
 	}
 
 	return 0;

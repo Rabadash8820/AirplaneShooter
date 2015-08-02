@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../GAME2D_API.h"
+
 namespace Game2D {
 
 	struct GAME2D_API Category {
