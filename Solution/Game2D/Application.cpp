@@ -72,10 +72,10 @@ void Application::draw() {
 void Application::updateStatistics(Time dt) {
 	_statisticsUpdateTime += dt;
 	_statisticsNumFrames += 1;
-	if (_statisticsUpdateTime >= sf::seconds(1.0f)) {
+	if (_statisticsUpdateTime >= seconds(1.0f)) {
 		_statisticsText.setString("FPS: " + to_string(_statisticsNumFrames));
 
-		_statisticsUpdateTime -= sf::seconds(1.0f);
+		_statisticsUpdateTime -= seconds(1.0f);
 		_statisticsNumFrames = 0;
 	}
 }
