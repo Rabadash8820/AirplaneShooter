@@ -9,8 +9,6 @@
 
 namespace Game2D {
 
-	struct Command;
-
 	class GAME2D_API SceneNode : public sf::Transformable,
 								 public sf::Drawable,
 								 public sf::NonCopyable

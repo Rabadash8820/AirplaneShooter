@@ -1,7 +1,7 @@
 #include "DesertMap.h"
+
 #include "Aircraft.h"
 #include "ResourceIds\Textures.h"
-#include "ResourceIds\Sounds.h"
 #include "ResourceIds\Fonts.h"
 #include "Categories.h"
 #include <Render/Brush.h>

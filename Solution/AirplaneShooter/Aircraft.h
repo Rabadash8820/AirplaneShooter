@@ -1,9 +1,13 @@
 #pragma once
 
 #include "ResourceIds\Textures.h"
+
+#include <Render\ResourceId.h>
 #include <Render\ResourceManager.h>
 #include <Render\Entity.h>
-#include <SFML\Graphics.hpp>
+
+#include <SFML\Graphics\Sprite.hpp>
+
 #include <memory>
 
 namespace Shooter {

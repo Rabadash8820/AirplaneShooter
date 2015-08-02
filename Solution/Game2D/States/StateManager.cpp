@@ -1,4 +1,5 @@
 #include "StateManager.h"
+
 #include <cassert>
 
 using namespace Game2D;

@@ -7,7 +7,7 @@
 #include <Input\KeyBinding.h>
 #include <Utility.h>
 
-#include <memory>
+#include <string>
 
 using namespace Shooter;
 using namespace Game2D;

@@ -1,9 +1,11 @@
 #pragma once
 
 #include "../GAME2D_API.h"
-#include "../Render/SceneNode.h"
+
 #include "Category.h"
+
 #include <SFML/System/Time.hpp>
+
 #include <initializer_list>
 #include <functional>
 

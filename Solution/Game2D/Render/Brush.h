@@ -2,6 +2,11 @@
 
 #include "../GAME2D_API.h"
 #include "SceneNode.h"
+
+#include <SFML\Graphics\Sprite.hpp>
+#include <SFML\Graphics\Texture.hpp>
+#include <SFML\Graphics\Rect.hpp>
+
 #include <memory>
 
 namespace Game2D {

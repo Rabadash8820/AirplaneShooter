@@ -1,7 +1,5 @@
 #include "InputManager.h"
 
-#include <SFML\Window\Event.hpp>
-
 using namespace Game2D;
 using namespace sf;
 using namespace std;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Render\ResourceManager.h>
+#include <Render\ResourceId.h>
 
 namespace Shooter {
 

@@ -5,9 +5,8 @@
 #include "..\Render\ResourceManager.h"
 
 #include <SFML\Graphics\RenderWindow.hpp>
-#include <SFML\Graphics\Sprite.hpp>
-#include <SFML\Graphics\Text.hpp>
 #include <SFML\System\Time.hpp>
+#include <SFML\Window\Event.hpp>
 
 #include <memory>
 

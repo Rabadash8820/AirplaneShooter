@@ -2,7 +2,9 @@
 
 #include "../GAME2D_API.h"
 #include "SceneNode.h"
-#include <SFML/Graphics.hpp>
+
+#include <SFML\System\Vector2.hpp>
+
 #include <memory>
 
 namespace Game2D {

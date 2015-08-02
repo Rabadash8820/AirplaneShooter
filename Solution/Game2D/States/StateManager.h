@@ -3,7 +3,11 @@
 #include "..\GAME2D_API.h"
 #include "State.h"
 #include "StateId.h"
-#include <SFML\Graphics.hpp>
+
+#include <SFML\System\NonCopyable.hpp>
+#include <SFML\System\Time.hpp>
+#include <SFML\Window\Event.hpp>
+
 #include <vector>
 #include <map>
 #include <functional>

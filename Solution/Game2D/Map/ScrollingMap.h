@@ -2,6 +2,11 @@
 
 #include "../GAME2D_API.h"
 #include "Map.h"
+
+#include <SFML\System\Vector2.hpp>
+#include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\Graphics\Rect.hpp>
+
 #include <SFML/Graphics.hpp>
 
 namespace Game2D {

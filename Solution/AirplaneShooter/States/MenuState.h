@@ -6,6 +6,7 @@
 #include <SFML\Graphics\Text.hpp>
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Window\Event.hpp>
+#include <SFML\System\Time.hpp>
 
 #include <vector>
 

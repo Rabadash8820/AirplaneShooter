@@ -1,5 +1,7 @@
 #include "Utility.h"
 
+#include <SFML\Graphics\Rect.hpp>
+
 using namespace Game2D;
 using namespace std;
 using namespace sf;

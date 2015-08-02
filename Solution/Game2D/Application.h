@@ -9,6 +9,7 @@
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\Text.hpp>
 #include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\Window\VideoMode.hpp>
 
 #include <string>
 #include <memory>
