@@ -72,6 +72,9 @@
     <ClCompile Include="States\PauseState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
+    <ClCompile Include="States\LoadingState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aircraft.h">
@@ -114,6 +117,9 @@
       <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="States\PauseState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\LoadingState.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>

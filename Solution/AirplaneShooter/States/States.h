@@ -7,7 +7,8 @@ namespace Shooter {
 		extern Game2D::StateId Title,
 							   Menu,
 							   Game,
-							   Pause;
+							   Pause,
+							   Loading;
 
 	}
 
