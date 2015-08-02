@@ -15,7 +15,7 @@ namespace Shooter {
 		sf::Text _loadingText;
 		sf::RectangleShape _progressBarBkgrd;
 		sf::RectangleShape _progressBar;
-		Game2D::ParallelTask _loadingTask;
+		Game2D::ParallelTask* _loadingTask;
 		const float BAR_OFFSET = 10.f;
 
 		// INTERFACE

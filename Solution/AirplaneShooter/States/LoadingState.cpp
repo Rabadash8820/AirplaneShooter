@@ -37,7 +37,7 @@ LoadingState::LoadingState(StateManager& manager, Context context) :
 
 	// Begin loading in parallel, starting the progress bar at 0%
 	setProgress(0.f);
-	_loadingTask.execute();
+	_loadingTask->execute();
 }
 bool LoadingState::handleEvent(const Event& e) {
 	// Allow other States to handle this Event
@@ -45,14 +45,14 @@ bool LoadingState::handleEvent(const Event& e) {
 }
 bool LoadingState::update(Time dt) {
 	// If loading is done then push the Game state
-	if (_loadingTask.isFinished()) {
+	if (_loadingTask->isFinished()) {
 		requestPopState();
 		requestPushState(States::Game);
 	}
 
 	// Otherwise, update the progress bar's percent based on the loading task's progress
 	else
-		setProgress(_loadingTask.getProgress());
+		setProgress(_loadingTask->getProgress());
 
 	// Allow other States to update
 	return true;
