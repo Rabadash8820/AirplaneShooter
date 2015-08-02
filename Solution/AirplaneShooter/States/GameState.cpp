@@ -2,6 +2,7 @@
 
 #include "..\DesertMap.h"
 #include "..\Player.h"
+#include "States.h"
 
 #include <SFML\Graphics\RenderWindow.hpp>
 
@@ -22,6 +23,10 @@ GameState::GameState(StateManager& manager, Context context) :
 // INTERFACE
 bool GameState::handleEvent(const Event& e) {
 	_player.handleEvent(e, _map->getCommandQueue());
+
+	// If Escape was pressed then push the Pause State
+	if (e.type == Event::KeyPressed && e.key.code == Keyboard::Escape)
+		requestPushState(States::Pause);
 
 	// Allow other States to handle this Event
 	return true;

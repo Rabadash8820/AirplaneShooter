@@ -11,26 +11,26 @@ StateManager::StateManager(State::Context context) :
 	_context(context)
 { }
 void StateManager::update(Time dt) {
-	// Iterate through the State "stack" from top to bottom
-	for (auto itr = _stack.rbegin(); itr != _stack.rend(); ++itr) {
-		bool othersCanUpdate = (*itr)->update(dt);
+	// Iterate through the State stack from top to bottom
+	for (auto state = _stack.rbegin(); state != _stack.rend(); ++state) {
+		bool othersCanUpdate = (*state)->update(dt);
 		if (!othersCanUpdate)
-			return;
+			break;
 	}
 
 	applyPendingChanges();
 }
 void StateManager::draw() {
-	// Iterate through the State "stack" from top to bottom
-	for (auto itr = _stack.rbegin(); itr != _stack.rend(); ++itr)
-		(*itr)->draw();
+	// Iterate through the State stack from bottom to top
+	for (auto state = _stack.begin(); state != _stack.end(); ++state)
+		(*state)->draw();
 }
 void StateManager::handleEvent(const Event& e) {
-	// Iterate through the State "stack" from top to bottom
-	for (auto itr = _stack.rbegin(); itr != _stack.rend(); ++itr) {
-		bool othersCanHandle = (*itr)->handleEvent(e);
+	// Iterate through the State stack from top to bottom
+	for (auto state = _stack.rbegin(); state != _stack.rend(); ++state) {
+		bool othersCanHandle = (*state)->handleEvent(e);
 		if (!othersCanHandle)
-			return;
+			break;
 	}
 
 	applyPendingChanges();
