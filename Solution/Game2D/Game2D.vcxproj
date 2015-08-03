@@ -162,6 +162,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="GUI\Button.cpp" />
+    <ClCompile Include="GUI\Component.cpp" />
+    <ClCompile Include="GUI\Container.cpp" />
+    <ClCompile Include="GUI\Label.cpp" />
     <ClCompile Include="Input\Category.cpp" />
     <ClCompile Include="Input\Command.cpp" />
     <ClCompile Include="Input\CommandManager.cpp" />
