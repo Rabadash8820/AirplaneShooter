@@ -25,9 +25,6 @@ void InputManager::handleEvent(const Event& e, queue<Command>& commands) const {
 	case Event::MouseMoved:
 		handleMouseMove(e.mouseMove, commands);
 		break;
-	case Event::MouseWheelMoved:
-		handleMouseWheel(e.mouseWheel, commands);
-		break;
 	case Event::MouseWheelScrolled:
 		handleMouseScroll(e.mouseWheelScroll, commands);
 		break;

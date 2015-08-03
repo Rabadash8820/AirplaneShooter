@@ -29,7 +29,6 @@ namespace Game2D {
 		virtual void handleMousePress(		  const sf::Event::MouseButtonEvent&,	   std::queue<Command>&) const { }
 		virtual void handleMouseRelease(	  const sf::Event::MouseButtonEvent&,	   std::queue<Command>&) const { }
 		virtual void handleMouseMove(		  const sf::Event::MouseMoveEvent&,		   std::queue<Command>&) const { }
-		virtual void handleMouseWheel(		  const sf::Event::MouseWheelEvent&,	   std::queue<Command>&) const { }
 		virtual void handleMouseScroll(		  const sf::Event::MouseWheelScrollEvent&, std::queue<Command>&) const { }
 		virtual void handleJoystickPress(	  const sf::Event::JoystickButtonEvent&,   std::queue<Command>&) const { }
 		virtual void handleJoystickRelease(	  const sf::Event::JoystickButtonEvent&,   std::queue<Command>&) const { }
