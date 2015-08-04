@@ -25,7 +25,7 @@ MenuState::MenuState(StateManager& manager, Context context) :
 	State(manager, context),
 	_background((*context.textures)[Textures::TitleScreen])
 {	
-	// Define the Menu option buttons
+	// Define the menu buttons
 	shared_ptr<Button> play = make_shared<Button>(
 		context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
 	play->setText("Play");
@@ -62,7 +62,6 @@ MenuState::MenuState(StateManager& manager, Context context) :
 	_guiContainer.pack(play);
 	_guiContainer.pack(settings);
 	_guiContainer.pack(exit);
-
 }
 bool MenuState::handleEvent(const Event& e) {
 	_guiContainer.handleEvent(e);
@@ -76,8 +75,8 @@ bool MenuState::update(Time dt) {
 }
 void MenuState::draw() {
 	RenderWindow& window = *getContext().window;
-
 	window.setView(window.getDefaultView());
+
 	window.draw(_background);
 	window.draw(_guiContainer);
 }
