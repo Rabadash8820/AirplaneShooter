@@ -2,8 +2,10 @@
 
 #include <States\State.h>
 #include <States\StateManager.h>
+#include <GUI.h>
 
 #include <SFML\Graphics\Text.hpp>
+#include <SFML\Graphics\RectangleShape.hpp>
 
 namespace Shooter {
 
@@ -11,7 +13,8 @@ namespace Shooter {
 		// ENCAPSULATED FIELDS
 	private:
 		sf::Text _pauseText;
-		sf::Text _instructionText;
+		sf::RectangleShape _background;
+		Game2D::GUI::Container _guiContainer;
 
 		// INTERFACE
 	public:
