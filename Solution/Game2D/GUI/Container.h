@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Component.h"
+#include "Control.h"
+#include "..\GAME2D_API.h"
 
 #include <SFML\Window\Event.hpp>
 
@@ -10,20 +11,20 @@
 namespace Game2D {
 	namespace GUI {
 
-		class Container : public Component {
+		class GAME2D_API Container : public Control {
 			// ABSTRACT DATA TYPES
 		public:
 			typedef std::shared_ptr<Container> Ptr;
 
 			// ENCAPSULATED FIELDS
 		private:
-			std::vector<Component::Ptr> _children;
+			std::vector<Control::Ptr> _children;
 			int _selectedChild;
 
 			// INTERFACE
 		public:
 			Container();
-			void pack(Component::Ptr component);
+			void pack(Control::Ptr component);
 			virtual bool isSelectable() const;
 			virtual void handleEvent(const sf::Event&);
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "..\GAME2D_API.h"
+
 #include <SFML\Graphics\Drawable.hpp>
 #include <SFML\Graphics\Transformable.hpp>
 #include <SFML\System\NonCopyable.hpp>
@@ -10,14 +12,14 @@
 namespace Game2D {
 	namespace GUI {
 
-		class Component : 
+		class GAME2D_API Control :
 			public sf::Drawable,
 			public sf::Transformable,
 			public sf::NonCopyable
 		{
 			// ABSTRACT DATA TYPES
 		public:
-			typedef std::shared_ptr<Component> Ptr;
+			typedef std::shared_ptr<Control> Ptr;
 
 			// ENCAPSULATED FIELDS
 		private:
@@ -27,8 +29,8 @@ namespace Game2D {
 
 			// INTERFACE
 		public:
-			Component();
-			virtual ~Component();
+			Control();
+			virtual ~Control();
 			virtual bool isSelectable() const = 0;
 			bool isEnabled() const;
 			virtual void enable();

@@ -163,7 +163,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="GUI\Button.cpp" />
-    <ClCompile Include="GUI\Component.cpp" />
+    <ClCompile Include="GUI\Control.cpp" />
     <ClCompile Include="GUI\Container.cpp" />
     <ClCompile Include="GUI\Label.cpp" />
     <ClCompile Include="Input\Category.cpp" />
@@ -183,8 +183,9 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="GAME2D_API.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="GUI\Button.h" />
-    <ClInclude Include="GUI\Component.h" />
+    <ClInclude Include="GUI\Control.h" />
     <ClInclude Include="GUI\Container.h" />
     <ClInclude Include="GUI\Label.h" />
     <ClInclude Include="Input\Category.h" />

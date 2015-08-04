@@ -24,12 +24,17 @@ AirplaneShooter::AirplaneShooter() :
 {
 	_window.setKeyRepeatEnabled(false);
 	
-	// Load game-wide resources
+	// Get resource folders
 	string currDir    = Utility::currentWorkingDirectory();
 	string textureDir = currDir + "\\Resources\\Textures\\";
 	string fontDir    = currDir + "\\Resources\\Fonts\\";
-	_textures.load(Textures::TitleScreen, textureDir + "TitleScreen.png");
+
+	// Load resources used by entire application
 	_fonts.load(Fonts::Main, fontDir + "Sansation.ttf");
+	_textures.load(Textures::TitleScreen,	   textureDir + "TitleScreen.png");
+	_textures.load(Textures::ButtonUnselected, textureDir + "ButtonNormal.png");
+	_textures.load(Textures::ButtonSelected,   textureDir + "ButtonSelected.png");
+	_textures.load(Textures::ButtonPressed,    textureDir + "ButtonPressed.png");
 
 	// Initialize the statistics text
 	_statisticsText.setFont(_fonts[Fonts::Main]);
@@ -43,7 +48,7 @@ AirplaneShooter::AirplaneShooter() :
 
 void AirplaneShooter::registerStates() {
 	_stateManager.registerState<TitleState>(States::Title);
-	_stateManager.registerState<MenuState>(States::Menu);
+	_stateManager.registerState<MenuState>(States::MainMenu);
 	_stateManager.registerState<GameState>(States::Game);
 	_stateManager.registerState<PauseState>(States::Pause);
 	_stateManager.registerState<LoadingState>(States::Loading);

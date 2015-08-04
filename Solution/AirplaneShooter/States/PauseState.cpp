@@ -48,7 +48,7 @@ bool PauseState::handleEvent(const sf::Event& e) {
 		// Return to Main Menu
 	case Keyboard::BackSpace:
 		requestClearStates();
-		requestPushState(States::Menu);
+		requestPushState(States::MainMenu);
 		break;
 	}
 
