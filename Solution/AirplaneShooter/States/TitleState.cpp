@@ -44,10 +44,10 @@ bool TitleState::update(sf::Time dt) {
 	return true;
 }
 bool TitleState::handleEvent(const sf::Event& e) {
-	// If the user presses any key, move to the Menu state
-	if (e.type == Event::KeyPressed) {
+	// If the user presses (and releases) any key, move to the Menu state
+	if (e.type == Event::KeyReleased) {
 		requestPopState();
-		requestPushState(States::Menu);
+		requestPushState(States::MainMenu);
 	}
 
 	// Allow other States to handle this Event

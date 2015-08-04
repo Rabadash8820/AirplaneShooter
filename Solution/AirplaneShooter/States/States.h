@@ -5,7 +5,8 @@ namespace Shooter {
 	namespace States {
 
 		extern Game2D::StateId Title,
-							   Menu,
+							   MainMenu,
+							   SettingsMenu,
 							   Game,
 							   Pause,
 							   Loading;

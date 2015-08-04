@@ -7,7 +7,8 @@ namespace Shooter {
 	namespace States {
 
 		StateId Title,
-				Menu,
+				MainMenu,
+				SettingsMenu,
 				Game,
 				Pause,
 				Loading;

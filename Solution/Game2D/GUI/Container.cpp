@@ -8,7 +8,7 @@ using namespace sf;
 Container::Container() :
 	_selectedChild(-1)
 { }
-void Container::pack(Component::Ptr component) {
+void Container::pack(Control::Ptr component) {
 	_children.push_back(component);
 
 	if (!hasSelection() && component->isSelectable())
@@ -53,7 +53,7 @@ void Container::handleEvent(const sf::Event& e) {
 void Container::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	states.transform *= getTransform();
 
-	for (const Component::Ptr& child : _children)
+	for (const Control::Ptr& child : _children)
 		target.draw(*child, states);
 }
 bool Container::hasSelection() const {
