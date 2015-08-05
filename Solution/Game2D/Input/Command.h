@@ -8,6 +8,7 @@
 
 #include <initializer_list>
 #include <functional>
+#include <string>
 
 namespace Game2D {
 
@@ -17,20 +18,16 @@ namespace Game2D {
 		// ENCAPSULATED FIELDS
 	private:
 		std::function<void(SceneNode&, sf::Time)> _action;
-		unsigned int _categoryId;
 
 		// INTERFACE
 	public:
-		Command(std::function<void(SceneNode&, sf::Time)>);
-		Command(std::function<void(SceneNode&, sf::Time)>, Category);
-		Command(std::function<void(SceneNode&, sf::Time)>, std::initializer_list<Category>);
-		unsigned int getCategory() const;
+		Command(std::string, std::function<void(SceneNode&, sf::Time)>);
+		Command(std::string, std::function<void(SceneNode&, sf::Time)>, Category);
+		Command(const Command&);
+		std::string name;
+		Category category;
 		void action(SceneNode&, sf::Time) const;
-		void setCategory(Category);
-		void setCategory(std::initializer_list<Category>);
-
-		// HELPER FUNCTIONS
-		void initialize(std::function<void(SceneNode&, sf::Time)>, std::initializer_list<Category>);
+		const Command& operator=(const Command&);
 	};
 
 }

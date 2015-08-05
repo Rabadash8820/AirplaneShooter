@@ -5,6 +5,7 @@
 #include <Render\ResourceId.h>
 #include <Render\ResourceManager.h>
 #include <Render\Entity.h>
+#include <Input\Category.h>
 
 #include <SFML\Graphics\Sprite.hpp>
 
@@ -31,7 +32,7 @@ namespace Shooter {
 		Aircraft(Type, const Game2D::TextureManager&);
 		float airSpeed;
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
-		virtual unsigned int getCategory() const;
+		virtual Game2D::Category getCategory() const;
 
 		// HELPER FUNCTIONS
 	private:
