@@ -4,7 +4,7 @@
 
 namespace Game2D {
 
-	struct GAME2D_API StateId {
+	struct GAME2D_API ActionId {
 		// ENCAPSULATED MEMBERS
 	private:
 		size_t _id;
@@ -15,28 +15,28 @@ namespace Game2D {
 
 		// INTERFACE
 	public:
-		StateId() {
-			_id = incrementedRoot();
-		}
-		StateId(const StateId& that) {
+		ActionId() : _id(incrementedRoot()) { }
+		ActionId(const ActionId& that) : _id(that._id) {}
+		ActionId& operator=(const ActionId& that) {
 			this->_id = that._id;
+			return *this;
 		}
-		bool operator==(const StateId& that) const {
+		bool operator==(const ActionId& that) const {
 			return this->_id == that._id;
 		}
-		bool operator!=(const StateId& that) const {
+		bool operator!=(const ActionId& that) const {
 			return this->_id != that._id;
 		}
-		bool operator<(const StateId& that) const {
+		bool operator<(const ActionId& that) const {
 			return this->_id < that._id;
 		}
-		bool operator<=(const StateId& that) const {
+		bool operator<=(const ActionId& that) const {
 			return this->_id <= that._id;
 		}
-		bool operator>(const StateId& that) const {
+		bool operator>(const ActionId& that) const {
 			return this->_id > that._id;
 		}
-		bool operator>=(const StateId& that) const {
+		bool operator>=(const ActionId& that) const {
 			return this->_id >= that._id;
 		}
 

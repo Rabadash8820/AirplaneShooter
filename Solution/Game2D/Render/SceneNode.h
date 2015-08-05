@@ -29,7 +29,6 @@ namespace Game2D {
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
 		SceneNode();
-		~SceneNode();
 
 		// INTERFACE FUNCTIONS
 	public:
@@ -39,7 +38,7 @@ namespace Game2D {
 		sf::Vector2f getWorldPosition() const;
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		void update(sf::Time);
-		virtual unsigned int getCategory() const;
+		virtual Category getCategory() const;
 		void onCommand(const Command&, sf::Time);
 		
 		// HELPER FUNCTIONS

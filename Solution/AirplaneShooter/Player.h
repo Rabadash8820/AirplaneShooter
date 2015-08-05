@@ -2,6 +2,7 @@
 
 #include <Input\InputManager.h>
 #include <Input\Command.h>
+#include <Input\ActionId.h>
 
 #include <SFML\Window\Event.hpp>
 
@@ -10,10 +11,16 @@
 namespace Shooter {
 
 	class Player : public Game2D::InputManager {
+		// ENCAPSULATED FIELDS
+	private:
+		Game2D::ActionId MoveLeft;
+		Game2D::ActionId MoveRight;
+		Game2D::ActionId MoveUp;
+		Game2D::ActionId MoveDown;
+
 		// INTERFACE
 	public:
 		Player();
-		virtual void handleRealtimeInput(std::queue<Game2D::Command>&) const;
 
 		// HELPER FUNCTIONS
 	private:

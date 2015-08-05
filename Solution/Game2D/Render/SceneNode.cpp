@@ -11,7 +11,6 @@ using namespace std;
 
 // CONSTRUCTORS / DESTRUCTOR
 SceneNode::SceneNode() { }
-SceneNode::~SceneNode() {}
 
 // INTERFACE FUNCTIONS
 void SceneNode::attachChild(Ptr child) {
@@ -60,12 +59,12 @@ Vector2f SceneNode::getWorldPosition() const {
 		transform *= node->getTransform();
 	return transform * Vector2f();
 }
-unsigned int SceneNode::getCategory() const {
-	return Node.getId();
+Category SceneNode::getCategory() const {
+	return Node;
 }
 void SceneNode::onCommand(const Command& command, sf::Time dt) {
 	// Execute the command if this node matches its category
-	if (command.getCategory() & this->getCategory())
+	if (command.category.matches(this->getCategory()))
 		command.action(*this, dt);
 
 	// Pass the command to all children

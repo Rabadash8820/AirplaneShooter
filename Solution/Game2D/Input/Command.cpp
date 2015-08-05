@@ -5,37 +5,27 @@ using namespace std;
 using namespace sf;
 
 // INTERFACE
-Command::Command(function<void(SceneNode&, Time)> action) {
-	this->initialize(action, { Node });
-}
-Command::Command(function<void(SceneNode&, Time)> action, Category category) {
-	this->initialize(action, { category });
-}
-Command::Command(function<void(SceneNode&, Time)> action, initializer_list<Category> categories) {
-	this->initialize(action, categories);
-}
+Command::Command(string name, function<void(SceneNode&, Time)> action) :
+	name(name),
+	_action(action),
+	category(Node)
+{ }
+Command::Command(string name, function<void(SceneNode&, Time)> action, Category category) :
+	name(name),
+	_action(action),
+	category(category)
+{ }
+Command::Command(const Command& that) :
+	name(that.name),
+	_action(that._action),
+	category(that.category)
+{ }
 void Command::action(SceneNode& node, Time dt) const {
 	_action(node, dt);
 }
-unsigned int Command::getCategory() const {
-	return _categoryId;
-}
-void Command::setCategory(Category category) {
-	this->initialize(_action, { category });
-
-}
-void Command::setCategory(std::initializer_list<Category> categories) {
-	this->initialize(_action, categories);
-}
-
-// HELPER FUNCTIONS
-void Command::initialize(function<void(SceneNode&, Time)> action, initializer_list<Category> categories) {
-	// Set action
-	_action = action;
-
-	// Set category (bitwise OR of all those provided)
-	unsigned int id = 0;
-	for (auto& c : categories)
-		id |= c.getId();
-	_categoryId = id;
+const Command& Command::operator=(const Command& that) {
+	this->name = that.name;
+	this->category = that.category;
+	this->_action = that._action;
+	return *this;
 }
