@@ -3,7 +3,6 @@
 #include "Aircraft.h"
 #include "Categories.h"
 
-#include <Input\ActionId.h>
 #include <Render\SceneNode.h>
 
 #include <SFML\System\Time.hpp>
@@ -52,11 +51,25 @@ Player::Player() {
 	bindKey(Keyboard::Left,  MoveLeft);
 	bindKey(Keyboard::Right, MoveRight);
 	bindKey(Keyboard::Up,	 MoveUp);
-	bindKey(Keyboard::Down,	 MoveDown);
+	bindKey(Keyboard::Down,  MoveDown);
+
+	// Also set these as the default Key bindings
+	bindDefaultKey(Keyboard::A, MoveLeft);
+	bindDefaultKey(Keyboard::D, MoveRight);
+	bindDefaultKey(Keyboard::W, MoveUp);
+	bindDefaultKey(Keyboard::S, MoveDown);
+	bindDefaultKey(Keyboard::Left, MoveLeft);
+	bindDefaultKey(Keyboard::Right, MoveRight);
+	bindDefaultKey(Keyboard::Up, MoveUp);
+	bindDefaultKey(Keyboard::Down, MoveDown);
 
 	// Assign the category for the player's aircraft to all Commands
 	for (auto& pair : _commandBindings)
 		pair.second.category = Categories::PlayerAircraft;
+}
+vector<CommandId> Player::commands() const {
+	vector<CommandId> ids = { MoveLeft, MoveRight, MoveUp, MoveDown };
+	return ids;
 }
 
 // HELPER FUNCTIONS

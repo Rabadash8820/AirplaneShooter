@@ -6,6 +6,7 @@
 #include "States\GameState.h"
 #include "States\PauseState.h"
 #include "States\LoadingState.h"
+#include "States\SettingsState.h"
 #include "ResourceIds\Fonts.h"
 #include "ResourceIds\Textures.h"
 #include "Player.h"
@@ -52,4 +53,5 @@ void AirplaneShooter::registerStates() {
 	_stateManager.registerState<GameState>(States::Game);
 	_stateManager.registerState<PauseState>(States::Pause);
 	_stateManager.registerState<LoadingState>(States::Loading);
+	_stateManager.registerState<SettingsState>(States::SettingsMenu);
 }

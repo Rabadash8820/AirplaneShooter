@@ -1,5 +1,7 @@
 #include "InputManager.h"
 
+#include "..\GUI\Container.h"
+
 #include <cassert>
 
 using namespace Game2D;
@@ -62,12 +64,12 @@ void InputManager::handleRealtimeInput(queue<Command>& commands) const {
 }
 void InputManager::handleRealtimeKeyboard(queue<Command>& commands) const {
 	// Loop through each KeyBinding to see if any of those Keys are pressed
-	for (auto& binding : _keyBindings) {
-		for (auto& key : binding.second) {
+	for (auto binding : _keyBindings) {
+		for (auto key : binding.second) {
 
 			// If so, then add the associated Command to the queue
 			if (Keyboard::isKeyPressed(key)) {
-				auto& it = _commandBindings.find(binding.first);
+				auto it = _commandBindings.find(binding.first);
 				//assert(it != _commandBindings.end());
 				commands.push(it->second);
 			}
@@ -75,27 +77,56 @@ void InputManager::handleRealtimeKeyboard(queue<Command>& commands) const {
 		}
 	}
 }
-set<Keyboard::Key> InputManager::keysBoundTo(ActionId action) const {
-	auto it = _keyBindings.find(action);
+void InputManager::bindKey(Keyboard::Key key, CommandId id) {
+	// Don't bind Keys that are reserved for the GUI
+	if (key == GUI::Container::activationKey)
+		return;
+
+	// Unbind this Key from all other Ids
+	for (auto binding : _keyBindings) {
+		set<Keyboard::Key> boundKeys = binding.second;
+		if (binding.first != id && boundKeys.find(key) != boundKeys.end())
+			_keyBindings[binding.first].erase(key);
+	}
+
+	// Bind the Key to the provided Id
+	_keyBindings[id].insert(key);
+}
+set<Keyboard::Key> InputManager::boundKeys(CommandId id) const {
+	auto it = _keyBindings.find(id);
 	return (it == _keyBindings.end()) ?
 		set<Keyboard::Key>() :
 		it->second;
 }
-void InputManager::bindKey(Keyboard::Key key, ActionId action) {
-	// Unbind this Key from all other ActionIds
-	for (auto& binding : _keyBindings) {
-		set<Keyboard::Key> boundKeys = binding.second;
-		if (binding.first != action && boundKeys.find(key) != boundKeys.end())
-			binding.second.erase(key);
-	}
+Command InputManager::boundCommand(CommandId id) const {
+	auto it = _commandBindings.find(id);
+	assert(it != _commandBindings.end());
+	return it->second;
+}
+void InputManager::resetDefaults() {
+	_keyBindings.clear();
 
-	// Bind the Key to the provided ActionId
-	_keyBindings[action].insert(key);
+	// Reset all key bindings to the defaults
+	for (auto binding : _defaultKeyBindings) {
+		for (Keyboard::Key k : binding.second)
+			_keyBindings[binding.first].insert(k);
+	}
 }
 
+
 // HELPER FUNCTIONS
-void InputManager::bindCommand(const Command& command, ActionId action) {
-	// Bind the Command to the provided ActionId (make sure that id wasn't already used)
-	assert(_commandBindings.find(action) == _commandBindings.end());
-	_commandBindings.insert(make_pair(action, command));
+void InputManager::bindDefaultKey(Keyboard::Key key, CommandId id) {
+	// Assert that there are no default Key collisions
+	for (auto binding : _defaultKeyBindings) {
+		set<Keyboard::Key> boundKeys = binding.second;
+		assert(boundKeys.find(key) == boundKeys.end());
+	}
+
+	// Bind the Key to the provided Id
+	_defaultKeyBindings[id].insert(key);
+}
+void InputManager::bindCommand(const Command& command, CommandId id) {
+	// Bind the Command to the provided Id (make sure that id wasn't already used)
+	assert(_commandBindings.find(id) == _commandBindings.end());
+	_commandBindings.insert(make_pair(id, command));
 }

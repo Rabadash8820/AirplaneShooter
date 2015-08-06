@@ -2,11 +2,12 @@
 
 #include "..\GAME2D_API.h"
 #include "Command.h"
-#include "ActionId.h"
+#include "CommandId.h"
 
 #include <SFML\Window\Event.hpp>
 
 #include <set>
+#include <vector>
 #include <queue>
 #include <map>
 
@@ -15,20 +16,25 @@ namespace Game2D {
 	class GAME2D_API InputManager {
 		// PRIVATE FIELDS
 	protected:
-		std::map<ActionId, std::set<sf::Keyboard::Key>> _keyBindings;
-		std::map<ActionId, Command> _commandBindings;
+		std::map<CommandId, std::set<sf::Keyboard::Key>> _keyBindings;
+		std::map<CommandId, std::set<sf::Keyboard::Key>> _defaultKeyBindings;
+		std::map<CommandId, Command> _commandBindings;
 
 		// INTERFACE
 	public:
 		InputManager() { }
 		void handleEvent(const sf::Event&, std::queue<Command>&) const;
 		void handleRealtimeInput(std::queue<Command>&) const;
-		std::set<sf::Keyboard::Key> keysBoundTo(ActionId) const;
-		void bindKey(sf::Keyboard::Key, ActionId);
+		void bindKey(sf::Keyboard::Key, CommandId);
+		std::set<sf::Keyboard::Key> boundKeys(CommandId) const;
+		Command boundCommand(CommandId) const;
+		virtual std::vector<CommandId> commands() const = 0;
+		void resetDefaults();
 
 		// HELPER FUNCTIONS
 	protected:
-		void bindCommand(const Command&, ActionId);
+		void bindDefaultKey(sf::Keyboard::Key, CommandId);
+		void bindCommand(const Command&, CommandId);
 
 		virtual void handleKeyPress(		  const sf::Event::KeyEvent&,			   std::queue<Command>&) const { }
 		virtual void handleKeyRelease(		  const sf::Event::KeyEvent&,			   std::queue<Command>&) const { }

@@ -166,7 +166,7 @@
     <ClCompile Include="GUI\Control.cpp" />
     <ClCompile Include="GUI\Container.cpp" />
     <ClCompile Include="GUI\Label.cpp" />
-    <ClCompile Include="Input\ActionId.cpp" />
+    <ClCompile Include="Input\CommandId.cpp" />
     <ClCompile Include="Input\Category.cpp" />
     <ClCompile Include="Input\Command.cpp" />
     <ClCompile Include="Input\InputManager.cpp" />
@@ -189,7 +189,7 @@
     <ClInclude Include="GUI\Control.h" />
     <ClInclude Include="GUI\Container.h" />
     <ClInclude Include="GUI\Label.h" />
-    <ClInclude Include="Input\ActionId.h" />
+    <ClInclude Include="Input\CommandId.h" />
     <ClInclude Include="Input\Category.h" />
     <ClInclude Include="Input\Command.h" />
     <ClInclude Include="Input\InputManager.h" />

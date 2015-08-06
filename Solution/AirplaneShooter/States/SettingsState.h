@@ -3,13 +3,16 @@
 #include <States\State.h>
 #include <States\StateManager.h>
 #include <GUI.h>
+#include <Input\CommandId.h>
 
 #include <SFML\Window\Event.hpp>
+#include <SFML\Window\Keyboard.hpp>
 #include <SFML\System\Time.hpp>
 #include <SFML\Graphics\Sprite.hpp>
 
 #include <string>
-#include <array>
+#include <set>
+#include <map>
 
 namespace Shooter {
 
@@ -18,8 +21,8 @@ namespace Shooter {
 	private:
 		sf::Sprite _background;
 		Game2D::GUI::Container _guiContainer;
-		std::array<Game2D::GUI::Button::Ptr, 5> _bindingButtons;
-		std::array<Game2D::GUI::Label::Ptr, 5>  _bindingLabels;
+		std::map<Game2D::CommandId, Game2D::GUI::Button::Ptr> _bindingButtons;
+		std::map<Game2D::CommandId, Game2D::GUI::Label::Ptr>  _bindingLabels;
 
 		// INTERFACE
 	public:
@@ -30,8 +33,9 @@ namespace Shooter {
 
 		// HELPER FUNCTIONS
 	private:
+		void packControl(Game2D::CommandId, float, const std::string&, Context);
 		void updateLabels();
-		void addButtonLabel(float, const std::string&, Context);
+		void updateLabel(Game2D::CommandId, std::set<sf::Keyboard::Key>);
 
 	};
 

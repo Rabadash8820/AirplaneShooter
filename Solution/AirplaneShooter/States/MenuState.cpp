@@ -43,10 +43,9 @@ MenuState::MenuState(StateManager& manager, Context context) :
 	settings->setPosition(100, 300);
 	settings->setTexture(Button::State::Selected, Textures::ButtonSelected);
 	settings->setTexture(Button::State::Pressed, Textures::ButtonPressed);
-	settings->setCallback([this]() {
-		requestPopState();
-		requestPushState(States::SettingsMenu);
-	});
+	settings->setCallback(bind(
+		&MenuState::requestPushState, this,
+		States::SettingsMenu));
 
 	shared_ptr<Button> exit = make_shared<Button>(
 		context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
@@ -54,9 +53,7 @@ MenuState::MenuState(StateManager& manager, Context context) :
 	exit->setPosition(100, 350);
 	exit->setTexture(Button::State::Selected, Textures::ButtonSelected);
 	exit->setTexture(Button::State::Pressed, Textures::ButtonPressed);
-	exit->setCallback([this]() {
-		requestPopState();
-	});
+	exit->setCallback(bind(&MenuState::requestPopState, this));
 
 	// Pack buttons into the GUI Container
 	_guiContainer.pack(play);

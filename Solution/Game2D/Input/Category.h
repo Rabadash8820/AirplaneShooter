@@ -9,9 +9,9 @@ namespace Game2D {
 	struct GAME2D_API Category {
 		// ENCAPSULATED MEMBERS
 	private:
-		unsigned long _id;
-		static unsigned long _root;
-		static unsigned long shiftedRoot();
+		size_t _id;
+		static size_t _root;
+		static size_t shiftedRoot();
 
 		// INTERFACE
 	public:
