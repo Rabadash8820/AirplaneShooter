@@ -1,6 +1,11 @@
 #include "Aircraft.h"
 
 #include "Categories.h"
+#include "DataTables.h"
+#include "ResourceIds\Fonts.h"
+#include "ResourceIds\Textures.h"
+
+#include <Utility.h>
 
 #include <SFML\Graphics\Rect.hpp>
 
@@ -9,22 +14,23 @@ using namespace Game2D;
 using namespace sf;
 using namespace std;
 
-// CONSTRUCTORS / DESTRUCTOR
-Aircraft::Aircraft(Type t, const TextureManager& textures) :
-	_sprite(textures[textureIdForType(t)])
+Aircraft::DataTable Aircraft::_dataTable = initAircraftData();
 
+// INTERFACE
+Aircraft::Aircraft(Type t, const TextureManager& textures, const FontManager& fonts) :
+	Entity(_dataTable[t].hitPoints),
+	_sprite(textures[textureIdForType(t)]),
+	_type(t)
 {
-	_type = t;
-	airSpeed = 0;
+	// Define the TextNode with the Aircraft's health
+	TextNode::Ptr health(new TextNode(fonts[Fonts::Main], ""));
+	_hpDisplay = health.get();
+	_hpDisplay->setPosition(0.f, 50.f);
+	attachChild(std::move(health));
 
 	// Initialize the Aircraft's Sprite
 	FloatRect bounds = _sprite.getLocalBounds();
 	_sprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
-}
-
-// INTERFACE FUNCTIONS
-void Aircraft::drawCurrent(RenderTarget& target, RenderStates states) const {
-	target.draw(this->_sprite, states);
 }
 Category Aircraft::getCategory() const {
 	// All Aircraft are SceneNodes
@@ -33,16 +39,11 @@ Category Aircraft::getCategory() const {
 	// Adjust the game Category of this Aircraft depending on its type
 	switch (_type) {
 	case Type::EAGLE:
-		c |= Categories::PlayerAircraft;
-		break;
-
+		return c | Categories::PlayerAircraft;
 	case Type::RAPTOR:
-		c |= Categories::AlliedAircraft;
-		break;
-
+		return c | Categories::AlliedAircraft;
 	default:
-		c |= Categories::EnemyAircraft;
-		break;
+		return c | Categories::EnemyAircraft;
 	}
 	return c;
 }
@@ -58,4 +59,13 @@ ResourceId Aircraft::textureIdForType(Aircraft::Type t) {
 		return Textures::Raptor;
 		break;
 	}
+}
+void Aircraft::drawCurrent(RenderTarget& target, RenderStates states) const {
+	target.draw(this->_sprite, states);
+}
+void Aircraft::updateCurrent(sf::Time dt) {
+	Entity::updateCurrent(dt);
+
+	_hpDisplay->setString(Utility::toString(getHitPoints()) + " HP");
+	_hpDisplay->setRotation(getRotation());
 }

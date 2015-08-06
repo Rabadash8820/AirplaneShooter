@@ -54,12 +54,16 @@ void DesertMap::loadResources() {
 	string currDir    = Utility::currentWorkingDirectory();
 	string textureDir = currDir + "\\Resources\\Textures\\";
 	string shaderDir  = currDir + "\\Resources\\Shaders\\";
-	string soundDir   = currDir + "\\Resources\\Sounds\\";
+	string soundDir = currDir + "\\Resources\\Sounds\\";
+	string fontDir = currDir + "\\Resources\\Fonts\\";
 
 	// Load textures
 	_textures.load(Textures::Desert, textureDir + "Desert.png");
 	_textures.load(Textures::Eagle,  textureDir + "Eagle.png");
 	_textures.load(Textures::Raptor, textureDir + "Raptor.png");
+
+	// Load fonts
+	_fonts.load(Fonts::Main, fontDir + "Sansation.ttf");
 }
 void DesertMap::buildScene() {
 	// Add a node for the background, and tile its texture
@@ -71,15 +75,15 @@ void DesertMap::buildScene() {
 	_sceneLayers[BACKGROUND]->attachChild(move(background));
 
 	// Add a node for the leader Aircraft and assign it to the Player
-	Aircraft::Ptr leader(new Aircraft(Aircraft::Type::EAGLE, _textures));
+	Aircraft::Ptr leader(new Aircraft(Aircraft::Type::EAGLE, _textures, _fonts));
 	leader->airSpeed = PLAYER_SPEED;
 	leader->setPosition(_playerSpawn);
 	_player = leader.get();
 	_sceneLayers[AIR]->attachChild(move(leader));
 
 	// Add nodes for the player's escort Aircraft
-	Aircraft::Ptr leftEscort( new Aircraft(Aircraft::Type::RAPTOR, _textures));
-	Aircraft::Ptr rightEscort(new Aircraft(Aircraft::Type::RAPTOR, _textures));
+	Aircraft::Ptr leftEscort( new Aircraft(Aircraft::Type::RAPTOR, _textures, _fonts));
+	Aircraft::Ptr rightEscort(new Aircraft(Aircraft::Type::RAPTOR, _textures, _fonts));
 	leftEscort->setPosition(-80.f, 50.f);
 	rightEscort->setPosition(80.f, 50.f);
 	_player->attachChild(move(leftEscort));

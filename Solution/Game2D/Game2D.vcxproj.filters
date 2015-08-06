@@ -117,6 +117,9 @@
     <ClCompile Include="Render\Entity.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
+    <ClCompile Include="Render\TextNode.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render\Entity.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="Input\CommandId.h">
       <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\TextNode.h">
+      <Filter>Header Files\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
