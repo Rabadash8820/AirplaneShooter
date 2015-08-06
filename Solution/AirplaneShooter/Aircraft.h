@@ -1,23 +1,23 @@
 #pragma once
 
-#include "ResourceIds\Textures.h"
-
 #include <Render\ResourceId.h>
 #include <Render\ResourceManager.h>
 #include <Render\Entity.h>
+#include <Render\TextNode.h>
 #include <Input\Category.h>
 
 #include <SFML\Graphics\Sprite.hpp>
+#include <SFML\System\Time.hpp>
 
 #include <memory>
+#include <map>
 
-namespace std {
-	template<typename Key, typename Val>
-	class map<Key, Val>;
+namespace Shooter {
+	struct AircraftData;
 }
 
 namespace Shooter {
-
+	
 	class Aircraft : public Game2D::Entity {
 		// ABSTRACT DATA TYPES
 	public:
@@ -26,22 +26,25 @@ namespace Shooter {
 			EAGLE,
 			RAPTOR,
 		};
+		typedef std::map<Aircraft::Type, AircraftData> DataTable;
 
 		// ENCAPSULATED FIELDS
 	private:
 		Type _type;
 		sf::Sprite _sprite;
-		static AircraftDataTable _dataTable;
+		Game2D::TextNode* _hpDisplay;
+		static DataTable _dataTable;
 
 		// INTERFACE
 	public:
-		Aircraft(Type, const Game2D::TextureManager&);
 		float airSpeed;
-		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
+		Aircraft(Type, const Game2D::TextureManager&, const Game2D::FontManager&);
 		virtual Game2D::Category getCategory() const; 
 
 		// HELPER FUNCTIONS
 	private:
+		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
+		virtual void updateCurrent(sf::Time);
 		Game2D::ResourceId textureIdForType(Type);
 
 	};

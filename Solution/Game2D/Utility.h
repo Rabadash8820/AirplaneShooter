@@ -7,6 +7,7 @@
 #include <SFML\Window\Keyboard.hpp>
 
 #include <string>
+#include <sstream>
 
 // Define a general macro to get the current working directory
 #ifdef _WIN32
@@ -29,6 +30,12 @@ namespace Game2D {
 		static void centerOrigin(sf::Sprite&);
 		static void centerOrigin(sf::Text&);
 		static std::string toString(sf::Keyboard::Key);
+		template <typename T>
+		static std::string toString(const T& value) {
+			std::stringstream stream;
+			stream << value;
+			return stream.str();
+		}
 	};
 
 }
