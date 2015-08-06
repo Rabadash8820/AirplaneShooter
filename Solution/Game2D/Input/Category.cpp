@@ -41,8 +41,8 @@ namespace Game2D {
 	}
 
 	// STATIC INITIALIZATIONS
-	unsigned long Category::_root = 0;
-	unsigned long Category::shiftedRoot() {
+	size_t Category::_root = 0;
+	size_t Category::shiftedRoot() {
 		if (_root == 0)
 			return (_root = 1);
 		return (_root <<= 1);

@@ -4,6 +4,7 @@
 #include "..\GAME2D_API.h"
 
 #include <SFML\Window\Event.hpp>
+#include <SFML\Window\Keyboard.hpp>
 
 #include <memory>
 #include <vector>
@@ -27,6 +28,7 @@ namespace Game2D {
 			void pack(Control::Ptr component);
 			virtual bool isSelectable() const;
 			virtual void handleEvent(const sf::Event&);
+			static const sf::Keyboard::Key activationKey = sf::Keyboard::Return;
 
 			// HELPER FUNCTIONS
 		private:

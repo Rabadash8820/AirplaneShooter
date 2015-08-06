@@ -166,7 +166,7 @@
     <ClCompile Include="GUI\Control.cpp" />
     <ClCompile Include="GUI\Container.cpp" />
     <ClCompile Include="GUI\Label.cpp" />
-    <ClCompile Include="Input\ActionId.cpp" />
+    <ClCompile Include="Input\CommandId.cpp" />
     <ClCompile Include="Input\Category.cpp" />
     <ClCompile Include="Input\Command.cpp" />
     <ClCompile Include="Input\CommandManager.cpp" />

@@ -4,6 +4,7 @@
 
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\Text.hpp>
+#include <SFML\Window\Keyboard.hpp>
 
 #include <string>
 
@@ -27,6 +28,7 @@ namespace Game2D {
 		static std::string currentWorkingDirectory();
 		static void centerOrigin(sf::Sprite&);
 		static void centerOrigin(sf::Text&);
+		static std::string toString(sf::Keyboard::Key);
 	};
 
 }
