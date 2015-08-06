@@ -11,10 +11,15 @@
 
 #include <memory>
 
+namespace std {
+	template<typename Key, typename Val>
+	class map<Key, Val>;
+}
+
 namespace Shooter {
 
 	class Aircraft : public Game2D::Entity {
-		// AIRCRAFT TYPES
+		// ABSTRACT DATA TYPES
 	public:
 		typedef std::unique_ptr<Aircraft> Ptr;
 		enum class Type {
@@ -22,17 +27,18 @@ namespace Shooter {
 			RAPTOR,
 		};
 
-		// VARIABLES
+		// ENCAPSULATED FIELDS
 	private:
 		Type _type;
 		sf::Sprite _sprite;
+		static AircraftDataTable _dataTable;
 
 		// INTERFACE
 	public:
 		Aircraft(Type, const Game2D::TextureManager&);
 		float airSpeed;
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
-		virtual Game2D::Category getCategory() const;
+		virtual Game2D::Category getCategory() const; 
 
 		// HELPER FUNCTIONS
 	private:
