@@ -174,6 +174,7 @@
     <ClCompile Include="Aircraft.cpp" />
     <ClCompile Include="AirplaneShooter.cpp" />
     <ClCompile Include="Categories.cpp" />
+    <ClCompile Include="DataTables.cpp" />
     <ClCompile Include="DesertMap.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Aircraft.h" />
     <ClInclude Include="AirplaneShooter.h" />
     <ClInclude Include="Categories.h" />
+    <ClInclude Include="DataTables.h" />
     <ClInclude Include="DesertMap.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceIds\Fonts.h" />
