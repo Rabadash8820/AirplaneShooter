@@ -10,12 +10,25 @@
 namespace Game2D {
 
 	class GAME2D_API Entity : public SceneNode {
-		// PROPERTIES
+		// ABSTRACT DATA TYPES
 	public:
 		typedef std::unique_ptr<Entity> Ptr;
-		sf::Vector2f velocity;
 
-		// METHODS
+		// ENCAPSULATED FIELDS
+	protected:
+		int _hitPoints;
+
+		// INTERFACE
+	public:
+		explicit Entity(int);
+		sf::Vector2f velocity;
+		void heal(int);
+		void damage(int);
+		void destory();
+		int getHitPoints() const;
+		bool isDestroyed() const;
+
+		// HELPER FUNCTIONS
 	protected:
 		virtual void updateCurrent(sf::Time dt) {
 			this->move(this->velocity * dt.asSeconds());

@@ -173,6 +173,7 @@
     <ClCompile Include="Map\Map.cpp" />
     <ClCompile Include="Map\ScrollingMap.cpp" />
     <ClCompile Include="Render\Brush.cpp" />
+    <ClCompile Include="Render\Entity.cpp" />
     <ClCompile Include="Render\ResourceId.cpp" />
     <ClCompile Include="Render\SceneNode.cpp" />
     <ClCompile Include="States\ParallelTask.cpp" />
