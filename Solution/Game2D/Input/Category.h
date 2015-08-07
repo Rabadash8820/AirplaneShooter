@@ -22,8 +22,8 @@ namespace Game2D {
 
 		bool operator==(const Category& that) const;
 		bool operator!=(const Category& that) const;
-		const Category& operator|(const Category& that) const;
-		const Category& operator&(const Category& that) const;
+		friend Category operator|(Category left, const Category& right);
+		friend Category operator&(Category left, const Category& right);
 		const Category& operator=(const Category& that);
 		const Category& operator|=(const Category& that);
 		const Category& operator&=(const Category& that);
