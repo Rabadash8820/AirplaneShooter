@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../GAME2D_API.h"
-#include "../Render/ResourceManager.h"
-#include "../Render/SceneNode.h"
-#include "../Render/Entity.h"
-#include "../Input/Command.h"
+#include "..\GAME2D_API.h"
+#include "..\Render\ResourceManager.h"
+#include "..\Render\SceneNode.h"
+#include "..\Render\Entity.h"
+#include "..\Input\Command.h"
 
 #include <SFML\System\NonCopyable.hpp>
 #include <SFML\System\Vector2.hpp>
