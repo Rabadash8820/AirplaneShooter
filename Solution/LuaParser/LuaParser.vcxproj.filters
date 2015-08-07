@@ -18,8 +18,16 @@
     <ClInclude Include="LUA_PARSER_API.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Derp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Derp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

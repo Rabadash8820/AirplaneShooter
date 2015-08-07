@@ -203,6 +203,11 @@
     <ClInclude Include="States\StateManager.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LuaParser\LuaParser.vcxproj">
+      <Project>{fd8e90b6-077d-4602-9783-4bb897a733d3}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\sfml-system.redist.2.3.0.0\build\native\sfml-system.redist.targets" Condition="Exists('..\packages\sfml-system.redist.2.3.0.0\build\native\sfml-system.redist.targets')" />
