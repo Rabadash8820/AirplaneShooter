@@ -170,8 +170,6 @@
     <ClCompile Include="Input\Category.cpp" />
     <ClCompile Include="Input\Command.cpp" />
     <ClCompile Include="Input\InputManager.cpp" />
-    <ClCompile Include="Map\Map.cpp" />
-    <ClCompile Include="Map\ScrollingMap.cpp" />
     <ClCompile Include="Render\Brush.cpp" />
     <ClCompile Include="Render\Entity.cpp" />
     <ClCompile Include="Render\ResourceId.cpp" />
@@ -195,8 +193,6 @@
     <ClInclude Include="Input\Category.h" />
     <ClInclude Include="Input\Command.h" />
     <ClInclude Include="Input\InputManager.h" />
-    <ClInclude Include="Map\Map.h" />
-    <ClInclude Include="Map\ScrollingMap.h" />
     <ClInclude Include="Render\Brush.h" />
     <ClInclude Include="Render\Entity.h" />
     <ClInclude Include="Render\ResourceId.h" />

@@ -175,6 +175,7 @@
     <ClCompile Include="AirplaneShooter.cpp" />
     <ClCompile Include="Categories.cpp" />
     <ClCompile Include="DesertMap.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ResourceIds\Fonts.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Categories.h" />
     <ClInclude Include="DataTables.h" />
     <ClInclude Include="DesertMap.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceIds\Fonts.h" />
     <ClInclude Include="ResourceIds\Shaders.h" />

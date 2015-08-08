@@ -1,10 +1,9 @@
 #pragma once
 
-#include "..\GAME2D_API.h"
-#include "..\Render\ResourceManager.h"
-#include "..\Render\SceneNode.h"
-#include "..\Render\Entity.h"
-#include "..\Input\Command.h"
+#include <Render\ResourceManager.h>
+#include <Render\SceneNode.h>
+#include <Render\Entity.h>
+#include <Input\Command.h>
 
 #include <SFML\System\NonCopyable.hpp>
 #include <SFML\System\Vector2.hpp>
@@ -20,9 +19,9 @@
 #include <vector>
 #include <queue>
 
-namespace Game2D {
+namespace Shooter {
 
-	class GAME2D_API Map :
+	class Map :
 		public sf::NonCopyable,
 		public sf::Drawable
 	{
@@ -33,22 +32,22 @@ namespace Game2D {
 		sf::RenderWindow* _window;
 		sf::View _view;
 		sf::IntRect _worldBounds;
-		TextureManager _textures;
-		SoundManager _sounds;
-		FontManager _fonts;
-		ShaderManager _shaders;
-		SceneNode _sceneTree;
+		Game2D::TextureManager _textures;
+		Game2D::SoundManager _sounds;
+		Game2D::FontManager _fonts;
+		Game2D::ShaderManager _shaders;
+		Game2D::SceneNode _sceneTree;
 		size_t _numLayers;
-		std::vector<SceneNode*> _sceneLayers;
-		Entity* _player;
+		std::vector<Game2D::SceneNode*> _sceneLayers;
+		Game2D::Entity* _player;
 		sf::Vector2f _playerSpawn;
-		std::queue<Command> _commands;
+		std::queue<Game2D::Command> _commands;
 
 		// INTERFACE
 	public:
 		Map(sf::RenderWindow*, sf::FloatRect, size_t);
 		void build();
-		std::queue<Command>& getCommandQueue();
+		std::queue<Game2D::Command>& getCommandQueue();
 		void update(sf::Time);
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 

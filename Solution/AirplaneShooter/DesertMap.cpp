@@ -7,7 +7,6 @@
 
 #include <Render\Brush.h>
 #include <Utility.h>
-#include <Map\ScrollingMap.h>
 
 #include <SFML\Graphics\Texture.hpp>
 #include <SFML\System\Vector2.hpp>
@@ -22,11 +21,10 @@ using namespace std;
 
 // INTERFACE
 DesertMap::DesertMap(RenderWindow* window) :
-	ScrollingMap(
-		Vector2f(0.f, -50.f),
-		window,
+	Map(window,
 		FloatRect(0.f, 0.f, window->getDefaultView().getSize().x, 2000.f),
-		3)
+		3),
+		_scrollVelocity(Vector2f(0.f, -50.f))
 {
 	// Align the player spawn point with the center of the View
 	_view = _window->getDefaultView();
@@ -45,7 +43,7 @@ void DesertMap::updateCurrent(Time dt) {
 	adjustPlayer(dt);
 
 	// Do "normal" updates
-	ScrollingMap::updateCurrent(dt);
+	_view.move(_scrollVelocity * dt.asSeconds());
 }
 
 // HELPER FUNCTIONS
@@ -88,9 +86,6 @@ void DesertMap::buildScene() {
 	rightEscort->setPosition(80.f, 50.f);
 	_player->attachChild(move(leftEscort));
 	_player->attachChild(move(rightEscort));
-
-	// Do base building
-	ScrollingMap::buildScene();
 }
 void DesertMap::adjustPlayer(Time dt) {
 	// Reduce the playerAircraft's velocity if they are moving diagonally

@@ -40,12 +40,5 @@ size_t Category::shiftedRoot() {
 }
 
 namespace Game2D {
-	Category operator|(Category left, const Category& right) {
-		return left |= right;
-	}
-	Category operator&(Category left, const Category& right) {
-		return left &= right;
-	}
-
 	Category Node;
 }
