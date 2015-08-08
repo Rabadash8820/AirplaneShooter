@@ -13,14 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Map">
-      <UniqueIdentifier>{a8375fe9-a853-4ba9-b813-ce5f2e82de8c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Render">
       <UniqueIdentifier>{62246900-02e3-4678-9933-7d2cd6bc1fc0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Map">
-      <UniqueIdentifier>{31c16ded-6cbd-401b-a133-e819bb309d5a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Render">
       <UniqueIdentifier>{cd6daa95-ee24-4811-a971-b31aeef4c3cd}</UniqueIdentifier>
@@ -51,12 +45,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Map\Map.cpp">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Map\ScrollingMap.cpp">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
     <ClCompile Include="Render\Brush.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
@@ -124,9 +112,6 @@
     </ClInclude>
     <ClInclude Include="Render\SceneNode.h">
       <Filter>Header Files\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Map\Map.h">
-      <Filter>Header Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="GAME2D_API.h">
       <Filter>Header Files</Filter>

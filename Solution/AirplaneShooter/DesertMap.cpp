@@ -15,11 +15,10 @@ using namespace std;
 
 // INTERFACE
 DesertMap::DesertMap(RenderWindow* window) :
-	ScrollingMap(
-		Vector2f(0.f, -50.f),
-		window,
+	Map(window,
 		FloatRect(0.f, 0.f, window->getDefaultView().getSize().x, 2000.f),
-		3)
+		3),
+		_scrollVelocity(Vector2f(0.f, -50.f))
 {
 	// Align the player spawn point with the center of the View
 	_view = _window->getDefaultView();
@@ -86,9 +85,6 @@ void DesertMap::buildScene() {
 	rightEscort->setPosition(80.f, 50.f);
 	_player->attachChild(move(leftEscort));
 	_player->attachChild(move(rightEscort));
-
-	// Do base building
-	ScrollingMap::buildScene();
 }
 void DesertMap::updateCurrent(Time dt) {
 	// Scroll the map

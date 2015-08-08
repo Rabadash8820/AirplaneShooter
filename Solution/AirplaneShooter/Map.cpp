@@ -1,7 +1,6 @@
 #include "Map.h"
 
-#include "..\Render\SceneNode.h"
-
+using namespace Shooter;
 using namespace Game2D;
 using namespace sf;
 using namespace std;
