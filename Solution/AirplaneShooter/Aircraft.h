@@ -13,27 +13,28 @@
 #include <map>
 
 namespace Shooter {
-	struct AircraftData;
-}
 
-namespace Shooter {
+	struct AircraftData;
 	
 	class Aircraft : public Game2D::Entity {
 		// ABSTRACT DATA TYPES
 	public:
 		typedef std::unique_ptr<Aircraft> Ptr;
 		enum class Type {
-			EAGLE,
-			RAPTOR,
+			Eagle,
+			Raptor,
+			Avenger
 		};
-		typedef std::map<Aircraft::Type, AircraftData> DataTable;
+		typedef std::map<Type, AircraftData> DataTable;
 
 		// ENCAPSULATED FIELDS
 	private:
+		static DataTable _dataTable;
 		Type _type;
 		sf::Sprite _sprite;
 		Game2D::TextNode* _hpDisplay;
-		static DataTable _dataTable;
+		std::size_t _directionIndex;
+		float _traveledDistance;
 
 		// INTERFACE
 	public:
@@ -45,7 +46,10 @@ namespace Shooter {
 	private:
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
 		virtual void updateCurrent(sf::Time);
+		void updateMovementDirections(sf::Time dt);
 		Game2D::ResourceId textureIdForType(Type);
+		float maxSpeed() const;
+		static DataTable initAircraftData();
 
 	};
 

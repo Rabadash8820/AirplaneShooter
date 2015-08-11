@@ -78,10 +78,11 @@ void Player::handleKeyPress(const Event::KeyEvent& key, queue<Command>& commands
 	case Keyboard::P:
 		// Print the player Aircraft's location to the console
 		Command printPos(
-			"Print Position",
+			"Print Player Data",
 			[](SceneNode& sn, Time) {
-				cout << sn.getPosition().x << ","
-					 << sn.getPosition().y << endl;
+				Aircraft& a = static_cast<Aircraft&>(sn);
+				cout << "Position (x, y): " << a.getPosition().x << ", " << a.getPosition().y << endl
+					 << "Velocity (x, y): " << a.velocity.x << ", " << a.velocity.y << endl;
 			},
 			Categories::PlayerAircraft
 		);

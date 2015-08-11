@@ -1,6 +1,5 @@
 #include "DesertMap.h"
 
-#include "Aircraft.h"
 #include "ResourceIds\Textures.h"
 #include "ResourceIds\Fonts.h"
 #include "Categories.h"
@@ -19,25 +18,21 @@ using namespace Game2D;
 using namespace sf;
 using namespace std;
 
+DesertMap::SpawnPoint::SpawnPoint(Aircraft::Type inType, float inX, float inY) {
+	type = inType;
+	x = inX;
+	y = inY;
+}
+
 // INTERFACE
 DesertMap::DesertMap(RenderWindow& window) :
 	Map(window),
-		_scrollVelocity(Vector2f(0.f, -50.f)),
-		_worldBounds(FloatRect(0.f, 0.f, window.getDefaultView().getSize().x, 2000.f)),
-		_numLayers(3)
+	_view(window.getDefaultView()),
+	_worldBounds(FloatRect(0.f, 0.f, _view.getSize().x, 2000.f)),
+	_scrollVelocity(Vector2f(0.f, -50.f)),
+	_playerSpawn(_view.getSize().x / 2.f, _worldBounds.height - _view.getSize().y / 2.f),
+	_player(nullptr)
 {
-	// Add each scene layer to the layer collection
-	for (size_t L = 0; L < _numLayers; ++L) {
-		SceneNode::Ptr layer(new Game2D::SceneNode());
-		_sceneLayers.push_back(layer.get());
-		_sceneTree.attachChild(std::move(layer));
-	}
-
-	// Align the player spawn point with the center of the View
-	_view = _window.getDefaultView();
-	float playerSpawnX = _worldBounds.left + _view.getSize().x / 2.f;
-	float playerSpawnY = _worldBounds.top + _worldBounds.height - _view.getSize().y / 2.f;
-	_playerSpawn = Vector2f(playerSpawnX, playerSpawnY);
 	_view.setCenter(_playerSpawn);
 }
 
@@ -48,10 +43,9 @@ void DesertMap::updateCurrent(Time dt) {
 
 	// Do updates in response to Commands
 	updateOnCommands(dt);
-
-	adjustPlayer(dt);
-
+	
 	// Do "normal" updates
+	adjustPlayer(dt);
 	_view.move(_scrollVelocity * dt.asSeconds());
 }
 void DesertMap::drawCurrent(RenderTarget& target, RenderStates states) const {
@@ -74,28 +68,69 @@ void DesertMap::loadResources() {
 	_fonts.load(Fonts::Main, fontDir + "Sansation.ttf");
 }
 void DesertMap::buildScene() {
+	// Add each scene layer to the layer collection
+	for (size_t L = 0; L < _sceneLayers.size(); ++L) {
+		SceneNode::Ptr layer(new Game2D::SceneNode());
+		_sceneLayers[L] = layer.get();
+		_sceneTree.attachChild(move(layer));
+	}
+
 	// Add a node for the background, and tile its texture
 	Texture& desertTexture = _textures[Textures::Desert];
 	IntRect desertBounds(_worldBounds);
 	desertTexture.setRepeated(true);
 	Brush::Ptr background(new Brush(desertTexture, desertBounds));
 	background->setPosition(_worldBounds.left, _worldBounds.top);
-	_sceneLayers[BACKGROUND]->attachChild(move(background));
+	_sceneLayers[Layer::Background]->attachChild(move(background));
 
 	// Add a node for the leader Aircraft and assign it to the Player
-	Aircraft::Ptr leader(new Aircraft(Aircraft::Type::EAGLE, _textures, _fonts));
+	Aircraft::Ptr leader(new Aircraft(Aircraft::Type::Eagle, _textures, _fonts));
 	leader->airSpeed = PLAYER_SPEED;
 	leader->setPosition(_playerSpawn);
 	_player = leader.get();
-	_sceneLayers[AIR]->attachChild(move(leader));
+	_sceneLayers[Layer::Air]->attachChild(move(leader));
 
 	// Add nodes for the player's escort Aircraft
-	Aircraft::Ptr leftEscort( new Aircraft(Aircraft::Type::RAPTOR, _textures, _fonts));
-	Aircraft::Ptr rightEscort(new Aircraft(Aircraft::Type::RAPTOR, _textures, _fonts));
+	Aircraft::Ptr leftEscort( new Aircraft(Aircraft::Type::Raptor, _textures, _fonts));
+	Aircraft::Ptr rightEscort(new Aircraft(Aircraft::Type::Raptor, _textures, _fonts));
 	leftEscort->setPosition(-80.f, 50.f);
 	rightEscort->setPosition(80.f, 50.f);
 	_player->attachChild(move(leftEscort));
 	_player->attachChild(move(rightEscort));
+
+	// Add enemy Aircraft
+	addEnemies();
+}
+void DesertMap::addEnemies() {
+	// Define spawn points for all enemies
+	_spawnPoints.push_back(SpawnPoint(Aircraft::Type::Avenger, 0.f, 500.f));
+	_spawnPoints.push_back(SpawnPoint(Aircraft::Type::Avenger, -70.f, 1400.f));
+
+	// Sort spawn points by y-coordinate so its easy to see which have entered the battlefield
+	sort(
+		_spawnPoints.begin(), _spawnPoints.end(),
+		[](SpawnPoint left, SpawnPoint right) { return left.y < right.y; });
+}
+FloatRect DesertMap::getBattlefieldBounds() const {
+	// Return the bounding Rectangle of the main View, with a little extra off-screen at the top
+	FloatRect bounds = _view.getViewport();
+	bounds.top -= BATTLEFIELD_OFFSET;
+	bounds.height += BATTLEFIELD_OFFSET;
+	return bounds;
+}
+void DesertMap::spawnEnemies() {
+	// Loop through all spawn points that have entered the battlefield
+	FloatRect bounds = getBattlefieldBounds();
+	while (!_spawnPoints.empty() && _spawnPoints.back().y >= bounds.top) {
+
+		// Define a new enemy Aircraft at this spawn point (rotated by 180°), and add it to the scene tree
+		SpawnPoint sp = _spawnPoints.back();
+		Aircraft::Ptr enemy(new Aircraft(sp.type, _textures, _fonts));
+		enemy->setPosition(sp.x, sp.y);
+		enemy->setRotation(180.f);
+		_sceneLayers[Layer::Air]->attachChild(move(enemy));
+		_spawnPoints.pop_back();
+	}
 }
 void DesertMap::adjustPlayer(Time dt) {
 	// Reduce the playerAircraft's velocity if they are moving diagonally

@@ -28,6 +28,10 @@ bool GameState::handleEvent(const Event& e) {
 	if (e.type == Event::KeyPressed && e.key.code == Keyboard::Escape)
 		requestPushState(States::Pause);
 
+	// If the window loses focus then push the Pause state
+	if (e.type == Event::LostFocus)
+		requestPushState(States::Pause);
+
 	// Allow other States to handle this Event
 	return true;
 }
