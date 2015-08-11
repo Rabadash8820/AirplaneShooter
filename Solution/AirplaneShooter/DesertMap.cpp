@@ -90,14 +90,6 @@ void DesertMap::buildScene() {
 	_player = leader.get();
 	_sceneLayers[Layer::Air]->attachChild(move(leader));
 
-	// Add nodes for the player's escort Aircraft
-	Aircraft::Ptr leftEscort( new Aircraft(Aircraft::Type::Raptor, _textures, _fonts));
-	Aircraft::Ptr rightEscort(new Aircraft(Aircraft::Type::Raptor, _textures, _fonts));
-	leftEscort->setPosition(-80.f, 50.f);
-	rightEscort->setPosition(80.f, 50.f);
-	_player->attachChild(move(leftEscort));
-	_player->attachChild(move(rightEscort));
-
 	// Add enemy Aircraft
 	addEnemies();
 }
