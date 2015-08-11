@@ -20,23 +20,32 @@ using namespace sf;
 using namespace std;
 
 // INTERFACE
-DesertMap::DesertMap(RenderWindow* window) :
-	Map(window,
-		FloatRect(0.f, 0.f, window->getDefaultView().getSize().x, 2000.f),
-		3),
-		_scrollVelocity(Vector2f(0.f, -50.f))
+DesertMap::DesertMap(RenderWindow& window) :
+	Map(window),
+		_scrollVelocity(Vector2f(0.f, -50.f)),
+		_worldBounds(FloatRect(0.f, 0.f, window.getDefaultView().getSize().x, 2000.f)),
+		_numLayers(3)
 {
+	// Add each scene layer to the layer collection
+	for (size_t L = 0; L < _numLayers; ++L) {
+		SceneNode::Ptr layer(new Game2D::SceneNode());
+		_sceneLayers.push_back(layer.get());
+		_sceneTree.attachChild(std::move(layer));
+	}
+
 	// Align the player spawn point with the center of the View
-	_view = _window->getDefaultView();
+	_view = _window.getDefaultView();
 	float playerSpawnX = _worldBounds.left + _view.getSize().x / 2.f;
 	float playerSpawnY = _worldBounds.top + _worldBounds.height - _view.getSize().y / 2.f;
 	_playerSpawn = Vector2f(playerSpawnX, playerSpawnY);
 	_view.setCenter(_playerSpawn);
 }
+
+// HELPER FUNCTIONS
 void DesertMap::updateCurrent(Time dt) {
 	// Prepare for updates
 	_player->velocity = Vector2f(0.f, 0.f);
-	
+
 	// Do updates in response to Commands
 	updateOnCommands(dt);
 
@@ -45,8 +54,9 @@ void DesertMap::updateCurrent(Time dt) {
 	// Do "normal" updates
 	_view.move(_scrollVelocity * dt.asSeconds());
 }
-
-// HELPER FUNCTIONS
+void DesertMap::drawCurrent(RenderTarget& target, RenderStates states) const {
+	_window.setView(_view);
+}
 void DesertMap::loadResources() {
 	// Get resource directories
 	string currDir    = Utility::currentWorkingDirectory();
