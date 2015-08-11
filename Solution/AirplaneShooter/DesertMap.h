@@ -2,27 +2,47 @@
 
 #include <Map.h>
 
+#include "Aircraft.h"
+
 #include <Render\Entity.h>
 #include <Render\ResourceManager.h>
 
 #include <SFML\Graphics\RenderWindow.hpp>
 #include <SFML\System\Time.hpp>
 
+#include <array>
+#include <vector>
+
 namespace Shooter {
 
 	class DesertMap final : public Game2D::Map {
+		// ABSTRACT DATA TYPES
+	private:
+		enum Layer {
+			Background = 0,
+			Ground,
+			Air,
+			LayerCount
+		};
+		struct SpawnPoint {
+			SpawnPoint(Aircraft::Type, float, float);
+			Aircraft::Type type;
+			float x, y;
+		};
+
 		// ENCAPSULATED FIELDS
 	private:
-		const short BACKGROUND = 0, GROUND = 1, AIR = 2;
 		const float BORDER_OFFSET = 40.f;
+		const float BATTLEFIELD_OFFSET = 100.f;
 		const float PLAYER_SPEED = 200.f;	// Pixels per sec
+
 		sf::View _view;
 		sf::IntRect _worldBounds;
-		size_t _numLayers;
-		std::vector<Game2D::SceneNode*> _sceneLayers;
-		Game2D::Entity* _player;
+		std::array<Game2D::SceneNode*, LayerCount> _sceneLayers;
+		Aircraft* _player;
 		sf::Vector2f _playerSpawn;
 		sf::Vector2f _scrollVelocity;		// Pixels per sec
+		std::vector<SpawnPoint> _spawnPoints;
 
 		// INTERFACE
 	public:
@@ -34,6 +54,9 @@ namespace Shooter {
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
 		virtual void loadResources();
 		virtual void buildScene();
+		void addEnemies();
+		sf::FloatRect getBattlefieldBounds() const;
+		void spawnEnemies();
 		void adjustPlayer(sf::Time);
 
 	};

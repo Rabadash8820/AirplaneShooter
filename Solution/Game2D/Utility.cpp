@@ -2,6 +2,9 @@
 
 #include <SFML\Graphics\Rect.hpp>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 using namespace Game2D;
 using namespace std;
 using namespace sf;
@@ -135,4 +138,7 @@ std::string Utility::toString(Keyboard::Key key) {
 		KEY_TO_STRING(F15)
 		KEY_TO_STRING(Pause)
 	}
+}
+float Utility::toRadians(float degrees) {
+	return M_PI / 180.f * degrees;
 }

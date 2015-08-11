@@ -36,6 +36,8 @@ namespace Game2D {
 			stream << value;
 			return stream.str();
 		}
+		static float toRadians(float);
+
 	};
 
 }

@@ -96,11 +96,10 @@ void Container::selectPrevious() {
 void Container::handleKeyRelease(const sf::Event::KeyEvent& key) {
 	switch (key.code) {
 		// Cycle through contained Components
-	case Keyboard::W:
 	case Keyboard::Up:
 		selectPrevious();
 		break;
-	case Keyboard::S:
+	case Keyboard::Tab:
 	case Keyboard::Down:
 		selectNext();
 		break;
