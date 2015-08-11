@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\Player.h"
-#include "..\Map.h"
+#include <Map.h>
 
 #include <States\StateManager.h>
 #include <States\State.h>
@@ -18,7 +18,7 @@ namespace Shooter {
 	class GameState : Game2D::State {
 		// PRIVATE MEMBERS
 	private:
-		Map::Ptr _map;
+		Game2D::Map::Ptr _map;
 		Player& _player;
 
 		// INTERFACE

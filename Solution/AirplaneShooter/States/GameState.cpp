@@ -14,7 +14,7 @@ using namespace Game2D;
 // CONSTRUCTORS / DESTRUCTOR
 GameState::GameState(StateManager& manager, Context context) :
 	State(manager, context),
-	_map(new DesertMap(context.window)),
+	_map(new DesertMap(*context.window)),
 	_player(*reinterpret_cast<Player*>(context.inputManager))
 {
 	_map->build();

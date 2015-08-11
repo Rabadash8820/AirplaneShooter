@@ -1,6 +1,5 @@
 #include "Map.h"
 
-using namespace Shooter;
 using namespace Game2D;
 using namespace sf;
 using namespace std;
@@ -29,7 +28,7 @@ void Map::update(Time dt) {
 	_sceneTree.update(dt);
 }
 void Map::draw(RenderTarget& target, RenderStates states) const {
-	_window->setView(_view);
+	drawCurrent(target, states);
 	target.draw(_sceneTree, states);
 }
 

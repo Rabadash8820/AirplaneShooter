@@ -175,7 +175,6 @@
     <ClCompile Include="AirplaneShooter.cpp" />
     <ClCompile Include="Categories.cpp" />
     <ClCompile Include="DesertMap.cpp" />
-    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ResourceIds\Fonts.cpp" />
