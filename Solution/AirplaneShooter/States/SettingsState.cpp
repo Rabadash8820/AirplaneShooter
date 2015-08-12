@@ -13,33 +13,34 @@ using namespace std;
 using namespace sf;
 
 // INTERFACE
-SettingsState::SettingsState(StateManager& manager, Context context) :
-	State(manager, context),
-	_background(context.textures->get(Textures::TitleScreen))
+SettingsState::SettingsState(StateManager& manager) :
+	State(manager),
+	_background(getContext().textures->get(Textures::TitleScreen))
 {
 	// Pack Controls for each Command defined by the Player class into the GUI container
-	Player& player = *reinterpret_cast<Player*>(getContext().inputManager);
+	Player& player = *reinterpret_cast<Player*>(getContext().input);
 	vector<CommandId> commands = player.commands();
 	for (size_t c = 0; c < commands.size(); ++c) {
 		CommandId id = commands[c];
-		packControl(id, 100.f + 50 * c, player.boundCommand(id).name, context);
+		packControl(id, 100.f + 50 * c, player.boundCommand(id).name);
 	}
 	updateLabels();
 
 	// Pack a 'Reset Defaults' button into the GUI container
-	auto reset = make_shared<Button>(context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
+	Font& main = getContext().fonts->get(Fonts::Main);
+	auto reset = make_shared<Button>(main, *getContext().textures, Textures::ButtonUnselected);
 	reset->setPosition(80.f, 325.f);
 	reset->setText("Reset");
 	reset->setTexture(Button::State::Selected, Textures::ButtonSelected);
 	reset->setTexture(Button::State::Pressed,  Textures::ButtonPressed);
 	reset->setCallback([this]() {
-		getContext().inputManager->resetDefaults();
+		getContext().input->resetDefaults();
 		updateLabels();
 	});
 	_guiContainer.pack(reset);
 
 	// Pack a 'Back to Main Menu' button into the GUI container
-	auto goBack = make_shared<Button>(context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
+	auto goBack = make_shared<Button>(main, *getContext().textures, Textures::ButtonUnselected);
 	goBack->setPosition(80.f, 375.f);
 	goBack->setText("Back");
 	goBack->setTexture(Button::State::Selected, Textures::ButtonSelected);
@@ -55,7 +56,7 @@ bool SettingsState::handleEvent(const sf::Event& e) {
 
 	// Determine if we are in "binding Key mode"
 	bool binding = false;
-	Player& player = *reinterpret_cast<Player*>(getContext().inputManager);
+	Player& player = *reinterpret_cast<Player*>(getContext().input);
 	vector<CommandId> commands = player.commands();
 	CommandId selectedId;
 	for (size_t c = 0; c < commands.size(); ++c) {
@@ -91,8 +92,9 @@ void SettingsState::draw() {
 }
 
 // HELPER FUNCTIONS
-void SettingsState::packControl(CommandId id, float y, const std::string& buttonText, Context context) {
-	_bindingButtons[id] = make_shared<Button>(context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
+void SettingsState::packControl(CommandId id, float y, const std::string& buttonText) {
+	Font& main = getContext().fonts->get(Fonts::Main);
+	_bindingButtons[id] = make_shared<Button>(main, *getContext().textures, Textures::ButtonUnselected);
 	Button& button = *_bindingButtons[id];
 	button.setPosition(80.f, y);
 	button.setText(buttonText);
@@ -100,7 +102,7 @@ void SettingsState::packControl(CommandId id, float y, const std::string& button
 	button.setTexture(Button::State::Selected, Textures::ButtonSelected);
 	button.setTexture(Button::State::Pressed,  Textures::ButtonPressed);
 
-	_bindingLabels[id] = make_shared<Label>("", context.fonts->get(Fonts::Main));
+	_bindingLabels[id] = make_shared<Label>("", main);
 	Label& label = *_bindingLabels[id];
 	label.setPosition(300.f, 15.f + y);
 
@@ -108,7 +110,7 @@ void SettingsState::packControl(CommandId id, float y, const std::string& button
 	_guiContainer.pack(_bindingLabels[id]);
 }
 void SettingsState::updateLabels() {
-	Player& player = *reinterpret_cast<Player*>(getContext().inputManager);
+	Player& player = *reinterpret_cast<Player*>(getContext().input);
 
 	for (CommandId id : player.commands())
 		updateLabel(id, player.boundKeys(id));

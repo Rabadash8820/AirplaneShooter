@@ -11,6 +11,7 @@
 #include "ResourceIds\Textures.h"
 #include "Player.h"
 
+#include <States\Context.h>
 #include <Utility.h>
 
 #include <string>
@@ -20,8 +21,9 @@ using namespace Game2D;
 using namespace sf;
 using namespace std;
 
-AirplaneShooter::AirplaneShooter() :
-	Application(VideoMode(640, 480), "Airplane Shooter", new Player())
+AirplaneShooter::AirplaneShooter() :	
+	_window(sf::VideoMode(640, 480), "Airplane Shooter", sf::Style::Close),
+	Application(Context(_window, _textures, _fonts, _player))
 {
 	_window.setKeyRepeatEnabled(false);
 	

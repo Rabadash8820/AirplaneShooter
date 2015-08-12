@@ -3,6 +3,7 @@
 #include "..\GAME2D_API.h"
 #include "State.h"
 #include "StateId.h"
+#include "Context.h"
 
 #include <SFML\System\NonCopyable.hpp>
 #include <SFML\System\Time.hpp>
@@ -32,19 +33,19 @@ namespace Game2D {
 	private:
 		std::vector<State::Ptr> _stack;
 		std::vector<PendingChange> _pendingChanges;
-		State::Context _context;
+		Context _context;
 		std::map<StateId, std::function<State::Ptr()>> _factories;
 
 		// INTERFACE
 	public:
-		explicit StateManager(State::Context context);
+		explicit StateManager(Context& context);
 		template<typename StateClass>
 		void registerState(StateId id) {
 			// Template member function must be defined inline 
 
 			// Associate this Id with a factory method to produce the provided State class
 			_factories[id] = [this]() {
-				return State::Ptr(new StateClass(*this, _context));
+				return State::Ptr(new StateClass(*this));
 			};
 		}
 		void update(sf::Time);
@@ -54,6 +55,7 @@ namespace Game2D {
 		void pop();
 		void clear();
 		bool isEmpty() const;
+		Context getContext() const;
 
 		// HELPER FUNCTIONS
 	private:

@@ -207,6 +207,7 @@
     <ClInclude Include="States\MenuState.h" />
     <ClInclude Include="States\PauseState.h" />
     <ClInclude Include="States\SettingsState.h" />
+    <ClInclude Include="States\ShooterContext.h" />
     <ClInclude Include="States\States.h" />
     <ClInclude Include="States\TitleState.h" />
   </ItemGroup>

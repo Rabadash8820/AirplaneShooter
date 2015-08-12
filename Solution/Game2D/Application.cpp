@@ -8,18 +8,18 @@ using namespace sf;
 using namespace std;
 
 // INTERFACE
-Application::Application(VideoMode videoMode, string title, InputManager* input, Time frameDur) :
-	_window(videoMode, title),
+Application::Application(Context context, Time frameDur) :
+	_context(context),
 	_frameDuration(frameDur),
-	_inputManager(input),
-	_stateManager(State::Context(_window, _textures, _fonts, *input)),
+	_stateManager(context),
 	_statisticsNumFrames(0)
 { }
 void Application::run() {
 	// Main game loop
 	Clock clock;
 	Time timeSinceUpdate = Time::Zero;
-	while (_window.isOpen()) {
+	RenderWindow& window = *_context.window;
+	while (window.isOpen()) {
 
 		// Process events and update as many as times as needed
 		// If the State stack is empty, close the Window
@@ -31,7 +31,7 @@ void Application::run() {
 			this->update(_frameDuration);
 			
 			if (_stateManager.isEmpty())
-				_window.close();
+				window.close();
 
 			timeSinceUpdate -= _frameDuration;
 		}
@@ -45,13 +45,14 @@ void Application::run() {
 // HELPER FUNCTIONS
 void Application::processInput() {
 	Event e;
-	while (_window.pollEvent(e)) {
+	RenderWindow& window = *_context.window;
+	while (window.pollEvent(e)) {
 		// Pass all Events to the StateManager
 		_stateManager.handleEvent(e);
 
 		// Handle the closed Event
 		if (e.type == Event::Closed)
-			_window.close();
+			window.close();
 	}
 }
 void Application::update(Time dt) {
@@ -59,15 +60,16 @@ void Application::update(Time dt) {
 }
 void Application::draw() {
 	// Clear the window and draw graphics
-	_window.clear();
+	RenderWindow& window = *_context.window;
+	window.clear();
 	_stateManager.draw();
 
 	// Draw statistics text (not affected by View)
-	_window.setView(_window.getDefaultView());
-	_window.draw(_statisticsText);
+	window.setView(window.getDefaultView());
+	window.draw(_statisticsText);
 
 	// Display all drawn objects in the window
-	_window.display();
+	window.display();
 }
 void Application::updateStatistics(Time dt) {
 	_statisticsUpdateTime += dt;
@@ -78,7 +80,4 @@ void Application::updateStatistics(Time dt) {
 		_statisticsUpdateTime -= seconds(1.0f);
 		_statisticsNumFrames = 0;
 	}
-}
-void Application::registerStates() {
-
 }

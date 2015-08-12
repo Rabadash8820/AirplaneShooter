@@ -2,6 +2,7 @@
 
 #include "..\GAME2D_API.h"
 #include "StateId.h"
+#include "Context.h"
 #include "..\Render\ResourceManager.h"
 
 #include <SFML\Graphics\RenderWindow.hpp>
@@ -19,13 +20,6 @@ namespace Game2D {
 		// ABSTRACT DATA TYPES
 	public:
 		typedef std::unique_ptr<State> Ptr;
-		struct Context {
-			sf::RenderWindow* window;
-			TextureManager* textures;
-			FontManager* fonts;
-			InputManager* inputManager;
-			Context(sf::RenderWindow&, TextureManager&, FontManager&, InputManager&);
-		};
 
 		// PRIVATE FIELDS
 	private:
@@ -34,7 +28,7 @@ namespace Game2D {
 
 		// INTERFACE
 	public:
-		State(StateManager&, Context);
+		State(StateManager&);
 		virtual ~State();
 		virtual void draw() = 0;
 		virtual bool update(sf::Time) = 0;

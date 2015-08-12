@@ -14,16 +14,16 @@ using namespace sf;
 using namespace std;
 
 // INTERFACE
-TitleState::TitleState(Game2D::StateManager& manager, Context context) :
-	State(manager, context),
+TitleState::TitleState(Game2D::StateManager& manager) :
+	State(manager),
 	_showText(true),
 	_effectTime(sf::Time::Zero),
-	_background((*context.textures)[Textures::TitleScreen]),
-	_text("Press any key to start", (*context.fonts)[Fonts::Main])
+	_background(getContext().textures->get(Textures::TitleScreen)),
+	_text("Press any key to start", getContext().fonts->get(Fonts::Main))
 {
 	// Define the flashing title Text
 	Utility::centerOrigin(_text);
-	_text.setPosition(context.window->getView().getSize() / 2.f);
+	_text.setPosition(getContext().window->getView().getSize() / 2.f);
 }
 void TitleState::draw() {
 	// Draw the background Sprite and foreground Text

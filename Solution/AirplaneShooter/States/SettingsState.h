@@ -26,14 +26,14 @@ namespace Shooter {
 
 		// INTERFACE
 	public:
-		SettingsState(Game2D::StateManager&, Context);
+		SettingsState(Game2D::StateManager&);
 		virtual bool handleEvent(const sf::Event&);
 		virtual bool update(sf::Time);
 		virtual void draw();
 
 		// HELPER FUNCTIONS
 	private:
-		void packControl(Game2D::CommandId, float, const std::string&, Context);
+		void packControl(Game2D::CommandId, float, const std::string&);
 		void updateLabels();
 		void updateLabel(Game2D::CommandId, std::set<sf::Keyboard::Key>);
 

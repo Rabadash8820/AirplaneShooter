@@ -21,13 +21,14 @@ using namespace sf;
 using namespace std;
 
 // INTERFACE
-MenuState::MenuState(StateManager& manager, Context context) :
-	State(manager, context),
-	_background((*context.textures)[Textures::TitleScreen])
+MenuState::MenuState(StateManager& manager) :
+	State(manager),
+	_background(manager.getContext().textures->get(Textures::TitleScreen))
 {	
 	// Define the menu buttons
+	Font& main = getContext().fonts->get(Fonts::Main);
 	shared_ptr<Button> play = make_shared<Button>(
-		context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
+		main, *getContext().textures, Textures::ButtonUnselected);
 	play->setText("Play");
 	play->setPosition(100, 250);
 	play->setTexture(Button::State::Selected, Textures::ButtonSelected);
@@ -38,7 +39,7 @@ MenuState::MenuState(StateManager& manager, Context context) :
 	});
 
 	shared_ptr<Button> settings = make_shared<Button>(
-		context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
+		main, *getContext().textures, Textures::ButtonUnselected);
 	settings->setText("Settings");
 	settings->setPosition(100, 300);
 	settings->setTexture(Button::State::Selected, Textures::ButtonSelected);
@@ -48,7 +49,7 @@ MenuState::MenuState(StateManager& manager, Context context) :
 		States::SettingsMenu));
 
 	shared_ptr<Button> exit = make_shared<Button>(
-		context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
+		main, *getContext().textures, Textures::ButtonUnselected);
 	exit->setText("Exit");
 	exit->setPosition(100, 350);
 	exit->setTexture(Button::State::Selected, Textures::ButtonSelected);
