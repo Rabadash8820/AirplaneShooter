@@ -1,8 +1,8 @@
 #include "SettingsState.h"
 
 #include "..\Player.h"
-#include "..\ResourceIds\Textures.h"
-#include "..\ResourceIds\Fonts.h"
+#include "..\Ids\TextureId.h"
+#include "..\Ids\FontId.h"
 
 #include <Utility.h>
 
@@ -14,8 +14,8 @@ using namespace sf;
 
 // INTERFACE
 SettingsState::SettingsState(StateManager& manager) :
-	State(manager),
-	_background(getContext().textures->get(Textures::TitleScreen))
+	BaseState(manager),
+	_background(getContext().textures->get(TextureId::TitleScreen))
 {
 	// Pack Controls for each Command defined by the Player class into the GUI container
 	Player& player = *reinterpret_cast<Player*>(getContext().input);
@@ -27,12 +27,10 @@ SettingsState::SettingsState(StateManager& manager) :
 	updateLabels();
 
 	// Pack a 'Reset Defaults' button into the GUI container
-	Font& main = getContext().fonts->get(Fonts::Main);
-	auto reset = make_shared<Button>(main, *getContext().textures, Textures::ButtonUnselected);
+	Font& main = getContext().fonts->get(FontId::Main);
+	auto reset = make_shared<Button>(main, *getContext().buttonTextures);
 	reset->setPosition(80.f, 325.f);
 	reset->setText("Reset");
-	reset->setTexture(Button::State::Selected, Textures::ButtonSelected);
-	reset->setTexture(Button::State::Pressed,  Textures::ButtonPressed);
 	reset->setCallback([this]() {
 		getContext().input->resetDefaults();
 		updateLabels();
@@ -40,13 +38,12 @@ SettingsState::SettingsState(StateManager& manager) :
 	_guiContainer.pack(reset);
 
 	// Pack a 'Back to Main Menu' button into the GUI container
-	auto goBack = make_shared<Button>(main, *getContext().textures, Textures::ButtonUnselected);
+	auto goBack = make_shared<Button>(main, *getContext().buttonTextures);
 	goBack->setPosition(80.f, 375.f);
 	goBack->setText("Back");
-	goBack->setTexture(Button::State::Selected, Textures::ButtonSelected);
-	goBack->setTexture(Button::State::Pressed,  Textures::ButtonPressed);
-	goBack->setCallback(bind(
-		&SettingsState::requestPopState, this));
+	goBack->setCallback([this]() {
+		requestPopState();
+	});
 	_guiContainer.pack(goBack);
 }
 bool SettingsState::handleEvent(const sf::Event& e) {
@@ -93,14 +90,12 @@ void SettingsState::draw() {
 
 // HELPER FUNCTIONS
 void SettingsState::packControl(CommandId id, float y, const std::string& buttonText) {
-	Font& main = getContext().fonts->get(Fonts::Main);
-	_bindingButtons[id] = make_shared<Button>(main, *getContext().textures, Textures::ButtonUnselected);
+	Font& main = getContext().fonts->get(FontId::Main);
+	_bindingButtons[id] = make_shared<Button>(main, *getContext().buttonTextures);
 	Button& button = *_bindingButtons[id];
 	button.setPosition(80.f, y);
 	button.setText(buttonText);
 	button.setToggle(true);
-	button.setTexture(Button::State::Selected, Textures::ButtonSelected);
-	button.setTexture(Button::State::Pressed,  Textures::ButtonPressed);
 
 	_bindingLabels[id] = make_shared<Label>("", main);
 	Label& label = *_bindingLabels[id];

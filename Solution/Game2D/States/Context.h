@@ -10,17 +10,13 @@ namespace Game2D {
 
 	struct Context {
 		// CONSTRUCTOR
-		Context(sf::RenderWindow& window, TextureManager& textures, FontManager& fonts, InputManager& input) {
+		Context(sf::RenderWindow& window, InputManager& input) {
 			this->window = &window;
-			this->textures = &textures;
-			this->fonts = &fonts;
 			this->input = &input;
 		}
 
 		// PROPERTIES
 		sf::RenderWindow* window;
-		TextureManager* textures;
-		FontManager* fonts;
 		InputManager* input;
 	};
 

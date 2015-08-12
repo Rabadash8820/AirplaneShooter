@@ -1,15 +1,14 @@
 #include <cassert>
 
 // CONSTRUCTORS / DESTRUCTOR
-template<typename Resource>
-ResourceManager<Resource>::ResourceManager() {
+template<typename Resource, typename Id>
+ResourceManager<Resource, Id>::ResourceManager() {
 
 }
 
-
 // FUNCTIONS
-template<typename Resource>
-void ResourceManager<Resource>::load(const ResourceId& res, const std::string& filePath) {
+template<typename Resource, typename Id>
+void ResourceManager<Resource, Id>::load(Id id, const std::string& filePath) {
 	// Try to load the resource from the provided file
 	Ptr resource(new Resource());
 	bool loadSuccess = resource->loadFromFile(filePath);
@@ -18,12 +17,12 @@ void ResourceManager<Resource>::load(const ResourceId& res, const std::string& f
 
 	// Associate the resource with the given ID (make sure that ID wasn't already used)
 	auto insertSuccess = _resources.insert(
-		std::make_pair(res, std::move(resource)));
+		std::make_pair(id, std::move(resource)));
 	assert(insertSuccess.second);
 }
-template<typename Resource>
+template<typename Resource, typename Id>
 template<typename Param>
-void ResourceManager<Resource>::load(const ResourceId& res, const std::string& filePath, Param p) {
+void ResourceManager<Resource, Id>::load(Id id, const std::string& filePath, Param p) {
 	// Try to load the resource from the provided file
 	Ptr resource = new Resource();
 	bool loadSuccess = resource->loadFromFile(filePath, p);
@@ -32,17 +31,17 @@ void ResourceManager<Resource>::load(const ResourceId& res, const std::string& f
 
 	// Associate the resource with the given ID (make sure that ID wasn't already used)
 	auto insertSuccess = _resources.insert(
-		std::make_pair(res, std::move(resource)));
+		std::make_pair(id, std::move(resource)));
 	assert(insertSuccess.second);
 }
-template<typename Resource>
-Resource& ResourceManager<Resource>::get(const ResourceId& res) const {
+template<typename Resource, typename Id>
+Resource& ResourceManager<Resource, Id>::get(Id id) const {
 	// Try to retrieve the resource (make sure the ID is present in the std::map)
-	auto pos = _resources.find(res);
+	auto pos = _resources.find(id);
 	assert(pos != _resources.end());
 	return *(pos->second);
 }
-template<typename Resource>
-Resource& ResourceManager<Resource>::operator[](const ResourceId& res) const {
-	return this->get(res);
+template<typename Resource, typename Id>
+Resource& ResourceManager<Resource, Id>::operator[](Id id) const {
+	return this->get(id);
 }

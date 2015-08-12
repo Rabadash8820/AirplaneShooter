@@ -1,7 +1,5 @@
 #include "DesertMap.h"
 
-#include "ResourceIds\Textures.h"
-#include "ResourceIds\Fonts.h"
 #include "Categories.h"
 
 #include <Render\Brush.h>
@@ -60,12 +58,12 @@ void DesertMap::loadResources() {
 	string fontDir = currDir + "\\Resources\\Fonts\\";
 
 	// Load textures
-	_textures.load(Textures::Desert, textureDir + "Desert.png");
-	_textures.load(Textures::Eagle,  textureDir + "Eagle.png");
-	_textures.load(Textures::Raptor, textureDir + "Raptor.png");
+	_textures.load(TextureId::Desert, textureDir + "Desert.png");
+	_textures.load(TextureId::Eagle, textureDir + "Eagle.png");
+	_textures.load(TextureId::Raptor, textureDir + "Raptor.png");
 
 	// Load fonts
-	_fonts.load(Fonts::Main, fontDir + "Sansation.ttf");
+	_fonts.load(FontId::Main, fontDir + "Sansation.ttf");
 }
 void DesertMap::buildScene() {
 	// Add each scene layer to the layer collection
@@ -76,7 +74,7 @@ void DesertMap::buildScene() {
 	}
 
 	// Add a node for the background, and tile its texture
-	Texture& desertTexture = _textures[Textures::Desert];
+	Texture& desertTexture = _textures[TextureId::Desert];
 	IntRect desertBounds(_worldBounds);
 	desertTexture.setRepeated(true);
 	Brush::Ptr background(new Brush(desertTexture, desertBounds));

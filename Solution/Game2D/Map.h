@@ -28,10 +28,6 @@ namespace Game2D {
 		// ENCAPSULATED FIELDS
 	protected:
 		sf::RenderWindow& _window;
-		TextureManager _textures;
-		SoundManager _sounds;
-		FontManager _fonts;
-		ShaderManager _shaders;
 		SceneNode _sceneTree;
 		std::queue<Command> _commands;
 

@@ -1,10 +1,10 @@
 #include "AirplaneShooter.h"
 
+#include "States\Context.h"
 #include "States\TitleState.h"
-#include "ResourceIds\Fonts.h"
-#include "ResourceIds\Textures.h"
 #include "Player.h"
 
+#include <GUI\Button.h>
 #include <States\Context.h>
 #include <Utility.h>
 
@@ -12,12 +12,14 @@
 
 using namespace Shooter;
 using namespace Game2D;
+using namespace Game2D::GUI;
 using namespace sf;
 using namespace std;
 
-AirplaneShooter::AirplaneShooter() :	
+AirplaneShooter::AirplaneShooter() :
 	_window(VideoMode(640, 480), "Airplane Shooter", Style::Close),
-	Application(Context(_window, _textures, _fonts, _player)),
+	Application(move(unique_ptr<Context>(
+		new Context(_window, _buttonTextures, _textures, _fonts, _player)))),
 	_statisticsNumFrames(0)
 {
 	_window.setKeyRepeatEnabled(false);
@@ -28,14 +30,14 @@ AirplaneShooter::AirplaneShooter() :
 	string fontDir    = currDir + "\\Resources\\Fonts\\";
 
 	// Load resources used by entire application
-	_fonts.load(Fonts::Main, fontDir + "Sansation.ttf");
-	_textures.load(Textures::TitleScreen,	   textureDir + "TitleScreen.png");
-	_textures.load(Textures::ButtonUnselected, textureDir + "ButtonNormal.png");
-	_textures.load(Textures::ButtonSelected,   textureDir + "ButtonSelected.png");
-	_textures.load(Textures::ButtonPressed,    textureDir + "ButtonPressed.png");
+	_fonts.load(FontId::Main, fontDir + "Sansation.ttf");
+	_textures.load(TextureId::TitleScreen,			textureDir + "TitleScreen.png");
+	_buttonTextures.load(Button::State::Unselected, textureDir + "ButtonNormal.png");
+	_buttonTextures.load(Button::State::Selected,   textureDir + "ButtonSelected.png");
+	_buttonTextures.load(Button::State::Pressed,    textureDir + "ButtonPressed.png");
 
 	// Initialize the statistics text
-	_statisticsText.setFont(_fonts[Fonts::Main]);
+	_statisticsText.setFont(_fonts[FontId::Main]);
 	_statisticsText.setPosition(5.f, 5.f);
 	_statisticsText.setCharacterSize(10u);
 
@@ -56,7 +58,7 @@ void AirplaneShooter::updateCurrent(Time dt) {
 }
 void AirplaneShooter::drawCurrent() {
 	// Draw statistics text
-	RenderWindow& window = *_context.window;
+	RenderWindow& window = *_context->window;
 	window.setView(window.getDefaultView());
 	window.draw(_statisticsText);
 }

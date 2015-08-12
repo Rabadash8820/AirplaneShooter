@@ -8,16 +8,16 @@ using namespace sf;
 using namespace std;
 
 // INTERFACE
-Application::Application(Context context, Time frameDur) :
-	_context(context),
+Application::Application(unique_ptr<Context> context, Time frameDur) :
+	_context(move(context)),
 	_frameDuration(frameDur),
-	_stateManager(context)
+	_stateManager(_context.get())
 { }
 void Application::run() {
 	// Main game loop
 	Clock clock;
 	Time timeSinceUpdate = Time::Zero;
-	RenderWindow& window = *_context.window;
+	RenderWindow& window = *_context->window;
 	while (window.isOpen()) {
 
 		// Process events and update as many as times as needed
@@ -43,7 +43,7 @@ void Application::run() {
 // HELPER FUNCTIONS
 void Application::processInput() {
 	Event e;
-	RenderWindow& window = *_context.window;
+	RenderWindow& window = *_context->window;
 	while (window.pollEvent(e)) {
 		// Pass all Events to the StateManager
 		_stateManager.handleEvent(e);
@@ -60,7 +60,7 @@ void Application::update(Time dt) {
 void Application::updateCurrent(Time dt) { }
 void Application::draw() {
 	// Clear the window and draw graphics
-	RenderWindow& window = *_context.window;
+	RenderWindow& window = *_context->window;
 	window.clear();
 
 	_stateManager.draw();

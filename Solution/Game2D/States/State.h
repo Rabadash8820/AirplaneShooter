@@ -20,7 +20,7 @@ namespace Game2D {
 	public:
 		typedef std::unique_ptr<State> Ptr;
 
-		// PRIVATE FIELDS
+		// ENCAPSULATED FIELDS
 	private:
 		StateManager* _manager;
 		Context _context;

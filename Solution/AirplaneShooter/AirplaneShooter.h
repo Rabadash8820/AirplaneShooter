@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Player.h"
+#include "Ids\TextureId.h"
+#include "Ids\FontId.h"
+#include "Ids\GuiId.h"
 
 #include <Render\ResourceManager.h>
 #include <Application.h>
@@ -15,8 +18,9 @@ namespace Shooter {
 		// ENCAPSULATED FIELDS
 	private:
 		sf::RenderWindow _window;
-		Game2D::TextureManager _textures;
-		Game2D::FontManager _fonts;
+		ButtonTextureManager _buttonTextures;
+		TextureManager _textures;
+		FontManager _fonts;
 		Player _player;
 		sf::Text _statisticsText;
 		sf::Time _statisticsUpdateTime;

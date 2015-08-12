@@ -1,6 +1,8 @@
 #pragma once
 
-#include <Render\ResourceId.h>
+#include "Ids\FontId.h"
+#include "Ids\TextureId.h"
+
 #include <Render\ResourceManager.h>
 #include <Render\Entity.h>
 #include <Render\TextNode.h>
@@ -39,7 +41,7 @@ namespace Shooter {
 		// INTERFACE
 	public:
 		float airSpeed;
-		Aircraft(Type, const Game2D::TextureManager&, const Game2D::FontManager&);
+		Aircraft(Type, const TextureManager&, const FontManager&);
 		virtual Game2D::Category getCategory() const; 
 
 		// HELPER FUNCTIONS
@@ -47,7 +49,7 @@ namespace Shooter {
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
 		virtual void updateCurrent(sf::Time);
 		void updateMovementDirections(sf::Time dt);
-		Game2D::ResourceId textureIdForType(Type);
+		TextureId textureIdForType(Type);
 		float maxSpeed() const;
 		static DataTable initAircraftData();
 

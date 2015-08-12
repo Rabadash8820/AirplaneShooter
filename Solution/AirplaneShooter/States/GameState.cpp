@@ -13,7 +13,7 @@ using namespace Game2D;
 
 // CONSTRUCTORS / DESTRUCTOR
 GameState::GameState(StateManager& manager) :
-	State(manager),
+	BaseState(manager),
 	_map(new DesertMap(*getContext().window)),
 	_player(*reinterpret_cast<Player*>(getContext().input))
 {

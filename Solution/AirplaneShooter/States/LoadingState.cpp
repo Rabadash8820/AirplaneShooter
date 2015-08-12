@@ -1,6 +1,6 @@
 #include "LoadingState.h"
 
-#include "..\ResourceIds\Fonts.h"
+#include "..\Ids\FontId.h"
 #include "GameState.h"
 
 #include <Utility.h>
@@ -16,8 +16,8 @@ using namespace sf;
 
 // INTERFACE
 LoadingState::LoadingState(StateManager& manager) :
-	State(manager),
-	_loadingText("Loading Resources", getContext().fonts->get(Fonts::Main))
+	BaseState(manager),
+	_loadingText("Loading Resources", getContext().fonts->get(FontId::Main))
 {
 	// Initialize the loading text
 	RenderWindow& window = *getContext().window;

@@ -1,6 +1,7 @@
 #pragma once
 
-#include <States\State.h>
+#include "BaseState.h"
+
 #include <States\StateManager.h>
 
 #include <SFML\Window\Event.hpp>
@@ -10,7 +11,7 @@
 
 namespace Shooter {
 
-	class TitleState : public Game2D::State {
+	class TitleState : public BaseState {
 		// PRIVATE MEMBERS
 	private:
 		sf::Sprite _background;
