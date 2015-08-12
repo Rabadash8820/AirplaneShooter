@@ -2,7 +2,7 @@
 
 #include "..\DesertMap.h"
 #include "..\Player.h"
-#include "States.h"
+#include "PauseState.h"
 
 #include <SFML\Graphics\RenderWindow.hpp>
 
@@ -26,11 +26,11 @@ bool GameState::handleEvent(const Event& e) {
 
 	// If Escape was pressed then push the Pause State
 	if (e.type == Event::KeyPressed && e.key.code == Keyboard::Escape)
-		requestPushState(States::Pause);
+		requestPushState<PauseState>();
 
 	// If the window loses focus then push the Pause state
 	if (e.type == Event::LostFocus)
-		requestPushState(States::Pause);
+		requestPushState<PauseState>();
 
 	// Allow other States to handle this Event
 	return true;

@@ -13,9 +13,6 @@ State::State(StateManager& manager) :
 State::~State() { }
 
 // HELPER FUNCTIONS
-void State::requestPushState(StateId id) {
-	_manager->push(id);
-}
 void State::requestPopState() {
 	_manager->pop();
 }

@@ -1,6 +1,6 @@
 #include "TitleState.h"
 
-#include "States.h"
+#include "MenuState.h"
 #include "../ResourceIds/Fonts.h"
 #include "../ResourceIds/Textures.h"
 
@@ -47,7 +47,7 @@ bool TitleState::handleEvent(const sf::Event& e) {
 	// If the user presses (and releases) any key, move to the Menu state
 	if (e.type == Event::KeyReleased) {
 		requestPopState();
-		requestPushState(States::MainMenu);
+		requestPushState<MenuState>();
 	}
 
 	// Allow other States to handle this Event

@@ -35,20 +35,16 @@ void StateManager::handleEvent(const Event& e) {
 
 	applyPendingChanges();
 }
-void StateManager::push(StateId id) {
-	_pendingChanges.push_back({
-		Push,
-		id,
-	});
-}
 void StateManager::pop() {
 	_pendingChanges.push_back({
-		Pop,
+		Action::Pop,
+		nullptr
 	});
 }
 void StateManager::clear() {
 	_pendingChanges.push_back({
-		Clear,
+		Action::Clear,
+		nullptr
 	});
 }
 bool StateManager::isEmpty() const {
@@ -59,25 +55,19 @@ Context StateManager::getContext() const {
 }
 
 // HELPER FUNCTIONS
-State::Ptr StateManager::createState(StateId id) {
-	// Define an instance of the State associated with this Id
-	auto pos = _factories.find(id);
-	assert(pos != _factories.end());
-	return pos->second();
-}
 void StateManager::applyPendingChanges() {
 	// Apply each pending change
-	for (PendingChange pc : _pendingChanges) {
+	for (PendingChange& pc : _pendingChanges) {
 		switch (pc.action) {
-		case Push:
-			_stack.push_back(createState(pc.stateId));
+		case Action::Push:
+			_stack.push_back(move(pc.state));
 			break;
 
-		case Pop:
+		case Action::Pop:
 			_stack.pop_back();
 			break;
 
-		case Clear:
+		case Action::Clear:
 			_stack.clear();
 			break;
 		}

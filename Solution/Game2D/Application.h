@@ -20,14 +20,13 @@ namespace Game2D {
 
 		// INTERFACE
 	public:
-		Application(Context, sf::Time = sf::seconds(1.f / 60.f));
 		void run();
 
 		// HELPER FUNCTIONS
 	protected:
+		Application(Context, sf::Time = sf::seconds(1.f / 60.f));
 		virtual void updateCurrent(sf::Time);
 		virtual void drawCurrent();
-		virtual void registerStates() = 0;
 	private:
 		void processInput();
 		void update(sf::Time);

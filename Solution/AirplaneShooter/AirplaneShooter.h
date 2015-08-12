@@ -30,7 +30,6 @@ namespace Shooter {
 	private:
 		virtual void drawCurrent();
 		virtual void updateCurrent(sf::Time dt);
-		virtual void registerStates();
 	};
 
 }

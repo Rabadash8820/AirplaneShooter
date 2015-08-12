@@ -179,7 +179,6 @@
     <ClCompile Include="Render\TextNode.cpp" />
     <ClCompile Include="States\ParallelTask.cpp" />
     <ClCompile Include="States\State.cpp" />
-    <ClCompile Include="States\StateId.cpp" />
     <ClCompile Include="States\StateManager.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
@@ -200,7 +199,6 @@
     <ClInclude Include="States\Context.h" />
     <ClInclude Include="States\ParallelTask.h" />
     <ClInclude Include="States\State.h" />
-    <ClInclude Include="States\StateId.h" />
     <ClInclude Include="States\StateManager.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
