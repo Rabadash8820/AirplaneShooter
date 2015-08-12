@@ -22,8 +22,9 @@ using namespace sf;
 using namespace std;
 
 AirplaneShooter::AirplaneShooter() :	
-	_window(sf::VideoMode(640, 480), "Airplane Shooter", sf::Style::Close),
-	Application(Context(_window, _textures, _fonts, _player))
+	_window(VideoMode(640, 480), "Airplane Shooter", Style::Close),
+	Application(Context(_window, _textures, _fonts, _player)),
+	_statisticsNumFrames(0)
 {
 	_window.setKeyRepeatEnabled(false);
 	
@@ -56,4 +57,21 @@ void AirplaneShooter::registerStates() {
 	_stateManager.registerState<PauseState>(States::Pause);
 	_stateManager.registerState<LoadingState>(States::Loading);
 	_stateManager.registerState<SettingsState>(States::SettingsMenu);
+}
+void AirplaneShooter::updateCurrent(Time dt) {
+	// Update the statistics text
+	_statisticsUpdateTime += dt;
+	_statisticsNumFrames += 1;
+	if (_statisticsUpdateTime >= seconds(1.0f)) {
+		_statisticsText.setString("FPS: " + to_string(_statisticsNumFrames));
+
+		_statisticsUpdateTime -= seconds(1.0f);
+		_statisticsNumFrames = 0;
+	}
+}
+void AirplaneShooter::drawCurrent() {
+	// Draw statistics text
+	RenderWindow& window = *_context.window;
+	window.setView(window.getDefaultView());
+	window.draw(_statisticsText);
 }
