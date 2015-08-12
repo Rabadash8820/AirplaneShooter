@@ -5,23 +5,10 @@
 using namespace Game2D;
 using namespace sf;
 
-// CONSTRUCTOR FOR STATE CONTEXT
-State::Context::Context(
-	sf::RenderWindow& window,
-	TextureManager& textures,
-	FontManager& fonts,
-	InputManager& inputManager)
-{
-	this->window = &window;
-	this->textures = &textures;
-	this->fonts = &fonts;
-	this->inputManager = &inputManager;
-}
-
 // INTERFACE
-State::State(StateManager& manager, Context context) :
+State::State(StateManager& manager) :
 	_manager(&manager),
-	_context(context)
+	_context(manager.getContext())
 { }
 State::~State() { }
 
@@ -35,6 +22,6 @@ void State::requestPopState() {
 void State::requestClearStates() {
 	_manager->clear();
 }
-State::Context State::getContext() const {
+Context State::getContext() const {
 	return _context;
 }

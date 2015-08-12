@@ -7,7 +7,7 @@ using namespace std;
 using namespace sf;
 
 // INTERFACE
-StateManager::StateManager(State::Context context) :
+StateManager::StateManager(Context& context) :
 	_context(context)
 { }
 void StateManager::update(Time dt) {
@@ -53,6 +53,9 @@ void StateManager::clear() {
 }
 bool StateManager::isEmpty() const {
 	return _stack.empty();
+}
+Context StateManager::getContext() const {
+	return _context;
 }
 
 // HELPER FUNCTIONS

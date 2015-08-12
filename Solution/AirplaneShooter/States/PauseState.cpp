@@ -20,22 +20,23 @@ using namespace Shooter;
 using namespace sf;
 using namespace std;
 
-PauseState::PauseState(Game2D::StateManager& manager, Context context) :
-	State(manager, context),
-	_pauseText("Game Paused", context.fonts->get(Fonts::Main), 70)
+PauseState::PauseState(Game2D::StateManager& manager) :
+	State(manager),
+	_pauseText("Game Paused", manager.getContext().fonts->get(Fonts::Main), 70)
 {
 	// Initialize the background Sprite
 	_background.setFillColor(Color(0, 0, 0, 150));
 
 	// Initialize the Pause text
-	Vector2f windowSize(context.window->getSize());
+	Vector2f windowSize(getContext().window->getSize());
 	Utility::centerOrigin(_pauseText);
 	_pauseText.setPosition(0.5f * windowSize.x, 0.4f * windowSize.y);
 
 	// Define the menu Buttons
+	Font& main = getContext().fonts->get(Fonts::Main);
 	shared_ptr<Button> resume = make_shared<Button>(
-		context.fonts->get(Fonts::Main),
-		*context.textures,
+		main,
+		*getContext().textures,
 		Textures::ButtonUnselected);
 	resume->setPosition(0.5f * windowSize.x - 100, 0.4f * windowSize.y + 75);
 	resume->setText("Resume Playing");
@@ -46,8 +47,8 @@ PauseState::PauseState(Game2D::StateManager& manager, Context context) :
 	});
 
 	shared_ptr<Button> menu = make_shared<Button>(
-		context.fonts->get(Fonts::Main),
-		*context.textures,
+		main,
+		*getContext().textures,
 		Textures::ButtonUnselected);
 	menu->setPosition(0.5f * windowSize.x - 100, 0.4f * windowSize.y + 125);
 	menu->setText("Main Menu");

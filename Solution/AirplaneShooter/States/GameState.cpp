@@ -12,10 +12,10 @@ using namespace Shooter;
 using namespace Game2D;
 
 // CONSTRUCTORS / DESTRUCTOR
-GameState::GameState(StateManager& manager, Context context) :
-	State(manager, context),
-	_map(new DesertMap(*context.window)),
-	_player(*reinterpret_cast<Player*>(context.inputManager))
+GameState::GameState(StateManager& manager) :
+	State(manager),
+	_map(new DesertMap(*getContext().window)),
+	_player(*reinterpret_cast<Player*>(getContext().input))
 {
 	_map->build();
 }

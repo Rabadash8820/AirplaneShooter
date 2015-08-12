@@ -33,10 +33,10 @@ namespace Game2D {
 	};
 
 	// Typedefs for specific ResourceManagers
-	typedef ResourceManager<sf::Texture>	 TextureManager;
-	typedef ResourceManager<sf::Font>		 FontManager;
-	typedef ResourceManager<sf::SoundBuffer> SoundManager;
-	typedef ResourceManager<sf::Shader>      ShaderManager;
+	typedef GAME2D_API ResourceManager<sf::Texture>	 TextureManager;
+	typedef GAME2D_API ResourceManager<sf::Font>		 FontManager;
+	typedef GAME2D_API ResourceManager<sf::SoundBuffer> SoundManager;
+	typedef GAME2D_API ResourceManager<sf::Shader>      ShaderManager;
 
 #include "ResourceManager.inl"
 

@@ -15,9 +15,9 @@ using namespace Game2D;
 using namespace sf;
 
 // INTERFACE
-LoadingState::LoadingState(StateManager& manager, Context context) :
-	State(manager, context),
-	_loadingText("Loading Resources", (*context.fonts)[Fonts::Main])
+LoadingState::LoadingState(StateManager& manager) :
+	State(manager),
+	_loadingText("Loading Resources", getContext().fonts->get(Fonts::Main))
 {
 	// Initialize the loading text
 	RenderWindow& window = *getContext().window;

@@ -19,7 +19,7 @@ namespace Shooter {
 		
 		// INTERFACE
 	public:
-		MenuState(Game2D::StateManager&, Context);
+		MenuState(Game2D::StateManager&);
 		virtual bool handleEvent(const sf::Event&);
 		virtual bool update(sf::Time);
 		virtual void draw();
