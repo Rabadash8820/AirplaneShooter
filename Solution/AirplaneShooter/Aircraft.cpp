@@ -2,8 +2,6 @@
 
 #include "Categories.h"
 #include "DataTables.h"
-#include "ResourceIds\Fonts.h"
-#include "ResourceIds\Textures.h"
 
 #include <Utility.h>
 
@@ -27,7 +25,7 @@ Aircraft::Aircraft(Type t, const TextureManager& textures, const FontManager& fo
 	_directionIndex(0)
 {
 	// Define the TextNode with the Aircraft's health
-	TextNode::Ptr health(new TextNode(fonts[Fonts::Main], ""));
+	TextNode::Ptr health(new TextNode(fonts[FontId::Main], ""));
 	_hpDisplay = health.get();
 	_hpDisplay->setPosition(0.f, 50.f);
 	attachChild(std::move(health));
@@ -53,14 +51,14 @@ Category Aircraft::getCategory() const {
 }
 
 // HELPER FUNCTIONS
-ResourceId Aircraft::textureIdForType(Aircraft::Type t) {
+TextureId Aircraft::textureIdForType(Aircraft::Type t) {
 	switch (t) {
 	case Type::Eagle:
-		return Textures::Eagle;
+		return TextureId::Eagle;
 		break;
 	case Type::Raptor:
 	default:
-		return Textures::Raptor;
+		return TextureId::Raptor;
 		break;
 	}
 }
@@ -101,11 +99,11 @@ map<Aircraft::Type, AircraftData> Aircraft::initAircraftData() {
 
 	data[Type::Eagle].hitPoints = 100;
 	data[Type::Eagle].speed = 200.f;
-	data[Aircraft::Type::Eagle].texture = Textures::Eagle;
+	data[Aircraft::Type::Eagle].texture = TextureId::Eagle;
 
 	data[Type::Raptor].hitPoints = 100;
 	data[Type::Raptor].speed = 80.f;
-	data[Type::Raptor].texture = Textures::Raptor;
+	data[Type::Raptor].texture = TextureId::Raptor;
 	data[Type::Raptor].directions.push_back(Direction(45, 80));
 	data[Type::Raptor].directions.push_back(Direction(-45, 160));
 	data[Type::Raptor].directions.push_back(Direction(45, 80));

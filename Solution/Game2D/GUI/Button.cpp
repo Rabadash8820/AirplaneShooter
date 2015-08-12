@@ -10,22 +10,17 @@ using namespace Game2D::GUI;
 using namespace sf;
 using namespace std;
 
-Button::Button(const sf::Font& font, const TextureManager& textures, const ResourceId& id) :
+Button::Button(const sf::Font& font, const TextureManager& textures) :
 	_text("", font, 16),
-	_isToggle(false),
-	_textureManager(&textures)
+	_isToggle(false)
 {
-	setTexture(State::Unselected, id);
-	_sprite.setTexture(*_textures[State::Unselected]);
+	_sprite.setTexture(textures[State::Unselected]);
 
 	FloatRect bounds = _sprite.getLocalBounds();
 	_text.setPosition(bounds.width / 2.f, bounds.height / 2.f);
 }
 void Button::setCallback(Callback callback) {
 	_callback = callback;
-}
-void Button::setTexture(State state, const ResourceId& id) {
-	_textures[state] = &_textureManager->get(id);
 }
 void Button::setText(const std::string& text) {
 	_text.setString(text);

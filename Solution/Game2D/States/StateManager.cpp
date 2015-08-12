@@ -7,8 +7,8 @@ using namespace std;
 using namespace sf;
 
 // INTERFACE
-StateManager::StateManager(Context& context) :
-	_context(context)
+StateManager::StateManager(Context* context) :
+	_context(*context)
 { }
 void StateManager::update(Time dt) {
 	// Iterate through the State stack from top to bottom

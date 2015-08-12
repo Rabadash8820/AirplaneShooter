@@ -1,6 +1,7 @@
 #pragma once
 
-#include <States\State.h>
+#include "BaseState.h"
+
 #include <States\StateManager.h>
 #include <States\ParallelTask.h>
 
@@ -9,7 +10,7 @@
 
 namespace Shooter {
 
-	class LoadingState : public Game2D::State {
+	class LoadingState : public BaseState {
 		// ENCAPSULATED FIELDS
 	private:
 		sf::Text _loadingText;

@@ -1,7 +1,5 @@
 #include "DesertMap.h"
 
-#include "ResourceIds\Textures.h"
-#include "ResourceIds\Fonts.h"
 #include "Categories.h"
 #include <Render/Brush.h>
 #include <memory>
@@ -73,7 +71,7 @@ void DesertMap::buildScene() {
 	}
 
 	// Add a node for the background, and tile its texture
-	Texture& desertTexture = _textures[Textures::Desert];
+	Texture& desertTexture = _textures[TextureId::Desert];
 	IntRect desertBounds(_worldBounds);
 	desertTexture.setRepeated(true);
 	Brush::Ptr background(

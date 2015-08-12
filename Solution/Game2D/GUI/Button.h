@@ -3,7 +3,6 @@
 #include "Control.h"
 #include "..\GAME2D_API.h"
 #include "..\Render\ResourceManager.h"
-#include "..\Render\ResourceId.h"
 
 #include <SFML\Graphics\Font.hpp>
 #include <SFML\Graphics\Texture.hpp>
@@ -29,7 +28,7 @@ namespace Game2D {
 				Unselected,
 				Disabled,
 			};
-			int derp;
+			typedef ResourceManager<sf::Texture, State> TextureManager;
 
 			// ENCAPSUALTED FIELDS
 		private:
@@ -38,13 +37,11 @@ namespace Game2D {
 			sf::Sprite _sprite;
 			sf::Text _text;
 			bool _isToggle;
-			const TextureManager* _textureManager;
 
 			// INTERFACE
 		public:
-			Button(const sf::Font& font, const TextureManager&, const ResourceId&);
+			Button(const sf::Font& font, const TextureManager&);
 			void setCallback(Callback callback);
-			void setTexture(State, const ResourceId&);
 			void setText(const std::string& text);
 			void setToggle(bool flag);
 			virtual bool isSelectable() const;

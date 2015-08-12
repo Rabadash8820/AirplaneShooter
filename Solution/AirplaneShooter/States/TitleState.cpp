@@ -1,8 +1,8 @@
 #include "TitleState.h"
 
 #include "MenuState.h"
-#include "../ResourceIds/Fonts.h"
-#include "../ResourceIds/Textures.h"
+#include "../Ids/FontId.h"
+#include "../Ids/TextureId.h"
 
 #include <Utility.h>
 
@@ -15,11 +15,11 @@ using namespace std;
 
 // INTERFACE
 TitleState::TitleState(Game2D::StateManager& manager) :
-	State(manager),
+	BaseState(manager),
 	_showText(true),
 	_effectTime(sf::Time::Zero),
-	_background(getContext().textures->get(Textures::TitleScreen)),
-	_text("Press any key to start", getContext().fonts->get(Fonts::Main))
+	_background(getContext().textures->get(TextureId::TitleScreen)),
+	_text("Press any key to start", getContext().fonts->get(FontId::Main))
 {
 	// Define the flashing title Text
 	Utility::centerOrigin(_text);

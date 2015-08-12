@@ -42,7 +42,7 @@ namespace Game2D {
 
 		// INTERFACE
 	public:
-		explicit StateManager(Context& context);
+		explicit StateManager(Context* context);
 		void update(sf::Time);
 		void draw();
 		void handleEvent(const sf::Event&);

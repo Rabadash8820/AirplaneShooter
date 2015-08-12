@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Aircraft.h"
-#include "ResourceIds\Textures.h"
-
-#include <Render\ResourceId.h>
+#include "Ids\TextureId.h"
 
 #include <vector>
 
@@ -18,7 +16,7 @@ namespace Shooter {
 	struct AircraftData {
 		int hitPoints;
 		float speed;
-		Game2D::ResourceId texture;
+		TextureId texture;
 		std::vector<Direction> directions;
 	};
 

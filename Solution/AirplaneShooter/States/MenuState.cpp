@@ -2,8 +2,8 @@
 
 #include "GameState.h"
 #include "SettingsState.h"
-#include "..\ResourceIds\Textures.h"
-#include "..\ResourceIds\Fonts.h"
+#include "..\Ids\TextureId.h"
+#include "..\Ids\FontId.h"
 
 #include <Utility.h>
 
@@ -23,38 +23,29 @@ using namespace std;
 
 // INTERFACE
 MenuState::MenuState(StateManager& manager) :
-	State(manager),
-	_background(manager.getContext().textures->get(Textures::TitleScreen))
+	BaseState(manager),
+	_background(getContext().textures->get(TextureId::TitleScreen))
 {	
 	// Define the menu buttons
-	Font& main = getContext().fonts->get(Fonts::Main);
-	shared_ptr<Button> play = make_shared<Button>(
-		main, *getContext().textures, Textures::ButtonUnselected);
+	Font& main = getContext().fonts->get(FontId::Main);
+	shared_ptr<Button> play = make_shared<Button>(main, *getContext().buttonTextures);
 	play->setText("Play");
 	play->setPosition(100, 250);
-	play->setTexture(Button::State::Selected, Textures::ButtonSelected);
-	play->setTexture(Button::State::Pressed,  Textures::ButtonPressed);
 	play->setCallback([this]() {
 		requestPopState();
 		requestPushState<GameState>();
 	});
 
-	shared_ptr<Button> settings = make_shared<Button>(
-		main, *getContext().textures, Textures::ButtonUnselected);
+	shared_ptr<Button> settings = make_shared<Button>(main, *getContext().buttonTextures);
 	settings->setText("Settings");
 	settings->setPosition(100, 300);
-	settings->setTexture(Button::State::Selected, Textures::ButtonSelected);
-	settings->setTexture(Button::State::Pressed, Textures::ButtonPressed);
 	settings->setCallback([this]() {
 		requestPushState<SettingsState>();
 	});
 
-	shared_ptr<Button> exit = make_shared<Button>(
-		main, *getContext().textures, Textures::ButtonUnselected);
+	shared_ptr<Button> exit = make_shared<Button>(main, *getContext().buttonTextures);
 	exit->setText("Exit");
 	exit->setPosition(100, 350);
-	exit->setTexture(Button::State::Selected, Textures::ButtonSelected);
-	exit->setTexture(Button::State::Pressed, Textures::ButtonPressed);
 	exit->setCallback(bind(&MenuState::requestPopState, this));
 
 	// Pack buttons into the GUI Container

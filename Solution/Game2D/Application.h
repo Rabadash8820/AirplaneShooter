@@ -14,7 +14,7 @@ namespace Game2D {
 	class GAME2D_API Application {
 		// PRIVATE VARIABLES / CONSTANTS		
 	protected:
-		Context _context;
+		std::unique_ptr<Context> _context;
 		sf::Time _frameDuration;
 		StateManager _stateManager;
 
@@ -24,7 +24,7 @@ namespace Game2D {
 
 		// HELPER FUNCTIONS
 	protected:
-		Application(Context, sf::Time = sf::seconds(1.f / 60.f));
+		Application(std::unique_ptr<Context>, sf::Time = sf::seconds(1.f / 60.f));	// Makes Application non-instantiable (abstract)
 		virtual void updateCurrent(sf::Time);
 		virtual void drawCurrent();
 	private:

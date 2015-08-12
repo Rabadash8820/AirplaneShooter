@@ -3,6 +3,8 @@
 #include <Map.h>
 
 #include "Aircraft.h"
+#include "Ids\TextureId.h"
+#include "Ids\FontId.h"
 
 #include <Render\Entity.h>
 #include <Render\ResourceManager.h>
@@ -43,6 +45,8 @@ namespace Shooter {
 		sf::Vector2f _playerSpawn;
 		sf::Vector2f _scrollVelocity;		// Pixels per sec
 		std::vector<SpawnPoint> _spawnPoints;
+		TextureManager _textures;
+		FontManager _fonts;
 
 		// INTERFACE
 	public:

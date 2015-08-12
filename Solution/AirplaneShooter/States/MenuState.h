@@ -1,6 +1,7 @@
 #pragma once
 
-#include <States\State.h>
+#include "BaseState.h"
+
 #include <States\StateManager.h>
 #include <GUI.h>
 
@@ -11,7 +12,7 @@
 
 namespace Shooter {
 
-	class MenuState : public Game2D::State {
+	class MenuState : public BaseState {
 		// ENCAPSULATED FIELDS
 	private:
 		sf::Sprite _background;

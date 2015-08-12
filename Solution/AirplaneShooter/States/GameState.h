@@ -1,10 +1,11 @@
 #pragma once
 
-#include "..\Player.h"
-#include <Map.h>
+#include "BaseState.h"
 
+#include "..\Player.h"
+
+#include <Map.h>
 #include <States\StateManager.h>
-#include <States\State.h>
 
 #include <SFML\System\Time.hpp>
 #include <SFML\Window\Event.hpp>
@@ -15,7 +16,7 @@
 
 namespace Shooter {
 
-	class GameState : Game2D::State {
+	class GameState : BaseState {
 		// PRIVATE MEMBERS
 	private:
 		Game2D::Map::Ptr _map;

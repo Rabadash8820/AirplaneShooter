@@ -11,6 +11,7 @@
 
 using namespace Shooter;
 using namespace Game2D;
+using namespace Game2D::GUI;
 using namespace sf;
 
 // CONSTRUCTORS / DESTRUCTOR

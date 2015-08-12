@@ -174,7 +174,6 @@
     <ClCompile Include="Map\ScrollingMap.cpp" />
     <ClCompile Include="Render\Brush.cpp" />
     <ClCompile Include="Render\Entity.cpp" />
-    <ClCompile Include="Render\ResourceId.cpp" />
     <ClCompile Include="Render\SceneNode.cpp" />
     <ClCompile Include="Render\TextNode.cpp" />
     <ClCompile Include="States\ParallelTask.cpp" />
@@ -192,7 +191,6 @@
     <ClInclude Include="Map\ScrollingMap.h" />
     <ClInclude Include="Render\Brush.h" />
     <ClInclude Include="Render\Entity.h" />
-    <ClInclude Include="Render\ResourceId.h" />
     <ClInclude Include="Render\ResourceManager.h" />
     <ClInclude Include="Render\SceneNode.h" />
     <ClInclude Include="Render\TextNode.h" />

@@ -84,9 +84,6 @@
     <ClCompile Include="GUI\Control.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Render\ResourceId.cpp">
-      <Filter>Source Files\Render</Filter>
-    </ClCompile>
     <ClCompile Include="Input\CommandId.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
