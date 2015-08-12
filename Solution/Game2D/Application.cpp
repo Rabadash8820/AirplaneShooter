@@ -11,8 +11,7 @@ using namespace std;
 Application::Application(Context context, Time frameDur) :
 	_context(context),
 	_frameDuration(frameDur),
-	_stateManager(context),
-	_statisticsNumFrames(0)
+	_stateManager(context)
 { }
 void Application::run() {
 	// Main game loop
@@ -37,7 +36,6 @@ void Application::run() {
 		}
 
 		// Draw graphics in the game window
-		this->updateStatistics(dt);
 		this->draw();
 	}
 }
@@ -56,28 +54,18 @@ void Application::processInput() {
 	}
 }
 void Application::update(Time dt) {
+	updateCurrent(dt);
 	_stateManager.update(dt);
 }
+void Application::updateCurrent(Time dt) { }
 void Application::draw() {
 	// Clear the window and draw graphics
 	RenderWindow& window = *_context.window;
 	window.clear();
+
 	_stateManager.draw();
-
-	// Draw statistics text (not affected by View)
-	window.setView(window.getDefaultView());
-	window.draw(_statisticsText);
-
-	// Display all drawn objects in the window
+	drawCurrent();
+	
 	window.display();
 }
-void Application::updateStatistics(Time dt) {
-	_statisticsUpdateTime += dt;
-	_statisticsNumFrames += 1;
-	if (_statisticsUpdateTime >= seconds(1.0f)) {
-		_statisticsText.setString("FPS: " + to_string(_statisticsNumFrames));
-
-		_statisticsUpdateTime -= seconds(1.0f);
-		_statisticsNumFrames = 0;
-	}
-}
+void Application::drawCurrent() { }

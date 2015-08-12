@@ -5,6 +5,8 @@
 #include <Render\ResourceManager.h>
 #include <Application.h>
 
+#include <SFML\System\Time.hpp>
+#include <SFML\Graphics\Text.hpp>
 #include <SFML\Graphics\RenderWindow.hpp>
 
 namespace Shooter {
@@ -16,6 +18,9 @@ namespace Shooter {
 		Game2D::TextureManager _textures;
 		Game2D::FontManager _fonts;
 		Player _player;
+		sf::Text _statisticsText;
+		sf::Time _statisticsUpdateTime;
+		std::size_t _statisticsNumFrames;
 
 		// INTERFACE
 	public:
@@ -23,6 +28,8 @@ namespace Shooter {
 
 		// HELPER FUNCTIONS
 	private:
+		virtual void drawCurrent();
+		virtual void updateCurrent(sf::Time dt);
 		virtual void registerStates();
 	};
 
