@@ -1,7 +1,7 @@
 #include "LoadingState.h"
 
 #include "..\ResourceIds\Fonts.h"
-#include "States.h"
+#include "GameState.h"
 
 #include <Utility.h>
 
@@ -47,7 +47,7 @@ bool LoadingState::update(Time dt) {
 	// If loading is done then push the Game state
 	if (_loadingTask->isFinished()) {
 		requestPopState();
-		requestPushState(States::Game);
+		requestPushState<GameState>();
 	}
 
 	// Otherwise, update the progress bar's percent based on the loading task's progress

@@ -187,7 +187,6 @@
     <ClCompile Include="States\MenuState.cpp" />
     <ClCompile Include="States\PauseState.cpp" />
     <ClCompile Include="States\SettingsState.cpp" />
-    <ClCompile Include="States\States.cpp" />
     <ClCompile Include="States\TitleState.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -208,7 +207,6 @@
     <ClInclude Include="States\PauseState.h" />
     <ClInclude Include="States\SettingsState.h" />
     <ClInclude Include="States\ShooterContext.h" />
-    <ClInclude Include="States\States.h" />
     <ClInclude Include="States\TitleState.h" />
   </ItemGroup>
   <ItemGroup>

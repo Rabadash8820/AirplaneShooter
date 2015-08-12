@@ -1,12 +1,6 @@
 #include "AirplaneShooter.h"
 
-#include "States\States.h"
 #include "States\TitleState.h"
-#include "States\MenuState.h"
-#include "States\GameState.h"
-#include "States\PauseState.h"
-#include "States\LoadingState.h"
-#include "States\SettingsState.h"
 #include "ResourceIds\Fonts.h"
 #include "ResourceIds\Textures.h"
 #include "Player.h"
@@ -45,19 +39,10 @@ AirplaneShooter::AirplaneShooter() :
 	_statisticsText.setPosition(5.f, 5.f);
 	_statisticsText.setCharacterSize(10u);
 
-	// Register states and start in the Title state
-	registerStates();
-	_stateManager.push(States::Title);
+	// Start in the Title state
+	_stateManager.push<TitleState>();
 }
 
-void AirplaneShooter::registerStates() {
-	_stateManager.registerState<TitleState>(States::Title);
-	_stateManager.registerState<MenuState>(States::MainMenu);
-	_stateManager.registerState<GameState>(States::Game);
-	_stateManager.registerState<PauseState>(States::Pause);
-	_stateManager.registerState<LoadingState>(States::Loading);
-	_stateManager.registerState<SettingsState>(States::SettingsMenu);
-}
 void AirplaneShooter::updateCurrent(Time dt) {
 	// Update the statistics text
 	_statisticsUpdateTime += dt;

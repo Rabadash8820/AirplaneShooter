@@ -1,16 +1,17 @@
 #include "MenuState.h"
 
-#include "States.h"
+#include "GameState.h"
+#include "SettingsState.h"
 #include "..\ResourceIds\Textures.h"
 #include "..\ResourceIds\Fonts.h"
 
 #include <Utility.h>
 
-#include <SFML\Graphics\Text.hpp>
 #include <SFML\System\Vector2.hpp>
 #include <SFML\Window\Keyboard.hpp>
 #include <SFML\Graphics\RenderWindow.hpp>
 #include <SFML\Graphics\Color.hpp>
+#include <SFML\Graphics\Text.hpp>
 
 #include <string>
 
@@ -35,7 +36,7 @@ MenuState::MenuState(StateManager& manager) :
 	play->setTexture(Button::State::Pressed,  Textures::ButtonPressed);
 	play->setCallback([this]() {
 		requestPopState();
-		requestPushState(States::Game);
+		requestPushState<GameState>();
 	});
 
 	shared_ptr<Button> settings = make_shared<Button>(
@@ -44,9 +45,9 @@ MenuState::MenuState(StateManager& manager) :
 	settings->setPosition(100, 300);
 	settings->setTexture(Button::State::Selected, Textures::ButtonSelected);
 	settings->setTexture(Button::State::Pressed, Textures::ButtonPressed);
-	settings->setCallback(bind(
-		&MenuState::requestPushState, this,
-		States::SettingsMenu));
+	settings->setCallback([this]() {
+		requestPushState<SettingsState>();
+	});
 
 	shared_ptr<Button> exit = make_shared<Button>(
 		main, *getContext().textures, Textures::ButtonUnselected);

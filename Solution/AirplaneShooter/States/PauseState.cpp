@@ -1,8 +1,8 @@
 #include "PauseState.h"
 
-#include "States.h"
 #include "..\ResourceIds\Fonts.h"
 #include "..\ResourceIds\Textures.h"
+#include "MenuState.h"
 
 #include <Utility.h>
 
@@ -56,7 +56,7 @@ PauseState::PauseState(Game2D::StateManager& manager) :
 	menu->setTexture(Button::State::Pressed,  Textures::ButtonPressed);
 	menu->setCallback([this]() {
 		requestClearStates();
-		requestPushState(States::MainMenu);
+		requestPushState<MenuState>();
 	});
 
 	// Pack buttons into the GUI Container
@@ -65,9 +65,12 @@ PauseState::PauseState(Game2D::StateManager& manager) :
 }
 
 bool PauseState::handleEvent(const sf::Event& e) {
-	_guiContainer.handleEvent(e);
+	// If player hits Escape again then return to the game
+	if (e.type == e.KeyPressed && e.key.code == Keyboard::Escape)
+		requestPopState();
 
-	// Don't allow other States to handle this Event
+	// Let the GUI (only) handle all other EVents
+	_guiContainer.handleEvent(e);
 	return false;
 }
 bool PauseState::update(sf::Time dt) {

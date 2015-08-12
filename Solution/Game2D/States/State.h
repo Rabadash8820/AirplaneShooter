@@ -1,7 +1,6 @@
 #pragma once
 
 #include "..\GAME2D_API.h"
-#include "StateId.h"
 #include "Context.h"
 #include "..\Render\ResourceManager.h"
 
@@ -36,7 +35,10 @@ namespace Game2D {
 
 		// HELPER FUNCTIONS
 	protected:
-		void requestPushState(StateId);
+		template<typename StateClass>
+		void requestPushState() {
+			_manager->push<StateClass>();
+		}
 		void requestPopState();
 		void requestClearStates();
 		Context getContext() const;

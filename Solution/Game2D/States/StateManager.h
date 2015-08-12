@@ -2,7 +2,6 @@
 
 #include "..\GAME2D_API.h"
 #include "State.h"
-#include "StateId.h"
 #include "Context.h"
 
 #include <SFML\System\NonCopyable.hpp>
@@ -10,23 +9,29 @@
 #include <SFML\Window\Event.hpp>
 
 #include <vector>
-#include <map>
-#include <functional>
 
 namespace Game2D {
 
 	class GAME2D_API StateManager : private sf::NonCopyable {
 		// ABSTRACT DATA TYPES
 	public:
-		enum Action {
+		enum class Action {
 			Push,
 			Pop,
 			Clear,
 		};
 	private:
 		struct PendingChange {
+			PendingChange(Action a, State::Ptr s) :
+				action(a),
+				state(move(s))
+			{ }
+			PendingChange(PendingChange&& that) :
+				action(that.action),
+				state(move(that.state))
+			{ }
 			Action action;
-			StateId stateId;
+			State::Ptr state;
 		};
 
 		// PRIVATE VARIABLES
@@ -34,24 +39,21 @@ namespace Game2D {
 		std::vector<State::Ptr> _stack;
 		std::vector<PendingChange> _pendingChanges;
 		Context _context;
-		std::map<StateId, std::function<State::Ptr()>> _factories;
 
 		// INTERFACE
 	public:
 		explicit StateManager(Context& context);
-		template<typename StateClass>
-		void registerState(StateId id) {
-			// Template member function must be defined inline 
-
-			// Associate this Id with a factory method to produce the provided State class
-			_factories[id] = [this]() {
-				return State::Ptr(new StateClass(*this));
-			};
-		}
 		void update(sf::Time);
 		void draw();
 		void handleEvent(const sf::Event&);
-		void push(StateId);
+		template<typename StateClass>
+		void push() {
+			_pendingChanges.push_back({
+				Action::Push,
+				std::move(State::Ptr(
+					new StateClass(*this)))
+			});
+		}
 		void pop();
 		void clear();
 		bool isEmpty() const;
@@ -59,7 +61,6 @@ namespace Game2D {
 
 		// HELPER FUNCTIONS
 	private:
-		State::Ptr createState(StateId);
 		void applyPendingChanges();
 	};
 
