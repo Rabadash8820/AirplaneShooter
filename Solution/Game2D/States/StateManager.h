@@ -38,7 +38,7 @@ namespace Game2D {
 	private:
 		std::vector<State::Ptr> _stack;
 		std::vector<PendingChange> _pendingChanges;
-		Context _context;
+		Context& _context;
 
 		// INTERFACE
 	public:
@@ -57,7 +57,7 @@ namespace Game2D {
 		void pop();
 		void clear();
 		bool isEmpty() const;
-		Context getContext() const;
+		const Context& getContext() const;
 
 		// HELPER FUNCTIONS
 	private:

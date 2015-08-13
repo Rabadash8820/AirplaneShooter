@@ -40,20 +40,22 @@ namespace Game2D {
 
 			// INTERFACE
 		public:
-			Button(const sf::Font& font, const TextureManager&);
-			void setCallback(Callback callback);
-			void setText(const std::string& text);
+			Button(const sf::Font&, const TextureManager&);
+			void setCallback(Callback);
+			void setText(const std::string&);
 			void setToggle(bool flag);
 			virtual bool isSelectable() const;
 			virtual void select();
 			virtual void unselect();
 			virtual void activate();
 			virtual void deactivate();
-			virtual void handleEvent(const sf::Event& event);
+			virtual void enable();
+			virtual void disable();
+			virtual void handleEvent(const sf::Event&);
 
 			// HELPER FUNCTIONS
 		private:
-			virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+			virtual void draw(sf::RenderTarget&, sf::RenderStates) const;
 			
 		};
 		

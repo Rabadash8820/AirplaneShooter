@@ -19,6 +19,6 @@ void State::requestPopState() {
 void State::requestClearStates() {
 	_manager->clear();
 }
-Context State::getContext() const {
+const Context& State::getContext() const {
 	return _context;
 }

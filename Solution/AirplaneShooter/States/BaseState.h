@@ -17,8 +17,8 @@ namespace Shooter {
 
 		// HELPER FUNCTIONS
 	protected:
-		virtual Context getContext() const final {
-			Context context = static_cast<Context&>(Game2D::State::getContext());
+		const Context& getContext() const {
+			const Context& context = static_cast<const Context&>(Game2D::State::getContext());
 			return context;
 		}
 	};

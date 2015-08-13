@@ -30,7 +30,7 @@ MenuState::MenuState(StateManager& manager) :
 	Font& main = getContext().fonts->get(FontId::Main);
 	shared_ptr<Button> play = make_shared<Button>(main, *getContext().buttonTextures);
 	play->setText("Play");
-	play->setPosition(100, 250);
+	play->setPosition(FIRST_BUTTON_POS + BUTTON_OFFSET * 0.f);
 	play->setCallback([this]() {
 		requestPopState();
 		requestPushState<GameState>();
@@ -38,14 +38,14 @@ MenuState::MenuState(StateManager& manager) :
 
 	shared_ptr<Button> settings = make_shared<Button>(main, *getContext().buttonTextures);
 	settings->setText("Settings");
-	settings->setPosition(100, 300);
+	settings->setPosition(FIRST_BUTTON_POS + BUTTON_OFFSET * 1.f);
 	settings->setCallback([this]() {
 		requestPushState<SettingsState>();
 	});
 
 	shared_ptr<Button> exit = make_shared<Button>(main, *getContext().buttonTextures);
 	exit->setText("Exit");
-	exit->setPosition(100, 350);
+	exit->setPosition(FIRST_BUTTON_POS + BUTTON_OFFSET * 2.f);
 	exit->setCallback(bind(&MenuState::requestPopState, this));
 
 	// Pack buttons into the GUI Container

@@ -34,7 +34,8 @@ AirplaneShooter::AirplaneShooter() :
 	_textures.load(TextureId::TitleScreen,			textureDir + "TitleScreen.png");
 	_buttonTextures.load(Button::State::Unselected, textureDir + "ButtonNormal.png");
 	_buttonTextures.load(Button::State::Selected,   textureDir + "ButtonSelected.png");
-	_buttonTextures.load(Button::State::Pressed,    textureDir + "ButtonPressed.png");
+	_buttonTextures.load(Button::State::Pressed,	textureDir + "ButtonPressed.png");
+	_buttonTextures.load(Button::State::Disabled,	textureDir + "ButtonDisabled.png");
 
 	// Initialize the statistics text
 	_statisticsText.setFont(_fonts[FontId::Main]);
