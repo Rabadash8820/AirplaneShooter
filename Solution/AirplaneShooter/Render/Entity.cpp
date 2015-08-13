@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-using namespace Game2D;
+using namespace Shooter;
 
 // INTERFACE
 Entity::Entity(int hp) :

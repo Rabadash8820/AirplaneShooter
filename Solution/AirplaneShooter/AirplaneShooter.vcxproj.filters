@@ -22,12 +22,15 @@
     <Filter Include="Header Files\Ids">
       <UniqueIdentifier>{b3d544fe-b1c8-4839-bbde-d2f9216beac1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Render">
+      <UniqueIdentifier>{6c1356e9-be75-42d2-b0b9-d5f5b94c2fa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render">
+      <UniqueIdentifier>{9848bc28-dfe5-46d5-9cb1-d0d32e122f39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Aircraft.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DesertMap.cpp">
@@ -63,11 +66,23 @@
     <ClCompile Include="DataTables.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Render\Aircraft.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\Brush.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\Entity.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\Projectile.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\TextNode.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aircraft.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DesertMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -127,6 +142,21 @@
     </ClInclude>
     <ClInclude Include="States\BaseState.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Aircraft.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Brush.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Entity.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Projectile.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\TextNode.h">
+      <Filter>Header Files\Render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

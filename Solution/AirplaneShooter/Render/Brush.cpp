@@ -1,6 +1,6 @@
 #include "Brush.h"
 
-using namespace Game2D;
+using namespace Shooter;
 using namespace sf;
 using namespace std;
 

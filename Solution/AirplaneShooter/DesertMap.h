@@ -2,12 +2,9 @@
 
 #include <Map.h>
 
-#include "Aircraft.h"
+#include "Render\Aircraft.h"
 #include "Ids\TextureId.h"
 #include "Ids\FontId.h"
-
-#include <Render\Entity.h>
-#include <Render\ResourceManager.h>
 
 #include <SFML\Graphics\RenderWindow.hpp>
 #include <SFML\System\Time.hpp>

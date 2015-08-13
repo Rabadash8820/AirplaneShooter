@@ -1,7 +1,6 @@
 #pragma once
 
-#include "SceneNode.h"
-#include "..\GAME2D_API.h"
+#include <SceneNode.h>
 
 #include <SFML\Graphics\Text.hpp>
 #include <SFML\Graphics\Font.hpp>
@@ -9,9 +8,9 @@
 #include <string>
 #include <memory>
 
-namespace Game2D {
+namespace Shooter {
 
-	class GAME2D_API TextNode : public SceneNode {
+	class TextNode : public Game2D::SceneNode {
 		// ABSTRACT DATA TYPES
 	public:
 		typedef std::unique_ptr<TextNode> Ptr;

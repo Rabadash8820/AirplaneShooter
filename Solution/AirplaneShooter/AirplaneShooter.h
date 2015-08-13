@@ -5,7 +5,6 @@
 #include "Ids\FontId.h"
 #include "Ids\GuiId.h"
 
-#include <Render\ResourceManager.h>
 #include <Application.h>
 
 #include <SFML\System\Time.hpp>

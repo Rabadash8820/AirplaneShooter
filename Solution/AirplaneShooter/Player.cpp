@@ -1,9 +1,9 @@
 #include "Player.h"
 
-#include "Aircraft.h"
+#include "Render\Aircraft.h"
 #include "Categories.h"
 
-#include <Render\SceneNode.h>
+#include <SceneNode.h>
 
 #include <SFML\System\Time.hpp>
 #include <SFML\System\Vector2.hpp>

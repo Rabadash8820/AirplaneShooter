@@ -158,7 +158,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Render\ResourceManager.inl" />
+    <None Include="ResourceManager.inl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -171,10 +171,7 @@
     <ClCompile Include="Input\Command.cpp" />
     <ClCompile Include="Input\InputManager.cpp" />
     <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Render\Brush.cpp" />
-    <ClCompile Include="Render\Entity.cpp" />
-    <ClCompile Include="Render\SceneNode.cpp" />
-    <ClCompile Include="Render\TextNode.cpp" />
+    <ClCompile Include="SceneNode.cpp" />
     <ClCompile Include="States\ParallelTask.cpp" />
     <ClCompile Include="States\State.cpp" />
     <ClCompile Include="States\StateManager.cpp" />
@@ -193,11 +190,8 @@
     <ClInclude Include="Input\Command.h" />
     <ClInclude Include="Input\InputManager.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="Render\Brush.h" />
-    <ClInclude Include="Render\Entity.h" />
-    <ClInclude Include="Render\ResourceManager.h" />
-    <ClInclude Include="Render\SceneNode.h" />
-    <ClInclude Include="Render\TextNode.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SceneNode.h" />
     <ClInclude Include="States\Context.h" />
     <ClInclude Include="States\ParallelTask.h" />
     <ClInclude Include="States\State.h" />

@@ -1,8 +1,8 @@
 #include "DesertMap.h"
 
+#include "Render\Brush.h"
 #include "Categories.h"
 
-#include <Render\Brush.h>
 #include <Utility.h>
 
 #include <SFML\Graphics\Texture.hpp>

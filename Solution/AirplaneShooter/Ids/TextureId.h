@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Render\ResourceManager.h>
+#include <ResourceManager.h>
 
 #include <SFML\Graphics\Texture.hpp>
 

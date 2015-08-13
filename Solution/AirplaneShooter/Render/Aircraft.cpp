@@ -1,7 +1,7 @@
 #include "Aircraft.h"
 
-#include "Categories.h"
-#include "DataTables.h"
+#include "..\Categories.h"
+#include "..\DataTables.h"
 
 #include <Utility.h>
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\GAME2D_API.h"
-#include "..\Input\Command.h"
+#include "GAME2D_API.h"
+#include "Input\Command.h"
 
 #include <SFML\Graphics\Transformable.hpp>
 #include <SFML\Graphics\Drawable.hpp>

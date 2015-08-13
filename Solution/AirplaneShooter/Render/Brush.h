@@ -1,7 +1,6 @@
 #pragma once
 
-#include "../GAME2D_API.h"
-#include "SceneNode.h"
+#include <SceneNode.h>
 
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\Texture.hpp>
@@ -9,9 +8,9 @@
 
 #include <memory>
 
-namespace Game2D {
+namespace Shooter {
 
-	class GAME2D_API Brush : public SceneNode {
+	class Brush : public Game2D::SceneNode {
 		// VARIABLES
 	public:
 		typedef std::unique_ptr<Brush> Ptr;

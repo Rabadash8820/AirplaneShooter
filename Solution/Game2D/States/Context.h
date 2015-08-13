@@ -1,7 +1,6 @@
 #pragma once
 
 #include "..\GAME2D_API.h"
-#include "..\Render\ResourceManager.h"
 #include "..\Input\InputManager.h"
 
 #include <SFML\Graphics\RenderWindow.hpp>
