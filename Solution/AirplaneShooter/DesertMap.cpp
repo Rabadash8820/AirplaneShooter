@@ -110,9 +110,12 @@ void DesertMap::addEnemies() {
 		_spawnPoints.begin(), _spawnPoints.end(),
 		[](SpawnPoint left, SpawnPoint right) { return left.y < right.y; });
 }
+FloatRect DesertMap::getViewBounds() const {
+	return FloatRect(_view.getCenter() - _view.getSize() / 2.f, _view.getSize());
+}
 FloatRect DesertMap::getBattlefieldBounds() const {
 	// Return the bounding Rectangle of the main View, with a little extra off-screen at the top
-	FloatRect bounds = _view.getViewport();
+	FloatRect bounds = getViewBounds();
 	bounds.top -= BATTLEFIELD_OFFSET;
 	bounds.height += BATTLEFIELD_OFFSET;
 	return bounds;

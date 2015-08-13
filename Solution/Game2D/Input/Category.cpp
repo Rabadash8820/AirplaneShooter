@@ -1,12 +1,18 @@
 #include "Category.h"
 
 using namespace Game2D;
+using namespace std;
 
 // INTERFACE
 Category::Category() :
 	_id(shiftedRoot()) { }
 Category::Category(const Category& that) :
 	_id(that._id) { }
+Category::Category(initializer_list<Category> categories) {
+	_id = 0;
+	for (Category c : categories)
+		_id |= c._id;
+}
 
 bool Category::matches(const Category& that) const {
 	return this->_id & that._id;
@@ -20,14 +26,6 @@ bool Category::operator!=(const Category& that) const {
 }
 const Category& Category::operator=(const Category& that) {
 	this->_id = that._id;
-	return *this;
-}
-const Category& Category::operator|=(const Category& that) {
-	this->_id |= that._id;
-	return *this;
-}
-const Category& Category::operator&=(const Category& that) {
-	this->_id &= that._id;
 	return *this;
 }
 

@@ -18,9 +18,9 @@ Aircraft::DataTable Aircraft::_dataTable = initAircraftData();
 
 // INTERFACE
 Aircraft::Aircraft(Type t, const TextureManager& textures, const FontManager& fonts) :
+	Entity(_dataTable[t].hitPoints),
 	_type(t),
-	Entity(_dataTable[_type].hitPoints),
-	_sprite(textures[_dataTable[_type].texture]),
+	_sprite(textures[_dataTable[t].texture]),
 	_traveledDistance(0),
 	_directionIndex(0)
 {
@@ -41,9 +41,9 @@ Category Aircraft::getCategory() const {
 	// Adjust the game Category of this Aircraft depending on its type
 	switch (_type) {
 	case Type::Eagle:
-		return c | Categories::PlayerAircraft;
+		return Category({ c, Categories::PlayerAircraft });
 	default:
-		return c | Categories::EnemyAircraft;
+		return Category({ c, Categories::EnemyAircraft });
 	}
 	return c;
 }
@@ -73,11 +73,11 @@ void Aircraft::updateMovementDirections(Time dt) {
 
 	// Adjust the Aircraft's velocity vector and distance traveled
 	float radians = Utility::toRadians(directions[_directionIndex].angle);
-	float speed = maxSpeed();
+	float speed = getMaxSpeed();
 	Vector2f vel(speed * sinf(radians), speed * cosf(radians));
 	velocity = vel;
 	_traveledDistance += (speed * dt.asSeconds());
 }
-float Aircraft::maxSpeed() const {
+float Aircraft::getMaxSpeed() const {
 	return _dataTable[_type].speed;
 }

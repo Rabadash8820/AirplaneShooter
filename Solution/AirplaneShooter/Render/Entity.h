@@ -20,6 +20,7 @@ namespace Shooter {
 		// INTERFACE
 	public:
 		explicit Entity(int);
+		virtual ~Entity();
 		sf::Vector2f velocity;
 		void heal(int);
 		void damage(int);
