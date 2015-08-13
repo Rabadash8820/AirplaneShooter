@@ -15,6 +15,8 @@ namespace Shooter {
 	class MenuState : public BaseState {
 		// ENCAPSULATED FIELDS
 	private:
+		const sf::Vector2f FIRST_BUTTON_POS = sf::Vector2f(100.f, 200.f);
+		const sf::Vector2f BUTTON_OFFSET = sf::Vector2f(0.f, 50.f);
 		sf::Sprite _background;
 		Game2D::GUI::Container _guiContainer;
 		

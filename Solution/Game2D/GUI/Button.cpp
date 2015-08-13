@@ -14,8 +14,14 @@ Button::Button(const sf::Font& font, const TextureManager& textures) :
 	_text("", font, 16),
 	_isToggle(false)
 {
-	_sprite.setTexture(textures[State::Unselected]);
+	// Store the Textures for each Button state
+	_textures[State::Unselected] = &textures[State::Unselected];
+	_textures[State::Selected]	 = &textures[State::Selected];
+	_textures[State::Pressed]	 = &textures[State::Pressed];
+	_textures[State::Disabled]	 = &textures[State::Disabled];
 
+	// Initialize the Button
+	_sprite.setTexture(*_textures[State::Unselected]);
 	FloatRect bounds = _sprite.getLocalBounds();
 	_text.setPosition(bounds.width / 2.f, bounds.height / 2.f);
 }
@@ -30,7 +36,7 @@ void Button::setToggle(bool flag) {
 	_isToggle = flag;
 }
 bool Button::isSelectable() const {
-	return true;
+	return isEnabled();
 }
 void Button::select() {
 	Control::select();
@@ -38,7 +44,8 @@ void Button::select() {
 }
 void Button::unselect() {
 	Control::select();
-	_sprite.setTexture(*_textures[State::Unselected]);
+	State s = isEnabled() ? State::Unselected : State::Disabled;
+	_sprite.setTexture(*_textures[s]);
 }
 void Button::activate() {
 	Control::activate();
@@ -59,6 +66,14 @@ void Button::deactivate() {
 		else
 			_sprite.setTexture(*_textures[State::Unselected]);
 	}
+}
+void Button::enable() {
+	Control::enable();
+	_sprite.setTexture(*_textures[State::Unselected]);
+}
+void Button::disable() {
+	Control::disable();
+	_sprite.setTexture(*_textures[State::Disabled]);
 }
 void Button::handleEvent(const sf::Event& event) {
 

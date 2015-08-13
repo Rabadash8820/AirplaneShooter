@@ -23,7 +23,7 @@ namespace Game2D {
 		// ENCAPSULATED FIELDS
 	private:
 		StateManager* _manager;
-		Context _context;
+		const Context& _context;
 
 		// INTERFACE
 	public:
@@ -41,7 +41,7 @@ namespace Game2D {
 		}
 		void requestPopState();
 		void requestClearStates();
-		Context getContext() const;
+		const Context& getContext() const;
 
 	};
 

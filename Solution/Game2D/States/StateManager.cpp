@@ -50,7 +50,7 @@ void StateManager::clear() {
 bool StateManager::isEmpty() const {
 	return _stack.empty();
 }
-Context StateManager::getContext() const {
+const Context& StateManager::getContext() const {
 	return _context;
 }
 
