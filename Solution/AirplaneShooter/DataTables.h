@@ -5,6 +5,8 @@
 #include "Render\Projectile.h"
 #include "Ids\TextureId.h"
 
+#include <SFML\System\Time.hpp>
+
 #include <vector>
 #include <map>
 
@@ -22,6 +24,7 @@ namespace Shooter {
 	struct AircraftData {
 		int hitPoints;
 		float speed;
+		sf::Time fireInterval;
 		TextureId texture;
 		std::vector<Direction> directions;
 	};

@@ -38,7 +38,7 @@ DesertMap::DesertMap(RenderWindow& window) :
 void DesertMap::updateCurrent(Time dt) {
 	// Scroll the Map
 	_view.move(_scrollVelocity * dt.asSeconds());
-	_player->velocity = Vector2f(0.f, 0.f);
+	_player->setVelocity(Vector2f(0.f, 0.f));
 
 	// Do updates in response to Commands
 	updateOnCommands(dt);
@@ -64,6 +64,8 @@ void DesertMap::loadResources() {
 	_textures.load(TextureId::Eagle,   textureDir + "Eagle.png");
 	_textures.load(TextureId::Raptor,  textureDir + "Raptor.png");
 	_textures.load(TextureId::Avenger, textureDir + "Avenger.png");
+	_textures.load(TextureId::Bullet,  textureDir + "Bullet.png");
+	_textures.load(TextureId::Missile, textureDir + "Missile.png");
 
 	// Load fonts
 	_fonts.load(FontId::Main, fontDir + "Sansation.ttf");
@@ -71,7 +73,8 @@ void DesertMap::loadResources() {
 void DesertMap::buildScene() {
 	// Add each scene layer to the layer collection
 	for (size_t L = 0; L < _sceneLayers.size(); ++L) {
-		SceneNode::Ptr layer(new Game2D::SceneNode());
+		Category c = (L == 0) ? Categories::AirSceneLayer : Node;
+		SceneNode::Ptr layer(new Game2D::SceneNode(c));
 		_sceneLayers[L] = layer.get();
 		_sceneTree.attachChild(move(layer));
 	}
@@ -140,9 +143,9 @@ void DesertMap::spawnEnemies() {
 }
 void DesertMap::adjustPlayer(Time dt) {
 	// Reduce the playerAircraft's velocity if they are moving diagonally
-	Vector2f playerV = _player->velocity;
+	Vector2f playerV = _player->getVelocity();
 	if (playerV.x != 0 && playerV.y != 0)
-		_player->velocity = playerV / sqrt(2.f);
+		_player->setVelocity(playerV / sqrt(2.f));
 	
 	// Adjust the playerAircraft's position if they cross the View's boundary
 	Vector2f pos = _player->getPosition();

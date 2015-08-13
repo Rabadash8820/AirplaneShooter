@@ -9,11 +9,15 @@ namespace Shooter {
 		extern Game2D::Category PlayerAircraft,
 								AlliedAircraft,
 								EnemyAircraft,
+								Aircraft,
+
 								Pickup,
+
 								AlliedProjectile,
 								EnemyProjectile,
-								Aircraft,
-								Projectile;
+								Projectile,
+								
+								AirSceneLayer;
 	}
 
 }

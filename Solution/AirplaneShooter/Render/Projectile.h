@@ -13,6 +13,7 @@
 #include <SFML\System\Time.hpp>
 
 #include <queue>
+#include <memory>
 
 namespace Shooter {
 
@@ -21,6 +22,7 @@ namespace Shooter {
 	class Projectile : public Entity {
 		// ABSTRACT DATA TYPES
 	public:
+		typedef std::unique_ptr<Projectile> Ptr;
 		enum class Type {
 			AlliedBullet,
 			EnemyBullet,

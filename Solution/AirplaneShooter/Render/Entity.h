@@ -15,24 +15,24 @@ namespace Shooter {
 
 		// ENCAPSULATED FIELDS
 	protected:
+		sf::Vector2f _velocity;
 		int _hitPoints;
 
 		// INTERFACE
 	public:
 		explicit Entity(int);
 		virtual ~Entity();
-		sf::Vector2f velocity;
 		void heal(int);
 		void damage(int);
 		void destory();
 		int getHitPoints() const;
 		bool isDestroyed() const;
+		void setVelocity(sf::Vector2f);
+		sf::Vector2f getVelocity() const;
 
 		// HELPER FUNCTIONS
 	protected:
-		virtual void updateCurrent(sf::Time dt) {
-			this->move(this->velocity * dt.asSeconds());
-		}
+		virtual void updateCurrent(sf::Time);
 
 	};
 

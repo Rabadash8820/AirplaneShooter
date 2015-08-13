@@ -20,28 +20,40 @@ using namespace std;
 // INTERFACE
 Player::Player() {
 	// Define movement Commands
-	Command moveLeftComm("Move Left", [](SceneNode& node, Time dt) {
+	Command moveLeft("Move Left", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
-		a.velocity += Vector2f(-a.airSpeed, 0.f);
+		a.setVelocity(a.getVelocity() + Vector2f(-a.getMaxSpeed(), 0.f));
 	});
-	Command moveRightComm("Move Right", [](SceneNode& node, Time dt) {
+	Command moveRight("Move Right", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
-		a.velocity += Vector2f(a.airSpeed, 0.f);
+		a.setVelocity(a.getVelocity() + Vector2f(a.airSpeed, 0.f));
 	});
-	Command moveUpComm("Move Up", [](SceneNode& node, Time dt) {
+	Command moveUp("Move Up", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
-		a.velocity += Vector2f(0.f, -a.airSpeed);
+		a.setVelocity(a.getVelocity() + Vector2f(0.f, -a.airSpeed));
 	});
-	Command moveDownComm("Move Down", [](SceneNode& node, Time dt) {
+	Command moveDown("Move Down", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
-		a.velocity += Vector2f(0.f, a.airSpeed);
+		a.setVelocity(a.getVelocity() + Vector2f(0.f, a.airSpeed));
+	});
+
+	// Define weapon Commands
+	Command fireBullets("Fire Bullets", [](SceneNode& node, Time dt) {
+		Aircraft& a = static_cast<Aircraft&>(node);
+		a.fire();
+	});
+	Command launchMissile("Launch Missile", [](SceneNode& node, Time dt) {
+		Aircraft& a = static_cast<Aircraft&>(node);
+		a.launchMissile();
 	});
 
 	// Bind these commands to an ActionId
-	bindCommand(moveLeftComm,  MoveLeft);
-	bindCommand(moveRightComm, MoveRight);
-	bindCommand(moveUpComm,	   MoveUp);
-	bindCommand(moveDownComm,  MoveDown);
+	bindCommand(moveLeft,      MoveLeft);
+	bindCommand(moveRight,     MoveRight);
+	bindCommand(moveUp,	       MoveUp);
+	bindCommand(moveDown,	   MoveDown);
+	bindCommand(fireBullets,   FireBullets);
+	bindCommand(launchMissile, LaunchMissile);
 
 	// Bind Keys to each Action
 	bindKey(Keyboard::A,	 MoveLeft);
@@ -52,23 +64,27 @@ Player::Player() {
 	bindKey(Keyboard::Right, MoveRight);
 	bindKey(Keyboard::Up,	 MoveUp);
 	bindKey(Keyboard::Down,  MoveDown);
+	bindKey(Keyboard::Space, FireBullets);
+	bindKey(Keyboard::M,	 LaunchMissile);
 
 	// Also set these as the default Key bindings
-	bindDefaultKey(Keyboard::A, MoveLeft);
-	bindDefaultKey(Keyboard::D, MoveRight);
-	bindDefaultKey(Keyboard::W, MoveUp);
-	bindDefaultKey(Keyboard::S, MoveDown);
-	bindDefaultKey(Keyboard::Left, MoveLeft);
+	bindDefaultKey(Keyboard::A,		MoveLeft);
+	bindDefaultKey(Keyboard::D,		MoveRight);
+	bindDefaultKey(Keyboard::W,		MoveUp);
+	bindDefaultKey(Keyboard::S,		MoveDown);
+	bindDefaultKey(Keyboard::Left,  MoveLeft);
 	bindDefaultKey(Keyboard::Right, MoveRight);
-	bindDefaultKey(Keyboard::Up, MoveUp);
-	bindDefaultKey(Keyboard::Down, MoveDown);
+	bindDefaultKey(Keyboard::Up,	MoveUp);
+	bindDefaultKey(Keyboard::Down,	MoveDown);
+	bindDefaultKey(Keyboard::Space, FireBullets);
+	bindDefaultKey(Keyboard::M,		LaunchMissile);
 
 	// Assign the category for the player's aircraft to all Commands
 	for (auto& pair : _commandBindings)
 		pair.second.category = Categories::PlayerAircraft;
 }
 vector<CommandId> Player::commands() const {
-	vector<CommandId> ids = { MoveLeft, MoveRight, MoveUp, MoveDown };
+	vector<CommandId> ids = { MoveLeft, MoveRight, MoveUp, MoveDown, FireBullets, LaunchMissile };
 	return ids;
 }
 
@@ -83,7 +99,7 @@ void Player::handleKeyPress(const Event::KeyEvent& key, queue<Command>& commands
 				Aircraft& a = static_cast<Aircraft&>(sn);
 				cout << endl
 					 << "Position (x, y): " << a.getPosition().x << ", " << a.getPosition().y << endl
-					 << "Velocity (x, y): " << a.velocity.x		 << ", " << a.velocity.y	  << endl;
+					 << "Velocity (x, y): " << a.getVelocity().x << ", " << a.getVelocity().y << endl;
 			},
 			Categories::PlayerAircraft
 		);
@@ -97,7 +113,7 @@ void Player::handleKeyPress(const Event::KeyEvent& key, queue<Command>& commands
 			[](SceneNode& sn, Time) {
 				Aircraft& a = static_cast<Aircraft&>(sn);
 				cout << "Position (x, y): " << a.getPosition().x << ", " << a.getPosition().y << endl
-					 << "Velocity (x, y): " << a.velocity.x		 << ", " << a.velocity.y	  << endl;
+					<< "Velocity (x, y): "  << a.getVelocity().x << ", " << a.getVelocity().y << endl;
 			},
 			Categories::EnemyAircraft
 		);

@@ -10,7 +10,9 @@ using namespace sf;
 using namespace std;
 
 // CONSTRUCTORS / DESTRUCTOR
-SceneNode::SceneNode() { }
+SceneNode::SceneNode(Category category) :
+_defaultCategory(category)
+{ }
 SceneNode::~SceneNode() { }
 
 // INTERFACE FUNCTIONS
@@ -53,6 +55,9 @@ void SceneNode::draw(RenderTarget& target, RenderStates states) const {
 void SceneNode::update(Time dt) {
 	updateCurrent(dt);
 	updateChildren(dt);
+}
+Vector2f SceneNode::getWorldPosition() const {
+	return getWorldTransform() * Vector2f();
 }
 Transform SceneNode::getWorldTransform() const {
 	Transform transform = Transform::Identity;
