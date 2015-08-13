@@ -29,13 +29,14 @@ namespace Game2D {
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
 		SceneNode();
+		virtual ~SceneNode();
 
 		// INTERFACE FUNCTIONS
 	public:
 		void attachChild(Ptr child);
 		Ptr detachChild(const SceneNode& node);
 		Ptr detachChild(SceneNode* node);
-		sf::Vector2f getWorldPosition() const;
+		sf::Transform getWorldTransform() const;
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		void update(sf::Time);
 		virtual Category getCategory() const;

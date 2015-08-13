@@ -7,6 +7,7 @@ Entity::Entity(int hp) :
 	_hitPoints(hp),
 	velocity(0.f, 0.f)
 { }
+Entity::~Entity() { }
 void Entity::heal(int hp) {
 	_hitPoints += hp;
 }

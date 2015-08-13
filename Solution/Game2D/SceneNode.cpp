@@ -11,6 +11,7 @@ using namespace std;
 
 // CONSTRUCTORS / DESTRUCTOR
 SceneNode::SceneNode() { }
+SceneNode::~SceneNode() { }
 
 // INTERFACE FUNCTIONS
 void SceneNode::attachChild(Ptr child) {
@@ -53,11 +54,11 @@ void SceneNode::update(Time dt) {
 	updateCurrent(dt);
 	updateChildren(dt);
 }
-Vector2f SceneNode::getWorldPosition() const {
+Transform SceneNode::getWorldTransform() const {
 	Transform transform = Transform::Identity;
 	for (const SceneNode* node = this; node != nullptr; node = node->_parent)
 		transform *= node->getTransform();
-	return transform * Vector2f();
+	return transform;
 }
 Category SceneNode::getCategory() const {
 	return Node;

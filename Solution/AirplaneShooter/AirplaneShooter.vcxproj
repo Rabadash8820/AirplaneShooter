@@ -180,6 +180,7 @@
     <ClCompile Include="Render\Aircraft.cpp" />
     <ClCompile Include="Render\Brush.cpp" />
     <ClCompile Include="Render\Entity.cpp" />
+    <ClCompile Include="Render\Pickup.cpp" />
     <ClCompile Include="Render\Projectile.cpp" />
     <ClCompile Include="Render\TextNode.cpp" />
     <ClCompile Include="States\GameState.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="Render\Aircraft.h" />
     <ClInclude Include="Render\Brush.h" />
     <ClInclude Include="Render\Entity.h" />
+    <ClInclude Include="Render\Pickup.h" />
     <ClInclude Include="Render\Projectile.h" />
     <ClInclude Include="Render\TextNode.h" />
     <ClInclude Include="States\BaseState.h" />

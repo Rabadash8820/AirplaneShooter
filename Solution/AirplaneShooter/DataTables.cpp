@@ -17,7 +17,7 @@ namespace Shooter {
 		data[Aircraft::Type::Eagle].speed = 200.f;
 		data[Aircraft::Type::Eagle].texture = TextureId::Eagle;
 
-		data[Aircraft::Type::Raptor].hitPoints = 100;
+		data[Aircraft::Type::Raptor].hitPoints = 20;
 		data[Aircraft::Type::Raptor].speed = 80.f;
 		data[Aircraft::Type::Raptor].texture = TextureId::Raptor;
 		data[Aircraft::Type::Raptor].directions.push_back(Direction(45, 80));
@@ -32,6 +32,18 @@ namespace Shooter {
 		data[Aircraft::Type::Avenger].directions.push_back(Direction(-45, 100));
 		data[Aircraft::Type::Avenger].directions.push_back(Direction(0, 50));
 		data[Aircraft::Type::Avenger].directions.push_back(Direction(45, 50));
+
+		return data;
+	}
+
+	map<Projectile::Type, ProjectileData> initProjectileData() {
+		map<Projectile::Type, ProjectileData> data;
+
+		return data;
+	}
+
+	map<Pickup::Type, PickupData> initPickupData() {
+		map<Pickup::Type, PickupData> data;
 
 		return data;
 	}

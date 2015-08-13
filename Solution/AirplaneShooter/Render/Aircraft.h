@@ -48,7 +48,7 @@ namespace Shooter {
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
 		virtual void updateCurrent(sf::Time);
 		void updateMovementDirections(sf::Time dt);
-		float maxSpeed() const;
+		float getMaxSpeed() const;
 
 	};
 

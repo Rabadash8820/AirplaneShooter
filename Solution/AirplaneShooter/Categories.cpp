@@ -7,8 +7,13 @@ namespace Shooter {
 	namespace Categories {
 
 		Category PlayerAircraft,
-				 AlliedAircraft,
-				 EnemyAircraft;
+			AlliedAircraft,
+			EnemyAircraft,
+			Pickup,
+			AlliedProjectile,
+			EnemyProjectile,
+			Aircraft({ PlayerAircraft, AlliedAircraft, EnemyAircraft }),
+			Projectile({ AlliedProjectile, EnemyProjectile });
 
 	}
 

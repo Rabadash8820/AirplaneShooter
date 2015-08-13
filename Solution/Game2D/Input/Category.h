@@ -16,21 +16,14 @@ namespace Game2D {
 		// INTERFACE
 	public:
 		Category();
-		Category(const Category& that);
+		Category(const Category&);
+		Category(std::initializer_list<Category>);
 
-		bool matches(const Category& that) const;
+		bool matches(const Category&) const;
 
-		bool operator==(const Category& that) const;
-		bool operator!=(const Category& that) const;
-		friend Category operator|(Category left, const Category& right) {
-			return left |= right;
-		}
-		friend Category operator&(Category left, const Category& right) {
-			return left &= right;
-		}
-		const Category& operator=(const Category& that);
-		const Category& operator|=(const Category& that);
-		const Category& operator&=(const Category& that);
+		bool operator==(const Category&) const;
+		bool operator!=(const Category&) const;
+		const Category& operator=(const Category&);
 
 	};
 
