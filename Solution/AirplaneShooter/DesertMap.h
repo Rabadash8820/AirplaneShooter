@@ -58,6 +58,7 @@ namespace Shooter {
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
 		virtual void loadResources();
 		virtual void buildScene();
+		void addEnemy(Aircraft::Type, float, float);
 		void addEnemies();
 		sf::FloatRect getBattlefieldBounds() const;
 		void spawnEnemies();

@@ -10,6 +10,7 @@ namespace Shooter {
 		Desert,
 		Eagle,
 		Raptor,
+		Avenger,
 		Missile,
 		TitleScreen,
 	};

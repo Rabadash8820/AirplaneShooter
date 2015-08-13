@@ -25,7 +25,7 @@ namespace Shooter {
 		enum class Type {
 			Eagle,
 			Raptor,
-			Avenger
+			Avenger,
 		};
 		typedef std::map<Type, AircraftData> DataTable;
 
@@ -49,9 +49,7 @@ namespace Shooter {
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
 		virtual void updateCurrent(sf::Time);
 		void updateMovementDirections(sf::Time dt);
-		TextureId textureIdForType(Type);
 		float maxSpeed() const;
-		static DataTable initAircraftData();
 
 	};
 

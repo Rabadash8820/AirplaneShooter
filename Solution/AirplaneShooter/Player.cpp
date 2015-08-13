@@ -75,18 +75,34 @@ vector<CommandId> Player::commands() const {
 // HELPER FUNCTIONS
 void Player::handleKeyPress(const Event::KeyEvent& key, queue<Command>& commands) const {
 	switch (key.code) {
-	case Keyboard::P:
+	case Keyboard::P: {
 		// Print the player Aircraft's location to the console
 		Command printPos(
 			"Print Player Data",
 			[](SceneNode& sn, Time) {
 				Aircraft& a = static_cast<Aircraft&>(sn);
-				cout << "Position (x, y): " << a.getPosition().x << ", " << a.getPosition().y << endl
-					 << "Velocity (x, y): " << a.velocity.x << ", " << a.velocity.y << endl;
+				cout << endl
+					 << "Position (x, y): " << a.getPosition().x << ", " << a.getPosition().y << endl
+					 << "Velocity (x, y): " << a.velocity.x		 << ", " << a.velocity.y	  << endl;
 			},
 			Categories::PlayerAircraft
 		);
 		commands.push(printPos);
 		break;
+	}
+	case Keyboard::E:{
+		// Print the locations of each Enemy Aircraft to the console
+		Command printPos(
+			"Print Enemy Data",
+			[](SceneNode& sn, Time) {
+				Aircraft& a = static_cast<Aircraft&>(sn);
+				cout << "Position (x, y): " << a.getPosition().x << ", " << a.getPosition().y << endl
+					 << "Velocity (x, y): " << a.velocity.x		 << ", " << a.velocity.y	  << endl;
+			},
+			Categories::EnemyAircraft
+		);
+		commands.push(printPos);
+		break;
+	}
 	}
 }

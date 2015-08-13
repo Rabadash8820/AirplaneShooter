@@ -89,10 +89,20 @@ void DesertMap::buildScene() {
 	// Add enemy Aircraft
 	addEnemies();
 }
+void DesertMap::addEnemy(Aircraft::Type type, float x, float y) {
+	SpawnPoint spawn(type, _playerSpawn.x + x, _playerSpawn.y - y);
+	_spawnPoints.push_back(spawn);
+}
 void DesertMap::addEnemies() {
 	// Define spawn points for all enemies
-	_spawnPoints.push_back(SpawnPoint(Aircraft::Type::Avenger, 0.f, 500.f));
-	_spawnPoints.push_back(SpawnPoint(Aircraft::Type::Avenger, -70.f, 1400.f));
+	addEnemy(Aircraft::Type::Raptor, 0.f, 500.f);
+	addEnemy(Aircraft::Type::Raptor, 0.f, 1000.f);
+	addEnemy(Aircraft::Type::Raptor, +100.f, 1100.f);
+	addEnemy(Aircraft::Type::Raptor, -100.f, 1100.f);
+	addEnemy(Aircraft::Type::Avenger, -70.f, 1400.f);
+	addEnemy(Aircraft::Type::Avenger, -70.f, 1600.f);
+	addEnemy(Aircraft::Type::Avenger, 70.f, 1400.f);
+	addEnemy(Aircraft::Type::Avenger, 70.f, 1600.f);
 
 	// Sort spawn points by y-coordinate so its easy to see which have entered the battlefield
 	sort(
