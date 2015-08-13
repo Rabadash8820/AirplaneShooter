@@ -1,5 +1,6 @@
 #include "DesertMap.h"
 
+#include "Render\Brush.h"
 #include "Categories.h"
 #include <Render/Brush.h>
 #include <memory>

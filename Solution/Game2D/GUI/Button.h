@@ -2,7 +2,7 @@
 
 #include "Control.h"
 #include "..\GAME2D_API.h"
-#include "..\Render\ResourceManager.h"
+#include "..\ResourceManager.h"
 
 #include <SFML\Graphics\Font.hpp>
 #include <SFML\Graphics\Texture.hpp>

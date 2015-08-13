@@ -1,8 +1,7 @@
 #pragma once
 
 #include "GAME2D_API.h"
-#include "Render\ResourceManager.h"
-#include "Render\SceneNode.h"
+#include "SceneNode.h"
 #include "Input\Command.h"
 
 #include <SFML\System\NonCopyable.hpp>

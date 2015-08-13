@@ -1,11 +1,10 @@
 #pragma once
 
-#include "Ids\FontId.h"
-#include "Ids\TextureId.h"
+#include "Entity.h"
+#include "TextNode.h"
+#include "..\Ids\FontId.h"
+#include "..\Ids\TextureId.h"
 
-#include <Render\ResourceManager.h>
-#include <Render\Entity.h>
-#include <Render\TextNode.h>
 #include <Input\Category.h>
 
 #include <SFML\Graphics\Sprite.hpp>
@@ -18,7 +17,7 @@ namespace Shooter {
 
 	struct AircraftData;
 	
-	class Aircraft : public Game2D::Entity {
+	class Aircraft : public Entity {
 		// ABSTRACT DATA TYPES
 	public:
 		typedef std::unique_ptr<Aircraft> Ptr;
@@ -34,7 +33,7 @@ namespace Shooter {
 		static DataTable _dataTable;
 		Type _type;
 		sf::Sprite _sprite;
-		Game2D::TextNode* _hpDisplay;
+		TextNode* _hpDisplay;
 		std::size_t _directionIndex;
 		float _traveledDistance;
 

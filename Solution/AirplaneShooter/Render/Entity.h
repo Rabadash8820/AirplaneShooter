@@ -1,15 +1,14 @@
 #pragma once
 
-#include "../GAME2D_API.h"
-#include "SceneNode.h"
+#include <SceneNode.h>
 
 #include <SFML\System\Vector2.hpp>
 
 #include <memory>
 
-namespace Game2D {
+namespace Shooter {
 
-	class GAME2D_API Entity : public SceneNode {
+	class Entity : public Game2D::SceneNode {
 		// ABSTRACT DATA TYPES
 	public:
 		typedef std::unique_ptr<Entity> Ptr;

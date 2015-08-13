@@ -1,8 +1,8 @@
 #include "TextNode.h"
 
-#include "..\Utility.h"
+#include <Utility.h>
 
-using namespace Game2D;
+using namespace Shooter;
 using namespace std;
 using namespace sf;
 
@@ -13,7 +13,7 @@ TextNode::TextNode(const Font& font, const string& text) :
 void TextNode::setString(const string& text) {
 	// Adjust the size of the Text object to fit the new string
 	_text.setString(text);
-	Utility::centerOrigin(_text);
+	Game2D::Utility::centerOrigin(_text);
 }
 
 // HELPER FUNCTIONS

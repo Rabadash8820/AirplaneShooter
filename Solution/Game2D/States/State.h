@@ -2,7 +2,6 @@
 
 #include "..\GAME2D_API.h"
 #include "Context.h"
-#include "..\Render\ResourceManager.h"
 
 #include <SFML\Graphics\RenderWindow.hpp>
 #include <SFML\System\Time.hpp>

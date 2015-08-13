@@ -1,6 +1,6 @@
 #include "SceneNode.h"
 
-#include "../Input/Category.h"
+#include "Input/Category.h"
 
 #include <algorithm>
 #include <cassert>

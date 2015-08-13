@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Render">
-      <UniqueIdentifier>{62246900-02e3-4678-9933-7d2cd6bc1fc0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Render">
-      <UniqueIdentifier>{cd6daa95-ee24-4811-a971-b31aeef4c3cd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Input">
       <UniqueIdentifier>{96310b07-302a-4708-9ddf-e281c40919cf}</UniqueIdentifier>
     </Filter>
@@ -40,17 +34,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Render\ResourceManager.inl">
-      <Filter>Source Files\Render</Filter>
+    <None Include="ResourceManager.inl">
+      <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Render\Brush.cpp">
-      <Filter>Source Files\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\SceneNode.cpp">
-      <Filter>Source Files\Render</Filter>
-    </ClCompile>
     <ClCompile Include="Input\Command.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
@@ -87,29 +75,17 @@
     <ClCompile Include="Input\CommandId.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Render\Entity.cpp">
-      <Filter>Source Files\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Render\TextNode.cpp">
-      <Filter>Source Files\Render</Filter>
-    </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="States\State.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
+    <ClCompile Include="SceneNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Render\Entity.h">
-      <Filter>Header Files\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\Brush.h">
-      <Filter>Header Files\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Render\SceneNode.h">
-      <Filter>Header Files\Render</Filter>
-    </ClInclude>
     <ClInclude Include="GAME2D_API.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -164,14 +140,17 @@
     <ClInclude Include="Input\CommandId.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Render\TextNode.h">
-      <Filter>Header Files\Render</Filter>
-    </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="States\Context.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneNode.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -171,13 +171,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Aircraft.cpp" />
     <ClCompile Include="AirplaneShooter.cpp" />
     <ClCompile Include="Categories.cpp" />
     <ClCompile Include="DataTables.cpp" />
     <ClCompile Include="DesertMap.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Render\Aircraft.cpp" />
+    <ClCompile Include="Render\Brush.cpp" />
+    <ClCompile Include="Render\Entity.cpp" />
+    <ClCompile Include="Render\Projectile.cpp" />
+    <ClCompile Include="Render\TextNode.cpp" />
     <ClCompile Include="States\GameState.cpp" />
     <ClCompile Include="States\LoadingState.cpp" />
     <ClCompile Include="States\MenuState.cpp" />
@@ -186,7 +190,6 @@
     <ClCompile Include="States\TitleState.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aircraft.h" />
     <ClInclude Include="AirplaneShooter.h" />
     <ClInclude Include="Categories.h" />
     <ClInclude Include="DataTables.h" />
@@ -198,6 +201,11 @@
     <ClInclude Include="Ids\TextureId.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Render\Aircraft.h" />
+    <ClInclude Include="Render\Brush.h" />
+    <ClInclude Include="Render\Entity.h" />
+    <ClInclude Include="Render\Projectile.h" />
+    <ClInclude Include="Render\TextNode.h" />
     <ClInclude Include="States\BaseState.h" />
     <ClInclude Include="States\Context.h" />
     <ClInclude Include="States\GameState.h" />
