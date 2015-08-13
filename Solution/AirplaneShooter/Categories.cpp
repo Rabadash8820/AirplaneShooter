@@ -9,11 +9,15 @@ namespace Shooter {
 		Category PlayerAircraft,
 			AlliedAircraft,
 			EnemyAircraft,
+			Aircraft({ PlayerAircraft, AlliedAircraft, EnemyAircraft }),
+
 			Pickup,
+
 			AlliedProjectile,
 			EnemyProjectile,
-			Aircraft({ PlayerAircraft, AlliedAircraft, EnemyAircraft }),
-			Projectile({ AlliedProjectile, EnemyProjectile });
+			Projectile({ AlliedProjectile, EnemyProjectile }),
+
+			AirSceneLayer;
 
 	}
 

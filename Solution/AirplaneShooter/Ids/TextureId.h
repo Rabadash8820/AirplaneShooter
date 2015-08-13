@@ -11,6 +11,7 @@ namespace Shooter {
 		Eagle,
 		Raptor,
 		Avenger,
+		Bullet,
 		Missile,
 		TitleScreen,
 	};

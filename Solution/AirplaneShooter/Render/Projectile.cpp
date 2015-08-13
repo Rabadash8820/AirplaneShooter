@@ -7,6 +7,8 @@
 
 using namespace Shooter;
 using namespace Game2D;
+using namespace std;
+using namespace sf;
 
 Projectile::DataTable Projectile::_dataTable = initProjectileData();
 
@@ -14,11 +16,11 @@ Projectile::DataTable Projectile::_dataTable = initProjectileData();
 Projectile::Projectile(Type type, const TextureManager& textures) :
 	Entity(1),
 	_type(type),
-	_sprite(textures[_dataTable[_type].texture])
+	_sprite(textures[_dataTable[type].texture])
 {
 	Utility::centerOrigin(_sprite);
 }
-void Projectile::guideTowards(sf::Vector2f) {
+void Projectile::guideTowards(Vector2f) {
 
 }
 bool Projectile::isGuided() const {
@@ -48,9 +50,9 @@ int Projectile::getDamage() const {
 }
 
 // HELPER FUNCTIONS
-void Projectile::updateCurrent(sf::Time, std::queue<Game2D::Command>&) {
+void Projectile::updateCurrent(Time, queue<Command>&) {
 
 }
-void Projectile::drawCurrent(sf::RenderTarget&, sf::RenderStates) const {
-
+void Projectile::drawCurrent(RenderTarget& target, RenderStates states) const {
+	target.draw(_sprite, states);
 }

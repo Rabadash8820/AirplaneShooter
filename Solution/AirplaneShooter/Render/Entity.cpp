@@ -1,11 +1,11 @@
 #include "Entity.h"
 
 using namespace Shooter;
+using namespace sf;
 
 // INTERFACE
 Entity::Entity(int hp) :
-	_hitPoints(hp),
-	velocity(0.f, 0.f)
+	_hitPoints(hp)
 { }
 Entity::~Entity() { }
 void Entity::heal(int hp) {
@@ -22,4 +22,15 @@ int Entity::getHitPoints() const {
 }
 bool Entity::isDestroyed() const {
 	return _hitPoints <= 0;
+}
+void Entity::setVelocity(Vector2f velocity) {
+	_velocity = velocity;
+}
+sf::Vector2f Entity::getVelocity() const {
+	return _velocity;
+}
+
+// HELPER FUNCTIONS
+void Entity::updateCurrent(Time dt) {
+	move(_velocity * dt.asSeconds());
 }

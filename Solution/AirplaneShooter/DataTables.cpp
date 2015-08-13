@@ -2,6 +2,7 @@
 
 using namespace Shooter;
 using namespace std;
+using namespace sf;
 
 Direction::Direction(float a, float d) {
 	angle = a;
@@ -23,6 +24,7 @@ namespace Shooter {
 		data[Aircraft::Type::Raptor].directions.push_back(Direction(45, 80));
 		data[Aircraft::Type::Raptor].directions.push_back(Direction(-45, 160));
 		data[Aircraft::Type::Raptor].directions.push_back(Direction(45, 80));
+		data[Aircraft::Type::Raptor].fireInterval = Time::Zero;
 
 		data[Aircraft::Type::Avenger].hitPoints = 40;
 		data[Aircraft::Type::Avenger].speed = 50.f;
@@ -32,6 +34,7 @@ namespace Shooter {
 		data[Aircraft::Type::Avenger].directions.push_back(Direction(-45, 100));
 		data[Aircraft::Type::Avenger].directions.push_back(Direction(0, 50));
 		data[Aircraft::Type::Avenger].directions.push_back(Direction(45, 50));
+		data[Aircraft::Type::Avenger].fireInterval = seconds(2);
 
 		return data;
 	}

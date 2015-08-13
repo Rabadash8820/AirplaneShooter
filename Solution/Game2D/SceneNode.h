@@ -19,10 +19,11 @@ namespace Game2D {
 	private:
 		SceneNode* _parent;
 		std::vector<Ptr> _children;
+		Category _defaultCategory;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		SceneNode();
+		SceneNode(Category = Node);
 		virtual ~SceneNode();
 
 		// INTERFACE FUNCTIONS
@@ -30,6 +31,7 @@ namespace Game2D {
 		void attachChild(Ptr child);
 		Ptr detachChild(const SceneNode& node);
 		Ptr detachChild(SceneNode* node);
+		sf::Vector2f getWorldPosition() const;
 		sf::Transform getWorldTransform() const;
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 		void update(sf::Time);
