@@ -36,15 +36,17 @@ DesertMap::DesertMap(RenderWindow& window) :
 
 // HELPER FUNCTIONS
 void DesertMap::updateCurrent(Time dt) {
-	// Prepare for updates
+	// Scroll the Map
+	_view.move(_scrollVelocity * dt.asSeconds());
 	_player->velocity = Vector2f(0.f, 0.f);
 
 	// Do updates in response to Commands
 	updateOnCommands(dt);
 	
+	spawnEnemies();
+
 	// Do "normal" updates
 	adjustPlayer(dt);
-	_view.move(_scrollVelocity * dt.asSeconds());
 }
 void DesertMap::drawCurrent(RenderTarget& target, RenderStates states) const {
 	_window.setView(_view);
@@ -54,13 +56,14 @@ void DesertMap::loadResources() {
 	string currDir    = Utility::currentWorkingDirectory();
 	string textureDir = currDir + "\\Resources\\Textures\\";
 	string shaderDir  = currDir + "\\Resources\\Shaders\\";
-	string soundDir = currDir + "\\Resources\\Sounds\\";
-	string fontDir = currDir + "\\Resources\\Fonts\\";
+	string soundDir   = currDir + "\\Resources\\Sounds\\";
+	string fontDir	  = currDir + "\\Resources\\Fonts\\";
 
 	// Load textures
-	_textures.load(TextureId::Desert, textureDir + "Desert.png");
-	_textures.load(TextureId::Eagle, textureDir + "Eagle.png");
-	_textures.load(TextureId::Raptor, textureDir + "Raptor.png");
+	_textures.load(TextureId::Desert,  textureDir + "Desert.png");
+	_textures.load(TextureId::Eagle,   textureDir + "Eagle.png");
+	_textures.load(TextureId::Raptor,  textureDir + "Raptor.png");
+	_textures.load(TextureId::Avenger, textureDir + "Avenger.png");
 
 	// Load fonts
 	_fonts.load(FontId::Main, fontDir + "Sansation.ttf");
@@ -91,10 +94,20 @@ void DesertMap::buildScene() {
 	// Add enemy Aircraft
 	addEnemies();
 }
+void DesertMap::addEnemy(Aircraft::Type type, float x, float y) {
+	SpawnPoint spawn(type, _playerSpawn.x + x, _playerSpawn.y - y);
+	_spawnPoints.push_back(spawn);
+}
 void DesertMap::addEnemies() {
 	// Define spawn points for all enemies
-	_spawnPoints.push_back(SpawnPoint(Aircraft::Type::Avenger, 0.f, 500.f));
-	_spawnPoints.push_back(SpawnPoint(Aircraft::Type::Avenger, -70.f, 1400.f));
+	addEnemy(Aircraft::Type::Raptor, 0.f, 500.f);
+	addEnemy(Aircraft::Type::Raptor, 0.f, 1000.f);
+	addEnemy(Aircraft::Type::Raptor, +100.f, 1100.f);
+	addEnemy(Aircraft::Type::Raptor, -100.f, 1100.f);
+	addEnemy(Aircraft::Type::Avenger, -70.f, 1400.f);
+	addEnemy(Aircraft::Type::Avenger, -70.f, 1600.f);
+	addEnemy(Aircraft::Type::Avenger, 70.f, 1400.f);
+	addEnemy(Aircraft::Type::Avenger, 70.f, 1600.f);
 
 	// Sort spawn points by y-coordinate so its easy to see which have entered the battlefield
 	sort(

@@ -4,6 +4,7 @@
 #include "Ids\TextureId.h"
 
 #include <vector>
+#include <map>
 
 namespace Shooter {
 
@@ -19,5 +20,7 @@ namespace Shooter {
 		TextureId texture;
 		std::vector<Direction> directions;
 	};
+
+	std::map<Aircraft::Type, AircraftData> initAircraftData();
 
 }

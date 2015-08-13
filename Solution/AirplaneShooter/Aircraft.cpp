@@ -18,9 +18,9 @@ Aircraft::DataTable Aircraft::_dataTable = initAircraftData();
 
 // INTERFACE
 Aircraft::Aircraft(Type t, const TextureManager& textures, const FontManager& fonts) :
-	Entity(_dataTable[t].hitPoints),
-	_sprite(textures[textureIdForType(t)]),
 	_type(t),
+	Entity(_dataTable[_type].hitPoints),
+	_sprite(textures[_dataTable[_type].texture]),
 	_traveledDistance(0),
 	_directionIndex(0)
 {
@@ -42,8 +42,6 @@ Category Aircraft::getCategory() const {
 	switch (_type) {
 	case Type::Eagle:
 		return c | Categories::PlayerAircraft;
-	case Type::Raptor:
-		return c | Categories::AlliedAircraft;
 	default:
 		return c | Categories::EnemyAircraft;
 	}
@@ -51,17 +49,6 @@ Category Aircraft::getCategory() const {
 }
 
 // HELPER FUNCTIONS
-TextureId Aircraft::textureIdForType(Aircraft::Type t) {
-	switch (t) {
-	case Type::Eagle:
-		return TextureId::Eagle;
-		break;
-	case Type::Raptor:
-	default:
-		return TextureId::Raptor;
-		break;
-	}
-}
 void Aircraft::drawCurrent(RenderTarget& target, RenderStates states) const {
 	target.draw(this->_sprite, states);
 }
@@ -87,34 +74,10 @@ void Aircraft::updateMovementDirections(Time dt) {
 	// Adjust the Aircraft's velocity vector and distance traveled
 	float radians = Utility::toRadians(directions[_directionIndex].angle);
 	float speed = maxSpeed();
-	Vector2f vel(speed * sinf(radians), -speed * cosf(radians));
+	Vector2f vel(speed * sinf(radians), speed * cosf(radians));
 	velocity = vel;
 	_traveledDistance += (speed * dt.asSeconds());
 }
 float Aircraft::maxSpeed() const {
 	return _dataTable[_type].speed;
-}
-map<Aircraft::Type, AircraftData> Aircraft::initAircraftData() {
-	DataTable data;
-
-	data[Type::Eagle].hitPoints = 100;
-	data[Type::Eagle].speed = 200.f;
-	data[Aircraft::Type::Eagle].texture = TextureId::Eagle;
-
-	data[Type::Raptor].hitPoints = 100;
-	data[Type::Raptor].speed = 80.f;
-	data[Type::Raptor].texture = TextureId::Raptor;
-	data[Type::Raptor].directions.push_back(Direction(45, 80));
-	data[Type::Raptor].directions.push_back(Direction(-45, 160));
-	data[Type::Raptor].directions.push_back(Direction(45, 80));
-
-	data[Type::Avenger].directions.push_back(Direction(45, 50));
-	data[Type::Avenger].directions.push_back(Direction(0, 50));
-	data[Type::Avenger].directions.push_back(Direction(-45, 100));
-	data[Type::Avenger].directions.push_back(Direction(0, 50));
-	data[Type::Avenger].directions.push_back(Direction(45, 50));
-
-
-
-	return data;
 }
