@@ -31,6 +31,7 @@ namespace Shooter {
 	public:
 		Player();
 		std::vector<Game2D::CommandId> commands() const;
+		virtual bool isRealtime(Game2D::CommandId) const;
 
 		// HELPER FUNCTIONS
 	private:

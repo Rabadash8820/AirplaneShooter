@@ -5,6 +5,8 @@
 #include "Render\Projectile.h"
 #include "Ids\TextureId.h"
 
+#include <Input\Category.h>
+
 #include <SFML\System\Time.hpp>
 
 #include <vector>
@@ -22,6 +24,7 @@ namespace Shooter {
 	};
 
 	struct AircraftData {
+		Game2D::Category category;
 		int hitPoints;
 		float speed;
 		sf::Time fireInterval;

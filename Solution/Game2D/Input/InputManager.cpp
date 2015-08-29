@@ -68,7 +68,7 @@ void InputManager::handleRealtimeKeyboard(queue<Command>& commands) const {
 		for (auto key : binding.second) {
 
 			// If so, then add the associated Command to the queue
-			if (Keyboard::isKeyPressed(key)) {
+			if (isRealtime(binding.first) && Keyboard::isKeyPressed(key)) {
 				auto it = _commandBindings.find(binding.first);
 				//assert(it != _commandBindings.end());
 				commands.push(it->second);

@@ -51,7 +51,7 @@ namespace Shooter {
 
 		// HELPER FUNCTIONS
 	private:
-		virtual void updateCurrent(sf::Time);
+		virtual void update(sf::Time);
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
 		virtual void loadResources();
 		virtual void buildScene();

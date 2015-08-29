@@ -20,40 +20,40 @@ using namespace std;
 // INTERFACE
 Player::Player() {
 	// Define movement Commands
-	Command moveLeft("Move Left", [](SceneNode& node, Time dt) {
+	Command moveLeftComm("Move Left", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.setVelocity(a.getVelocity() + Vector2f(-a.getMaxSpeed(), 0.f));
 	});
-	Command moveRight("Move Right", [](SceneNode& node, Time dt) {
+	Command moveRightComm("Move Right", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.setVelocity(a.getVelocity() + Vector2f(a.airSpeed, 0.f));
 	});
-	Command moveUp("Move Up", [](SceneNode& node, Time dt) {
+	Command moveUpComm("Move Up", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.setVelocity(a.getVelocity() + Vector2f(0.f, -a.airSpeed));
 	});
-	Command moveDown("Move Down", [](SceneNode& node, Time dt) {
+	Command moveDownComm("Move Down", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.setVelocity(a.getVelocity() + Vector2f(0.f, a.airSpeed));
 	});
 
 	// Define weapon Commands
-	Command fireBullets("Fire Bullets", [](SceneNode& node, Time dt) {
+	Command fireBulletsComm("Fire Bullets", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.fire();
 	});
-	Command launchMissile("Launch Missile", [](SceneNode& node, Time dt) {
+	Command fireMissileComm("Launch Missile", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.launchMissile();
 	});
 
 	// Bind these commands to an ActionId
-	bindCommand(moveLeft,      MoveLeft);
-	bindCommand(moveRight,     MoveRight);
-	bindCommand(moveUp,	       MoveUp);
-	bindCommand(moveDown,	   MoveDown);
-	bindCommand(fireBullets,   FireBullets);
-	bindCommand(launchMissile, LaunchMissile);
+	bindCommand(moveLeftComm,		MoveLeft);
+	bindCommand(moveRightComm,		MoveRight);
+	bindCommand(moveUpComm,			MoveUp);
+	bindCommand(moveDownComm,		MoveDown);
+	bindCommand(fireBulletsComm,	FireBullets);
+	bindCommand(fireMissileComm,	LaunchMissile);
 
 	// Bind Keys to each Action
 	bindKey(Keyboard::A,	 MoveLeft);
@@ -86,6 +86,15 @@ Player::Player() {
 vector<CommandId> Player::commands() const {
 	vector<CommandId> ids = { MoveLeft, MoveRight, MoveUp, MoveDown, FireBullets, LaunchMissile };
 	return ids;
+}
+bool Player::isRealtime(CommandId command) const {
+	if (command == MoveLeft) return true;
+	if (command == MoveRight) return true;
+	if (command == MoveDown) return true;
+	if (command == MoveUp) return true;
+	if (command == FireBullets) return true;
+
+	return false;
 }
 
 // HELPER FUNCTIONS

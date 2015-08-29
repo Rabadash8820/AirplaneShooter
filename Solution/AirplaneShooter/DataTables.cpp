@@ -1,5 +1,7 @@
 #include "DataTables.h"
 
+#include "Categories.h"
+
 using namespace Shooter;
 using namespace std;
 using namespace sf;
@@ -14,10 +16,13 @@ namespace Shooter {
 	map<Aircraft::Type, AircraftData> initAircraftData() {
 		map<Aircraft::Type, AircraftData> data;
 
+		data[Aircraft::Type::Eagle].category = Categories::PlayerAircraft;
 		data[Aircraft::Type::Eagle].hitPoints = 100;
 		data[Aircraft::Type::Eagle].speed = 200.f;
 		data[Aircraft::Type::Eagle].texture = TextureId::Eagle;
+		data[Aircraft::Type::Eagle].fireInterval = sf::seconds(1);
 
+		data[Aircraft::Type::Eagle].category = Categories::EnemyAircraft;
 		data[Aircraft::Type::Raptor].hitPoints = 20;
 		data[Aircraft::Type::Raptor].speed = 80.f;
 		data[Aircraft::Type::Raptor].texture = TextureId::Raptor;
@@ -26,6 +31,7 @@ namespace Shooter {
 		data[Aircraft::Type::Raptor].directions.push_back(Direction(45, 80));
 		data[Aircraft::Type::Raptor].fireInterval = Time::Zero;
 
+		data[Aircraft::Type::Eagle].category = Categories::EnemyAircraft;
 		data[Aircraft::Type::Avenger].hitPoints = 40;
 		data[Aircraft::Type::Avenger].speed = 50.f;
 		data[Aircraft::Type::Avenger].texture = TextureId::Avenger;

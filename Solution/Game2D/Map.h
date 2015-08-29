@@ -35,7 +35,7 @@ namespace Game2D {
 		Map(sf::RenderWindow&);
 		void build();
 		std::queue<Command>& getCommandQueue();
-		void update(sf::Time);
+		virtual void update(sf::Time) = 0;
 		virtual void draw(sf::RenderTarget&, sf::RenderStates) const final;
 
 		// HELPER FUNCTIONS
@@ -43,7 +43,6 @@ namespace Game2D {
 		virtual void loadResources() = 0;
 		virtual void buildScene() = 0;
 		void updateOnCommands(sf::Time);
-		virtual void updateCurrent(sf::Time dt) = 0;
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const = 0;
 
 	};

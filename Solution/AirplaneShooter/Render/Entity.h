@@ -1,10 +1,12 @@
 #pragma once
 
 #include <SceneNode.h>
+#include <Input\Category.h>
 
 #include <SFML\System\Vector2.hpp>
 
 #include <memory>
+#include <queue>
 
 namespace Shooter {
 
@@ -21,6 +23,7 @@ namespace Shooter {
 		// INTERFACE
 	public:
 		explicit Entity(int);
+		Entity(int, Game2D::Category);
 		virtual ~Entity();
 		void heal(int);
 		void damage(int);
@@ -32,7 +35,7 @@ namespace Shooter {
 
 		// HELPER FUNCTIONS
 	protected:
-		virtual void updateCurrent(sf::Time);
+		virtual void updateCurrent(sf::Time, std::queue<Game2D::Command>&);
 
 	};
 

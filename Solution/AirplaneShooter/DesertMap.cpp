@@ -66,7 +66,7 @@ void DesertMap::loadResources() {
 void DesertMap::buildScene() {
 	// Add each scene layer to the layer collection
 	for (size_t L = 0; L < _sceneLayers.size(); ++L) {
-		Category c = (L == 0) ? Categories::AirSceneLayer : Node;
+		Category c = (L == Layer::Air) ? Categories::AirSceneLayer : Node;
 		SceneNode::Ptr layer(new Game2D::SceneNode(c));
 		_sceneLayers[L] = layer.get();
 		_sceneTree.attachChild(move(layer));

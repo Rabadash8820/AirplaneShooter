@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
+#include <queue>
 
 namespace Game2D {
 
@@ -19,11 +20,12 @@ namespace Game2D {
 	private:
 		SceneNode* _parent;
 		std::vector<Ptr> _children;
-		Category _defaultCategory;
+		Category _category;
 
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
-		SceneNode(Category = Node);
+		SceneNode();
+		SceneNode(Category);
 		virtual ~SceneNode();
 
 		// INTERFACE FUNCTIONS
@@ -41,10 +43,10 @@ namespace Game2D {
 		// HELPER FUNCTIONS
 	private:
 		void drawChildren(sf::RenderTarget&, sf::RenderStates) const;
-		void updateChildren(sf::Time);
+		void updateChildren(sf::Time, std::queue<Command>&);
 	protected:
 		virtual void drawCurrent(sf::RenderTarget&, sf::RenderStates) const;
-		virtual void updateCurrent(sf::Time);
+		virtual void updateCurrent(sf::Time, std::queue<Command>&);
 
 	};
 

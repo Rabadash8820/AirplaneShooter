@@ -51,6 +51,7 @@ namespace Game2D {
 	private:
 		void handleRealtimeKeyboard(std::queue<Command>&) const;
 	protected:
+		virtual bool isRealtime(CommandId) const = 0;
 		virtual void handleRealtimeMouse(std::queue<Command>&) const { }
 		virtual void handleRealtimeJoystick(std::queue<Command>&) const { }
 		virtual void handleOtherRealtime(std::queue<Command>&) const { }

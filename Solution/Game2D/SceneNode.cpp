@@ -4,14 +4,18 @@
 
 #include <algorithm>
 #include <cassert>
+#include <initializer_list>
 
 using namespace Game2D;
 using namespace sf;
 using namespace std;
 
 // CONSTRUCTORS / DESTRUCTOR
+SceneNode::SceneNode() :
+	_category(Node)
+{ }
 SceneNode::SceneNode(Category category) :
-_defaultCategory(category)
+	_category({ category, Node })
 { }
 SceneNode::~SceneNode() { }
 
@@ -59,9 +63,9 @@ void SceneNode::draw(RenderTarget& target, RenderStates states) const {
 	drawCurrent(target, states);
 	drawChildren(target, states);
 }
-void SceneNode::update(Time dt) {
-	updateCurrent(dt);
-	updateChildren(dt);
+void SceneNode::update(Time dt, queue<Command>& commands) {
+	updateCurrent(dt, commands);
+	updateChildren(dt, commands);
 }
 Vector2f SceneNode::getWorldPosition() const {
 	return getWorldTransform() * Vector2f();
@@ -86,7 +90,7 @@ void SceneNode::giveCommand(const Command& command, sf::Time dt) {
 }
 
 // HELPER FUNCTIONS
-void SceneNode::updateCurrent(Time dt) { }
+void SceneNode::updateCurrent(Time dt, queue<Command>& commands) { }
 void SceneNode::drawCurrent(RenderTarget& target, RenderStates states) const { }
 void SceneNode::drawChildren(RenderTarget& target, RenderStates states) const {
 	for (const Ptr& child : this->_children)

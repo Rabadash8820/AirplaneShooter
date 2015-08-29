@@ -2,10 +2,16 @@
 
 using namespace Shooter;
 using namespace sf;
+using namespace std;
+using namespace Game2D;
 
 // INTERFACE
 Entity::Entity(int hp) :
 	_hitPoints(hp)
+{ }
+Entity::Entity(int hp, Category category) :
+	_hitPoints(hp),
+	SceneNode(category)
 { }
 Entity::~Entity() { }
 void Entity::heal(int hp) {
@@ -31,6 +37,6 @@ sf::Vector2f Entity::getVelocity() const {
 }
 
 // HELPER FUNCTIONS
-void Entity::updateCurrent(Time dt) {
+void Entity::updateCurrent(Time dt, queue<Command>&) {
 	move(_velocity * dt.asSeconds());
 }

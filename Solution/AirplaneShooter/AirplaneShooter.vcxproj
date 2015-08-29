@@ -200,7 +200,6 @@
     <ClInclude Include="Ids\ShaderId.h" />
     <ClInclude Include="Ids\SoundId.h" />
     <ClInclude Include="Ids\TextureId.h" />
-    <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Render\Aircraft.h" />
     <ClInclude Include="Render\Brush.h" />
