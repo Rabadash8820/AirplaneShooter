@@ -19,6 +19,24 @@ using namespace std;
 
 // INTERFACE
 Player::Player() {
+	bindPlayerCommands();
+	bindDebugCommands();
+}
+vector<CommandId> Player::commands() const {
+	vector<CommandId> ids = { MoveLeft, MoveRight, MoveUp, MoveDown, FireBullets, LaunchMissile };
+	return ids;
+}
+bool Player::isRealtime(CommandId command) const {
+	bool realTime = (command == MoveLeft ||
+					command == MoveRight ||
+					command == MoveDown ||
+					command == MoveUp ||
+					command == FireBullets);
+	return realTime;
+}
+
+// HELPER FUNCTIONS
+void Player::bindPlayerCommands() {
 	// Define movement Commands
 	Command moveLeftComm("Move Left", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
@@ -48,86 +66,60 @@ Player::Player() {
 	});
 
 	// Bind these commands to an ActionId
-	bindCommand(moveLeftComm,		MoveLeft);
-	bindCommand(moveRightComm,		MoveRight);
-	bindCommand(moveUpComm,			MoveUp);
-	bindCommand(moveDownComm,		MoveDown);
-	bindCommand(fireBulletsComm,	FireBullets);
-	bindCommand(fireMissileComm,	LaunchMissile);
-
-	// Bind Keys to each Action
-	bindKey(Keyboard::A,	 MoveLeft);
-	bindKey(Keyboard::D,	 MoveRight);
-	bindKey(Keyboard::W,	 MoveUp);
-	bindKey(Keyboard::S,	 MoveDown);
-	bindKey(Keyboard::Left,  MoveLeft);
-	bindKey(Keyboard::Right, MoveRight);
-	bindKey(Keyboard::Up,	 MoveUp);
-	bindKey(Keyboard::Down,  MoveDown);
-	bindKey(Keyboard::Space, FireBullets);
-	bindKey(Keyboard::M,	 LaunchMissile);
+	bindCommand(moveLeftComm, MoveLeft);
+	bindCommand(moveRightComm, MoveRight);
+	bindCommand(moveUpComm, MoveUp);
+	bindCommand(moveDownComm, MoveDown);
+	bindCommand(fireBulletsComm, FireBullets);
+	bindCommand(fireMissileComm, LaunchMissile);
 
 	// Also set these as the default Key bindings
-	bindDefaultKey(Keyboard::A,		MoveLeft);
-	bindDefaultKey(Keyboard::D,		MoveRight);
-	bindDefaultKey(Keyboard::W,		MoveUp);
-	bindDefaultKey(Keyboard::S,		MoveDown);
-	bindDefaultKey(Keyboard::Left,  MoveLeft);
+	bindDefaultKey(Keyboard::A, MoveLeft);
+	bindDefaultKey(Keyboard::D, MoveRight);
+	bindDefaultKey(Keyboard::W, MoveUp);
+	bindDefaultKey(Keyboard::S, MoveDown);
+	bindDefaultKey(Keyboard::Left, MoveLeft);
 	bindDefaultKey(Keyboard::Right, MoveRight);
-	bindDefaultKey(Keyboard::Up,	MoveUp);
-	bindDefaultKey(Keyboard::Down,	MoveDown);
+	bindDefaultKey(Keyboard::Up, MoveUp);
+	bindDefaultKey(Keyboard::Down, MoveDown);
 	bindDefaultKey(Keyboard::Space, FireBullets);
-	bindDefaultKey(Keyboard::M,		LaunchMissile);
+	bindDefaultKey(Keyboard::M, LaunchMissile);
 
 	// Assign the category for the player's aircraft to all Commands
 	for (auto& pair : _commandBindings)
 		pair.second.category = Categories::PlayerAircraft;
 }
-vector<CommandId> Player::commands() const {
-	vector<CommandId> ids = { MoveLeft, MoveRight, MoveUp, MoveDown, FireBullets, LaunchMissile };
-	return ids;
-}
-bool Player::isRealtime(CommandId command) const {
-	if (command == MoveLeft) return true;
-	if (command == MoveRight) return true;
-	if (command == MoveDown) return true;
-	if (command == MoveUp) return true;
-	if (command == FireBullets) return true;
+void Player::bindDebugCommands() {
+	// Define and bind some debug Commands
+	Command printPlayerComm(
+		"Print Player Data",
+		[](SceneNode& sn, Time) {
+			Aircraft& a = static_cast<Aircraft&>(sn);
+			Vector2f pos = a.getPosition();
+			Vector2f vel = a.getVelocity();
+			cout << endl
+				 << "Position (x, y): " << pos.x << ", " << pos.y << endl
+				 << "Velocity (x, y): " << vel.x << ", " << vel.y << endl;
+		},
+		Categories::PlayerAircraft
+	);
+	Command printEnemyComm(
+		"Print Enemy Data",
+		[](SceneNode& sn, Time) {
+			Aircraft& a = static_cast<Aircraft&>(sn);
+			Vector2f pos = a.getPosition();
+			Vector2f vel = a.getVelocity();
+			cout << "Position (x, y): " << pos.x << ", " << pos.y << endl
+				 << "Velocity (x, y): " << vel.x << ", " << vel.y << endl;
+		},
+		Categories::EnemyAircraft
+	);
 
-	return false;
-}
+	// Bind these commands to an ActionId
+	bindCommand(printPlayerComm, PrintPlayerData);
+	bindCommand(printEnemyComm, PrintEnemyData);
 
-// HELPER FUNCTIONS
-void Player::handleKeyPress(const Event::KeyEvent& key, queue<Command>& commands) const {
-	switch (key.code) {
-	case Keyboard::P: {
-		// Print the player Aircraft's location to the console
-		Command printPos(
-			"Print Player Data",
-			[](SceneNode& sn, Time) {
-				Aircraft& a = static_cast<Aircraft&>(sn);
-				cout << endl
-					 << "Position (x, y): " << a.getPosition().x << ", " << a.getPosition().y << endl
-					 << "Velocity (x, y): " << a.getVelocity().x << ", " << a.getVelocity().y << endl;
-			},
-			Categories::PlayerAircraft
-		);
-		commands.push(printPos);
-		break;
-	}
-	case Keyboard::E:{
-		// Print the locations of each Enemy Aircraft to the console
-		Command printPos(
-			"Print Enemy Data",
-			[](SceneNode& sn, Time) {
-				Aircraft& a = static_cast<Aircraft&>(sn);
-				cout << "Position (x, y): " << a.getPosition().x << ", " << a.getPosition().y << endl
-					<< "Velocity (x, y): "  << a.getVelocity().x << ", " << a.getVelocity().y << endl;
-			},
-			Categories::EnemyAircraft
-		);
-		commands.push(printPos);
-		break;
-	}
-	}
+	// Bind Keys to each Action
+	bindKey(Keyboard::P, PrintPlayerData);
+	bindKey(Keyboard::E, PrintEnemyData);
 }

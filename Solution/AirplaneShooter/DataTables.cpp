@@ -22,7 +22,7 @@ namespace Shooter {
 		data[Aircraft::Type::Eagle].texture = TextureId::Eagle;
 		data[Aircraft::Type::Eagle].fireInterval = sf::seconds(1);
 
-		data[Aircraft::Type::Eagle].category = Categories::EnemyAircraft;
+		data[Aircraft::Type::Raptor].category = Categories::EnemyAircraft;
 		data[Aircraft::Type::Raptor].hitPoints = 20;
 		data[Aircraft::Type::Raptor].speed = 80.f;
 		data[Aircraft::Type::Raptor].texture = TextureId::Raptor;
@@ -31,7 +31,7 @@ namespace Shooter {
 		data[Aircraft::Type::Raptor].directions.push_back(Direction(45, 80));
 		data[Aircraft::Type::Raptor].fireInterval = Time::Zero;
 
-		data[Aircraft::Type::Eagle].category = Categories::EnemyAircraft;
+		data[Aircraft::Type::Avenger].category = Categories::EnemyAircraft;
 		data[Aircraft::Type::Avenger].hitPoints = 40;
 		data[Aircraft::Type::Avenger].speed = 50.f;
 		data[Aircraft::Type::Avenger].texture = TextureId::Avenger;
@@ -47,6 +47,18 @@ namespace Shooter {
 
 	map<Projectile::Type, ProjectileData> initProjectileData() {
 		map<Projectile::Type, ProjectileData> data;
+
+		data[Projectile::Type::AlliedBullet].damage = 10;
+		data[Projectile::Type::AlliedBullet].speed = 300.f;
+		data[Projectile::Type::AlliedBullet].texture = TextureId::Bullet;
+
+		data[Projectile::Type::EnemyBullet].damage = 10;
+		data[Projectile::Type::EnemyBullet].speed = 300.f;
+		data[Projectile::Type::EnemyBullet].texture = TextureId::Bullet;
+
+		data[Projectile::Type::Missile].damage = 200;
+		data[Projectile::Type::Missile].speed = 150.f;
+		data[Projectile::Type::Missile].texture = TextureId::Missile;
 
 		return data;
 	}

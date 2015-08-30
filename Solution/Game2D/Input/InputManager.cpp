@@ -124,9 +124,25 @@ void InputManager::bindDefaultKey(Keyboard::Key key, CommandId id) {
 
 	// Bind the Key to the provided Id
 	_defaultKeyBindings[id].insert(key);
+
+	// Also initialize the current KeyBinding to this default
+	bindKey(key, id);
 }
 void InputManager::bindCommand(const Command& command, CommandId id) {
 	// Bind the Command to the provided Id (make sure that id wasn't already used)
 	assert(_commandBindings.find(id) == _commandBindings.end());
 	_commandBindings.insert(make_pair(id, command));
+}
+
+void InputManager::handleKeyPress(const Event::KeyEvent& key, queue<Command>& commands) const {
+	// Check if this key is bound to any Command
+	for (auto binding : _keyBindings) {
+
+		// If so, then add the associated Command to the queue
+		CommandId c = binding.first;
+		set<Keyboard::Key> boundKeys = binding.second;
+		if (!isRealtime(c) && boundKeys.find(key.code) != boundKeys.end())
+			commands.push(_commandBindings.at(c));
+
+	}
 }

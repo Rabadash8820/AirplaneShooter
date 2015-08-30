@@ -27,6 +27,9 @@ namespace Shooter {
 		Game2D::CommandId FireBullets;
 		Game2D::CommandId LaunchMissile;
 
+		Game2D::CommandId PrintPlayerData;
+		Game2D::CommandId PrintEnemyData;
+
 		// INTERFACE
 	public:
 		Player();
@@ -35,7 +38,9 @@ namespace Shooter {
 
 		// HELPER FUNCTIONS
 	private:
-		virtual void handleKeyPress(const sf::Event::KeyEvent&, std::queue<Game2D::Command>&) const;
+		void bindPlayerCommands();
+		void bindDebugCommands();
+
 	};
 
 }

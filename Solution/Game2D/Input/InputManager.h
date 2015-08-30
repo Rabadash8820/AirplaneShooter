@@ -33,10 +33,11 @@ namespace Game2D {
 
 		// HELPER FUNCTIONS
 	protected:
+		virtual bool isRealtime(CommandId) const = 0;
 		void bindDefaultKey(sf::Keyboard::Key, CommandId);
 		void bindCommand(const Command&, CommandId);
 
-		virtual void handleKeyPress(		  const sf::Event::KeyEvent&,			   std::queue<Command>&) const { }
+		virtual void handleKeyPress(		  const sf::Event::KeyEvent&,			   std::queue<Command>&) const;
 		virtual void handleKeyRelease(		  const sf::Event::KeyEvent&,			   std::queue<Command>&) const { }
 		virtual void handleMousePress(		  const sf::Event::MouseButtonEvent&,	   std::queue<Command>&) const { }
 		virtual void handleMouseRelease(	  const sf::Event::MouseButtonEvent&,	   std::queue<Command>&) const { }
@@ -48,13 +49,12 @@ namespace Game2D {
 		virtual void handleJoystickDisconnect(const sf::Event::JoystickConnectEvent&,  std::queue<Command>&) const { }
 		virtual void handleJoystickMove(      const sf::Event::JoystickMoveEvent&,     std::queue<Command>&) const { }
 		virtual void handleOtherEvent(		  const sf::Event&,						   std::queue<Command>&) const { }
+
 	private:
 		void handleRealtimeKeyboard(std::queue<Command>&) const;
-	protected:
-		virtual bool isRealtime(CommandId) const = 0;
-		virtual void handleRealtimeMouse(std::queue<Command>&) const { }
-		virtual void handleRealtimeJoystick(std::queue<Command>&) const { }
-		virtual void handleOtherRealtime(std::queue<Command>&) const { }
+		void handleRealtimeMouse(std::queue<Command>&) const { }
+		void handleRealtimeJoystick(std::queue<Command>&) const { }
+		void handleOtherRealtime(std::queue<Command>&) const { }
 
 	};
 
