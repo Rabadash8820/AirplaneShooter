@@ -27,16 +27,23 @@ namespace Game2D {
 		// STATIC INTERFACE
 	public:
 		static std::string currentWorkingDirectory();
+
 		static void centerOrigin(sf::Sprite&);
 		static void centerOrigin(sf::Text&);
-		static std::string toString(sf::Keyboard::Key);
+
 		template <typename T>
 		static std::string toString(const T& value) {
 			std::stringstream stream;
 			stream << value;
 			return stream.str();
 		}
+		static std::string toString(sf::Keyboard::Key);
+
 		static float toRadians(float);
+		static float toDegrees(float);
+
+		static sf::Vector2f unitVector(sf::Vector2f);
+		static float distance(sf::Vector2f, sf::Vector2f);
 
 	};
 

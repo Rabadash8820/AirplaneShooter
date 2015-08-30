@@ -20,8 +20,9 @@ Projectile::Projectile(Type type, const TextureManager& textures) :
 {
 	Utility::centerOrigin(_sprite);
 }
-void Projectile::guideTowards(Vector2f) {
-
+void Projectile::guideTowards(Vector2f target) {
+	assert(isGuided());
+	_targetDirection = Utility::unitVector(target - getWorldPosition());
 }
 bool Projectile::isGuided() const {
 	return _type == Type::Missile;
@@ -50,8 +51,22 @@ int Projectile::getDamage() const {
 }
 
 // HELPER FUNCTIONS
-void Projectile::updateCurrent(Time, queue<Command>&) {
+void Projectile::updateCurrent(Time dt, queue<Command>& commands) {
+	// If this is a guided projectile...
+	if (isGuided()) {
+		// Get weighted sum of current- and target-velocity vectors
+		Vector2f vCurrent = getVelocity();
+		Vector2f vToTarget = dt.asSeconds() * _targetDirection;
+		Vector2f v = Utility::unitVector(vCurrent + TARGET_WEIGHT * vToTarget);
+		
+		// Set Projectile's resultant vector and rotation accordingly
+		float angle = atan2(v.y, v.x);
+		setRotation(Utility::toDegrees(angle) + 90.f);
+		setVelocity(getMaxSpeed() * v);
+	}
 
+	// Let the base Entity handle moving with this velocity
+	Entity::updateCurrent(dt, commands);
 }
 void Projectile::drawCurrent(RenderTarget& target, RenderStates states) const {
 	target.draw(_sprite, states);

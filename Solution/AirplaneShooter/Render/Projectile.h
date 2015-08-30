@@ -36,6 +36,7 @@ namespace Shooter {
 		sf::Sprite _sprite;
 		sf::Vector2f _targetDirection;
 		static DataTable _dataTable;
+		const float TARGET_WEIGHT = 200.f;
 		
 		// INTERFACE
 	public:

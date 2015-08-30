@@ -42,6 +42,7 @@ namespace Shooter {
 		sf::Vector2f _playerSpawn;
 		sf::Vector2f _scrollVelocity;		// Pixels per sec
 		std::vector<SpawnPoint> _spawnPoints;
+		std::vector<Aircraft*> _activeEnemies;
 		TextureManager _textures;
 		FontManager _fonts;
 
@@ -60,6 +61,7 @@ namespace Shooter {
 		sf::FloatRect getViewBounds() const;
 		sf::FloatRect getBattlefieldBounds() const;
 		void spawnEnemies();
+		void guideMissiles();
 		void adjustPlayer(sf::Time);
 
 	};

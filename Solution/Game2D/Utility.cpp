@@ -17,6 +17,7 @@ string Utility::currentWorkingDirectory() {
 	// TO DO: Make some assertion here...
 	return currDir;
 }
+
 void Utility::centerOrigin(Sprite& sprite) {
 	FloatRect bounds = sprite.getLocalBounds();
 	sprite.setOrigin(
@@ -29,6 +30,7 @@ void Utility::centerOrigin(Text& text) {
 		floor(bounds.left + bounds.width / 2.f),
 		floor(bounds.top + bounds.height / 2.f));
 }
+
 std::string Utility::toString(Keyboard::Key key) {
 	// A macro to return a string that looks exactly the same as the SFML Key enum
 #define KEY_TO_STRING(KEY) case sf::Keyboard::KEY: return #KEY;
@@ -139,6 +141,24 @@ std::string Utility::toString(Keyboard::Key key) {
 		KEY_TO_STRING(Pause)
 	}
 }
+
 float Utility::toRadians(float degrees) {
-	return M_PI / 180.f * degrees;
+	float radians = M_PI / 180.f * degrees;
+	return radians;
+}
+float Utility::toDegrees(float radians) {
+	float degrees = radians * 180.f / M_PI;
+	return degrees;
+}
+
+Vector2f Utility::unitVector(Vector2f vector) {
+	float x = vector.x, y = vector.y;
+	float length = sqrtf(x*x + y*y);
+	return vector * (1.f / length);
+}
+float Utility::distance(Vector2f first, Vector2f second) {
+	float dx = first.x - second.x;
+	float dy = first.y - second.y;
+	float dist = sqrtf(dx*dx + dy*dy);
+	return dist;
 }
