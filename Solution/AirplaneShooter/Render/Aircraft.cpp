@@ -58,6 +58,17 @@ void Aircraft::fire() {
 void Aircraft::launchMissile() {
 	_isLaunchingMissile = true;
 }
+void Aircraft::collectMissiles(unsigned int numMissiles) {
+	_missileAmmo += numMissiles;
+}
+void Aircraft::increaseSpread() {
+	if (_fireSpreadLevel < MAX_FIRE_SPREAD)
+		++_fireSpreadLevel;
+}
+void Aircraft::increaseFireRate() {
+	if (_fireRateLevel < MAX_FIRE_RATE)
+		++_fireRateLevel;
+}
 
 // HELPER FUNCTIONS
 void Aircraft::drawCurrent(RenderTarget& target, RenderStates states) const {

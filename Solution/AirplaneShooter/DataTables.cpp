@@ -66,6 +66,18 @@ namespace Shooter {
 	map<Pickup::Type, PickupData> initPickupData() {
 		map<Pickup::Type, PickupData> data;
 
+		data[Pickup::Type::HealthRefill].texture = TextureId::HealthRefill;
+		data[Pickup::Type::HealthRefill].action  = [](Aircraft& a) { a.heal(25); };
+
+		data[Pickup::Type::MissileRefill].texture = TextureId::MissileRefill;
+		data[Pickup::Type::MissileRefill].action  = [](Aircraft& a) { a.collectMissiles(3); };
+
+		data[Pickup::Type::FireSpread].texture = TextureId::FireSpread;
+		data[Pickup::Type::FireSpread].action  = [](Aircraft& a) { a.increaseSpread(); };
+
+		data[Pickup::Type::FireRate].texture = TextureId::FireRate;
+		data[Pickup::Type::FireRate].action  = [](Aircraft& a) { a.increaseFireRate(); };
+
 		return data;
 	}
 

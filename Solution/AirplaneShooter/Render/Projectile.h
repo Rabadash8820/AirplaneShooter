@@ -13,6 +13,7 @@
 #include <SFML\System\Time.hpp>
 
 #include <queue>
+#include <map>
 #include <memory>
 
 namespace Shooter {

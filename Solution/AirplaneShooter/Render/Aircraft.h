@@ -45,6 +45,9 @@ namespace Shooter {
 		Game2D::Command _launchMissileCommand;
 		int _fireRateLevel;
 		int _fireSpreadLevel;
+		unsigned int _missileAmmo;
+		const int MAX_FIRE_RATE = 10;
+		const int MAX_FIRE_SPREAD = 3;
 
 		// INTERFACE
 	public:
@@ -53,6 +56,9 @@ namespace Shooter {
 		float getMaxSpeed() const;
 		void fire();
 		void launchMissile();
+		void collectMissiles(unsigned int);
+		void increaseSpread();
+		void increaseFireRate();
 
 		// HELPER FUNCTIONS
 	private:

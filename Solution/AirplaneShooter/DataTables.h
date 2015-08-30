@@ -11,6 +11,7 @@
 
 #include <vector>
 #include <map>
+#include <functional>
 
 namespace Shooter {
 
@@ -50,6 +51,7 @@ namespace Shooter {
 	//
 	struct PickupData {
 		TextureId texture;
+		std::function<void(Aircraft&)> action;
 	};
 
 	std::map<Pickup::Type, PickupData> initPickupData();
