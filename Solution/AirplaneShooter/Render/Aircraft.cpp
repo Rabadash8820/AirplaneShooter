@@ -51,6 +51,9 @@ Aircraft::Aircraft(Type type, const TextureManager& textures, const FontManager&
 	FloatRect bounds = _sprite.getLocalBounds();
 	_sprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
 }
+FloatRect Aircraft::getBoundingRect() const {
+	return getWorldTransform().transformRect(_sprite.getGlobalBounds());
+}
 void Aircraft::fire() {
 	if (_dataTable[_type].fireInterval != Time::Zero)
 		_isFiringBullets = true;

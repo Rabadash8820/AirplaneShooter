@@ -53,6 +53,7 @@ namespace Shooter {
 	public:
 		float airSpeed;
 		Aircraft(Type, const TextureManager&, const FontManager&);
+		sf::FloatRect getBoundingRect() const;
 		float getMaxSpeed() const;
 		void fire();
 		void launchMissile();

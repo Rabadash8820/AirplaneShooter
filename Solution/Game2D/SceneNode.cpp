@@ -2,6 +2,8 @@
 
 #include "Input/Category.h"
 
+#include <SFML\Graphics\RectangleShape.hpp>
+
 #include <algorithm>
 #include <cassert>
 #include <initializer_list>
@@ -62,6 +64,9 @@ void SceneNode::draw(RenderTarget& target, RenderStates states) const {
 	states.transform *= this->getTransform();
 	drawCurrent(target, states);
 	drawChildren(target, states);
+
+	// Draw bounding rectangle
+	drawBoundingRect(target, states);
 }
 void SceneNode::update(Time dt, queue<Command>& commands) {
 	updateCurrent(dt, commands);
