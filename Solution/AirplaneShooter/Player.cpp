@@ -3,7 +3,6 @@
 #include "Aircraft.h"
 #include "Categories.h"
 
-#include <Input\KeyBinding.h>
 #include <Render\SceneNode.h>
 
 #include <SFML\System\Time.hpp>
@@ -11,6 +10,7 @@
 #include <SFML\Window\Keyboard.hpp>
 
 #include <iostream>
+#include <cassert>
 
 using namespace Shooter;
 using namespace Game2D;
@@ -19,44 +19,57 @@ using namespace std;
 
 // INTERFACE
 Player::Player() {
-	// Define Commands
-	Command moveLeft([](SceneNode& node, Time dt) {
+	// Define movement Commands
+	Command moveLeftComm("Move Left", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.velocity += Vector2f(-a.airSpeed, 0.f);
 	});
-	Command moveRight([](SceneNode& node, Time dt) {
+	Command moveRightComm("Move Right", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.velocity += Vector2f(a.airSpeed, 0.f);
 	});
-	Command moveUp([](SceneNode& node, Time dt) {
+	Command moveUpComm("Move Up", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.velocity += Vector2f(0.f, -a.airSpeed);
 	});
-	Command moveDown([](SceneNode& node, Time dt) {
+	Command moveDownComm("Move Down", [](SceneNode& node, Time dt) {
 		Aircraft& a = static_cast<Aircraft&>(node);
 		a.velocity += Vector2f(0.f, a.airSpeed);
 	});
 
-	// Define KeyBindings for those Commands
-	_keyBindings.push_back(KeyBinding(sf::Keyboard::A,	   moveLeft));
-	_keyBindings.push_back(KeyBinding(sf::Keyboard::D,	   moveRight));
-	_keyBindings.push_back(KeyBinding(sf::Keyboard::W,	   moveUp));
-	_keyBindings.push_back(KeyBinding(sf::Keyboard::S,	   moveDown));
-	_keyBindings.push_back(KeyBinding(sf::Keyboard::Left,  moveLeft));
-	_keyBindings.push_back(KeyBinding(sf::Keyboard::Right, moveRight));
-	_keyBindings.push_back(KeyBinding(sf::Keyboard::Up,	   moveUp));
-	_keyBindings.push_back(KeyBinding(sf::Keyboard::Down, moveDown));
+	// Bind these commands to an ActionId
+	bindCommand(moveLeftComm,  MoveLeft);
+	bindCommand(moveRightComm, MoveRight);
+	bindCommand(moveUpComm,	   MoveUp);
+	bindCommand(moveDownComm,  MoveDown);
+
+	// Bind Keys to each Action
+	bindKey(Keyboard::A,	 MoveLeft);
+	bindKey(Keyboard::D,	 MoveRight);
+	bindKey(Keyboard::W,	 MoveUp);
+	bindKey(Keyboard::S,	 MoveDown);
+	bindKey(Keyboard::Left,  MoveLeft);
+	bindKey(Keyboard::Right, MoveRight);
+	bindKey(Keyboard::Up,	 MoveUp);
+	bindKey(Keyboard::Down,  MoveDown);
+
+	// Also set these as the default Key bindings
+	bindDefaultKey(Keyboard::A, MoveLeft);
+	bindDefaultKey(Keyboard::D, MoveRight);
+	bindDefaultKey(Keyboard::W, MoveUp);
+	bindDefaultKey(Keyboard::S, MoveDown);
+	bindDefaultKey(Keyboard::Left, MoveLeft);
+	bindDefaultKey(Keyboard::Right, MoveRight);
+	bindDefaultKey(Keyboard::Up, MoveUp);
+	bindDefaultKey(Keyboard::Down, MoveDown);
 
 	// Assign the category for the player's aircraft to all Commands
-	for (auto& pair : _keyBindings)
-		pair.command.setCategory(Categories::PlayerAircraft);
+	for (auto& pair : _commandBindings)
+		pair.second.category = Categories::PlayerAircraft;
 }
-void Player::handleRealtimeInput(std::queue<Game2D::Command>& commands) const {
-	// Push keyboard events to the Command queue
-	for (auto& binding : _keyBindings) {
-		if (Keyboard::isKeyPressed(binding.key))
-			commands.push(binding.command);
-	}
+vector<CommandId> Player::commands() const {
+	vector<CommandId> ids = { MoveLeft, MoveRight, MoveUp, MoveDown };
+	return ids;
 }
 
 // HELPER FUNCTIONS
@@ -64,11 +77,14 @@ void Player::handleKeyPress(const Event::KeyEvent& key, queue<Command>& commands
 	switch (key.code) {
 	case Keyboard::P:
 		// Print the player Aircraft's location to the console
-		Command printPos([](SceneNode& sn, Time) {
-			cout << sn.getPosition().x << ","
-				 << sn.getPosition().y << endl;
-		});
-		printPos.setCategory(Categories::PlayerAircraft);
+		Command printPos(
+			"Print Position",
+			[](SceneNode& sn, Time) {
+				cout << sn.getPosition().x << ","
+					 << sn.getPosition().y << endl;
+			},
+			Categories::PlayerAircraft
+		);
 		commands.push(printPos);
 		break;
 	}

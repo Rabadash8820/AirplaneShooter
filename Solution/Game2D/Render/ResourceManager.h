@@ -23,14 +23,13 @@ namespace Game2D {
 	public:
 		// CONSTRUCTORS / DESTRUCTOR
 		ResourceManager();
-		~ResourceManager();
 
 		// FUNCTIONS
-		void load(ResourceId, const std::string&);
+		void load(const ResourceId&, const std::string&);
 		template<typename Param>
-		void load(ResourceId, const std::string&, Param);
-		Resource& get(ResourceId) const;
-		Resource& operator[](ResourceId) const;
+		void load(const ResourceId&, const std::string&, Param);
+		Resource& get(const ResourceId&) const;
+		Resource& operator[](const ResourceId&) const;
 	};
 
 	// Typedefs for specific ResourceManagers

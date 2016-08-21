@@ -26,23 +26,25 @@ Aircraft::Aircraft(Type t, const TextureManager& textures) :
 void Aircraft::drawCurrent(RenderTarget& target, RenderStates states) const {
 	target.draw(this->_sprite, states);
 }
-unsigned int Aircraft::getCategory() const {
+Category Aircraft::getCategory() const {
 	// All Aircraft are SceneNodes
-	unsigned int id = 1;
+	Category c = SceneNode::getCategory();
 
 	// Adjust the game Category of this Aircraft depending on its type
 	switch (_type) {
 	case Type::EAGLE:
-		id |= Categories::PlayerAircraft.getId();
+		c |= Categories::PlayerAircraft;
 		break;
+
 	case Type::RAPTOR:
-		id |= Categories::AlliedAircraft.getId();
+		c |= Categories::AlliedAircraft;
 		break;
+
 	default:
-		id |= Categories::EnemyAircraft.getId();
+		c |= Categories::EnemyAircraft;
 		break;
 	}
-	return id;
+	return c;
 }
 
 // HELPER FUNCTIONS

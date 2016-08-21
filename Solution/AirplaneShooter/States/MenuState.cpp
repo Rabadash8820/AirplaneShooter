@@ -16,6 +16,7 @@
 
 using namespace Shooter;
 using namespace Game2D;
+using namespace Game2D::GUI;
 using namespace sf;
 using namespace std;
 
@@ -24,37 +25,45 @@ MenuState::MenuState(StateManager& manager, Context context) :
 	State(manager, context),
 	_background((*context.textures)[Textures::TitleScreen])
 {	
-	// Define the Menu option buttons
-	Text play("Play", (*context.fonts)[Fonts::Main]);
-	Utility::centerOrigin(play);
-	play.setPosition(context.window->getView().getSize() / 2.f);
-	_options.push_back(play);
+	// Define the menu buttons
+	shared_ptr<Button> play = make_shared<Button>(
+		context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
+	play->setText("Play");
+	play->setPosition(100, 250);
+	play->setTexture(Button::State::Selected, Textures::ButtonSelected);
+	play->setTexture(Button::State::Pressed,  Textures::ButtonPressed);
+	play->setCallback([this]() {
+		requestPopState();
+		requestPushState(States::Game);
+	});
 
-	Text exit("Exit", (*context.fonts)[Fonts::Main]);
-	Utility::centerOrigin(exit);
-	exit.setPosition(play.getPosition() + sf::Vector2f(0.f, 30.f));
-	_options.push_back(exit);
+	shared_ptr<Button> settings = make_shared<Button>(
+		context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
+	settings->setText("Settings");
+	settings->setPosition(100, 300);
+	settings->setTexture(Button::State::Selected, Textures::ButtonSelected);
+	settings->setTexture(Button::State::Pressed, Textures::ButtonPressed);
+	settings->setCallback(bind(
+		&MenuState::requestPushState, this,
+		States::SettingsMenu));
 
-	updateOptionText();
+	shared_ptr<Button> exit = make_shared<Button>(
+		context.fonts->get(Fonts::Main), *context.textures, Textures::ButtonUnselected);
+	exit->setText("Exit");
+	exit->setPosition(100, 350);
+	exit->setTexture(Button::State::Selected, Textures::ButtonSelected);
+	exit->setTexture(Button::State::Pressed, Textures::ButtonPressed);
+	exit->setCallback(bind(&MenuState::requestPopState, this));
+
+	// Pack buttons into the GUI Container
+	_guiContainer.pack(play);
+	_guiContainer.pack(settings);
+	_guiContainer.pack(exit);
 }
 bool MenuState::handleEvent(const Event& e) {
-	// Don't let other states handle non-Keyboard events
-	if (e.type != Event::KeyPressed)
-		return false;
+	_guiContainer.handleEvent(e);
 
-	// Menu selection events
-	if (e.key.code == Keyboard::Up) {
-		_currentOption = (_currentOption + _options.size() - 1) % _options.size();
-		updateOptionText();
-	}
-	else if (e.key.code == Keyboard::Down) {
-		_currentOption = (_currentOption + 1) % _options.size();
-		updateOptionText();
-	}
-	else if (e.key.code == Keyboard::Return)
-		changeState();
-
-	// Allow other States to handle KeyPress events
+	// Don't allow other States to handle this Event
 	return true;
 }
 bool MenuState::update(Time dt) {
@@ -63,33 +72,8 @@ bool MenuState::update(Time dt) {
 }
 void MenuState::draw() {
 	RenderWindow& window = *getContext().window;
-
 	window.setView(window.getDefaultView());
+
 	window.draw(_background);
-
-	for (const sf::Text& text : _options)
-		window.draw(text);
-}
-
-// HELPER FUNCTIONS
-void MenuState::updateOptionText() {
-	if (_options.empty())
-		return;
-
-	// Highlight only the currently selected option
-	for (Text& text : _options)
-		text.setColor(Color::White);
-	_options[_currentOption].setColor(Color::Red);
-}
-void MenuState::changeState() {
-	// Push/pop game States corresponding to the currently selected Option
-	switch (_currentOption) {
-	case Options::Play:
-		requestPopState();
-		requestPushState(States::Game);
-		break;
-	case Options::Exit:
-		requestPopState();
-		break;
-	}
+	window.draw(_guiContainer);
 }

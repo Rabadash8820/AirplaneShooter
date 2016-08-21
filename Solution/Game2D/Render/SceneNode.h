@@ -23,7 +23,6 @@ namespace Game2D {
 		// CONSTRUCTORS / DESTRUCTOR
 	public:
 		SceneNode();
-		~SceneNode();
 
 		// INTERFACE FUNCTIONS
 	public:

@@ -11,7 +11,6 @@ using namespace std;
 
 // CONSTRUCTORS / DESTRUCTOR
 SceneNode::SceneNode() { }
-SceneNode::~SceneNode() {}
 
 // INTERFACE FUNCTIONS
 void SceneNode::attachChild(Ptr child) {

@@ -10,7 +10,11 @@ namespace Shooter {
 								  Eagle,
 								  Raptor,
 								  Missile,
-								  TitleScreen;
+								  TitleScreen,
+								  ButtonUnselected,
+								  ButtonSelected,
+								  ButtonPressed,
+								  ButtonDisabled;
 
 	}
 
