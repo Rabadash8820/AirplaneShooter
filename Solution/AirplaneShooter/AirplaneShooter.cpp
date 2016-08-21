@@ -1,10 +1,13 @@
 #include "AirplaneShooter.h"
+
 #include "DesertMap.h"
 #include "Aircraft.h"
 #include "Categories.h"
 #include <Input\Command.h>
 #include <Input\KeyBinding.h>
-#include <memory>
+#include <Utility.h>
+
+#include <string>
 
 using namespace Shooter;
 using namespace Game2D;

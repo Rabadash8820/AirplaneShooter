@@ -1,5 +1,7 @@
 #include "Map.h"
 
+#include "..\Render\SceneNode.h"
+
 using namespace Game2D;
 using namespace sf;
 using namespace std;
@@ -28,8 +30,8 @@ void Map::update(Time dt) {
 	_sceneTree.update(dt);
 }
 void Map::draw(RenderTarget& target, RenderStates states) const {
-	target.draw(_sceneTree, states);
 	_window->setView(_view);
+	target.draw(_sceneTree, states);
 }
 
 // HELPER FUNCTIONS

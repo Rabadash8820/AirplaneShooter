@@ -1,9 +1,12 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-
 #include "ResourceId.h"
+
+#include <SFML\Graphics\Texture.hpp>
+#include <SFML\Graphics\Font.hpp>
+#include <SFML\Graphics\Shader.hpp>
+#include <SFML\Audio\SoundBuffer.hpp>
+
 #include <map>
 #include <memory>
 #include <string>
@@ -15,18 +18,18 @@ namespace Game2D {
 	private:
 		// VARIABLES
 		typedef std::unique_ptr<Resource> Ptr;
-		std::map<unsigned int, Ptr> _resources;
+		std::map<ResourceId, Ptr> _resources;
 		
 	public:
 		// CONSTRUCTORS / DESTRUCTOR
 		ResourceManager();
-		~ResourceManager();
 
 		// FUNCTIONS
-		void load(ResourceId, const std::string&);
+		void load(const ResourceId&, const std::string&);
 		template<typename Param>
-		void load(ResourceId, const std::string&, Param);
-		Resource& operator[](ResourceId) const;
+		void load(const ResourceId&, const std::string&, Param);
+		Resource& get(const ResourceId&) const;
+		Resource& operator[](const ResourceId&) const;
 	};
 
 	// Typedefs for specific ResourceManagers

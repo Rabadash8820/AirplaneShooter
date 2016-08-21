@@ -175,21 +175,37 @@
     <ClCompile Include="AirplaneShooter.cpp" />
     <ClCompile Include="Categories.cpp" />
     <ClCompile Include="DesertMap.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ResourceIds\Fonts.cpp" />
     <ClCompile Include="ResourceIds\Shaders.cpp" />
     <ClCompile Include="ResourceIds\Sounds.cpp" />
     <ClCompile Include="ResourceIds\Textures.cpp" />
+    <ClCompile Include="States\GameState.cpp" />
+    <ClCompile Include="States\LoadingState.cpp" />
+    <ClCompile Include="States\MenuState.cpp" />
+    <ClCompile Include="States\PauseState.cpp" />
+    <ClCompile Include="States\SettingsState.cpp" />
+    <ClCompile Include="States\States.cpp" />
+    <ClCompile Include="States\TitleState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aircraft.h" />
     <ClInclude Include="AirplaneShooter.h" />
     <ClInclude Include="Categories.h" />
     <ClInclude Include="DesertMap.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="ResourceIds\Fonts.h" />
     <ClInclude Include="ResourceIds\Shaders.h" />
     <ClInclude Include="ResourceIds\Sounds.h" />
     <ClInclude Include="ResourceIds\Textures.h" />
+    <ClInclude Include="States\GameState.h" />
+    <ClInclude Include="States\LoadingState.h" />
+    <ClInclude Include="States\MenuState.h" />
+    <ClInclude Include="States\PauseState.h" />
+    <ClInclude Include="States\SettingsState.h" />
+    <ClInclude Include="States\States.h" />
+    <ClInclude Include="States\TitleState.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

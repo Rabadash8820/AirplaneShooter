@@ -1,6 +1,8 @@
 #include "Aircraft.h"
+
 #include "Categories.h"
-#include <Render\ResourceManager.h>
+
+#include <SFML\Graphics\Rect.hpp>
 
 using namespace Shooter;
 using namespace Game2D;
@@ -24,34 +26,36 @@ Aircraft::Aircraft(Type t, const TextureManager& textures) :
 void Aircraft::drawCurrent(RenderTarget& target, RenderStates states) const {
 	target.draw(this->_sprite, states);
 }
-unsigned int Aircraft::getCategory() const {
+Category Aircraft::getCategory() const {
 	// All Aircraft are SceneNodes
-	unsigned int id = 1;
+	Category c = SceneNode::getCategory();
 
 	// Adjust the game Category of this Aircraft depending on its type
 	switch (_type) {
 	case Type::EAGLE:
-		id |= PlayerAircraft.getId();
+		c |= Categories::PlayerAircraft;
 		break;
+
 	case Type::RAPTOR:
-		id |= AlliedAircraft.getId();
+		c |= Categories::AlliedAircraft;
 		break;
+
 	default:
-		id |= EnemyAircraft.getId();
+		c |= Categories::EnemyAircraft;
 		break;
 	}
-	return id;
+	return c;
 }
 
 // HELPER FUNCTIONS
 ResourceId Aircraft::textureIdForType(Aircraft::Type t) {
 	switch (t) {
 	case Type::EAGLE:
-		return Textures::EAGLE;
+		return Textures::Eagle;
 		break;
 	case Type::RAPTOR:
 	default:
-		return Textures::RAPTOR;
+		return Textures::Raptor;
 		break;
 	}
 }

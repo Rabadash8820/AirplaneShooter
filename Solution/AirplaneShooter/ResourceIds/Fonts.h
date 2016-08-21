@@ -1,12 +1,12 @@
 #pragma once
 
-#include <Render\ResourceManager.h>
+#include <Render\ResourceId.h>
 
 namespace Shooter {
 
 	namespace Fonts {
 
-		extern Game2D::ResourceId SANSATION;
+		extern Game2D::ResourceId Main;
 
 	}
 

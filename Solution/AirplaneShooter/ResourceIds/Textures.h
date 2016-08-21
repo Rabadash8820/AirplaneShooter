@@ -1,15 +1,20 @@
 #pragma once
 
-#include <Render\ResourceManager.h>
+#include <Render\ResourceId.h>
 
 namespace Shooter {
 
 	namespace Textures {
 
-		extern Game2D::ResourceId DESERT,
-								  EAGLE,
-								  RAPTOR,
-								  MISSILE;
+		extern Game2D::ResourceId Desert,
+								  Eagle,
+								  Raptor,
+								  Missile,
+								  TitleScreen,
+								  ButtonUnselected,
+								  ButtonSelected,
+								  ButtonPressed,
+								  ButtonDisabled;
 
 	}
 

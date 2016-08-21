@@ -1,7 +1,7 @@
 #include "DesertMap.h"
+
 #include "Aircraft.h"
 #include "ResourceIds\Textures.h"
-#include "ResourceIds\Sounds.h"
 #include "ResourceIds\Fonts.h"
 #include "Categories.h"
 #include <Render/Brush.h>
@@ -54,7 +54,6 @@ void DesertMap::handleRealtimeInput() {
 		_commands.push(moveLeft);
 	}
 }
-DesertMap::~DesertMap() {}
 
 // HELPER FUNCTIONS
 void DesertMap::loadResources() {
@@ -65,28 +64,28 @@ void DesertMap::loadResources() {
 }
 void DesertMap::buildScene() {
 	// Add a node for the background, and tile its texture
-	Texture& desertTexture = _textures[Textures::DESERT];
+	Texture& desertTexture = _textures[Textures::Desert];
 	IntRect desertBounds(_worldBounds);
 	desertTexture.setRepeated(true);
 	Brush::Ptr background(
 		new Brush(desertTexture, desertBounds, unique_ptr<Categories>(new Categories())));
 	background->setPosition(_worldBounds.left, _worldBounds.top);
-	_sceneLayers[BACKGROUND]->attachChild(std::move(background));
+	_sceneLayers[BACKGROUND]->attachChild(move(background));
 
 	// Add a node for the leader Aircraft and assign it to the Player
 	Aircraft::Ptr leader(new Aircraft(Aircraft::Type::EAGLE, _textures));
 	leader->airSpeed = PLAYER_SPEED;
 	leader->setPosition(_playerSpawn);
 	_player = leader.get();
-	_sceneLayers[AIR]->attachChild(std::move(leader));
+	_sceneLayers[AIR]->attachChild(move(leader));
 
 	// Add nodes for the player's escort Aircraft
-	Aircraft::Ptr leftEscort(new Aircraft(Aircraft::Type::RAPTOR, _textures));
+	Aircraft::Ptr leftEscort( new Aircraft(Aircraft::Type::RAPTOR, _textures));
 	Aircraft::Ptr rightEscort(new Aircraft(Aircraft::Type::RAPTOR, _textures));
 	leftEscort->setPosition(-80.f, 50.f);
 	rightEscort->setPosition(80.f, 50.f);
-	_player->attachChild(std::move(leftEscort));
-	_player->attachChild(std::move(rightEscort));
+	_player->attachChild(move(leftEscort));
+	_player->attachChild(move(rightEscort));
 
 	// Do base building
 	ScrollingMap::buildScene();

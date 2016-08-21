@@ -1,8 +1,10 @@
 #pragma once
 
 #include <Render\ResourceManager.h>
-#include <Map/ScrollingMap.h>
-#include <array>
+#include <Map\ScrollingMap.h>
+
+#include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\System\Time.hpp>
 
 namespace Shooter {
 
@@ -16,14 +18,12 @@ namespace Shooter {
 		// INTERFACE
 	public:
 		DesertMap(sf::RenderWindow*);
-		~DesertMap();
 
 		// HELPER FUNCTIONS
 	private:
 		virtual void updateCurrent(sf::Time);
 		virtual void loadResources();
 		virtual void buildScene();
-		virtual void handleEvent(const sf::Event&);
 		void adjustPlayer(sf::Time);
 
 	};
