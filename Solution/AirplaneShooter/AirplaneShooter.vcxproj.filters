@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\ResourceIds">
+      <UniqueIdentifier>{6565e99f-cd26-4f5b-9769-1c9c054815d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ResourceIds">
+      <UniqueIdentifier>{7d0ff059-2465-46a0-9e18-d34460d33abd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Aircraft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DesertMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AirplaneShooter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Categories.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceIds\Fonts.cpp">
+      <Filter>Source Files\ResourceIds</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceIds\Shaders.cpp">
+      <Filter>Source Files\ResourceIds</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceIds\Sounds.cpp">
+      <Filter>Source Files\ResourceIds</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceIds\Textures.cpp">
+      <Filter>Source Files\ResourceIds</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Aircraft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DesertMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AirplaneShooter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Categories.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceIds\Fonts.h">
+      <Filter>Header Files\ResourceIds</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceIds\Shaders.h">
+      <Filter>Header Files\ResourceIds</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceIds\Sounds.h">
+      <Filter>Header Files\ResourceIds</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceIds\Textures.h">
+      <Filter>Header Files\ResourceIds</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
